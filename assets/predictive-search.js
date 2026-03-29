@@ -210,13 +210,23 @@ class PredictiveSearch extends SearchForm {
         return response.text();
       })
       .then((text) => {
-        const resultsMarkup = new DOMParser()
-          .parseFromString(text, 'text/html')
-          .querySelector('#shopify-section-predictive-search').innerHTML;
-        // Save bandwidth keeping the cache in all instances synced
+        const parsed = new DOMParser().parseFromString(text, 'text/html');
+        const section = parsed.querySelector('#shopify-section-predictive-search');
+
+        let resultsMarkup = '';
+        if (section && section.innerHTML.trim() !== '') {
+          resultsMarkup = section.innerHTML;
+        }
+
+        if (!resultsMarkup) {
+          // Fallback on Search Suggest API when predictive section is empty
+          return this.fetchSuggestFallback(searchTerm, queryKey);
+        }
+
         this.allPredictiveSearchInstances.forEach((predictiveSearchInstance) => {
           predictiveSearchInstance.cachedResults[queryKey] = resultsMarkup;
         });
+
         this.renderSearchResults(resultsMarkup);
       })
       .catch((error) => {
@@ -224,8 +234,57 @@ class PredictiveSearch extends SearchForm {
           // Code 20 means the call was aborted
           return;
         }
-        this.close();
-        throw error;
+        this.fetchSuggestFallback(searchTerm, queryKey);
+      });
+  }
+
+  fetchSuggestFallback(searchTerm, queryKey) {
+    const suggestParams = new URLSearchParams({
+      q: searchTerm,
+      resources: 'product,collection,page,article',
+      'resources[limit]': '10',
+    });
+
+    return fetch(`${routes.search_url.replace('/search', '/search/suggest.json')}?${suggestParams.toString()}`)
+      .then((response) => {
+        if (!response.ok) throw new Error('fallback failed');
+        return response.json();
+      })
+      .then((data) => {
+        const productResults = data.resources?.results?.products || [];
+        if (!productResults.length) {
+          this.close(true);
+          return;
+        }
+
+        const fallbackMarkup = productResults
+          .map((product) => `
+            <li class="predictive-search__list-item" role="option" aria-selected="false">
+              <a href="${product.url}" class="predictive-search__item link link--text" tabindex="-1">
+                <div class="predictive-search__item-content predictive-search__item-content--centered">
+                  <p class="predictive-search__item-heading h5">${product.title}</p>
+                </div>
+              </a>
+            </li>
+          `)
+          .join('');
+
+        const resultsMarkup = `
+          <div id="predictive-search-results" role="listbox">
+            <ul class="predictive-search__results-list list-unstyled" role="group">
+              ${fallbackMarkup}
+            </ul>
+          </div>
+        `;
+
+        this.allPredictiveSearchInstances.forEach((predictiveSearchInstance) => {
+          predictiveSearchInstance.cachedResults[queryKey] = resultsMarkup;
+        });
+
+        this.renderSearchResults(resultsMarkup);
+      })
+      .catch(() => {
+        this.close(true);
       });
   }
 
