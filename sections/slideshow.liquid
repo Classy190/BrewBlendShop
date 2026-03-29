@@ -342,6 +342,18 @@
   {%- endif -%}
 </slideshow-component>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var slides = document.querySelectorAll('.slideshow__media .image img');
+    slides.forEach(function (slide) {
+      slide.addEventListener('error', function () {
+        this.src = '{{ "lumin-placeholder.png" | asset_url }}';
+        this.style.objectFit = 'cover';
+      });
+    });
+  });
+</script>
+
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
