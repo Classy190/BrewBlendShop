@@ -1,0 +1,406 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+
+  .row-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ section.settings.grid_gap }}px;
+  }
+
+  .column-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    border-radius: {{ section.settings.video_border }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  {% if section.settings.zoom_hover %}
+    .column-{{ section.id }}:hover img {
+      transform: scale(1.05);
+      transition: transform 0.5s ease;
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-margin">
+  <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      <div class="row-{{ section.id }}">
+        {% for block in section.blocks %}
+          {%- liquid
+            assign block_id = block.id
+          -%}
+          <style>
+            .column-{{ block_id }} {
+              width: 100%;
+              background: {{ block.settings.bg_color }};
+              text-align: {{ block.settings.desktop_content_alignment }};
+              {% if block.settings.show_border %}
+                border: 1px solid {{ block.settings.border_color }};
+              {% endif %}
+            }
+
+            @media screen and (min-width: 750px) {
+              .column-{{ block_id }} {
+                width: calc({{ block.settings.grid_width_desktop }}% - ({{ section.settings.grid_gap }}px * (1 - {{ block.settings.grid_width_desktop | divided_by: 100.0 }})));
+              }
+            }
+
+            .lumin-content-{{ block_id }} {
+              padding: {{ block.settings.padding_size }}px;
+              color: {{ block.settings.text_color }};
+            }
+
+            .lumin-text-{{ block_id }} h2 {
+              color: {{ block.settings.head_color }};
+              font-size: {{ block.settings.head_size_d }}px;
+              margin-bottom: {{ block.settings.margin_bottom }}px;
+              {% if block.settings.use_body_font %}font-family: var(--font-body-family);{% endif %}
+            }
+
+            @media screen and (max-width: 749px) {
+              .lumin-text-{{ block_id }} h2 {
+                font-size: {{ block.settings.head_size_m }}px;
+              }
+              .column-{{ block_id }} {
+                width: {{ block.settings.grid_width_mobile }}%;
+              }
+            }
+          </style>
+
+          <div class="column-{{ block_id }} column-{{ section.id }} {% if block.settings.small_hide %} small-hide{% endif %}" {{ block.shopify_attributes }}>
+            
+            {%- if block.settings.use_video and block.settings.video != blank -%}
+              <div class="media-container" style="position: relative; padding-top: {{ block.settings.media_ratio }}; overflow: hidden;">
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'video-media-grid', style: 'position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;' }}
+              </div>
+            {%- elsif block.settings.icon != blank -%}
+              <div class="media-container" style="position: relative; padding-top: {{ block.settings.media_ratio }}; overflow: hidden;">
+                {{ block.settings.icon | image_url: width: 1000 | image_tag: 
+                  loading: 'lazy', 
+                  class: 'responsive-image',
+                  style: 'position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;'
+                }}
+              </div>
+            {%- else -%}
+              <div class="placeholder-svg" style="background: #f3f3f3; padding-top: 100%; position: relative;">
+                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg-child' }}
+              </div>
+            {%- endif -%}
+
+            <div class="lumin-content-{{ block_id }}">
+              {% if block.settings.head != blank %}
+                <div class="lumin-text-{{ block_id }}">
+                  <h2>{{ block.settings.head }}</h2>
+                </div>
+              {% endif %}
+
+              {% if block.settings.subtitle != blank %}
+                <div class="rte" style="font-size: {{ block.settings.text_size_d }}px; color: {{ block.settings.text_color }};">
+                  {{ block.settings.subtitle }}
+                </div>
+              {% endif %}
+
+              {% if block.settings['button-text'] != blank %}
+                <a href="{{ block.settings.button_link }}" class="button {% if block.settings.show_secondary %}button--secondary{% endif %}" style="margin-top: 15px;">
+                  {{ block.settings['button-text'] }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lumin Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Grid Einstellungen"
+    },
+    {
+      "type": "range",
+      "id": "video_border",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Eckenradius",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "zoom_hover",
+      "label": "Zoom bei Hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Spaltenabstand",
+      "default": 18
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Sektions-Abstände"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Innenabstand Oben",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Innenabstand Unten",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Außenabstand Oben",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Außenabstand Unten",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Promotion Card",
+      "type": "card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout & Sichtbarkeit"
+        },
+        {
+          "type": "select",
+          "id": "grid_width_desktop",
+          "options": [
+            { "value": "25", "label": "25%" },
+            { "value": "33.3333333", "label": "33%" },
+            { "value": "50", "label": "50%" },
+            { "value": "100", "label": "100%" }
+          ],
+          "default": "33.3333333",
+          "label": "Breite Desktop"
+        },
+        {
+          "type": "select",
+          "id": "grid_width_mobile",
+          "options": [
+            { "value": "50", "label": "50%" },
+            { "value": "100", "label": "100%" }
+          ],
+          "default": "100",
+          "label": "Breite Mobil"
+        },
+        {
+          "type": "checkbox",
+          "id": "small_hide",
+          "label": "Auf Mobilgeräten verbergen",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Medien"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Bild"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_video",
+          "label": "Video statt Bild nutzen",
+          "default": false
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video auswählen"
+        },
+        {
+          "type": "select",
+          "id": "media_ratio",
+          "options": [
+            { "value": "56.25%", "label": "16:9" },
+            { "value": "100%", "label": "Quadrat (1:1)" },
+            { "value": "125%", "label": "Porträt (4:5)" },
+            { "value": "150%", "label": "Hochformat (2:3)" }
+          ],
+          "default": "100%",
+          "label": "Bildformat"
+        },
+        {
+          "type": "header",
+          "content": "Textinhalte"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "head",
+          "default": "Karten-Titel",
+          "label": "Überschrift"
+        },
+        {
+          "type": "range",
+          "id": "head_size_d",
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Schriftgröße Desktop",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "head_size_m",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "label": "Schriftgröße Mobil",
+          "default": 20
+        },
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "default": "<p>Beschreibe hier dein Angebot oder Produkt.</p>",
+          "label": "Untertitel"
+        },
+        {
+          "type": "range",
+          "id": "text_size_d",
+          "min": 8,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Textgröße",
+          "default": 16
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button Text",
+          "default": "Mehr erfahren"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "header",
+          "content": "Design"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Hintergrundfarbe",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "head_color",
+          "label": "Überschriftfarbe",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Textfarbe",
+          "default": "#121212"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Rahmen anzeigen",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Rahmenfarbe",
+          "default": "#e5e5e5"
+        },
+        {
+          "type": "range",
+          "id": "padding_size",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "label": "Innenabstand Text",
+          "default": 20
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumin Cards",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

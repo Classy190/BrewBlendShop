@@ -1,0 +1,91 @@
+{% comment %}
+  Renders product variant-picker
+  - Bereinigt: Alle IDs nutzen nun den | handle Filter, um Umlaute zu vermeiden.
+{% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  {%- if block.settings.picker_type == 'button' -%}
+    <variant-radios
+      id="variant-radios-{{ section.id }}"
+      class="no-js-hidden"
+      data-section="{{ section.id }}"
+      data-url="{{ product.url }}"
+      {% if update_url == false %}
+        data-update-url="false"
+      {% endif %}
+      {{ block.shopify_attributes }}
+    >
+      {%- for option in product.options_with_values -%}
+        <fieldset class="js product-form__input">
+          {%- liquid
+            assign option_names = settings.option_name | split: ','
+            assign use_color = false
+            for option_color in option_names
+              if option_color == option.name
+                assign use_color = true
+                break
+              endif
+            endfor
+          -%}
+          {%- if use_color -%}
+            <legend class="form__label ">
+              {{ option.name -}}
+              <span
+                style="
+                  padding-left: 5px;
+                  border-left: 1px solid rgb(var(--color-foreground), 0.2);
+                  margin-left: 6px;
+                "
+                id="selected-{{ option.name | handle }}"
+              >
+                {{ option.selected_value -}}
+              </span>
+            </legend>
+            {% render 'color-option', product: product, option: option, block: block %}
+          {%- else -%}
+            <legend class="form__label ">
+              {{ option.name }}:
+              <span id="selected-{{ option.name | handle }}"> {{ option.selected_value }}</span>
+            </legend>
+            {% render 'product-variant-options', product: product, option: option, block: block %}
+          {%- endif -%}
+        </fieldset>
+      {%- endfor -%}
+      <script type="application/json">
+        {{ product.variants | json }}
+      </script>
+    </variant-radios>
+  {%- else -%}
+    <variant-selects
+      id="variant-selects-{{ section.id }}"
+      class="no-js-hidden"
+      data-section="{{ section.id }}"
+      data-url="{{ product.url }}"
+      {% if update_url == false %}
+        data-update-url="false"
+      {% endif %}
+      {{ block.shopify_attributes }}
+    >
+      {%- for option in product.options_with_values -%}
+        <div class="product-form__input product-form__input--dropdown">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option.name }}
+          </label>
+          <div class="select">
+            <select
+              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              class="select__select"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options', product: product, option: option, block: block %}
+            </select>
+            {% render 'icon-caret' %}
+          </div>
+        </div>
+      {%- endfor -%}
+      <script type="application/json">
+        {{ product.variants | json }}
+      </script>
+    </variant-selects>
+  {%- endif -%}
+{%- endunless -%}
