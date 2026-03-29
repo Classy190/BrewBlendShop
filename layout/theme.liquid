@@ -608,13 +608,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-          var helper = document.getElementById('sales-engine-banner');
-          if (helper) {
-            helper.addEventListener('click', function() {
-              window.location.href = '/collections/all';
-            });
-          }
-
           document.body.addEventListener('click', function(e) {
             var el = e.target.closest('[name="add"], button[type="submit"], .add-to-cart, .product-form__cart-submit');
             if (el) {
