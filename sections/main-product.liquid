@@ -380,6 +380,49 @@
                     {{- block.settings.benefits -}}
                   </p>
                 </div>
+              {%- when 'feature' -%}
+                <style>
+                  .qa-feature-{{ block.id }} {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8rem;
+                    margin: {{ block.settings.padding_top | default: 8 }}px 0 {{ block.settings.padding_bottom | default: 8 }}px;
+                  }
+
+                  .qa-feature-{{ block.id }} h4 {
+                    margin: 0;
+                    font-size: {{ block.settings.heading_size | default: 20 }}px;
+                  }
+
+                  .qa-feature-{{ block.id }} p {
+                    margin: 0;
+                    font-size: {{ block.settings.text_size | default: 16 }}px;
+                  }
+
+                  .qa-feature-{{ block.id }} img,
+                  .qa-feature-{{ block.id }} svg {
+                    width: {{ block.settings.icon_size | default: 50 }}px !important;
+                    height: auto;
+                    margin-right: 0.75rem;
+                    flex-shrink: 0;
+                  }
+                </style>
+                <div class="qa-feature-{{ block.id }}" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    {% assign icon_alt = block.settings.icon.alt | default: 'Icon' | escape %}
+                    {{ block.settings.icon | image_url: width: block.settings.icon_size | default: 50 | image_tag: loading: 'lazy', alt: icon_alt, class: 'q-icon-img' }}
+                  {%- else -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor" />
+                    </svg>
+                  {%- endif -%}
+                  <div>
+                    {%- if block.settings.heading != blank -%}
+                      <h4>{{ block.settings.heading }}</h4>
+                    {%- endif -%}
+                    {{ block.settings.text }}
+                  </div>
+                </div>
               {%- when 'line' -%}
                 <hr
                   style="
@@ -1219,7 +1262,19 @@
                   {% endif %}>
                     <summary>
                       <div class="summary__title">
-                        {% render 'icon-accordion', icon: block.settings.icon %}
+                        {% if block.settings.custom_icon != blank %}
+                          <img
+                            class="icon-accordion icon-accordion--custom"
+                            src="{{ block.settings.custom_icon | image_url: width: block.settings.icon_width | default: 24 }}"
+                            alt="{{ block.settings.heading | default: 'Icon' | escape }}"
+                            width="{{ block.settings.icon_width | default: 24 }}"
+                            height="{{ block.settings.icon_width | default: 24 }}"
+                            loading="lazy"
+                            style="object-fit: contain;"
+                          >
+                        {% elsif block.settings.icon != 'none' %}
+                          {% render 'icon-accordion', icon: block.settings.icon %}
+                        {% endif %}
                         <h2 class="accordion__title inline-richtext">
                           {{ block.settings.heading | default: block.settings.page.title }}
                         </h2>
@@ -1237,12 +1292,19 @@
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary>
                       <div class="summary__title">
-                        {% render 'icon-accordion', icon: block.settings.icon %}
-                        <h2 class="accordion__title inline-richtext">
-                          {{ block.settings.heading | default: block.settings.page.title }}
-                        </h2>
-                      </div>
-                      {% render 'icon-caret' %}
+                        {% if block.settings.custom_icon != blank %}
+                          <img
+                            class="icon-accordion icon-accordion--custom"
+                            src="{{ block.settings.custom_icon | image_url: width: block.settings.icon_width | default: 24 }}"
+                            alt="{{ block.settings.heading | default: 'Icon' | escape }}"
+                            width="{{ block.settings.icon_width | default: 24 }}"
+                            height="{{ block.settings.icon_width | default: 24 }}"
+                            loading="lazy"
+                            style="object-fit: contain;"
+                          >
+                        {% elsif block.settings.icon != 'none' %}
+                          {% render 'icon-accordion', icon: block.settings.icon %}
+                        {% endif %}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {{ product.description }}
