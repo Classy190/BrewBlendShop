@@ -24,8 +24,13 @@ class PredictiveSearch extends SearchForm {
   setupEventListeners() {
     if (!this.input || !this.input.form) return;
 
-    this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
+    // Ensure base class behavior (especially input debounce and reset button toggling)
+    if (super.setupEventListeners) {
+      super.setupEventListeners();
+    }
 
+    // Predictive search specific events
+    this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
     this.input.addEventListener('focus', this.onFocus.bind(this));
     this.addEventListener('focusout', this.onFocusOut.bind(this));
     this.addEventListener('keyup', this.onKeyup.bind(this));
