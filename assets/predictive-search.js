@@ -37,39 +37,8 @@ class PredictiveSearch extends SearchForm {
     this.addEventListener('keydown', this.onKeydown.bind(this));
   }
 
-  setupEventListeners() {
-    this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
-
-    this.input.addEventListener('focus', this.onFocus.bind(this));
-    this.addEventListener('focusout', this.onFocusOut.bind(this));
-    this.addEventListener('keyup', this.onKeyup.bind(this));
-    this.addEventListener('keydown', this.onKeydown.bind(this));
-  }
-
   getQuery() {
     return this.input.value.trim();
-  }
-
-  onChange() {
-    super.onChange();
-    const newSearchTerm = this.getQuery();
-    if (!this.searchTerm || !newSearchTerm.startsWith(this.searchTerm)) {
-      // Remove the results when they are no longer relevant for the new search term
-      // so they don't show up when the dropdown opens again
-      this.querySelector('#predictive-search-results-groups-wrapper')?.remove();
-    }
-
-    // Update the term asap, don't wait for the predictive search query to finish loading
-    this.updateSearchForTerm(this.searchTerm, newSearchTerm);
-
-    this.searchTerm = newSearchTerm;
-
-    if (!this.searchTerm.length) {
-      this.close(true);
-      return;
-    }
-
-    this.getSearchResults(this.searchTerm);
   }
 
   onFormSubmit(event) {
@@ -90,6 +59,7 @@ class PredictiveSearch extends SearchForm {
     super.onChange();
 
     const newSearchTerm = this.getQuery();
+    console.log('[PredictiveSearch] onChange', newSearchTerm);
     this.searchTerm = newSearchTerm;
 
     if (newSearchTerm.length === 0) {
@@ -224,6 +194,8 @@ class PredictiveSearch extends SearchForm {
       'resources[type]': 'product,collection,page,article',
       'resources[limit]': '10',
     });
+
+    console.log('[PredictiveSearch] fetching', `${routes.predictive_search_url}?${searchParams.toString()}`);
 
     fetch(`${routes.predictive_search_url}?${searchParams.toString()}`, {
       signal: this.abortController.signal,
