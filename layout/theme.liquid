@@ -516,14 +516,6 @@
       {{ content_for_layout }}
     </main>
 
-    <div id="sales-engine-abandon-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;">
-      <div style="background:white;color:#222;padding:20px;border-radius:12px;max-width:420px;width:90%;text-align:center;">
-        <h3 style="margin-top:0;">Hallo!</h3>
-        <p>Nutze jetzt den Code <strong>brewblend5</strong> für 5% Rabatt.</p>
-        <button id="close-abandon-popup" style="margin-top:1rem;padding:10px 20px;border:none;border-radius:6px;background:#5f3700;color:white;font-weight:700;">Weiter einkaufen</button>
-      </div>
-    </div>
-
     {% sections 'popup-group' %}
     {% sections 'footer-group' %}
 
@@ -617,13 +609,14 @@
             }
           }, true);
 
-          document.addEventListener('mouseleave', function(event) {
-            if (event.clientY < 10 && !sessionStorage.getItem('sales-engine-exit-shown')) {
-              sessionStorage.setItem('sales-engine-exit-shown', '1');
-              var popup = document.getElementById('sales-engine-abandon-popup');
-              if (popup) popup.style.display = 'flex';
-            }
-          });
+          // Abandon intent popup removed by request (no modal shown)
+          // document.addEventListener('mouseleave', function(event) {
+          //   if (event.clientY < 10 && !sessionStorage.getItem('sales-engine-exit-shown')) {
+          //     sessionStorage.setItem('sales-engine-exit-shown', '1');
+          //     var popup = document.getElementById('sales-engine-abandon-popup');
+          //     if (popup) popup.style.display = 'flex';
+          //   }
+          // });
 
           var closeButton = document.getElementById('close-abandon-popup');
           if (closeButton) closeButton.addEventListener('click', closeAbandonPopup);
