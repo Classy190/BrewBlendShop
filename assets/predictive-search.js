@@ -176,7 +176,16 @@ class PredictiveSearch extends SearchForm {
       return;
     }
 
-    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&section_id=predictive-search`, {
+    // Allow predictive results for single character queries by explicitly requesting product resources.
+    // This helps when Shopify default predictive search requires 2+ chars for fallback results.
+    const searchParams = new URLSearchParams({
+      q: searchTerm,
+      section_id: 'predictive-search',
+      'resources[type]': 'product,collection,page,article',
+      'resources[limit]': '10',
+    });
+
+    fetch(`${routes.predictive_search_url}?${searchParams.toString()}`, {
       signal: this.abortController.signal,
     })
       .then((response) => {
