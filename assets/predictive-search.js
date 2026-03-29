@@ -86,6 +86,20 @@ class PredictiveSearch extends SearchForm {
     }
   }
 
+  onChange() {
+    super.onChange();
+
+    const newSearchTerm = this.getQuery();
+    this.searchTerm = newSearchTerm;
+
+    if (newSearchTerm.length === 0) {
+      this.close(true);
+      return;
+    }
+
+    this.getSearchResults(newSearchTerm);
+  }
+
   onFocus() {
     const currentSearchTerm = this.getQuery();
 
