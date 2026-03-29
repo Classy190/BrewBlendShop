@@ -1,4 +1,7 @@
 {% assign scheme1 = settings.color_schemes | first %}
+{%- if section.settings.image_bg != blank -%}
+  <link rel="preload" as="image" href="{{ section.settings.image_bg | image_url: width: 2000 }}" crossorigin>
+{%- endif -%}
 <div
   class="q-main-section-{{section.id}} color-{{ section.settings.color_scheme_2 }} gradient"
   style="
