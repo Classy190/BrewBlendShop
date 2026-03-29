@@ -2,13 +2,34 @@ class PredictiveSearch extends SearchForm {
   constructor() {
     super();
     this.cachedResults = {};
-    this.predictiveSearchResults = this.querySelector('[data-predictive-search]');
-    this.allPredictiveSearchInstances = document.querySelectorAll('predictive-search');
+    this.predictiveSearchResults = null;
+    this.allPredictiveSearchInstances = null;
     this.isOpen = false;
     this.abortController = new AbortController();
     this.searchTerm = '';
+    this.eventsInitialized = false;
+  }
 
-    this.setupEventListeners();
+  connectedCallback() {
+    if (super.connectedCallback) super.connectedCallback();
+    this.predictiveSearchResults = this.querySelector('[data-predictive-search]');
+    this.allPredictiveSearchInstances = document.querySelectorAll('predictive-search');
+
+    if (!this.eventsInitialized) {
+      this.setupEventListeners();
+      this.eventsInitialized = true;
+    }
+  }
+
+  setupEventListeners() {
+    if (!this.input || !this.input.form) return;
+
+    this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
+
+    this.input.addEventListener('focus', this.onFocus.bind(this));
+    this.addEventListener('focusout', this.onFocusOut.bind(this));
+    this.addEventListener('keyup', this.onKeyup.bind(this));
+    this.addEventListener('keydown', this.onKeydown.bind(this));
   }
 
   setupEventListeners() {

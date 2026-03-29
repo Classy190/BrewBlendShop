@@ -1,17 +1,27 @@
 class SearchForm extends HTMLElement {
   constructor() {
     super();
+    this.input = null;
+    this.resetButton = null;
+    this.debouncedInputHandler = null;
+  }
+
+  connectedCallback() {
     this.input = this.querySelector('input[type="search"]');
     this.resetButton = this.querySelector('button[type="reset"]');
 
     if (this.input) {
       this.input.form.addEventListener('reset', this.onFormReset.bind(this));
-      this.input.addEventListener(
-        'input',
-        debounce((event) => {
-          this.onChange(event);
-        }, 300).bind(this)
-      );
+      this.debouncedInputHandler = debounce((event) => {
+        this.onChange(event);
+      }, 300).bind(this);
+      this.input.addEventListener('input', this.debouncedInputHandler);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.input && this.debouncedInputHandler) {
+      this.input.removeEventListener('input', this.debouncedInputHandler);
     }
   }
 
