@@ -64,17 +64,17 @@
 
     <title>
       {%- if page_title == blank -%}
-        {{ shop.name }} - Premium Kaffee & Tee aus Deutschland
+        Premium Kaffee & Tee aus Deutschland
       {%- elsif template.name == 'product' -%}
-        {{ product.title }} | {{ product.vendor | default: 'Brew Blend' }} | {{ shop.name }}
+        {{ product.title }}{%- if product.vendor != blank -%} | {{ product.vendor }}{%- endif -%}
       {%- elsif template.name == 'collection' -%}
-        {{ collection.title }} kaufen | Premium {{ collection.title }} | {{ shop.name }}
+        {{ collection.title }} kaufen | Premium {{ collection.title }}
       {%- elsif template.name == 'article' -%}
-        {{ article.title }} | Blog | {{ shop.name }}
+        {{ article.title }} | Blog
       {%- elsif template.name == 'page' -%}
-        {{ page.title }} | {{ shop.name }}
+        {{ page.title }}
       {%- else -%}
-        {{ page_title }} | {{ shop.name }}
+        {{ page_title }}
       {%- endif -%}
     </title>
     
