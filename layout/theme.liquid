@@ -454,18 +454,31 @@
       const aiSources = ['chatgpt.com', 'openai.com', 'gemini.google.com', 'claude.ai', 'perplexity.ai'];
       const isAI = aiSources.some(src => ref.includes(src)) || window.location.search.includes('utm_source=chatgpt');
       
-      if (isAI || ref || !ref) {
-        fetch('https://brew-blend-outreach.vercel.app/api/traffic', {
+      function sendTrafficData(payload) {
+        const endpoint = 'https://brew-blend-outreach.vercel.app/api/traffic';
+        const bodyString = JSON.stringify(payload);
+
+        if (navigator.sendBeacon) {
+          const blob = new Blob([bodyString], { type: 'application/json' });
+          const sent = navigator.sendBeacon(endpoint, blob);
+          if (sent) return;
+        }
+
+        fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            source: isAI ? 'KI-Referral' : (ref || 'Direkt'),
-            path: window.location.pathname,
-            type: navigator.userAgent.toLowerCase().includes('bot') ? 'bot' : 'human'
-          }),
+          body: bodyString,
           keepalive: true,
           mode: 'no-cors'
         }).catch(() => {});
+      }
+
+      if (isAI || ref || !ref) {
+        sendTrafficData({
+          source: isAI ? 'KI-Referral' : (ref || 'Direkt'),
+          path: window.location.pathname,
+          type: navigator.userAgent.toLowerCase().includes('bot') ? 'bot' : 'human'
+        });
       }
     })();
     </script>
