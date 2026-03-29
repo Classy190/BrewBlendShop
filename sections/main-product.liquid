@@ -3615,6 +3615,39 @@
       | replace: ':FAQPage', '"FAQPage"' 
     }}
   </script>
+{%- else -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert der Versand?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In der Regel liefern wir innerhalb von 2–4 Werktagen in Deutschland; Expressversand ist gegen Aufpreis möglich."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie kann ich den Kaffee zurückgeben?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sie haben ein 14-tägiges Rückgaberecht für ungeöffnete Ware, Rücksendung erfolgt kostenfrei innerhalb Deutschlands."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es eine Geld-zurück-Garantie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, wenn Sie mit dem Produkt nicht zufrieden sind, bieten wir 30 Tage Geld-zurück-Garantie."
+        }
+      }
+    ]
+  }
+  </script>
 {%- endif -%}
 {% schema %}
 {
