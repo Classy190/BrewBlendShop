@@ -399,7 +399,18 @@
     {%- endif -%}
 
     {%- comment -%} Popup & UI Skripte (CDN) {%- endcomment -%}
-    <script src="{{ 'popup.js' | asset_url }}" defer="defer"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.jQuery) {
+          var popupScript = document.createElement('script');
+          popupScript.src = '{{ 'popup.js' | asset_url }}';
+          popupScript.defer = true;
+          document.head.appendChild(popupScript);
+        } else {
+          console.warn('jQuery is not available, skipping popup.js injection.');
+        }
+      });
+    </script>
 
     {%- comment -%} 🟢 SEO FIX #4: ERWEITERTE ORGANISATION SCHEMA mit Social Media {%- endcomment -%}
     <script type="application/ld+json">

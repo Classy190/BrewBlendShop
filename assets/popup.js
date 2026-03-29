@@ -1,6 +1,10 @@
 "use strict";
 
-jQuery(document).ready(function ($) {
+if (typeof window.jQuery === 'undefined') {
+  // jQuery ist nicht verfügbar, Popup-Script wird deaktiviert, um Fehler zu vermeiden.
+  console.warn('popup.js: jQuery not found, skipping popup initialization.');
+} else {
+  jQuery(document).ready(function ($) {
 	var adpPopup = {};
 
 	(function () {
@@ -67,8 +71,8 @@ jQuery(document).ready(function ($) {
 							$this.closePopup(popup);
 						});
 					}
-				});
-
+  });
+}
 				// Checking this will cause popup to close when user clicks on overlay.
 				$(document).on("click", ".popup-overlay", function (e) {
 					$('.popup-open[data-overlay-close="true"]').each(function (
