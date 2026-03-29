@@ -177,13 +177,13 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
   .rte,
   .page-width--narrow .rte {
-    max-width: 80ch;
+    max-width: 90ch;
     margin: 0 auto;
   }
 
   .rte p,
   .rte li {
-    line-height: 1.7;
+    line-height: 1.75;
     letter-spacing: 0.01em;
   }
 
