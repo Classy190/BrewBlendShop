@@ -206,9 +206,12 @@ customElements.define('quantity-input', QuantityInput);
 
 function debounce(fn, wait) {
   let t;
-  return (...args) => {
+  return function(...args) {
     clearTimeout(t);
-    t = setTimeout(() => fn.apply(this, args), wait);
+    const context = this;
+    t = setTimeout(() => {
+      fn.apply(context, args);
+    }, wait);
   };
 }
 
