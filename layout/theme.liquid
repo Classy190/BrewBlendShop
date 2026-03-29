@@ -502,6 +502,10 @@
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9VLGB5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+    <div id="sales-engine-banner" style="background:#fffae6;color:#5f3700;text-align:center;padding:10px;font-weight:700;position:relative;z-index:999;">
+      5% Extra-Rabatt auf alles mit Code <strong>brewblend5</strong> • Punkt mit dem Besten nutzen!
+    </div>
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -515,6 +519,14 @@
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
+
+    <div id="sales-engine-abandon-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:white;color:#222;padding:20px;border-radius:12px;max-width:420px;width:90%;text-align:center;">
+        <h3 style="margin-top:0;">Warte! 5% Extra</h3>
+        <p>Sicher dir sofort 5% mit Code <strong>brewblend5</strong> bevor du gehst.</p>
+        <button id="close-abandon-popup" style="margin-top:1rem;padding:10px 20px;border:none;border-radius:6px;background:#5f3700;color:white;font-weight:700;">Weiter einkaufen</button>
+      </div>
+    </div>
 
     {% sections 'popup-group' %}
     {% sections 'footer-group' %}
@@ -590,6 +602,50 @@
       const forceTimeout = setTimeout(loadHeavyAssets, 10000);
       interactionEvents.forEach(e => window.addEventListener(e, loadHeavyAssets, {passive: true}));
     })();
+    </script>
+
+    <script>
+      (function() {
+        function closeAbandonPopup() {
+          var pop = document.getElementById('sales-engine-abandon-popup');
+          if (pop) pop.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var helper = document.getElementById('sales-engine-banner');
+          if (helper) {
+            helper.addEventListener('click', function() {
+              window.location.href = '/collections/all';
+            });
+          }
+
+          document.body.addEventListener('click', function(e) {
+            var el = e.target.closest('[name="add"], button[type="submit"], .add-to-cart, .product-form__cart-submit');
+            if (el) {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: 'addToCart', promo: 'brewblend5' });
+              if (window.fbq) { fbq('track', 'AddToCart'); }
+            }
+          }, true);
+
+          document.addEventListener('mouseleave', function(event) {
+            if (event.clientY < 10 && !sessionStorage.getItem('sales-engine-exit-shown')) {
+              sessionStorage.setItem('sales-engine-exit-shown', '1');
+              var popup = document.getElementById('sales-engine-abandon-popup');
+              if (popup) popup.style.display = 'flex';
+            }
+          });
+
+          var closeButton = document.getElementById('close-abandon-popup');
+          if (closeButton) closeButton.addEventListener('click', closeAbandonPopup);
+
+          var promoCode = 'brewblend5';
+          window.promoCode = promoCode;
+          if (typeof(Storage) !== 'undefined') {
+            localStorage.setItem('brewblend_promo', promoCode);
+          }
+        });
+      })();
     </script>
   </body>
 </html>
