@@ -25,5 +25,9 @@
 			"path": "../../Downloads/theme_export__brew-blend-de-brew-blend-de-bb__29MAR2026-1201pm/config"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"git remote": true
+		}
+	}
 }
