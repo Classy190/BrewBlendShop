@@ -15,14 +15,24 @@
 {%- endstyle -%}
 
 <div class="page-width page-width--narrow section-{{ section.id }}-padding">
-  <h1 class="main-page-title page-title h0 scroll-trigger animate--fade-in">
-    {{ page.title }}
-  </h1>
-  {% if page.handle == 'about-us' %}
-    <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      {{ page.content }}
-    </div>
-  {% endif %}
+  <h1 class="main-page-title page-title h0 scroll-trigger animate--fade-in">
+    {% if page.title != blank %}
+      {{ page.title }}
+    {% else %}
+      {{ 'sections.page.title' | t }}
+    {% endif %}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {% if page.content != blank %}
+      {{ page.content }}
+    {% elsif page.metafields.custom.text != blank %}
+      {{ page.metafields.custom.text }}
+    {% else %}
+      <div class="page-placeholder-wrapper placeholder">
+        {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
+      </div>
+    {% endif %}
+  </div>
 </div>
 
 {% schema %}

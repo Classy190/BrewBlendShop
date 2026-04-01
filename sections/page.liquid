@@ -15,17 +15,24 @@
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
+  {% assign page_source = section.settings.page %}
+  {% if page_source == blank or page_source.id == blank %}
+    {% assign page_source = page %}
+  {% endif %}
+
   <div class="page-width page-width--narrow section-{{ section.id }}-padding">
     <h2 class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      {%- if section.settings.page.title != blank -%}
-        {{ section.settings.page.title | escape }}
+      {%- if page_source.title != blank -%}
+        {{ page_source.title | escape }}
       {%- else -%}
         {{ 'sections.page.title' | t }}
       {%- endif -%}
     </h2>
     <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      {%- if section.settings.page.content != blank -%}
-        {{ section.settings.page.content }}
+      {%- if page_source.content != blank -%}
+        {{ page_source.content }}
+      {%- elsif page_source.metafields.custom.text != blank -%}
+        {{ page_source.metafields.custom.text }}
       {%- else -%}
         <div class="page-placeholder-wrapper placeholder">
           {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
