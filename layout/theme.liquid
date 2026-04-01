@@ -47,6 +47,7 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
+    <link rel="manifest" href="{{ 'manifest.json' | asset_url }}">
 
     {%- comment -%} 🟢 SEO FIX #3: OPTIMIERTE TITLE TAGS mit Template-Logik {%- endcomment -%}
     <script type="application/ld+json">
@@ -363,8 +364,8 @@
     {% endstyle %}
 
     <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
-    <link rel="preload" as="style" href="{{ 'base.css' | asset_url }}" crossorigin>
-    <link rel="preload" as="style" href="{{ 'lumin.css' | asset_url }}" crossorigin>
+    <link rel="preload" as="style" href="{{ 'base.css' | asset_url }}" crossorigin="anonymous">
+    <link rel="preload" as="style" href="{{ 'lumin.css' | asset_url }}" crossorigin="anonymous">
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'lumin.css' | asset_url | stylesheet_tag }}
     {{ 'lumin-fancy-text.css' | asset_url | stylesheet_tag }}
@@ -401,13 +402,22 @@
     {%- comment -%} Popup & UI Skripte (CDN) {%- endcomment -%}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        if (window.jQuery) {
+        function appendPopupScript() {
           var popupScript = document.createElement('script');
           popupScript.src = '{{ 'popup.js' | asset_url }}';
           popupScript.defer = true;
           document.head.appendChild(popupScript);
+        }
+
+        if (window.jQuery) {
+          appendPopupScript();
         } else {
-          console.warn('jQuery is not available, skipping popup.js injection.');
+          var jq = document.createElement('script');
+          jq.src = '{{ 'jquery.js' | asset_url }}';
+          jq.defer = true;
+          jq.onload = appendPopupScript;
+          jq.onerror = appendPopupScript;
+          document.head.appendChild(jq);
         }
       });
     </script>
@@ -468,33 +478,37 @@
       const ref = document.referrer.toLowerCase();
       const aiSources = ['chatgpt.com', 'openai.com', 'gemini.google.com', 'claude.ai', 'perplexity.ai'];
       const isAI = aiSources.some(src => ref.includes(src)) || window.location.search.includes('utm_source=chatgpt');
-      
+
+      if (!isAI) { return; }
+
       function sendTrafficData(payload) {
         const endpoint = 'https://brew-blend-outreach.vercel.app/api/traffic';
         const bodyString = JSON.stringify(payload);
 
         if (navigator.sendBeacon) {
           const blob = new Blob([bodyString], { type: 'application/json' });
-          const sent = navigator.sendBeacon(endpoint, blob);
-          if (sent) return;
+          navigator.sendBeacon(endpoint, blob);
+          return;
         }
 
         fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: bodyString,
           keepalive: true,
           mode: 'no-cors'
-        }).catch(() => {});
-      }
-
-      if (isAI || ref || !ref) {
-        sendTrafficData({
-          source: isAI ? 'KI-Referral' : (ref || 'Direkt'),
-          path: window.location.pathname,
-          type: navigator.userAgent.toLowerCase().includes('bot') ? 'bot' : 'human'
+        }).catch(() => {
+          // Still avoid CORS noise by catching all network failures
         });
       }
+
+      sendTrafficData({
+        source: 'KI-Referral',
+        path: window.location.pathname,
+        type: navigator.userAgent.toLowerCase().includes('bot') ? 'bot' : 'human'
+      });
     })();
     </script>
   </head>
