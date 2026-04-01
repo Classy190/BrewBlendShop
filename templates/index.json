@@ -465,64 +465,6 @@
         "padding_bottom": 12
       }
     },
-    "custom_liquid_7peWHQ": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "game",
-      "settings": {
-        "custom_liquid": "<div id=\"brew-blend-game-wrapper\" style=\"width: 100%; max-width: 1280px; margin: 20px auto; font-family: sans-serif; position: relative; background: #ffffff; border: 1px solid #eeeeee; border-radius: 12px; overflow: hidden; user-select: none;\">\n  \n  <div style=\"position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #f0f0f0; z-index: 6;\">\n    <div id=\"progress-bar\" style=\"width: 0%; height: 100%; background: #3d2f23;\"></div>\n  </div>\n\n  <div style=\"position: absolute; top: 25px; left: 30px; z-index: 5; color: #3d2f23; pointer-events: none;\">\n    <div style=\"font-size: 1.5rem; font-weight: 900;\">1500m MISSION</div>\n  </div>\n\n  <div style=\"position: absolute; top: 25px; right: 30px; z-index: 5; font-weight: bold; font-size: 1.2rem; color: #3d2f23;\">\n    <span id=\"bb-score\">0</span> / 1500m\n  </div>\n\n  <canvas id=\"brewGameCanvas\" width=\"1280\" height=\"720\" style=\"display: block; width: 100%; height: auto; background: #ffffff;\"></canvas>\n\n  <div id=\"game-overlay\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;\">\n    <h1 id=\"status-title\" style=\"font-size: 3.5rem; color: #3d2f23; margin-bottom: 10px;\">BREW DASH</h1>\n    \n    <div id=\"stats-container\" style=\"display: none; background: #fdfaf8; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: left; border: 1px solid #eee; width: 80%;\">\n        <p id=\"spilled-msg\" style=\"font-weight: bold; color: #8e44ad; margin: 5px 0;\"></p>\n        <p style=\"color: #c0392b; font-weight: bold; margin: 5px 0;\">Noch <span id=\"stat-missing\"></span>m bis zum Ziel!</p>\n    </div>\n\n    <div id=\"win-container\" style=\"display: none;\"></div>\n\n    <p id=\"instruction-text\" style=\"font-size: 1.1rem; color: #666; margin-bottom: 20px;\">Drücke <b>ENTER</b> zum Starten</p>\n    \n    <button id=\"start-btn\" style=\"background: #3d2f23; color: white; border: none; padding: 18px 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; border-radius: 4px;\">START (ENTER)</button>\n  </div>\n</div>\n\n<script>\n(function() {\n  const canvas = document.getElementById('brewGameCanvas');\n  const ctx = canvas.getContext('2d', { alpha: false });\n  const scoreEl = document.getElementById('bb-score');\n  const progressBar = document.getElementById('progress-bar');\n  const startBtn = document.getElementById('start-btn');\n  const overlay = document.getElementById('game-overlay');\n  const winContainer = document.getElementById('win-container');\n  const instructionText = document.getElementById('instruction-text');\n  \n  // Bitmap Caching\n  function preRender(emoji, size) {\n    const c = document.createElement('canvas');\n    c.width = size * 1.5; c.height = size * 1.5;\n    const cx = c.getContext('2d');\n    cx.font = size + 'px Arial';\n    cx.textBaseline = 'middle'; cx.textAlign = 'center';\n    cx.fillText(emoji, c.width/2, c.height/2);\n    return c;\n  }\n  \n  const assets = {\n    player: preRender('☕', 90),\n    obs: ['⚠️', '⚙️', '🔌', '🥛'].map(e => preRender(e, 80)),\n    bean: preRender('🫘', 60)\n  };\n\n  let gameActive = false;\n  let score = 0;\n  let obstacles = [];\n  let pickups = [];\n  let lastTime = 0;\n\n  const SPEED = 580; \n  const TARGET = 1500;\n  const GRAVITY = 1600; \n  const JUMP = -800; \n  const GROUND_Y = 570;\n  \n  let player = { x: 150, y: GROUND_Y, w: 80, h: 80, dy: 0 };\n\n  function spawn() {\n    if (Math.random() < 0.015) {\n      obstacles.push({ x: 1300, y: GROUND_Y, w: 70, h: 70, img: assets.obs[Math.floor(Math.random()*assets.obs.length)] });\n    }\n    if (Math.random() < 0.02) {\n      pickups.push({ x: 1300, y: 150 + Math.random() * 300, w: 50, h: 50, img: assets.bean });\n    }\n  }\n\n  function loop(now) {\n    if (!gameActive) return;\n    if (!lastTime) lastTime = now;\n    let dt = (now - lastTime) / 1000;\n    lastTime = now;\n    if (dt > 0.05) dt = 0.016;\n\n    ctx.fillStyle = \"#ffffff\";\n    ctx.fillRect(0, 0, 1280, 720);\n    \n    ctx.strokeStyle = '#eee'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(0, GROUND_Y + 85); ctx.lineTo(1280, GROUND_Y + 85); ctx.stroke();\n\n    score += SPEED * dt;\n    let m = Math.floor(score / 10);\n    scoreEl.innerText = m;\n    progressBar.style.width = (m / TARGET * 100) + \"%\";\n    \n    if (m >= TARGET) { endGame(true); return; }\n\n    player.y += player.dy * dt;\n    if (player.y < GROUND_Y) player.dy += GRAVITY * dt;\n    else { player.y = GROUND_Y; player.dy = 0; }\n    if (player.y < 20) { player.y = 20; player.dy = 0; }\n\n    ctx.drawImage(assets.player, player.x - 10, player.y - 10);\n\n    for (let i = obstacles.length - 1; i >= 0; i--) {\n      let o = obstacles[i];\n      o.x -= SPEED * dt;\n      ctx.drawImage(o.img, o.x, o.y);\n      if (player.x + 25 < o.x + o.w && player.x + 65 > o.x && player.y + 25 < o.y + o.h && player.y + 65 > o.y) {\n        endGame(false);\n      }\n      if (o.x < -150) obstacles.splice(i, 1);\n    }\n\n    for (let i = pickups.length - 1; i >= 0; i--) {\n      let p = pickups[i];\n      p.x -= SPEED * dt;\n      ctx.drawImage(p.img, p.x, p.y);\n      if (player.x < p.x + p.w && player.x + 80 > p.x && player.y < p.y + p.h && player.y + 80 > p.y) pickups.splice(i, 1);\n      if (p.x < -150) pickups.splice(i, 1);\n    }\n\n    spawn();\n    requestAnimationFrame(loop);\n  }\n\n  function endGame(win) {\n    gameActive = false;\n    overlay.style.display = 'flex';\n    instructionText.style.display = 'block';\n    \n    if (win) {\n      document.getElementById('status-title').innerText = \"GEWONNEN!\";\n      document.getElementById('stats-container').style.display = \"none\";\n      // Code wird hier erst generiert\n      winContainer.innerHTML = `\n        <div style=\"padding: 25px; border: 3px dashed #27ae60; background: #f0fff4; margin-bottom: 20px; text-align: center;\">\n          <h2 style=\"font-size: 2.5rem; margin: 0; color: #3d2f23;\">BREWBLEND5</h2>\n          <p style=\"color: #27ae60; font-weight: bold; margin: 5px 0;\">CODE FREIGESCHALTET!</p>\n        </div>`;\n      winContainer.style.display = \"block\";\n      instructionText.innerText = \"Drücke ENTER für eine neue Runde\";\n    } else {\n      document.getElementById('status-title').innerText = \"UPS!\";\n      winContainer.style.display = \"none\";\n      winContainer.innerHTML = \"\"; // Code löschen falls vorhanden\n      document.getElementById('stats-container').style.display = \"block\";\n      document.getElementById('spilled-msg').innerText = \"Du hast \" + Math.floor(Math.random()*15 + 25) + \"l Kaffee verschüttet... hättest ihn mal lieber getrunken!\";\n      document.getElementById('stat-missing').innerText = Math.max(0, TARGET - Math.floor(score/10));\n    }\n  }\n\n  function start() {\n    score = 0; obstacles = []; pickups = []; player.y = GROUND_Y; player.dy = 0;\n    gameActive = true;\n    overlay.style.display = 'none';\n    lastTime = 0;\n    requestAnimationFrame(loop);\n  }\n\n  window.addEventListener('keydown', (e) => {\n    if (e.key === 'Enter') {\n      e.preventDefault();\n      if (!gameActive) start();\n    }\n    if (e.code === 'Space') {\n      e.preventDefault();\n      if (gameActive) player.dy = JUMP; \n    }\n  });\n\n  startBtn.addEventListener('click', start);\n})();\n</script>",
-        "color_scheme": "",
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
-    "before_after_idQwHY": {
-      "type": "before-after",
-      "blocks": {
-        "text_WECGxP": {
-          "type": "text",
-          "settings": {
-            "subheading": "ALKOHOLFREIE GETRÄNKE",
-            "heading": "COCKTAIL LOVER NON-ALCOHOLIC KIT",
-            "content": "<p>Das perfekte Geschenk für dich selbst oder jemanden, der neugierig und qualitätsbewusst ist und leckere Cocktails liebt! </p>",
-            "text_position": "center",
-            "color": "#000000"
-          }
-        },
-        "images_kXmRce": {
-          "type": "images",
-          "name": "Images LOVER KIT",
-          "settings": {
-            "before_image": "shopify://shop_images/cocktail_kit_c8b51450-f6d4-4eea-815d-bfd05dadd867.png",
-            "after_image": "shopify://shop_images/mocktail_kit_40c4ac9b-23ca-468f-bb57-8d344034ec4e.png",
-            "desktop_height": 1000,
-            "mobile_height": 500,
-            "border_radius": 12,
-            "drag_initial_position": 50,
-            "cover": true,
-            "before_text": "COCKTAIL LOVER NON-ALCOHOLIC KIT",
-            "after_text": "MOCKTAIL LOVER KIT",
-            "before_after_text_position": "bottom",
-            "before_text_color": "#3b3b3b",
-            "after_text_color": "#3b3b3b",
-            "drag_cursor_bg": "#ffffff",
-            "drag_cursor_color": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "text_WECGxP",
-        "images_kXmRce"
-      ],
-      "disabled": true,
-      "name": "Before & After LOVER KIT",
-      "settings": {
-        "background_color": "rgba(0,0,0,0)",
-        "background": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "lumin_cards_Wzw8EN": {
       "type": "lumin-cards",
       "blocks": {
@@ -643,8 +585,6 @@
     "image_with_text_dKihYy",
     "image_with_text_KzhtFq",
     "multicolumn_e4LRVb",
-    "custom_liquid_7peWHQ",
-    "before_after_idQwHY",
     "lumin_cards_Wzw8EN",
     "image_with_text_4HCCKn"
   ]
