@@ -111,7 +111,7 @@
         {%- when '@app' -%}
           {% render block %}
         {%- when 'heading' -%}
-          <h2
+          <strong
             class="inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
@@ -120,7 +120,7 @@
             {% endif %}
           >
             {{ block.settings.heading | replace: '[', '<span class="lumin-text__fancy1">' | replace: ']', '</span>' | replace: '((', '<span class="lumin-text__fancy2">' | replace: '))', '</span>' }}
-          </h2>
+          </strong>
         {%- when 'paragraph' -%}
           <div
             class="newsletter__subheading rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
