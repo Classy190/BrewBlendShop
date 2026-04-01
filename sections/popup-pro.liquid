@@ -182,9 +182,9 @@
                                   </span>
                                 {%- endunless -%}
                                 {%- unless section.settings.heading == blank -%}
-                                  <span class="title {{ section.settings.heading_size }}">
+                                  <strong class="title {{ section.settings.heading_size }}">
                                     {{ section.settings.heading | replace: '[', '<span class="lumin-text__fancy1">' | replace: ']', '</span>' | replace: '((', '<span class="lumin-text__fancy2">' | replace: '))', '</span>' }}
-                                  </span>
+                                  </strong>
                                 {%- endunless -%}
                                 {%- unless section.settings.heading_suffix == blank -%}
                                   <span class="popup-modal__title__suffix">
