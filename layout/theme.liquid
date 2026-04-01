@@ -364,12 +364,10 @@
     {% endstyle %}
 
     <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
-    <link rel="preload" as="style" href="{{ 'base.css' | asset_url }}" crossorigin="anonymous">
-    <link rel="preload" as="style" href="{{ 'lumin.css' | asset_url }}" crossorigin="anonymous">
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'lumin.css' | asset_url | stylesheet_tag }}
-    {{ 'lumin-fancy-text.css' | asset_url | stylesheet_tag }}
-    {{ 'lazyloading-classes.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag: preload: true, crossorigin: 'anonymous' }}
+    {{ 'lumin.css' | asset_url | stylesheet_tag: preload: true, crossorigin: 'anonymous' }}
+    {{ 'lumin-fancy-text.css' | asset_url | stylesheet_tag: preload: true, crossorigin: 'anonymous' }}
+    {{ 'lazyloading-classes.css' | asset_url | stylesheet_tag: preload: true, crossorigin: 'anonymous' }}
 
     {%- comment -%} Optimiertes Laden von nicht-kritischem CSS {%- endcomment -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
