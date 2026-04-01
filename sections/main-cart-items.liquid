@@ -24,7 +24,6 @@
     {% assign upsell_product = all_products[settings.cart_upsell_product_2] %}
     {% if upsell_product %}
       {% assign variant_id = upsell_product.variants.first.id %}
-      {% assign variant_price = upsell_product.variants.first.price | money %}
     {% endif %}
     <script src="{{ 'cart.js' | asset_url }}" defer="defer" data-cart-upsell-variant-id="{{ variant_id }}"></script>
   {% else %}

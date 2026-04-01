@@ -586,7 +586,12 @@
               <div class="lumin-text-container-{{ block.id }} image-text-content-{{ block.id }}--{{ block.settings.image_content_position }}">
                 <div class="lumin-head-{{ block.id }}">
                   {%- if block.settings.icon != blank -%}
-                    <img src="{{ block.settings.icon | img_url: '500x' }}">
+                    <img
+                      src="{{ block.settings.icon | image_url: '500x' }}"
+                      width="500"
+                      height="500"
+                      alt="{{ block.settings.head | escape }}"
+                    >
                   {%- endif -%}
                   {% if block.settings.head != blank %}
                     <div
