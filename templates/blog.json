@@ -1,1 +1,77 @@
-{"sections":{"breadcrumbs_H4e38M":{"type":"breadcrumbs","disabled":true,"settings":{}},"main":{"type":"main-blog","settings":{"layout":"grid","show_image":true,"image_height":"medium","show_date":false,"show_author":false,"padding_top":36,"padding_bottom":36}},"rich_text_jYVfbX":{"type":"rich-text","blocks":{"heading_jGnB79":{"type":"heading","settings":{"heading":"Guter Kaffee beginnt mit der richtigen Kaffeebohne – voller Geschmack garantiert","heading_size":"h2"}},"text_w848MN":{"type":"text","settings":{"text":"<p>Exzellenter Kaffee beginnt bei der Auswahl der Bohne – sie ist das Herzstück jedes Aromas. Ob Sie einen intensiven Espresso mit dichter Crema bevorzugen, eine milde Röstung für den Vollautomaten suchen oder das Abenteuer beim Camping mit frisch gebrühtem Kaffee krönen: Bei Brew Blend finden Sie Kaffeebohnen mit unverfälschtem Charakter – garantiert ohne Zusätze, künstliche Aromen oder Öle.<\/p><h3>Sortenreine Qualität und facettenreiche Profile<\/h3><p>Unsere Kaffeebohnen stehen für erstklassige Qualität und eine beeindruckende Geschmacksvielfalt. Unser Sortiment deckt das gesamte Spektrum ab:<\/p><ul><li><strong>Fruchtig & Floral:<\/strong> Spritzige Noten für Entdecker.<\/li><li><strong>Schokoladig & Nussig:<\/strong> Klassisch-sanfte Profile für den Alltag.<\/li><li><strong>Kräftig & Würzig:<\/strong> Intensive Espressobohnen für maximale Energie.<\/li><\/ul><h3>Die perfekte Wahl für Vollautomat und Siebträger<\/h3><p>Wenn Sie ganze Kaffeebohnen kaufen möchten, die ideal mit Ihrem Vollautomaten harmonieren, bieten unsere schonenden Röstungen ein säurearmes und ausgewogenes Erlebnis. Für Barista-Momente am Siebträger oder im Espressokocher führen wir spezielle Espressobohnen, die ihr intensives Aroma ganz ohne künstliche Ölzusätze entfalten.<\/p><h3>Genuss für unterwegs: Camping-Kaffee ohne Kompromisse<\/h3><p>Auch auf Reisen müssen Sie nicht auf Qualität verzichten. Viele Outdoor-Liebhaber setzen auf unseren <strong>Camping Kaffee als ganze Bohne<\/strong>. Er lässt sich unkompliziert frisch mahlen und liefert selbst unter freiem Himmel einen ehrlichen, kräftigen Kaffeegeschmack – natürlich und pur.<\/p><h3>Warum Brew Blend?<\/h3><p>Bei uns ist der Name Programm: Wir bieten Ihnen eine breite Palette an Geschmacksrichtungen, die jeden Anlass bereichern. Ob mild, kräftig oder gezielt säurearm – entdecken Sie bei Brew Blend Ihre neuen Lieblingsbohnen und genießen Sie echten Kaffee, den Sie bequem online kaufen können. Perfekt für Ihr Zuhause, das Büro oder Ihr nächstes Abenteuer.<\/p>"}},"button_FmDkVU":{"type":"button","settings":{"button_label":"Jetzt Entdecken","button_link":"https:\/\/brew-blend.de\/collections\/kaffeebohnen","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_jGnB79","text_w848MN","button_FmDkVU"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"","full_width":true,"padding_top":40,"padding_bottom":52}}},"order":["breadcrumbs_H4e38M","main","rich_text_jYVfbX"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_H4e38M": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": false,
+        "show_author": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_jYVfbX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jGnB79": {
+          "type": "heading",
+          "settings": {
+            "heading": "Guter Kaffee beginnt mit der richtigen Kaffeebohne – voller Geschmack garantiert",
+            "heading_size": "h2"
+          }
+        },
+        "text_w848MN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Exzellenter Kaffee beginnt bei der Auswahl der Bohne – sie ist das Herzstück jedes Aromas. Ob Sie einen intensiven Espresso mit dichter Crema bevorzugen, eine milde Röstung für den Vollautomaten suchen oder das Abenteuer beim Camping mit frisch gebrühtem Kaffee krönen: Bei Brew Blend finden Sie Kaffeebohnen mit unverfälschtem Charakter – garantiert ohne Zusätze, künstliche Aromen oder Öle.</p><h3>Sortenreine Qualität und facettenreiche Profile</h3><p>Unsere Kaffeebohnen stehen für erstklassige Qualität und eine beeindruckende Geschmacksvielfalt. Unser Sortiment deckt das gesamte Spektrum ab:</p><ul><li><strong>Fruchtig & Floral:</strong> Spritzige Noten für Entdecker.</li><li><strong>Schokoladig & Nussig:</strong> Klassisch-sanfte Profile für den Alltag.</li><li><strong>Kräftig & Würzig:</strong> Intensive Espressobohnen für maximale Energie.</li></ul><h3>Die perfekte Wahl für Vollautomat und Siebträger</h3><p>Wenn Sie ganze Kaffeebohnen kaufen möchten, die ideal mit Ihrem Vollautomaten harmonieren, bieten unsere schonenden Röstungen ein säurearmes und ausgewogenes Erlebnis. Für Barista-Momente am Siebträger oder im Espressokocher führen wir spezielle Espressobohnen, die ihr intensives Aroma ganz ohne künstliche Ölzusätze entfalten.</p><h3>Genuss für unterwegs: Camping-Kaffee ohne Kompromisse</h3><p>Auch auf Reisen müssen Sie nicht auf Qualität verzichten. Viele Outdoor-Liebhaber setzen auf unseren <strong>Camping Kaffee als ganze Bohne</strong>. Er lässt sich unkompliziert frisch mahlen und liefert selbst unter freiem Himmel einen ehrlichen, kräftigen Kaffeegeschmack – natürlich und pur.</p><h3>Warum Brew Blend?</h3><p>Bei uns ist der Name Programm: Wir bieten Ihnen eine breite Palette an Geschmacksrichtungen, die jeden Anlass bereichern. Ob mild, kräftig oder gezielt säurearm – entdecken Sie bei Brew Blend Ihre neuen Lieblingsbohnen und genießen Sie echten Kaffee, den Sie bequem online kaufen können. Perfekt für Ihr Zuhause, das Büro oder Ihr nächstes Abenteuer.</p>"
+          }
+        },
+        "button_FmDkVU": {
+          "type": "button",
+          "settings": {
+            "button_label": "Jetzt Entdecken",
+            "button_link": "https://brew-blend.de/collections/kaffeebohnen",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jGnB79",
+        "text_w848MN",
+        "button_FmDkVU"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_H4e38M",
+    "main",
+    "rich_text_jYVfbX"
+  ]
+}
