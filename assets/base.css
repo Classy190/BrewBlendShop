@@ -1,3 +1,13 @@
+/* Volle Breite für Content-Container innerhalb von .page-width */
+.page-width > .content-container,
+.page-width > .contains-content-container {
+  max-width: 100vw !important;
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
