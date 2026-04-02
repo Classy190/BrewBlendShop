@@ -159,19 +159,16 @@
         tabindex="-1"
       >
         <div class="small-hide">
-          <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
+          <div class="slideshow__media banner__media media{% if block.settings.image == blank and block.settings.image_mob == blank %} placeholder{% endif %}">
             {%- if block.settings.image -%}
               {%- assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round -%}
-              {%
-                    render 'responsive-image' with
-                    image: block.settings.image,
-                    image_class: "image",
-                    wrapper_class: "image-wrapper"
-                  %}
-                {%- else -%}
-               {% render 'lumin-placeholder' %}
-                  
-                {%- endif -%}
+              {% render 'responsive-image' with image: block.settings.image, image_class: "image", wrapper_class: "image-wrapper" %}
+            {%- elsif block.settings.image_mob -%}
+              {%- assign height = block.settings.image_mob.width | divided_by: block.settings.image_mob.aspect_ratio | round -%}
+              {% render 'responsive-image' with image: block.settings.image_mob, image_class: "image", wrapper_class: "image-wrapper" %}
+            {%- else -%}
+              {% render 'lumin-placeholder' %}
+            {%- endif -%}
             {% comment %}
                 
               {{
