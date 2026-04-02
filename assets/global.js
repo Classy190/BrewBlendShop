@@ -75,6 +75,13 @@ function trapFocus(container, elementToFocus = container) {
 if (window.location.pathname.startsWith('/da/')) {
   window.location.href = '/';
 }
+// --- BEGIN: Redirect /en/ URLs to Version ohne /en ---
+else if (window.location.pathname.startsWith('/en/')) {
+  var newPath = window.location.pathname.replace(/^\/en\//, '/');
+  var newUrl = newPath + window.location.search + window.location.hash;
+  window.location.href = newUrl;
+}
+// --- END: Redirect /en/ URLs ---
 // --- END: Redirect /da/ URLs to Startseite ---
 try {
   document.querySelector(':focus-visible');
