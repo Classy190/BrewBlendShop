@@ -47,6 +47,7 @@
   --text-alignment: var(--blog-card-text-alignment);
 }
 
+
 .contains-content-container,
 .content-container {
   --border-radius: var(--text-boxes-radius);
@@ -57,6 +58,8 @@
   --shadow-blur-radius: var(--text-boxes-shadow-blur-radius);
   --shadow-opacity: var(--text-boxes-shadow-opacity);
   --shadow-visible: var(--text-boxes-shadow-visible);
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 .contains-media,
