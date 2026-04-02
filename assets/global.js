@@ -71,6 +71,11 @@ function trapFocus(container, elementToFocus = container) {
 }
 
 // Here run the querySelector to figure out if the browser supports :focus-visible or not and run code based on it.
+// --- BEGIN: Redirect /da/ URLs to Startseite ---
+if (window.location.pathname.startsWith('/da/')) {
+  window.location.href = '/';
+}
+// --- END: Redirect /da/ URLs to Startseite ---
 try {
   document.querySelector(':focus-visible');
 } catch (e) {
