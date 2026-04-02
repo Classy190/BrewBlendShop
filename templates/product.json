@@ -368,6 +368,18 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "page_3Etwaf": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "{{ product.metafields.custom.produkt_seitenbeschreibung.value }}",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -375,6 +387,7 @@
     "related-products",
     "rich_text_9wpTPH",
     "multicolumn_caEqdk",
-    "17702039670881e5fa"
+    "17702039670881e5fa",
+    "page_3Etwaf"
   ]
 }
