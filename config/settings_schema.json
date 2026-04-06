@@ -12,6 +12,17 @@
     "name": "Extra Settings",
     "settings": [
       {
+        "type": "header",
+        "content": "Google Verification"
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Google Site Verification",
+        "info": "Paste the content string from Google Search Console here. Example: abcdef1234567890",
+        "default": ""
+      },
+      {
         "type": "text",
         "id": "hide_collections",
         "label": "Hide collection",

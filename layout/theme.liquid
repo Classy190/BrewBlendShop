@@ -8,6 +8,9 @@
     
     {%- comment -%} 🔴 SEO FIX #1: ROBOTS META TAG - KRITISCH! {%- endcomment -%}
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    {%- if settings.google_site_verification != blank -%}
+      <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
+    {%- endif -%}
     
     <link rel="canonical" href="{{ canonical_url }}">
     <meta property="og:locale" content="de_DE">

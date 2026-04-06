@@ -7,6 +7,34 @@
   <h1>Seite nicht gefunden</h1>
   <p>
     Die gewünschte Seite ist leider nicht verfügbar. 
-    Sie werden automatisch zur Startseite weitergeleitet.
+    Sie werden automatisch zur passenden Seite weitergeleitet.
   </p>
-  </div>
+  <p>
+    Falls die Weiterleitung nicht automatisch funktioniert, klicken Sie bitte hier:
+    <a href="/">Zur Startseite</a>
+  </p>
+</div>
+
+<script>
+  (function() {
+    var path = window.location.pathname || '/';
+    var search = window.location.search || '';
+    var hash = window.location.hash || '';
+    var target = '/';
+
+    if (path === '/da' || path === '/da/') {
+      target = '/' + search + hash;
+    } else if (path.startsWith('/da/')) {
+      target = '/' + search + hash;
+    } else if (path === '/en' || path === '/en/') {
+      target = '/' + search + hash;
+    } else if (path.startsWith('/en/')) {
+      target = path.replace(/^\/en/, '') || '/';
+      target += search + hash;
+    } else {
+      target = '/' + search + hash;
+    }
+
+    window.location.replace(target);
+  })();
+</script>
