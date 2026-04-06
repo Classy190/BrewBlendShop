@@ -16,6 +16,10 @@
         "content": "Google Verification"
       },
       {
+        "type": "paragraph",
+        "content": "Add the Google Search Console verification code here to enable meta tag verification for your shop. Leave empty if not using this feature."
+      },
+      {
         "type": "text",
         "id": "google_site_verification",
         "label": "Google Site Verification",
