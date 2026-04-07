@@ -3617,8 +3617,8 @@
   {%- assign raw_faq = product.metafields.custom.schemorg.value | default: product.metafields.custom.schemorg -%}
   {%- assign raw_faq = raw_faq | strip_newlines | strip -%}
   <script type="application/ld+json">
-    {%- if raw_faq contains '"@type"' or raw_faq contains '"@context"' -%}
-      {%- if raw_faq contains '=>' -%}
+    {%- capture transformed_schema -%}
+      {%- if raw_faq contains '=> ' or raw_faq contains '=>' -%}
         {{ raw_faq 
           | replace: '=>', ':' 
           | replace: '@type', '"@type"' 
@@ -3634,22 +3634,12 @@
       {%- else -%}
         {{ raw_faq }}
       {%- endif -%}
-    {%- elsif raw_faq contains '@type' or raw_faq contains '@context' or raw_faq contains ':FAQPage' -%}
-      {{ raw_faq 
-        | replace: '=>', ':' 
-        | replace: '@type', '"@type"' 
-        | replace: '@context', '"@context"' 
-        | replace: ':mainEntity', '"mainEntity"' 
-        | replace: ':Question', '"Question"' 
-        | replace: ':Answer', '"Answer"' 
-        | replace: ':name', '"name"' 
-        | replace: ':acceptedAnswer', '"acceptedAnswer"' 
-        | replace: ':text', '"text"' 
-        | replace: ':FAQPage', '"FAQPage"' 
-      }}
+    {%- endcapture -%}
+    {%- unless transformed_schema contains '=>' -%}
+      {{ transformed_schema }}
     {%- else -%}
-      {{ raw_faq }}
-    {%- endif -%}
+      {%- comment -%} Invalid schema was omitted to avoid JSON-LD parsing errors {%- endcomment -%}
+    {%- endunless -%}
   </script>
 {%- else -%}
   <script type="application/ld+json">
