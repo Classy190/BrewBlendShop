@@ -71,7 +71,8 @@
               color: {{ block.settings.text_color }};
             }
 
-            .lumin-text-{{ block_id }} h2 {
+            .lumin-text-{{ block_id }} h2,
+            .lumin-text-{{ block_id }} h3 {
               color: {{ block.settings.head_color }};
               font-size: {{ block.settings.head_size_d }}px;
               margin-bottom: {{ block.settings.margin_bottom }}px;
@@ -79,7 +80,8 @@
             }
 
             @media screen and (max-width: 749px) {
-              .lumin-text-{{ block_id }} h2 {
+              .lumin-text-{{ block_id }} h2,
+              .lumin-text-{{ block_id }} h3 {
                 font-size: {{ block.settings.head_size_m }}px;
               }
               .column-{{ block_id }} {
