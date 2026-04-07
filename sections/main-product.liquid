@@ -3618,7 +3618,22 @@
   {%- assign raw_faq = raw_faq | strip_newlines | strip -%}
   <script type="application/ld+json">
     {%- if raw_faq contains '"@type"' or raw_faq contains '"@context"' -%}
-      {{ raw_faq }}
+      {%- if raw_faq contains '=>' -%}
+        {{ raw_faq 
+          | replace: '=>', ':' 
+          | replace: '@type', '"@type"' 
+          | replace: '@context', '"@context"' 
+          | replace: ':mainEntity', '"mainEntity"' 
+          | replace: ':Question', '"Question"' 
+          | replace: ':Answer', '"Answer"' 
+          | replace: ':name', '"name"' 
+          | replace: ':acceptedAnswer', '"acceptedAnswer"' 
+          | replace: ':text', '"text"' 
+          | replace: ':FAQPage', '"FAQPage"' 
+        }}
+      {%- else -%}
+        {{ raw_faq }}
+      {%- endif -%}
     {%- elsif raw_faq contains '@type' or raw_faq contains '@context' or raw_faq contains ':FAQPage' -%}
       {{ raw_faq 
         | replace: '=>', ':' 
