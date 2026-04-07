@@ -65,7 +65,13 @@
             {{ block.shopify_attributes }}
           >
             {% if block.settings.description %}
-              <div class="product__description rte">{{ product.description }}</div>
+              <div class="product__description rte">
+                {%- if product.description != blank -%}
+                  {{ product.description }}
+                {%- else -%}
+                  Entdecke {{ product.title | escape }} bei Brew Blend: hochwertige Kaffeebohnen, Kaffee Geschenke und Tee Geschenke.
+                {%- endif -%}
+              </div>
             {% else %}
               {{ block.settings.tab_content | replace: '[', '<span class="lumin-text__fancy1">' | replace: ']', '</span>' | replace: '((', '<span class="lumin-text__fancy2">' | replace: '))', '</span>' }}
             {% endif %}

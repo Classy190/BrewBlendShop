@@ -125,7 +125,11 @@
         <div class="collection__description {{ block.settings.collection_text_alignment }} {{ block.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
              style="{% if settings.tag_show %}padding-bottom:4rem;{% else %}padding-bottom: 2rem;{% endif %}padding-top: 1rem;">
           {%- if block.settings.show_description -%}
-            {{ block.settings.collection.description }}
+            {%- if block.settings.collection.description != blank -%}
+              {{ block.settings.collection.description }}
+            {%- else -%}
+              Entdecke {{ block.settings.collection.title | escape }} bei Brew Blend: aromatische Kaffeebohnen, Coffee Beans, Kaffee Geschenke und Tee Geschenke.
+            {%- endif -%}
           {%- else -%}
             {{ block.settings.description | replace: '[', '<span class="lumin-text__fancy1">' | replace: ']', '</span>' | replace: '((', '<span class="lumin-text__fancy2">' | replace: '))', '</span>' }}
           {%- endif %}

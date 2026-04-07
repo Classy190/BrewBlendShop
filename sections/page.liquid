@@ -34,6 +34,7 @@
       {%- elsif page_source.metafields.custom.text != blank -%}
         {{ page_source.metafields.custom.text }}
       {%- else -%}
+        <p class="page-text page-text--seo">Entdecke {{ page_source.title | escape }} bei Brew Blend: hochwertige Kaffee-Bohnen, Kaffee Geschenke und Tee Geschenke für Genießer.</p>
         <div class="page-placeholder-wrapper placeholder">
           {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
         </div>

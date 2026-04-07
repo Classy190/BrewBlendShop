@@ -88,7 +88,7 @@
     <meta name="description" content="{{ page_description | default: shop.description | default: 'Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!' | escape }}">
     <meta name="author" content="{{ shop.name }}">
     <meta name="publisher" content="{{ shop.name }}">
-    <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' }}{%- else -%}{{ shop.name }}, Kaffee, Tee, Spezialitätenkaffee, Brew Blend{%- endif -%}">
+    <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}, kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- else -%}kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- endif -%}">
 
     {% render 'meta-tags' %}
 

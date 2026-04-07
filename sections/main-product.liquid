@@ -1242,11 +1242,13 @@
                  
                 </p>               
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  {%- if product.description != blank -%}
                     {{ product.description }}
-                  </div>
-                {%- endif -%}
+                  {%- else -%}
+                    Entdecke {{ product.title | escape }} bei Brew Blend: hochwertige Kaffeebohnen, Kaffee Geschenke und Tee Geschenke.
+                  {%- endif -%}
+                </div>
               {%- when 'sku' -%}
                 <p
                   class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"

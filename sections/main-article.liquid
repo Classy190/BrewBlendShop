@@ -71,7 +71,11 @@
           itemprop="articleBody"
           {{ block.shopify_attributes }}
         >
-          {{ article.content }}
+          {%- if article.content != blank -%}
+            {{ article.content }}
+          {%- else -%}
+            <p>Entdecke {{ article.title | escape }} bei Brew Blend: Wissenswertes über Kaffee, Kaffee Geschenke und Tee Geschenke.</p>
+          {%- endif -%}
         </div>
 
       {%- when 'share' -%}
