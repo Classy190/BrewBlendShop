@@ -561,6 +561,10 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     {%- comment -%} 
       ULTRA-PERFORMANCE-LOADER 2026: 
       Verhindert GTM-Blocking durch On-Interaction Loading.
