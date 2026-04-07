@@ -3621,8 +3621,6 @@
       {%- if raw_faq contains '=> ' or raw_faq contains '=>' -%}
         {{ raw_faq 
           | replace: '=>', ':' 
-          | replace: '@type', '"@type"' 
-          | replace: '@context', '"@context"' 
           | replace: ':mainEntity', '"mainEntity"' 
           | replace: ':Question', '"Question"' 
           | replace: ':Answer', '"Answer"' 
