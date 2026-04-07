@@ -85,11 +85,10 @@
       {%- endif -%}
     </title>
     
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% elsif template.name == 'index' %}
-      <meta name="description" content="Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!">
-    {% endif %}
+    <meta name="description" content="{{ page_description | default: shop.description | default: 'Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!' | escape }}">
+    <meta name="author" content="{{ shop.name }}">
+    <meta name="publisher" content="{{ shop.name }}">
+    <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' }}{%- else -%}{{ shop.name }}, Kaffee, Tee, Spezialitätenkaffee, Brew Blend{%- endif -%}">
 
     {% render 'meta-tags' %}
 
