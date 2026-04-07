@@ -12,12 +12,17 @@
     {%- if settings.google_site_verification != blank -%}
       <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
     {%- endif -%}
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ shop.url }}/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="canonical" href="{{ canonical_url }}">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@dein_shops_handle">
+    {%- assign og_locale = request.locale.iso_code | upcase -%}
+    {%- if og_locale == 'DE' -%}
+      {%- assign og_locale = 'de_DE' -%}
+    {%- elsif og_locale == 'EN' -%}
+      {%- assign og_locale = 'en_US' -%}
+    {%- elsif og_locale == 'IT' -%}
+      {%- assign og_locale = 'it_IT' -%}
+    {%- endif -%}
+    <meta property="og:locale" content="{{ og_locale }}">
 
     {%- comment -%} 🟢 SEO FIX #2: HREFLANG TAGS für DE/EN/IT {%- endcomment -%}
     {%- if localization.available_languages.size > 1 -%}
@@ -85,7 +90,7 @@
       {%- endif -%}
     </title>
     
-    <meta name="description" content="{{ page_description | default: shop.description | default: 'Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!' | escape }}">
+    <meta name="description" content="{{ page_description | default: product.description | default: collection.description | default: article.excerpt | default: shop.description | default: 'Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!' | strip_html | escape }}">
     <meta name="author" content="{{ shop.name }}">
     <meta name="publisher" content="{{ shop.name }}">
     <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}, kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- else -%}kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- endif -%}">
