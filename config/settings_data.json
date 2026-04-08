@@ -439,7 +439,7 @@
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "#000000",
+          "text": "#ffffff",
           "button": "#d8ba96",
           "button_label": "#000000",
           "secondary_button_label": "#fff0bd",

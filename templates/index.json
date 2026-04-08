@@ -11,6 +11,18 @@
   "sections": {
     "image_banner_6XnFfp": {
       "type": "image-banner",
+      "blocks": {
+        "heading_typEtE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_typEtE"
+      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
@@ -24,30 +36,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": false
-      }
-    },
-    "rich_text_tfbcY9": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_cynwib": {
-          "type": "heading",
-          "settings": {
-            "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "heading_cynwib"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 24,
-        "padding_bottom": 24
       }
     },
     "video_new_AJCwDA": {
@@ -618,7 +606,6 @@
   },
   "order": [
     "image_banner_6XnFfp",
-    "rich_text_tfbcY9",
     "video_new_AJCwDA",
     "rich_text_LRBHtN",
     "collection_list_LRX9gw",
