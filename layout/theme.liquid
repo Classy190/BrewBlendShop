@@ -486,6 +486,32 @@
 
       if (!isAI) { return; }
 
+      function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+      }
+
+      function hasConsent() {
+        const localConsent = getCookie('brewblend_tracking_consent');
+        if (localConsent === 'accepted') return true;
+        if (localConsent === 'declined') return false;
+
+        const consentCookies = [
+          { name: 'cookieconsent_status', value: 'allow' },
+          { name: 'CookieConsent', value: 'allow' },
+          { name: 'OptanonConsent' },
+          { name: 'euconsent-v2' }
+        ];
+
+        return consentCookies.some(cookie => {
+          const value = getCookie(cookie.name);
+          if (!value) return false;
+          return !cookie.value || value.toLowerCase() === cookie.value.toLowerCase();
+        });
+      }
+
+      if (!hasConsent()) { return; }
+
       function sendTrafficData(payload) {
         const endpoint = 'https://brew-blend-outreach.vercel.app/api/traffic';
         const bodyString = JSON.stringify(payload);
