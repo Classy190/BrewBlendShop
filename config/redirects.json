@@ -1,0 +1,12 @@
+[
+  {
+    "path": "/llms.txt",
+    "target": "/assets/llms.txt",
+    "status": 302
+  },
+  {
+    "path": "/ai.txt",
+    "target": "/assets/ai.txt",
+    "status": 302
+  }
+]

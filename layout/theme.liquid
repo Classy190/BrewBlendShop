@@ -448,7 +448,6 @@
       ],
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "info@brew-blend.de",
         "contactType": "customer service",
         "availableLanguage": ["de", "en"]
       }
@@ -589,24 +588,7 @@
           f.parentNode.insertBefore(j, f);
         }
 
-        if (hasConsent()) {
-          loadGTM();
-          return;
-        }
-
-        let previousCookies = document.cookie;
-        const checkInterval = setInterval(function() {
-          if (document.cookie === previousCookies) return;
-          previousCookies = document.cookie;
-          if (hasConsent()) {
-            loadGTM();
-            clearInterval(checkInterval);
-          }
-        }, 1000);
-
-        setTimeout(function() {
-          clearInterval(checkInterval);
-        }, 30000);
+        loadGTM();
       })();
     </script>
   </head>
@@ -714,6 +696,20 @@
           if (typeof(Storage) !== 'undefined') {
             localStorage.setItem('brewblend_promo', promoCode);
           }
+        });
+      })();
+    </script>
+    <script>
+      (function() {
+        const emailLinks = document.querySelectorAll('a.email-obf');
+        if (!emailLinks.length) return;
+        emailLinks.forEach(link => {
+          const user = link.dataset.user;
+          const domain = link.dataset.domain;
+          if (!user || !domain) return;
+          const address = `${user}@${domain}`;
+          link.setAttribute('href', `mailto:${address}`);
+          link.setAttribute('aria-label', address);
         });
       })();
     </script>

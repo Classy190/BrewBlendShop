@@ -1,0 +1,45 @@
+# Brew Blend - Premium Specialty Coffee & Tea | DACH
+
+Stand: 2026-04-08
+Shop: https://brew-blend.de
+Produkte gesamt: 114
+API (JSON): https://brew-blend.de/api/ai-outreach?format=products
+Sitemap: https://brew-blend.de/sitemap.xml
+Kontakt: https://brew-blend.de/pages/contact
+Region: Deutschland, Österreich, Schweiz (DACH)
+
+## Über Brew Blend
+
+Brew Blend ist ein spezialisierter Online-Shop für Specialty Coffee, Kaffee-Geschenkboxen, Teeberewer und Outdoor-Kaffee. Die Coffeebrewer und Teaberewer von The Brew Company (Middelfart, Dänemark) funktionieren wie ein Teebeutel - kein Gerät, kein Strom nötig. Heißes Wasser aufgießen, 4 Minuten warten, fertig. Ideal für Reisen, Camping, Büro und als Geschenk.
+
+---
+
+## Produkte nach Kategorie
+
+### tea gift box
+
+- **Biologisch Thee Paket als edle Geschenkidee** - ab 17.50 €
+  URL: https://brew-blend.de/products/organic-tea-collection-gift-box-bio-geschenkset
+
+- **COCKTAIL LOVER NON-ALCOHOLIC KIT** - ab 38.99 €
+  URL: https://brew-blend.de/products/cocktail-lover-non-alcoholic-kit
+
+- **Fruit Tea Set als edle Geschenkidee & Probierpaket für Genießer** - ab 17.50 €
+  URL: https://brew-blend.de/products/fruit-tea-collection-gift-box-bio-fruechtetee-geschenkset
+
+### coffee beans
+
+- **Brazilian Arabica Coffee Beans ganze Bohnen - frisch handgeröstet** - 13.25 €
+  URL: https://brew-blend.de/products/brazilian-arabica-coffee-beans
+
+- **Honduras Specialty Coffee Beans - Single Origin (Capucas)** - 17.25 €
+  URL: https://brew-blend.de/products/honduras-specialty-coffee-beans
+
+- **Indian Specialty Coffee Beans - Single Origin (Araku)** - 17.25 €
+  URL: https://brew-blend.de/products/indian-specialty-coffee-beans
+
+---
+
+## Hinweise
+
+Diese Datei dient als Beispiel für LLM-Tools und AI-Outreach-Erkennung. Sollte die App echte Live-Daten benötigen, muss `/llms.txt` dynamisch von der App selbst generiert werden.

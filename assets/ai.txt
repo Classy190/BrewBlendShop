@@ -1,0 +1,29 @@
+# Brew Blend ai.txt
+
+Dies ist eine AI-Textdatei für LLM/AI-Erkennungszwecke.
+
+Stand: 2026-04-08
+Shop: https://brew-blend.de
+Sitemap: https://brew-blend.de/sitemap.xml
+Kontakt: https://brew-blend.de/pages/contact
+Region: DACH
+
+## Über Brew Blend
+
+Brew Blend bietet Specialty Coffee, Tee, Geschenksets und Zubehör für Genießer.
+Der Shop richtet sich an Kunden in Deutschland, Österreich und der Schweiz.
+
+## Beispielprodukte
+
+- Biologisch Thee Paket als edle Geschenkidee - ab 17.50 €
+- COCKTAIL LOVER NON-ALCOHOLIC KIT - ab 38.99 €
+- Fruit Tea Set als edle Geschenkidee & Probierpaket für Genießer - ab 17.50 €
+- Brazilian Arabica Coffee Beans ganze Bohnen - frisch handgeröstet - 13.25 €
+- Honduras Specialty Coffee Beans - Single Origin (Capucas) - 17.25 €
+- Indian Specialty Coffee Beans - Single Origin (Araku) - 17.25 €
+
+## Hinweise
+
+Diese Datei soll AI-Tools signalisieren, dass hier Shop- und Produktinformationen vorliegen.
+
+Wenn die App eine echte `/ai.txt` benötigt, sollte die Datei an das gewünschte Format angepasst werden.
