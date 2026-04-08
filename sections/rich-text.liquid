@@ -21,15 +21,7 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
-              {%- if block.settings.heading_size == 'h1' -%}
-                <h1
-              {%- elsif block.settings.heading_size == 'h2' -%}
-                <h2
-              {%- elsif block.settings.heading_size == 'p' -%}
-                <p
-              {%- else -%}
-                <h2
-              {%- endif -%}
+              <h2
                 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
@@ -38,15 +30,7 @@
                 {% endif %}
               >
                 {{ block.settings.heading | replace: '[', '<span class="lumin-text__fancy1">' | replace: ']', '</span>' | replace: '((', '<span class="lumin-text__fancy2">' | replace: '))', '</span>' }}
-              {%- if block.settings.heading_size == 'h1' -%}
-                </h1>
-              {%- elsif block.settings.heading_size == 'h2' -%}
-                </h2>
-              {%- elsif block.settings.heading_size == 'p' -%}
-                </p>
-              {%- else -%}
-                </h2>
-              {%- endif -%}
+              </h2>
             {%- when 'caption' -%}
               <p
                 class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -220,10 +204,6 @@
             {
               "value": "h1",
               "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "p",
-              "label": "Absatz"
             },
             {
               "value": "h0",
