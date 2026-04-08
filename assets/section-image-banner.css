@@ -447,11 +447,18 @@
 }
 
 @media screen and (max-width: 749px) {
-  .banner__heading {
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: anywhere;
-    max-width: 100%;
+  .banner__heading,
+  .banner__heading.inline-richtext,
+  .banner__heading.inline-richtext.h1,
+  .banner__heading.inline-richtext.h2,
+  .banner__heading.inline-richtext.h0,
+  .banner__heading.inline-richtext.hxl {
+    display: block;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    max-width: 100% !important;
+    line-height: 1.1;
   }
 
   .banner__box {
