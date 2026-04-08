@@ -9,6 +9,35 @@
  */
 {
   "sections": {
+    "image_banner_6XnFfp": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_jqMrnT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jqMrnT"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-15ab6c1a-5144-4b7d-a402-482fa31b8c04",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
     "video_new_AJCwDA": {
       "type": "video-new",
       "blocks": {
@@ -50,6 +79,7 @@
         "subheading_BVqUJf",
         "button_9CQm6n"
       ],
+      "disabled": true,
       "name": "Kaffeebohnen Video Banner",
       "settings": {
         "color_scheme": "scheme-ad51283d-6044-441e-b8ec-b4441c2da21b",
@@ -377,6 +407,7 @@
         "text_eF6kae",
         "button_rHnqWd"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/Organic_Tea_Collection.png",
@@ -576,6 +607,7 @@
     }
   },
   "order": [
+    "image_banner_6XnFfp",
     "video_new_AJCwDA",
     "rich_text_LRBHtN",
     "collection_list_LRX9gw",
