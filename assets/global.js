@@ -79,13 +79,6 @@ if (window.location.pathname === '/da' || window.location.pathname === '/da/') {
   var newUrl = newPath + window.location.search + window.location.hash;
   window.location.href = newUrl;
 }
-// --- BEGIN: Redirect /en/ URLs to Version ohne /en ---
-else if (window.location.pathname.startsWith('/en/')) {
-  var newPath = window.location.pathname.replace(/^\/en\//, '/');
-  var newUrl = newPath + window.location.search + window.location.hash;
-  window.location.href = newUrl;
-}
-// --- END: Redirect /en/ URLs ---
 // --- END: Redirect /da/ URLs to non-prefixed paths ---
 try {
   document.querySelector(':focus-visible');
