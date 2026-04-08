@@ -11,18 +11,6 @@
   "sections": {
     "image_banner_6XnFfp": {
       "type": "image-banner",
-      "blocks": {
-        "heading_jqMrnT": {
-          "type": "heading",
-          "settings": {
-            "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "heading_jqMrnT"
-      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
@@ -36,6 +24,30 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": false
+      }
+    },
+    "rich_text_tfbcY9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cynwib": {
+          "type": "heading",
+          "settings": {
+            "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cynwib"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "video_new_AJCwDA": {
@@ -116,17 +128,15 @@
         "heading_jifKjg",
         "text_bpqTiw"
       ],
-      "custom_css": [
-        "/* Erzwingt die volle Breite für den Inhaltsbereich dieses Abschnitts */.rich-text__wrapper,.rich-text__blocks,.collection-hero__description {max-width: 95% !important; width: 95% !important; margin: 0 !important;}"
-      ],
+      "custom_css": [],
       "name": "Kaffee Lover",
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "",
         "full_width": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "collection_list_LRX9gw": {
@@ -183,8 +193,8 @@
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 12,
-        "padding_bottom": 12
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "multirow_mBVEUk": {
@@ -608,6 +618,7 @@
   },
   "order": [
     "image_banner_6XnFfp",
+    "rich_text_tfbcY9",
     "video_new_AJCwDA",
     "rich_text_LRBHtN",
     "collection_list_LRX9gw",
