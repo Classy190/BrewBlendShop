@@ -517,82 +517,38 @@
     })();
     </script>
 
-    <style>
-      #tracking-consent-banner {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 99999;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        padding: 1rem 1.25rem;
-        background: rgba(8, 15, 34, 0.95);
-        color: #ffffff;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        box-shadow: 0 -4px 26px rgba(0,0,0,0.35);
-      }
-      #tracking-consent-banner p {
-        margin: 0;
-        flex: 1 1 100%;
-      }
-      #tracking-consent-banner .tracking-consent-actions {
-        display: flex;
-        gap: 0.75rem;
-        flex: 1 1 auto;
-        justify-content: flex-end;
-      }
-      #tracking-consent-banner button {
-        min-width: 6rem;
-        border: none;
-        cursor: pointer;
-        padding: 0.75rem 1rem;
-        border-radius: 999px;
-        font-weight: 600;
-      }
-      #tracking-consent-banner button.accept {
-        background: #ffffff;
-        color: #081122;
-      }
-      #tracking-consent-banner button.decline {
-        background: rgba(255,255,255,0.12);
-        color: #ffffff;
-      }
-      #tracking-consent-banner a {
-        color: #ffffff;
-        text-decoration: underline;
-      }
-      @media screen and (max-width: 620px) {
-        #tracking-consent-banner {
-          align-items: stretch;
-          text-align: left;
-        }
-        #tracking-consent-banner .tracking-consent-actions {
-          flex: 1 1 100%;
-          justify-content: flex-start;
-          flex-wrap: wrap;
-        }
-      }
-    </style>
-
     <script>
       (function() {
-        const consentName = 'brewblend_tracking_consent';
         const gtmId = 'GTM-TH9VLGB5';
-        const bannerId = 'tracking-consent-banner';
+        const localConsentName = 'brewblend_tracking_consent';
+        const knownConsentCookies = [
+          { name: 'cookieconsent_status', value: 'allow' },
+          { name: 'CookieConsent', value: 'allow' },
+          { name: 'OptanonConsent' },
+          { name: 'euconsent-v2' },
+          { name: 'konvajs_cookie_consent' },
+          { name: 'cc_cookie_accept' }
+        ];
 
         function getCookie(name) {
           const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
           return match ? decodeURIComponent(match[2]) : null;
         }
 
-        function setCookie(name, value, days) {
-          const expires = new Date(Date.now() + days * 864e5).toUTCString();
-          document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        function hasConsent() {
+          const local = getCookie(localConsentName);
+          if (local === 'accepted') return true;
+          if (local === 'declined') return false;
+
+          for (const cookie of knownConsentCookies) {
+            const value = getCookie(cookie.name);
+            if (!value) continue;
+            if (!cookie.value || value.toLowerCase() === cookie.value.toLowerCase()) {
+              return true;
+            }
+          }
+
+          return false;
         }
 
         function loadGTM() {
@@ -607,51 +563,24 @@
           f.parentNode.insertBefore(j, f);
         }
 
-        function hideBanner() {
-          const banner = document.getElementById(bannerId);
-          if (banner) {
-            banner.style.display = 'none';
-          }
-        }
-
-        function acceptTracking() {
-          setCookie(consentName, 'accepted', 365);
+        if (hasConsent()) {
           loadGTM();
-          hideBanner();
+          return;
         }
 
-        function declineTracking() {
-          setCookie(consentName, 'declined', 365);
-          hideBanner();
-        }
-
-        function createBanner() {
-          if (document.getElementById(bannerId)) return;
-
-          const banner = document.createElement('div');
-          banner.id = bannerId;
-          banner.innerHTML = `
-            <p>Wir verwenden Tracking nur mit Ihrer Zustimmung. Ohne Tracking bleibt Ihre Erfahrung genauso gut, aber wir können Besucherdaten nicht auswerten.</p>
-            <div class="tracking-consent-actions">
-              <button type="button" class="decline">Ablehnen</button>
-              <button type="button" class="accept">Zustimmen</button>
-            </div>`;
-
-          banner.querySelector('button.accept').addEventListener('click', acceptTracking);
-          banner.querySelector('button.decline').addEventListener('click', declineTracking);
-          document.body.appendChild(banner);
-        }
-
-        const consent = getCookie(consentName);
-        if (consent === 'accepted') {
-          loadGTM();
-        } else if (consent !== 'declined') {
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', createBanner);
-          } else {
-            createBanner();
+        let previousCookies = document.cookie;
+        const checkInterval = setInterval(function() {
+          if (document.cookie === previousCookies) return;
+          previousCookies = document.cookie;
+          if (hasConsent()) {
+            loadGTM();
+            clearInterval(checkInterval);
           }
-        }
+        }, 1000);
+
+        setTimeout(function() {
+          clearInterval(checkInterval);
+        }, 30000);
       })();
     </script>
   </head>
