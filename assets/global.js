@@ -71,9 +71,13 @@ function trapFocus(container, elementToFocus = container) {
 }
 
 // Here run the querySelector to figure out if the browser supports :focus-visible or not and run code based on it.
-// --- BEGIN: Redirect /da/ URLs to Startseite ---
-if (window.location.pathname.startsWith('/da/')) {
-  window.location.href = '/';
+// --- BEGIN: Redirect /da/ URLs to non-prefixed paths ---
+if (window.location.pathname === '/da' || window.location.pathname === '/da/') {
+  window.location.href = '/' + window.location.search + window.location.hash;
+} else if (window.location.pathname.startsWith('/da/')) {
+  var newPath = window.location.pathname.replace(/^\/da/, '') || '/';
+  var newUrl = newPath + window.location.search + window.location.hash;
+  window.location.href = newUrl;
 }
 // --- BEGIN: Redirect /en/ URLs to Version ohne /en ---
 else if (window.location.pathname.startsWith('/en/')) {
@@ -82,7 +86,7 @@ else if (window.location.pathname.startsWith('/en/')) {
   window.location.href = newUrl;
 }
 // --- END: Redirect /en/ URLs ---
-// --- END: Redirect /da/ URLs to Startseite ---
+// --- END: Redirect /da/ URLs to non-prefixed paths ---
 try {
   document.querySelector(':focus-visible');
 } catch (e) {

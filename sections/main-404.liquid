@@ -1,40 +1,15 @@
 {% comment %}
-  SEO-optimierte Weiterleitung zur Startseite.
-  Achte darauf, dass dies nicht für wichtige gelöschte Produkte genutzt wird (dafür lieber 301-Redirects in Shopify nutzen).
+  404-Seite ohne automatische Weiterleitung.
+  Wenn die URL nicht existiert, sollte Google einen echten 404-Status sehen.
+  Alte URLs können im Shopify-Admin sauber per Redirect auf echte Live-Produkte gebracht werden.
 {% endcomment %}
 
 <div style="text-align: center; padding: 50px;">
   <h1>Seite nicht gefunden</h1>
   <p>
-    Die gewünschte Seite ist leider nicht verfügbar. 
-    Sie werden automatisch zur passenden Seite weitergeleitet.
+    Die gewünschte Seite ist leider nicht verfügbar.
   </p>
   <p>
-    Falls die Weiterleitung nicht automatisch funktioniert, klicken Sie bitte hier:
-    <a href="/">Zur Startseite</a>
+    Bitte nutze die Navigation oder suche direkt nach einem Produkt.
   </p>
 </div>
-
-<script>
-  (function() {
-    var path = window.location.pathname || '/';
-    var search = window.location.search || '';
-    var hash = window.location.hash || '';
-    var target = '/';
-
-    if (path === '/da' || path === '/da/') {
-      target = '/' + search + hash;
-    } else if (path.startsWith('/da/')) {
-      target = '/' + search + hash;
-    } else if (path === '/en' || path === '/en/') {
-      target = '/' + search + hash;
-    } else if (path.startsWith('/en/')) {
-      target = path.replace(/^\/en/, '') || '/';
-      target += search + hash;
-    } else {
-      target = '/' + search + hash;
-    }
-
-    window.location.replace(target);
-  })();
-</script>
