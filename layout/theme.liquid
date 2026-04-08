@@ -516,10 +516,147 @@
       });
     })();
     </script>
+
+    <style>
+      #tracking-consent-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
+        background: rgba(8, 15, 34, 0.95);
+        color: #ffffff;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        box-shadow: 0 -4px 26px rgba(0,0,0,0.35);
+      }
+      #tracking-consent-banner p {
+        margin: 0;
+        flex: 1 1 100%;
+      }
+      #tracking-consent-banner .tracking-consent-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+      }
+      #tracking-consent-banner button {
+        min-width: 6rem;
+        border: none;
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      #tracking-consent-banner button.accept {
+        background: #ffffff;
+        color: #081122;
+      }
+      #tracking-consent-banner button.decline {
+        background: rgba(255,255,255,0.12);
+        color: #ffffff;
+      }
+      #tracking-consent-banner a {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      @media screen and (max-width: 620px) {
+        #tracking-consent-banner {
+          align-items: stretch;
+          text-align: left;
+        }
+        #tracking-consent-banner .tracking-consent-actions {
+          flex: 1 1 100%;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+
+    <script>
+      (function() {
+        const consentName = 'brewblend_tracking_consent';
+        const gtmId = 'GTM-TH9VLGB5';
+        const bannerId = 'tracking-consent-banner';
+
+        function getCookie(name) {
+          const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+          return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        function setCookie(name, value, days) {
+          const expires = new Date(Date.now() + days * 864e5).toUTCString();
+          document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        }
+
+        function loadGTM() {
+          if (window.brewblendGtmLoaded) return;
+          window.brewblendGtmLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          const f = document.getElementsByTagName('script')[0];
+          const j = document.createElement('script');
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+          f.parentNode.insertBefore(j, f);
+        }
+
+        function hideBanner() {
+          const banner = document.getElementById(bannerId);
+          if (banner) {
+            banner.style.display = 'none';
+          }
+        }
+
+        function acceptTracking() {
+          setCookie(consentName, 'accepted', 365);
+          loadGTM();
+          hideBanner();
+        }
+
+        function declineTracking() {
+          setCookie(consentName, 'declined', 365);
+          hideBanner();
+        }
+
+        function createBanner() {
+          if (document.getElementById(bannerId)) return;
+
+          const banner = document.createElement('div');
+          banner.id = bannerId;
+          banner.innerHTML = `
+            <p>Wir verwenden Tracking nur mit Ihrer Zustimmung. Ohne Tracking bleibt Ihre Erfahrung genauso gut, aber wir können Besucherdaten nicht auswerten.</p>
+            <div class="tracking-consent-actions">
+              <button type="button" class="decline">Ablehnen</button>
+              <button type="button" class="accept">Zustimmen</button>
+            </div>`;
+
+          banner.querySelector('button.accept').addEventListener('click', acceptTracking);
+          banner.querySelector('button.decline').addEventListener('click', declineTracking);
+          document.body.appendChild(banner);
+        }
+
+        const consent = getCookie(consentName);
+        if (consent === 'accepted') {
+          loadGTM();
+        } else if (consent !== 'declined') {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', createBanner);
+          } else {
+            createBanner();
+          }
+        }
+      })();
+    </script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9VLGB5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
@@ -566,52 +703,25 @@
 
     {%- comment -%} 
       ULTRA-PERFORMANCE-LOADER 2026: 
-      Verhindert GTM-Blocking durch On-Interaction Loading.
-      Alle Shopify-Assets werden über {{ ... | asset_url }} vom CDN bezogen.
+      Lädt nur jQuery vorab, kein GTM ohne Cookie-Zustimmung.
     {%- endcomment -%}
     <script>
     (function() {
-      const interactionEvents = ['mouseover', 'keydown', 'touchstart', 'touchmove', 'wheel', 'click'];
-      let loaded = false;
-
-      function loadHeavyAssets() {
-        if (loaded) return;
-        loaded = true;
-
-        const idleTrigger = window.requestIdleCallback || function(cb) { setTimeout(cb, 1); };
-
-        idleTrigger(function() {
-          if (typeof jQuery === 'undefined') {
-            const jq = document.createElement('script');
-            jq.src = "{{ 'jquery.js' | asset_url }}";
-            jq.async = true; 
-            jq.onload = function() {
-              idleTrigger(function() {
-                setTimeout(loadGTM, 500); 
-              });
-            };
-            document.head.appendChild(jq);
-          } else {
-            loadGTM();
-          }
-        });
-
-        function loadGTM() {
-          const gtmTrigger = window.requestIdleCallback || function(cb) { setTimeout(cb, 1); };
-          gtmTrigger(function() {
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-TH9VLGB5');
-          }, { timeout: 3000 });
-        }
-
-        interactionEvents.forEach(e => window.removeEventListener(e, loadHeavyAssets));
+      const idleTrigger = window.requestIdleCallback || function(cb) { setTimeout(cb, 1); };
+      if (typeof jQuery === 'undefined') {
+        const jq = document.createElement('script');
+        jq.src = "{{ 'jquery.js' | asset_url }}";
+        jq.async = true;
+        document.head.appendChild(jq);
       }
-
-      const forceTimeout = setTimeout(loadHeavyAssets, 10000);
-      interactionEvents.forEach(e => window.addEventListener(e, loadHeavyAssets, {passive: true}));
+      idleTrigger(function() {
+        if (typeof jQuery === 'undefined') {
+          const jq = document.createElement('script');
+          jq.src = "{{ 'jquery.js' | asset_url }}";
+          jq.async = true;
+          document.head.appendChild(jq);
+        }
+      });
     })();
     </script>
 
