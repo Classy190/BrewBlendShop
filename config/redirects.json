@@ -1,12 +1,12 @@
 [
   {
     "path": "/llms.txt",
-    "target": "/assets/llms.txt",
+    "target": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/llms.txt?v=1775657187",
     "status": 302
   },
   {
     "path": "/ai.txt",
-    "target": "/assets/ai.txt",
+    "target": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/ai.txt?v=1775657187",
     "status": 302
   }
 ]
