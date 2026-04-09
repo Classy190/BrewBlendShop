@@ -377,6 +377,11 @@
           "mobile_side_margin": 16,
           "mobile_bottom_margin": 46
         }
+      },
+      "2608904525610875962": {
+        "type": "shopify://apps/index-ai-get-found-by-ai/blocks/schema-markup/019bffd6-1798-7312-ab45-e0a5b7169b7c",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
