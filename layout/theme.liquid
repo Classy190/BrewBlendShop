@@ -52,6 +52,11 @@
         } else if (path.startsWith('/da/')) {
           target = path.replace(/^\/da/, '') || '/';
           target += search + hash;
+        } else if (path === '/en' || path === '/en/') {
+          target = '/' + search + hash;
+        } else if (path.startsWith('/en/')) {
+          target = path.replace(/^\/en/, '') || '/';
+          target += search + hash;
         }
 
         if (target) {
