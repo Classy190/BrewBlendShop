@@ -191,6 +191,7 @@
         "row_hEVwqL": {
           "type": "row",
           "name": "Geschenkboxen 1",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Happy_easter_coffee_lover.png",
             "caption": "Happy Easter Coffee Lover",
