@@ -204,6 +204,7 @@
         "row_UWeRfi": {
           "type": "row",
           "name": "World's Finest Coffee",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/25pcs_top_WFC_new_label1.jpg",
             "caption": "The Brew Company Coffee Brewer",
