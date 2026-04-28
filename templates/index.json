@@ -204,14 +204,13 @@
         "row_UWeRfi": {
           "type": "row",
           "name": "World's Finest Coffee",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/25pcs_top_WFC_new_label1.jpg",
-            "caption": "The Brew Company Coffee Brewer",
-            "heading": "World's Finest Specialty Coffee Gift Box",
-            "text": "<p>Erlebe mit der <strong>World's Finest Specialty Coffee Gift Box</strong> eine geschmackliche Weltreise. Dieses exklusive <strong>Kaffee Geschenkset</strong> enthält eine kuratierte Auswahl feinster Single-Origin Kaffees und ist die ideale Wahl für alle, die wahre Qualität und Abwechslung suchen.</p><p>Warum dieses Set das ideale Geschenk ist</p><ul><li><strong>Vielfalt & Expertise:</strong> Entdecke handverlesene <strong>Specialty Coffees</strong> aus den besten Anbauregionen der Welt – direkt in deiner Tasse.</li><li><strong>Innovation für unterwegs:</strong> Unsere patentierten Coffeebrewer ermöglichen Barista-Qualität ohne Maschine, perfekt für das Büro oder beim <strong>Camping</strong></li><li><strong>Nachhaltiger Genuss:</strong> Die Brewer von <strong>Brew Blend</strong> sind <strong>wiederverwendbar</strong>, leicht auszuspülen und mit deinen liebsten Bohnen neu befüllbar.</li></ul><p>Ob als Highlight im Osternest oder als besonderes Dankeschön – dieses <strong>Gourmet-Geschenkset</strong> überzeugt durch Design und Inhalt. Setze auf echte Kaffee-Kompetenz und verschenke ein Erlebnis, das lange in Erinnerung bleibt.</p><p><em>Hinweis: Jede Box wird mit höchster Sorgfalt zusammengestellt, um maximale Frische und das volle Aroma zu garantieren.</em></p>",
-            "button_label": "Gourmet Coffee Set",
-            "button_link": "https://brew-blend.de/products/worlds-finest-specialty-coffee-gift-box-gratis-brazil-coffeebrewer?utm_source=copyToPasteBoard&utm_medium=product-links&utm_content=web"
+            "image": "shopify://shop_images/3Pcs__WBC-_Compressify.io__1_1_d7c4270c-8976-4f54-897e-8503a3b37aed.png",
+            "caption": "The Brew Company Coffeebrewer",
+            "heading": "WORLD'S FINEST SPECIALTY COFFEE",
+            "text": "<p>Begeistern Sie den Kaffeeliebhaber in Ihrem Leben mit einer wunderschön zusammengestellten 3-teiligen Coffeebrewer-Geschenkbox, die drei einzigartige Kaffee-Herkunftsorte und ein innovatives, geschmacksintensives Spezialitätenkaffee-Erlebnis bietet. Kompakt, elegant und vielseitig – dieses durchdachte Set ist das perfekte Geschenk für Geburtstage, Feiertage, Einweihungsfeiern, als Dankeschön oder einfach, um die kleinen Momente des Alltags zu feiern.</p>",
+            "button_label": "WORLD'S FINEST COFFEE",
+            "button_link": "https://brew-blend.de/products/worlds-finest-specialty-coffee-3-pcs-gift-box"
           }
         },
         "row_FPCC6z": {
