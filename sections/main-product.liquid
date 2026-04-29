@@ -3529,6 +3529,17 @@
 {% render 'new-atc', block: variant_picker_block, product: product, product_form_id: product_form_id, section_id: section.id %}
 {%- endif -%}
 
+{%- assign size_option_index = nil -%}
+{%- for option_name in product.options -%}
+  {%- assign lowered_option = option_name | downcase -%}
+  {%- if lowered_option contains 'size' or lowered_option contains 'größe' or lowered_option contains 'groesse' or lowered_option contains 'pack' or lowered_option contains 'pcs' or lowered_option contains 'piece' -%}
+    {%- assign size_option_index = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if size_option_index == nil and product.options.size == 1 -%}
+  {%- assign size_option_index = 0 -%}
+{%- endif -%}
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
@@ -3541,6 +3552,9 @@
       {%- endfor -%}
     ],
     "description": {{ product.description | strip_html | json }},
+    {%- if size_option_index != nil -%}
+      "size": {{ product.selected_or_first_available_variant.options[size_option_index] | json }},
+    {%- endif -%}
     {% if product.selected_or_first_available_variant.sku != blank -%}
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {%- endif %}
