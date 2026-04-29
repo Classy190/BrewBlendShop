@@ -3545,6 +3545,8 @@
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": {{ product.title | json }},
+    "productID": {{ product.id | json }},
+    "mainEntityOfPage": {{ request.origin | append: product.url | json }},
     "url": {{ request.origin | append: product.url | json }},
     "image": [
       {%- for image in product.images -%}
@@ -3552,6 +3554,9 @@
       {%- endfor -%}
     ],
     "description": {{ product.description | strip_html | json }},
+    {%- if product.type != blank -%}
+      "category": {{ product.type | json }},
+    {%- endif -%}
     {%- if size_option_index != nil -%}
       "size": {{ product.selected_or_first_available_variant.options[size_option_index] | json }},
     {%- endif -%}
@@ -3569,7 +3574,8 @@
         "reviewCount": "{{ product.metafields.reviews.rating_count }}",
         "bestRating": "{{ product.metafields.reviews.rating.value.scale_max | default: 5 }}",
         "worstRating": "1"
-      }{%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%},
+      }
+      {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%},
       "review": [
         {
           "@type": "Review",
@@ -3586,8 +3592,10 @@
           },
           "reviewBody": {{ 'Basierend auf Kundenbewertungen.' | json }}
         }
-      ]{%- endif -%}
-    ,{%- endif -%}
+      ]
+      {%- endif -%}
+      ,
+    {%- endif -%}
     "offers": [
       {%- for variant in product.variants -%}
         {
@@ -3637,7 +3645,11 @@
             "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
             "merchantReturnDays": 14,
             "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility" 
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+          },
+          "seller": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
           }
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
