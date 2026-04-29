@@ -378,16 +378,6 @@
           "mobile_bottom_margin": 46
         }
       },
-      "2608904525610875962": {
-        "type": "shopify://apps/index-ai-get-found-by-ai/blocks/schema-markup/019bffd6-1798-7312-ab45-e0a5b7169b7c",
-        "disabled": true,
-        "settings": {}
-      },
-      "18028253871001423538": {
-        "type": "shopify://apps/fseo-ai/blocks/schema_injection/019bccea-58e5-7956-b3fe-e5934b8afec5",
-        "disabled": true,
-        "settings": {}
-      },
       "12793297677437526120": {
         "type": "shopify://apps/t-lab-ai-language-translate/blocks/custom_translations/b5b83690-efd4-434d-8c6a-a5cef4019faf",
         "disabled": false,
@@ -422,6 +412,16 @@
           "custom_switcher_background_color": "#ffffff",
           "custom_switcher_border_color": "#000000"
         }
+      },
+      "18028253871001423538": {
+        "type": "shopify://apps/fseo-ai/blocks/schema_injection/019bccea-58e5-7956-b3fe-e5934b8afec5",
+        "disabled": false,
+        "settings": {}
+      },
+      "2608904525610875962": {
+        "type": "shopify://apps/index-ai-get-found-by-ai/blocks/schema-markup/019bffd6-1798-7312-ab45-e0a5b7169b7c",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
