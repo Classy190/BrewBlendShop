@@ -26,8 +26,14 @@
 
     {%- comment -%} 🟢 SEO FIX #2: HREFLANG TAGS für DE/EN/IT {%- endcomment -%}
     {%- if localization.available_languages.size > 1 -%}
+      {%- assign canonical_path = canonical_url | remove: request.origin -%}
       {%- for language in localization.available_languages -%}
-        <link rel="alternate" hreflang="{{ language.iso_code }}" href="{{ canonical_url | replace: request.locale.root_url, language.root_url }}">
+        {%- if request.locale.root_url == '/' -%}
+          {%- assign alternate_path = language.root_url | append: canonical_path -%}
+        {%- else -%}
+          {%- assign alternate_path = language.root_url | append: canonical_path | remove_first: request.locale.root_url -%}
+        {%- endif -%}
+        <link rel="alternate" hreflang="{{ language.iso_code }}" href="{{ request.origin }}{{ alternate_path }}">
       {%- endfor -%}
       <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
     {%- endif -%}
