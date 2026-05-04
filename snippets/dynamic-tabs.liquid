@@ -35,7 +35,7 @@ if combine_pretext is false, the text before the first <h4> will be shown above 
   {% endif %}
   <ul class="tabs">
     {% for head in tab_heads %}
-    <li><a href="#tab-{{- index -}}" class="h4">{{ head }}</a></li>
+    <li><a href="#tab-{{- index -}}" title="{{ head | escape }}" class="h4">{{ head }}</a></li>
     {% assign index =  index | plus: 1  %}
     {% endfor %}
   </ul>

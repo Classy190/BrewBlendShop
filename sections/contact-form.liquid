@@ -91,7 +91,7 @@
         </div>
         <ul class="form-status-list caption-large" role="list">
           <li>
-            <a href="#ContactForm-email" class="link">
+            <a href="#ContactForm-email" title="{{ 'templates.contact.form.email' | t | default: 'Email' | escape }}" class="link">
               {{ form.errors.translated_fields.email | capitalize }}
               {{ form.errors.messages.email }}
             </a>

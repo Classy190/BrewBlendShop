@@ -58,7 +58,7 @@
       
       </style>
         <div class="announcement-bar-{{ section.id }}" role="region" aria-label="Announcement" {{ block.shopify_attributes }}>
-              <a {% if block.settings.text_link != blank %}{{ block.settings.text_link }}{% else %} href="/collections/frontpage"{% endif %} class="announcement-bar__link link link--text focus-inset animate-arrow">
+              <a {% if block.settings.text_link != blank %}{{ block.settings.text_link }}{% else %} href="/collections/frontpage"{% endif %} title="{{ block.settings.Announcement | strip_html | truncate: 60 | escape }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
                 {% render 'icon-accordion', icon: block.settings.icon %}  
                 <p class="announcement-bar__message h6 lumin-text-{{ block.id }}">
                        {{ block.settings.Announcement }}

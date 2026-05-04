@@ -523,6 +523,7 @@
           >
             <a
               href="{{ card_product.url | default: '#' }}"
+              title="{{ card_product.title | escape }}"
               id="CardLink-{{ section_id }}-{{ card_product.id }}"
               class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"

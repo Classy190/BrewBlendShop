@@ -408,7 +408,7 @@ transform: scale(1.03);
                                   {%- if link.title == block.settings.link_name -%}
                                     {%- if block.settings.link_image != blank -%}
                                    <li class="mega_menu_img slide swiper-slide" style="--mega-image-radius: {{ block.settings.img_radius }}px;">
-                                        <a class="mega-menu__link" href="{{ block.settings.link_url}}">
+                                        <a class="mega-menu__link" href="{{ block.settings.link_url}}" title="{{ block.settings.link_title | escape }}">
                                           <div>
                                           {{ block.settings.link_image | image_url: width: 500  | image_tag  }} 
                                           </div>
@@ -419,7 +419,7 @@ transform: scale(1.03);
                                     {%- endif -%}
                                       {%- if block.settings.link_image_2 != blank -%}
                                    <li class="mega_menu_img slide swiper-slide" style="--mega-image-radius: {{ block.settings.img_radius }}px;">
-                                        <a class="mega-menu__link" href="{{ block.settings.link_url_2}}">
+                                        <a class="mega-menu__link" href="{{ block.settings.link_url_2}}" title="{{ block.settings.link_title_2 | escape }}">
                                           <div>
                                           {{ block.settings.link_image_2 | image_url: width: 500  | image_tag  }} 
                                           </div>
@@ -527,7 +527,7 @@ transform: scale(1.03);
                   <ul class="list list-social list-unstyled" role="list">
                     {%- if settings.social_twitter_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_twitter_link }}" title="{{ 'general.social.links.twitter' | t }}" class="list-social__link link">
                           {%- render 'icon-twitter' -%}
                           <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                         </a>
@@ -535,7 +535,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_facebook_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_facebook_link }}" title="{{ 'general.social.links.facebook' | t }}" class="list-social__link link">
                           {%- render 'icon-facebook' -%}
                           <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                         </a>
@@ -543,7 +543,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_pinterest_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_pinterest_link }}" title="{{ 'general.social.links.pinterest' | t }}" class="list-social__link link">
                           {%- render 'icon-pinterest' -%}
                           <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                         </a>
@@ -551,7 +551,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_instagram_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_instagram_link }}" title="{{ 'general.social.links.instagram' | t }}" class="list-social__link link">
                           {%- render 'icon-instagram' -%}
                           <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                         </a>
@@ -559,7 +559,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_tiktok_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_tiktok_link }}" title="{{ 'general.social.links.tiktok' | t }}" class="list-social__link link">
                           {%- render 'icon-tiktok' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                         </a>
@@ -567,7 +567,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_tumblr_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_tumblr_link }}" title="{{ 'general.social.links.tumblr' | t }}" class="list-social__link link">
                           {%- render 'icon-tumblr' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                         </a>
@@ -575,7 +575,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_snapchat_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_snapchat_link }}" title="{{ 'general.social.links.snapchat' | t }}" class="list-social__link link">
                           {%- render 'icon-snapchat' -%}
                           <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                         </a>
@@ -583,7 +583,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_youtube_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_youtube_link }}" title="{{ 'general.social.links.youtube' | t }}" class="list-social__link link">
                           {%- render 'icon-youtube' -%}
                           <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                         </a>
@@ -591,7 +591,7 @@ transform: scale(1.03);
                     {%- endif -%}
                     {%- if settings.social_vimeo_link != blank -%}
                       <li class="list-social__item">
-                        <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                        <a href="{{ settings.social_vimeo_link }}" title="{{ 'general.social.links.vimeo' | t }}" class="list-social__link link">
                           {%- render 'icon-vimeo' -%}
                           <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                         </a>
@@ -616,7 +616,7 @@ transform: scale(1.03);
       {%- if request.page_type == 'index' -%}
         <div class="header__heading">
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" title="{{ 'general.home' | t | default: shop.name | escape }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -698,13 +698,14 @@ transform: scale(1.03);
                               <li>
                                   {% comment %} Put a Featured Image Here {% endcomment %}
                                      {% if section.settings['extended-megamenu-show-imgs'] == 'yes' %}
-                                        <a href="{{ childlink.url }}">
+                                        <a href="{{ childlink.url }}" title="{{ childlink.title | escape }}">
                                           {% if childlink.object.featured_image %}
                                             {{
                                               childlink.object.featured_image
                                               | image_url: width: 400, height: 1600
                                               | image_tag: class: 'mega_menu_link_img'
                                             }}
+
                                           {% elsif childlink.object.image %}
                                             {{
                                               childlink.object.image
@@ -717,6 +718,7 @@ transform: scale(1.03);
                                 <a
                                   id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                                   href="{{ childlink.url }}"
+                                  title="{{ childlink.title | escape }}"
                                   class="mega-menu__link mega-menu__link--level-2 lumin-mega link{% if childlink.current %} mega-menu__link--active{% endif %}"
                                   {% if childlink.current %}
                                     aria-current="page"
@@ -731,6 +733,7 @@ transform: scale(1.03);
                                         <a
                                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                           href="{{ grandchildlink.url }}"
+                                          title="{{ grandchildlink.title | escape }}"
                                           class="mega-menu__link lumin-mega-link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
                                           {% if grandchildlink.current %}
                                             aria-current="page"
@@ -748,7 +751,7 @@ transform: scale(1.03);
                                  {%- if link.title == block.settings.link_name -%}
                                   {%- if block.settings.link_image != blank -%}
                                    <li class="mega_menu_img" style="--mega-image-radius: {{ block.settings.img_radius }}px;">
-                                        <a class="mega-menu__link" href="{{ block.settings.link_url}}">
+                                        <a class="mega-menu__link" href="{{ block.settings.link_url}}" title="{{ block.settings.link_title | escape }}">
                                           <div>
                                           {{ block.settings.link_image | image_url: width: 400  | image_tag  }} 
                                           </div>
@@ -759,7 +762,7 @@ transform: scale(1.03);
                                     {%- endif -%}
                                     {%- if block.settings.link_image_2 != blank -%}
                                    <li class="mega_menu_img" style="--mega-image-radius: {{ block.settings.img_radius_2 }}px;">
-                                        <a class="mega-menu__link" href="{{ block.settings.link_url_2}}">
+                                        <a class="mega-menu__link" href="{{ block.settings.link_url_2}}" title="{{ block.settings.link_title_2 | escape }}">
                                           <div>
                                           {{ block.settings.link_image_2 | image_url: width: 400  | image_tag  }} 
                                           </div>
@@ -783,6 +786,7 @@ transform: scale(1.03);
                     <a
                       id="HeaderMenu-{{ link.handle }}"
                       href="{{ link.url }}"
+                      title="{{ link.title | escape }}"
                       class="header__menu-item list-menu__item link link--text focus-inset"
                       {% if link.current %}
                         aria-current="page"
@@ -810,7 +814,7 @@ transform: scale(1.03);
       {%- if request.page_type == 'index' -%}
         <div class="header__heading">
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" title="{{ 'general.home' | t | default: shop.name | escape }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -908,7 +912,7 @@ transform: scale(1.03);
       {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" title="{%- if customer -%}{{ 'customer.account_fallback' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
           {% render 'icon-account' %}
           <span class="visually-hidden">
             {%- liquid
@@ -929,7 +933,7 @@ transform: scale(1.03);
         {%- endcase -%}
       {%- endfor -%}
 
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+      <a href="{{ routes.cart_url }}" title="{{ 'templates.cart.cart' | t }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- render 'icon-cart' -%}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}

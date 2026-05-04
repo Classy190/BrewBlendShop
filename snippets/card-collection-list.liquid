@@ -89,6 +89,7 @@
                   role="link" aria-disabled="true"
                 {% else %}
                   href="{{ card_collection.url }}"
+                  title="{{ card_collection.title | escape }}"
                 {% endif %}
                 class="full-unstyled-link"
               >
@@ -121,6 +122,7 @@
                 role="link" aria-disabled="true"
               {% else %}
                 href="{{ card_collection.url }}"
+                title="{{ card_collection.title | escape }}"
               {% endif %}
               class="full-unstyled-link"
             >

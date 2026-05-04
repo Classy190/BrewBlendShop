@@ -136,7 +136,7 @@
         <p class="instafeed-header">{{ section.settings.instafeed_title }}</p>
         <p class="instafeed-hashtag">{{ section.settings.hashtag_title }}</p>
       </div>
-      <a class="ig-button" href="{{ section.settings.insta_url }}" target="_blank">
+      <a class="ig-button" href="{{ section.settings.insta_url }}" title="{{ 'general.social.links.instagram' | t | default: 'Instagram' | escape }}" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="{{section.settings.text-color}}"
@@ -159,7 +159,7 @@
           data-cascade
         {% endif %}
       >
-        <a href="{{block.settings.gallery_url}}">
+        <a href="{{block.settings.gallery_url}}" title="{{ block.settings.gallery_url | escape }}">
           {%- if block.settings.gallery_photo -%}
             {{
               block.settings.gallery_photo
