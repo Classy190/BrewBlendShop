@@ -415,12 +415,12 @@
       },
       "18028253871001423538": {
         "type": "shopify://apps/fseo-ai/blocks/schema_injection/019bccea-58e5-7956-b3fe-e5934b8afec5",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       },
       "2608904525610875962": {
         "type": "shopify://apps/index-ai-get-found-by-ai/blocks/schema-markup/019bffd6-1798-7312-ab45-e0a5b7169b7c",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     },
