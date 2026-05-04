@@ -3549,9 +3549,13 @@
     "mainEntityOfPage": {{ request.origin | append: product.url | json }},
     "url": {{ request.origin | append: product.url | json }},
     "image": [
-      {%- for image in product.images -%}
-        {{ image | image_url: width: 1920 | prepend: "https:" | json }}{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
+      {%- if product.images != blank -%}
+        {%- for image in product.images -%}
+          {{ image | image_url: width: 1920 | prepend: "https:" | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- elsif product.featured_media != blank -%}
+        {{ product.featured_media | image_url: width: 1920 | prepend: "https:" | json }}
+      {%- endif -%}
     ],
     "description": {{ product.description | strip_html | json }},
     {%- if product.type != blank -%}
@@ -3607,8 +3611,11 @@
           {%- if variant.barcode != blank -%}
             "gtin13": {{ variant.barcode | json }},
           {%- endif -%}
+          {%- if size_option_index != nil and variant.options[size_option_index] != blank -%}
+            "size": {{ variant.options[size_option_index] | json }},
+          {%- endif -%}
           "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-          "price" : "{{ variant.price | money_without_currency | replace: ',', '.' }}",
+          "price": {{ variant.price | divided_by: 100.0 }},
           "priceCurrency" : "EUR",
           "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
           "url" : {{ request.origin | append: variant.url | json }},
@@ -3635,7 +3642,7 @@
             },
             "shippingRate": {
               "@type": "MonetaryAmount",
-              "value": "5.99",
+              "value": 5.99,
               "currency": "EUR"
             }
           },
