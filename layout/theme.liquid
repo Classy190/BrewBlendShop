@@ -571,57 +571,7 @@
     })();
     </script>
 
-    <script>
-      (function() {
-        const gtmId = 'GTM-TH9VLGB5';
-        const localConsentName = 'brewblend_tracking_consent';
-        const knownConsentCookies = [
-          { name: 'cookieconsent_status', value: 'allow' },
-          { name: 'CookieConsent', value: 'allow' },
-          { name: 'OptanonConsent' },
-          { name: 'euconsent-v2' },
-          { name: 'konvajs_cookie_consent' },
-          { name: 'cc_cookie_accept' }
-        ];
-
-        function getCookie(name) {
-          const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-          return match ? decodeURIComponent(match[2]) : null;
-        }
-
-        function hasConsent() {
-          const local = getCookie(localConsentName);
-          if (local === 'accepted') return true;
-          if (local === 'declined') return false;
-
-          for (const cookie of knownConsentCookies) {
-            const value = getCookie(cookie.name);
-            if (!value) continue;
-            if (!cookie.value || value.toLowerCase() === cookie.value.toLowerCase()) {
-              return true;
-            }
-          }
-
-          return false;
-        }
-
-        function loadGTM() {
-          if (window.brewblendGtmLoaded) return;
-          window.brewblendGtmLoaded = true;
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-          const f = document.getElementsByTagName('script')[0];
-          const j = document.createElement('script');
-          j.async = true;
-          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
-          f.parentNode.insertBefore(j, f);
-        }
-
-        if (hasConsent()) {
-          loadGTM();
-        }
-      })();
-    </script>
+    <!-- GTM wird am Seitenende und nur bei Consent geladen, um Head-Blockierung zu vermeiden -->
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -741,6 +691,68 @@
           const address = `${user}@${domain}`;
           link.setAttribute('href', `mailto:${address}`);
           link.setAttribute('aria-label', address);
+        });
+      })();
+    </script>
+
+    <script>
+      (function() {
+        const gtmId = 'GTM-TH9VLGB5';
+        const localConsentName = 'brewblend_tracking_consent';
+        const knownConsentCookies = [
+          { name: 'cookieconsent_status', value: 'allow' },
+          { name: 'CookieConsent', value: 'allow' },
+          { name: 'OptanonConsent' },
+          { name: 'euconsent-v2' },
+          { name: 'konvajs_cookie_consent' },
+          { name: 'cc_cookie_accept' }
+        ];
+
+        function getCookie(name) {
+          const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+          return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        function hasConsent() {
+          const local = getCookie(localConsentName);
+          if (local === 'accepted') return true;
+          if (local === 'declined') return false;
+
+          for (const cookie of knownConsentCookies) {
+            const value = getCookie(cookie.name);
+            if (!value) continue;
+            if (!cookie.value || value.toLowerCase() === cookie.value.toLowerCase()) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        function insertGTM() {
+          if (window.brewblendGtmLoaded) return;
+          window.brewblendGtmLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          const j = document.createElement('script');
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+          document.head.appendChild(j);
+        }
+
+        function tryLoadGTM() {
+          if (!hasConsent()) return;
+          insertGTM();
+        }
+
+        const idleTrigger = window.requestIdleCallback || function(callback) { setTimeout(callback, 300); };
+
+        idleTrigger(function() {
+          tryLoadGTM();
+        });
+
+        ['click', 'scroll', 'mousemove', 'touchstart', 'keydown'].forEach(eventName => {
+          window.addEventListener(eventName, tryLoadGTM, { once: true, passive: true });
         });
       })();
     </script>
