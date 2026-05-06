@@ -767,12 +767,7 @@
           insertGTM();
         }
 
-        const idleTrigger = window.requestIdleCallback || function(callback) { setTimeout(callback, 300); };
-
-        idleTrigger(function() {
-          tryLoadGTM();
-        });
-
+        window.addEventListener('load', tryLoadGTM, { once: true });
         ['click', 'scroll', 'mousemove', 'touchstart', 'keydown'].forEach(eventName => {
           window.addEventListener(eventName, tryLoadGTM, { once: true, passive: true });
         });
