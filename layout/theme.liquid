@@ -658,11 +658,39 @@
     </script>
 
     {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+      <script>
+        (function() {
+          function loadCartDrawer() {
+            var script = document.createElement('script');
+            script.src = "{{ 'cart-drawer.js' | asset_url }}";
+            script.defer = true;
+            document.body.appendChild(script);
+          }
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadCartDrawer, { timeout: 1500 });
+          } else {
+            window.addEventListener('load', loadCartDrawer);
+          }
+        })();
+      </script>
     {%- endif -%}
 
     {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      <script>
+        (function() {
+          function loadPredictiveSearch() {
+            var script = document.createElement('script');
+            script.src = "{{ 'predictive-search.js' | asset_url }}";
+            script.defer = true;
+            document.body.appendChild(script);
+          }
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadPredictiveSearch, { timeout: 1500 });
+          } else {
+            window.addEventListener('load', loadPredictiveSearch);
+          }
+        })();
+      </script>
     {%- endif -%}
 
     <script>

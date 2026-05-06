@@ -12,7 +12,21 @@
 {%- endif -%}
 
 {%- if section.settings.menu_hover -%}
-  <script src="{{ 'megamenu-hover.js' | asset_url }}" defer="defer"></script>
+  <script>
+    (function() {
+      function loadMegaMenuHover() {
+        var script = document.createElement('script');
+        script.src = '{{ 'megamenu-hover.js' | asset_url }}';
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadMegaMenuHover, { timeout: 1000 });
+      } else {
+        window.addEventListener('load', loadMegaMenuHover);
+      }
+    })();
+  </script>
 {%- endif -%}
 
 {%- if section.blocks.size >= 2 -%}
