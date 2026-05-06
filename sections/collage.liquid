@@ -233,6 +233,25 @@
                           {%- endif -%}
                         </template>
                       </deferred-media>
+                      <noscript>
+                        <div class="modal-video__video template-popup">
+                          <a
+                            href="{%- if block.settings.video_url.type == 'youtube' -%}https://youtu.be/{{ block.settings.video_url.id }}{%- else -%}https://vimeo.com/{{ block.settings.video_url.id }}{%- endif -%}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="modal-video__video-fallback"
+                          >
+                            {%- if block.settings.cover_image != blank -%}
+                              {{ block.settings.cover_image
+                                | image_url: width: 1500
+                                | image_tag: class: 'modal-video__fallback-image', alt: block.settings.description | escape }}
+                            {%- else -%}
+                              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                            {%- endif -%}
+                            <span class="modal-video__fallback-label">Play video</span>
+                          </a>
+                        </div>
+                      </noscript>
                     </div>
                   </div>
                 </modal-dialog>

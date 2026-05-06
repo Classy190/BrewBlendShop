@@ -232,6 +232,17 @@
          {%- if section.settings.image_placeholder  != blank -%}
          {{ section.settings.image_placeholder | image_url: width: 3200 | image_tag: class: 'placeholder-video', widths: '340, 480, 740, 980, 1200, 1400, 1600, 1920, 2560, 3200', sizes:"100vw" }}
          {%- endif -%}
+         <noscript>
+           <div class="iframe-static">
+             <a href="{{ youtube_url }}" target="_blank" rel="noopener noreferrer">
+               {%- if section.settings.image_placeholder != blank -%}
+                 {{ section.settings.image_placeholder | image_url: width: 1500 | image_tag: class: 'placeholder-video', alt: section.settings.video_alt | default: 'Video' }}
+               {%- else -%}
+                 <span>Play video</span>
+               {%- endif -%}
+             </a>
+           </div>
+         </noscript>
       </div>
    {%- elsif section.settings.video != blank and section.settings.video_mobile == blank -%}
       {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
