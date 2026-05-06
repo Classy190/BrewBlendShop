@@ -514,8 +514,17 @@
       "@type": "Organization",
       "@id": "{{ shop.url }}/#organization",
       "name": "{{ shop.name }}",
+      "legalName": "{{ shop.name }}",
       "url": "{{ shop.url }}",
       "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
+      "email": "info@brew-blend.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hauptstrasse 8",
+        "postalCode": "69190",
+        "addressLocality": "Walldorf",
+        "addressCountry": "DE"
+      },
       "logo": {
         "@type": "ImageObject",
         "url": "{% if settings.logo != blank %}{{ settings.logo | image_url: width: 600 }}{% else %}{{ 'Brew-Blend-Kaffee-und-tee-logo.png' | file_img_url: '600x' }}{% endif %}",
