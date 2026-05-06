@@ -617,7 +617,9 @@
           f.parentNode.insertBefore(j, f);
         }
 
-        loadGTM();
+        if (hasConsent()) {
+          loadGTM();
+        }
       })();
     </script>
   </head>
