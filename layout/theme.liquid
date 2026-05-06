@@ -90,9 +90,14 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "{{ shop.url }}/#website",
         "url": "{{ shop.url }}",
         "name": "{{ shop.name }}",
+        "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
         "inLanguage": "de-DE",
+        "publisher": {
+          "@id": "{{ shop.url }}/#organization"
+        },
         "potentialAction": {
           "@type": "SearchAction",
           "target": "{{ shop.url }}/search?q={search_term_string}",
@@ -510,6 +515,7 @@
       "@id": "{{ shop.url }}/#organization",
       "name": "{{ shop.name }}",
       "url": "{{ shop.url }}",
+      "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
       "logo": {
         "@type": "ImageObject",
         "url": "{% if settings.logo != blank %}{{ settings.logo | image_url: width: 600 }}{% else %}{{ 'Brew-Blend-Kaffee-und-tee-logo.png' | file_img_url: '600x' }}{% endif %}",
@@ -517,9 +523,36 @@
         "height": 600
       },
       "sameAs": [
-        {%- if settings.social_facebook_link != blank -%}"{{ settings.social_facebook_link }}"{%- endif -%}
-        {%- if settings.social_instagram_link != blank -%}{%- if settings.social_facebook_link != blank -%},{%- endif -%}"{{ settings.social_instagram_link }}"{%- endif -%}
-        {%- if settings.social_twitter_link != blank -%}{%- if settings.social_facebook_link != blank or settings.social_instagram_link != blank -%},{%- endif -%}"{{ settings.social_twitter_link }}"{%- endif -%}
+        {%- assign firstSocial = true -%}
+        {%- if settings.social_facebook_link != blank -%}
+          "{{ settings.social_facebook_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
+        {%- if settings.social_instagram_link != blank -%}
+          {%- if firstSocial == false -%},{%- endif -%}
+          "{{ settings.social_instagram_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
+        {%- if settings.social_twitter_link != blank -%}
+          {%- if firstSocial == false -%},{%- endif -%}
+          "{{ settings.social_twitter_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
+        {%- if settings.social_pinterest_link != blank -%}
+          {%- if firstSocial == false -%},{%- endif -%}
+          "{{ settings.social_pinterest_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
+        {%- if settings.social_youtube_link != blank -%}
+          {%- if firstSocial == false -%},{%- endif -%}
+          "{{ settings.social_youtube_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
+        {%- if settings.social_tiktok_link != blank -%}
+          {%- if firstSocial == false -%},{%- endif -%}
+          "{{ settings.social_tiktok_link }}"
+          {%- assign firstSocial = false -%}
+        {%- endif -%}
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -537,6 +570,8 @@
       "@id": "{{ shop.url }}/#website",
       "url": "{{ shop.url }}",
       "name": "{{ shop.name }}",
+      "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
+      "inLanguage": "de-DE",
       "publisher": {
         "@id": "{{ shop.url }}/#organization"
       },
