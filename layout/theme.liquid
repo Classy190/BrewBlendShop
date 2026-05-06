@@ -78,7 +78,6 @@
       GTM wird erst bei Interaktion verbunden, um Verbindungs-Slots für LCP zu sparen.
     {%- endcomment -%}
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.shopify.com">
     <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
     
     {%- if settings.favicon != blank -%}
@@ -435,25 +434,49 @@
 
     {%- comment -%} Popup & UI Skripte (CDN) {%- endcomment -%}
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
+      (function() {
+        var jQueryLoaded = false;
+        var popupScriptLoaded = false;
+        var jqUrl = '{{ 'jquery.js' | asset_url }}';
+        var popupUrl = '{{ 'popup.js' | asset_url }}';
+
         function appendPopupScript() {
+          if (popupScriptLoaded) return;
+          popupScriptLoaded = true;
           var popupScript = document.createElement('script');
-          popupScript.src = '{{ 'popup.js' | asset_url }}';
+          popupScript.src = popupUrl;
           popupScript.defer = true;
           document.head.appendChild(popupScript);
         }
 
-        if (window.jQuery) {
-          appendPopupScript();
-        } else {
+        function appendJQuery() {
+          if (window.jQuery || jQueryLoaded) {
+            appendPopupScript();
+            return;
+          }
+          jQueryLoaded = true;
           var jq = document.createElement('script');
-          jq.src = '{{ 'jquery.js' | asset_url }}';
+          jq.src = jqUrl;
           jq.defer = true;
           jq.onload = appendPopupScript;
           jq.onerror = appendPopupScript;
           document.head.appendChild(jq);
         }
-      });
+
+        function init() {
+          if (window.jQuery) {
+            appendPopupScript();
+          } else {
+            appendJQuery();
+          }
+        }
+
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+          init();
+        } else {
+          document.addEventListener('DOMContentLoaded', init);
+        }
+      })();
     </script>
 
     {%- comment -%} 🟢 SEO FIX #4: ERWEITERTE ORGANISATION SCHEMA mit Social Media {%- endcomment -%}
@@ -618,30 +641,6 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
-    {%- comment -%} 
-      ULTRA-PERFORMANCE-LOADER 2026: 
-      Lädt nur jQuery vorab, kein GTM ohne Cookie-Zustimmung.
-    {%- endcomment -%}
-    <script>
-    (function() {
-      const idleTrigger = window.requestIdleCallback || function(cb) { setTimeout(cb, 1); };
-      if (typeof jQuery === 'undefined') {
-        const jq = document.createElement('script');
-        jq.src = "{{ 'jquery.js' | asset_url }}";
-        jq.async = true;
-        document.head.appendChild(jq);
-      }
-      idleTrigger(function() {
-        if (typeof jQuery === 'undefined') {
-          const jq = document.createElement('script');
-          jq.src = "{{ 'jquery.js' | asset_url }}";
-          jq.async = true;
-          document.head.appendChild(jq);
-        }
-      });
-    })();
-    </script>
 
     <script>
       (function() {
