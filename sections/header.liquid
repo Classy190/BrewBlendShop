@@ -17,7 +17,22 @@
 
 {%- if section.blocks.size >= 2 -%}
   {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag: media: 'print', onload: "this.media='all'" }}
-  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+  <script>
+    (function() {
+      var url = '{{ 'swiper-bundle.min.js' | asset_url }}';
+      function loadSwiper() {
+        var script = document.createElement('script');
+        script.src = url;
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadSwiper, { timeout: 1000 });
+      } else {
+        window.addEventListener('load', loadSwiper);
+      }
+    })();
+  </script>
 {%- endif -%}
 
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
