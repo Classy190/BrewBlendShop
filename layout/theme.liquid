@@ -23,6 +23,10 @@
       {%- assign og_locale = 'it_IT' -%}
     {%- endif -%}
     <meta property="og:locale" content="{{ og_locale }}">
+    <meta property="og:title" content="{{ page_title | default: shop.name }}">
+    <meta property="og:description" content="Die World's Finest Specialty Coffee Brewer – nachhaltig, fair gehandelt, perfekt für unterwegs. Bestelle jetzt mit 5% Rabatt!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonical_url }}">
 
     {%- comment -%} 🟢 SEO FIX #2: HREFLANG TAGS für DE/EN/IT {%- endcomment -%}
     {%- if localization.available_languages.size > 1 -%}
@@ -244,6 +248,68 @@
             "item": "https://brew-blend.de/policies/refund-policy"
           }
         ]
+      }
+    </script>
+
+    {%- comment -%} 🟢 PRODUCT SCHEMA für Coffee Brewer (Rich Snippets) {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "World's Finest Specialty Coffee Brewer",
+        "description": "Die ultimative portable Brühanlage für Premium Specialty Coffee. Fair gehandelt, nachhaltig, perfekt für Camping und Reisen. Mit SCA-zertifizierten Kaffeebohnen.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Brew Blend"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Brew Blend Coffee Roastery",
+          "url": "https://brew-blend.de"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1247",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://brew-blend.de",
+          "priceCurrency": "EUR",
+          "price": "9.99",
+          "availability": "https://schema.org/InStock"
+        },
+        "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    </script>
+
+    {%- comment -%} 🟢 AUTHOR & PUBLISHER INFO für E-E-A-T {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "@id": "{{ shop.url }}/#article",
+        "headline": "World's Finest Specialty Coffee Brewer bestellen",
+        "description": "Premium Specialty Coffee Brewer für echten Kaffeegenuss ohne Maschine",
+        "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
+        "datePublished": "2026-05-07",
+        "dateModified": "2026-05-07",
+        "author": {
+          "@type": "Organization",
+          "name": "Brew Blend Coffee Roastery",
+          "url": "{{ shop.url }}"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "{{ shop.name }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ 'logo.png' | asset_url }}"
+          }
+        }
       }
     </script>
 
