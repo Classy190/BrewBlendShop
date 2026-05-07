@@ -135,39 +135,53 @@ window.addEventListener('DOMContentLoaded', () => {
 </style>
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <style>
+    .footer-trust-badges { border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding: 2rem 0; margin-bottom: 2rem; }
+    .footer-trust-badges__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
+    .footer-trust-badges__item strong { color: rgb(16, 176, 48); }
+    .footer-trust-badges__item p { font-size: 0.85rem; margin: 0.5rem 0 0 0; }
+    .footer-reviews { border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding: 2rem 0; margin-bottom: 2rem; }
+    .footer-reviews__title { text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600; }
+    .footer-reviews__carousel { display: flex; overflow-x: auto; gap: 1rem; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .footer-reviews__item { flex: 0 0 calc(100% - 1rem); padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px; min-width: 300px; }
+    .footer-reviews__text { font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5; }
+    .footer-reviews__author { margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48); font-size: 0.9rem; }
+    @media (min-width: 750px) { .footer-reviews__carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); overflow-x: visible; } .footer-reviews__item { flex: auto; min-width: auto; } }
+  </style>
+
   {%- comment -%} Trust Badges & Security Signals Section {%- endcomment -%}
-  <div class="page-width" style="border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding-bottom: 2rem; margin-bottom: 2rem;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center;">
-      <div>
-        <strong style="color: rgb(16, 176, 48);">🏆 Kundenbewertungen</strong>
-        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">⭐⭐⭐⭐⭐ 4.8/5 (1.247 Reviews)</p>
+  <div class="page-width footer-trust-badges">
+    <div class="footer-trust-badges__grid">
+      <div class="footer-trust-badges__item">
+        <strong>🏆 Kundenbewertungen</strong>
+        <p>⭐⭐⭐⭐⭐ 4.8/5 (1.247 Reviews)</p>
       </div>
-      <div>
-        <strong style="color: rgb(16, 176, 48);">💳 Sichere Zahlungen</strong>
-        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">PayPal, SEPA, Visa, Mastercard</p>
+      <div class="footer-trust-badges__item">
+        <strong>💳 Sichere Zahlungen</strong>
+        <p>PayPal, SEPA, Visa, Mastercard</p>
       </div>
-      <div>
-        <strong style="color: rgb(16, 176, 48);">🔒 SSL Sicherheit</strong>
-        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">256-Bit verschlüsselt</p>
+      <div class="footer-trust-badges__item">
+        <strong>🔒 SSL Sicherheit</strong>
+        <p>256-Bit verschlüsselt</p>
       </div>
     </div>
   </div>
 
-  {%- comment -%} Customer Reviews & Testimonials Section {%- endcomment -%}
-  <div class="page-width" style="border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding-bottom: 2rem; margin-bottom: 2rem;">
-    <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem;">Echte Kundenbewertungen</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
-        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Ich habe 3 Bags Brazil Coffee Beans bestellt und bekam zusätzlich 3 kostenlose Coffee Brewer! Lieferung blitzschnell, Qualität hervorragend."</p>
-        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Christine Barry (GB)</p>
+  {%- comment -%} Customer Reviews & Testimonials Section - Optimized Carousel {%- endcomment -%}
+  <div class="page-width footer-reviews">
+    <h3 class="footer-reviews__title">Echte Kundenbewertungen</h3>
+    <div class="footer-reviews__carousel">
+      <div class="footer-reviews__item">
+        <p class="footer-reviews__text">„Ich habe 3 Bags Brazil Coffee Beans bestellt und bekam zusätzlich 3 kostenlose Coffee Brewer! Lieferung blitzschnell, Qualität hervorragend."</p>
+        <p class="footer-reviews__author">⭐⭐⭐⭐⭐ Christine Barry (GB)</p>
       </div>
-      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
-        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Fantastischer Kaffee und das Zubehör ist perfekt zum Mitnehmen. So kommt echter Qualitätskaffee überall hin. Schnellste Lieferung!"</p>
-        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Halise (US)</p>
+      <div class="footer-reviews__item">
+        <p class="footer-reviews__text">„Fantastischer Kaffee und das Zubehör ist perfekt zum Mitnehmen. So kommt echter Qualitätskaffee überall hin. Schnellste Lieferung!"</p>
+        <p class="footer-reviews__author">⭐⭐⭐⭐⭐ Halise (US)</p>
       </div>
-      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
-        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Exzellenter Kaffee, einfach zu zubereiten und absolutes Preis-Leistungs-Verhältnis. Jeden Morgen ein Highlight! Jede Woche eine neue Sorte."</p>
-        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Adrian (GB)</p>
+      <div class="footer-reviews__item">
+        <p class="footer-reviews__text">„Exzellenter Kaffee, einfach zu zubereiten und absolutes Preis-Leistungs-Verhältnis. Jeden Morgen ein Highlight! Jede Woche eine neue Sorte."</p>
+        <p class="footer-reviews__author">⭐⭐⭐⭐⭐ Adrian (GB)</p>
       </div>
     </div>
   </div>
