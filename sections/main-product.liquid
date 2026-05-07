@@ -3604,18 +3604,52 @@
       "review": [
         {
           "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": {{ 'Kunde' | json }}
-          },
-          "datePublished": "{{ 'now' | date: '%Y-%m-%d' }}",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "{{ product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value }}",
-            "bestRating": "{{ product.metafields.reviews.rating.value.scale_max | default: 5 }}",
-            "worstRating": "1"
-          },
-          "reviewBody": {{ 'Basierend auf Kundenbewertungen.' | json }}
+          "author": {"@type": "Person", "name": "Christine Barry"},
+          "datePublished": "2026-05-06",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality and I am enjoying delicious cups of coffee!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Nic G"},
+          "datePublished": "2026-04-30",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "Amazing tasting coffee, excellent service and product offers. Speedy and efficient delivery."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Halise"},
+          "datePublished": "2026-04-26",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "The brewers are such an innovative idea. I camp and travel and truly dislike bad coffee. These allow me to carry my own coffee without having to bring a lot of equipment. This order took about a week to arrive!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Barbara"},
+          "datePublished": "2026-04-23",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "This is really good coffee and the pouches are so useful. They are very convenient when travelling. I use in my camper van and when I'm staying away from home. I just wish the postage was less expensive, but I understand that's the cost from Denmark."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Adrian"},
+          "datePublished": "2026-04-06",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "Excellent coffee easy to brew and something to look forward to in the morning. Not to mention value for money."
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Raviv L"},
+          "datePublished": "2026-03-28",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "Schnelle Lieferung und Lecker. Alles super!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Frank"},
+          "datePublished": "2026-03-19",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+          "reviewBody": "Altid korrekt levering og hurtig service i alle de år jeg har benyttet Brew Company."
         }
       ]
       {%- endif -%}
