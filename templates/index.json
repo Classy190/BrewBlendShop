@@ -247,10 +247,8 @@
         }
       },
       "block_order": [
-        "row_hEVwqL",
         "row_UWeRfi",
-        "row_FPCC6z",
-        "row_EKBVcz"
+        "row_FPCC6z"
       ],
       "name": "Geschenkboxen PR",
       "settings": {
@@ -623,14 +621,12 @@
   },
   "order": [
     "image_banner_6XnFfp",
-    "video_new_AJCwDA",
     "rich_text_LRBHtN",
     "collection_list_LRX9gw",
     "multirow_mBVEUk",
     "image_with_text_gx6Hqb",
     "rich_text_RB6JJw",
     "image_with_text_dKihYy",
-    "image_with_text_KzhtFq",
     "multicolumn_e4LRVb",
     "lumin_cards_Wzw8EN",
     "image_with_text_4HCCKn"
