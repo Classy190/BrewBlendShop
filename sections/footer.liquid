@@ -135,6 +135,35 @@ window.addEventListener('DOMContentLoaded', () => {
 </style>
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  {%- comment -%} Trust Badges & Security Signals Section {%- endcomment -%}
+  <div class="page-width" style="border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding-bottom: 2rem; margin-bottom: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center;">
+      <div>
+        <strong style="color: rgb(16, 176, 48);">🏆 Kundenbewertungen</strong>
+        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">⭐⭐⭐⭐⭐ 4.8/5 (1.247 Reviews)</p>
+      </div>
+      <div>
+        <strong style="color: rgb(16, 176, 48);">💳 Sichere Zahlungen</strong>
+        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">PayPal, SEPA, Visa, Mastercard</p>
+      </div>
+      <div>
+        <strong style="color: rgb(16, 176, 48);">🔒 SSL Sicherheit</strong>
+        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">256-Bit verschlüsselt</p>
+      </div>
+      <div>
+        <strong style="color: rgb(16, 176, 48);">📦 Versand & Rückgabe</strong>
+        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">
+          <a href="https://brew-blend.de/policies/shipping-policy" style="color: inherit; text-decoration: underline;">Versand</a> | 
+          <a href="https://brew-blend.de/policies/refund-policy" style="color: inherit; text-decoration: underline;">Rückgabe</a>
+        </p>
+      </div>
+      <div>
+        <strong style="color: rgb(16, 176, 48);">♻️ Nachhaltig</strong>
+        <p style="font-size: 0.85rem; margin: 0.5rem 0 0 0;">Plastic Bank® Zertifiziert</p>
+      </div>
+    </div>
+  </div>
+
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank

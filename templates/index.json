@@ -18,10 +18,17 @@
             "heading": "Das perfekte Kaffee-Geschenk: So beeindruckst du deine Eltern garantiert",
             "heading_size": "h1"
           }
+        },
+        "text_seo_hero": {
+          "type": "text",
+          "settings": {
+            "text": "Bestelle jetzt den <strong>World's Finest Specialty Coffee Brewer</strong> und erlebe Barista-Qualität ohne Maschine."
+          }
         }
       },
       "block_order": [
-        "heading_typEtE"
+        "heading_typEtE",
+        "text_seo_hero"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
@@ -100,15 +107,15 @@
           "type": "heading",
           "name": "H2",
           "settings": {
-            "heading": "Ideal als Geschenk – für Büro, Camping oder zuhause. Frisch, fair und voller Geschmack.",
+            "heading": "Bestelle jetzt den World's Finest Specialty Coffee Brewer – Dein Kompletter Guide",
             "heading_size": "h2"
           }
         },
         "text_bpqTiw": {
           "type": "text",
-          "name": "untertext",
+          "name": "SEO Intro Text",
           "settings": {
-            "text": "<p>Egal ob du ein exklusives <strong>Kaffee Geschenkset</strong> für einen besonderen Anlass suchst, deine Leidenschaft für <strong>Specialty Coffee</strong> teilst oder die Vielfalt unserer <strong>Bio Tee Geschenksets</strong> entdecken möchtest – bei Brew Blend findest du Qualität, die überzeugt. Unsere kuratierten Kollektionen bieten für jeden Geschmack das passende Highlight.</p>"
+            "text": "<p><strong>Willkommen bei Brew Blend</strong> – Deutschlands Premium-Adresse für <strong>World's Finest Specialty Coffee</strong> und innovative Tea-Brewing-Lösungen. Wenn du auf der Suche nach dem <strong>perfekten Coffee Brewer zum Bestellen</strong> bist, bist du hier genau richtig. Unser <strong>Specialty Coffee Brewer</strong> kombiniert Handwerkskunst, Nachhaltigkeit und unvergleichliche Geschmacksintensität – ohne teure Maschinen, überall dort, wo du gerade bist.</p><p><strong>Was macht unseren Coffee Brewer einzigartig?</strong> Der <strong>World's Finest Specialty Coffee Brewer</strong> ist das Resultat jahrelanger Entwicklung und enger Zusammenarbeit mit weltweiten Kaffee-Experten. Jede Komponente wurde sorgfältig ausgewählt, um dir ein Barista-Erlebnis direkt in deine Hand zu legen – ob im Büro, beim Camping oder zuhause.</p><h3 style=\"font-size: 1.2em; margin-top: 1.5em; margin-bottom: 0.8em;\"><strong>Warum solltest du einen Specialty Coffee Brewer bei Brew Blend bestellen?</strong></h3><ul style=\"margin-left: 1.5em; line-height: 1.8;\"><li><strong>Premium-Qualität ohne Kompromisse:</strong> Alle unsere Specialty-Coffee-Bohnen werden von Hand verlesen und in kleinen Chargen schonend geröstet – für maximale Frische und Aroma.</li><li><strong>Praktische Reisebegleiter:</strong> Der Coffee Brewer ist ultra-leicht, platzsparend und ideal für Camping, Geschäftsreisen oder den Alltag – echte Kaffee-Qualität überall.</li><li><strong>Nachhaltigkeit im Fokus:</strong> Unsere wiederverwendbaren Brewer sparen Plastikmüll, und wir arbeiten nur mit zertifizierten, fair gehandelten Kaffeebauern zusammen.</li><li><strong>Einfache Zubereitung:</strong> Öffne, fülle heißes Wasser auf – fertig! Keine komplizierte Technik, keine Maschinen. Dein World's Finest Specialty Coffee ist in 4–8 Minuten bereit.</li><li><strong>Das perfekte Geschenk:</strong> Ob für Eltern, Partner oder Kaffee-Liebhaber – bestelle ein Kaffee-Geschenkset mit unserem Coffee Brewer und bereite echte Freude.</li></ul><p style=\"margin-top: 1.5em;\">Bei <strong>Brew Blend</strong> kannst du deinen <strong>Specialty Coffee Brewer jetzt bestellen</strong> – mit blitzschnellem Versand in Deutschland und mit voller Zufriedenheitsgarantie. Profitiere vom exklusiven <strong>5% Rabatt-Code \"brewblend5\"</strong> auf deine erste Bestellung.</p>"
           }
         }
       },
@@ -117,14 +124,14 @@
         "text_bpqTiw"
       ],
       "custom_css": [],
-      "name": "Kaffee Lover",
+      "name": "SEO Hero Intro – Coffee Brewer",
       "settings": {
         "desktop_content_position": "center",
-        "content_alignment": "center",
+        "content_alignment": "left",
         "color_scheme": "",
         "full_width": true,
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "collection_list_LRX9gw": {

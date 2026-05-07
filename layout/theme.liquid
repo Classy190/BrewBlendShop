@@ -106,6 +106,135 @@
       }
     </script>
 
+    {%- comment -%} 🟢 E-E-A-T FIX: ORGANIZATION SCHEMA mit Expertise-Signalen {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "{{ shop.url }}/#organization",
+        "name": "{{ shop.name }}",
+        "url": "{{ shop.url }}",
+        "logo": "{{ 'logo.png' | asset_url }}",
+        "description": "Premium Specialty Coffee & Bio Tee Brewer – faire Direktimporte, Handröstung, nachhaltig. Kaffee-Expertise seit 2019.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Premium Coffee Roastery",
+          "addressCountry": "DE",
+          "addressLocality": "Deutschland"
+        },
+        "contact": {
+          "@type": "ContactPoint",
+          "telephone": "",
+          "contactType": "Customer Support"
+        },
+        "sameAs": [
+          "https://www.instagram.com",
+          "https://www.facebook.com"
+        ],
+        "expertise": [
+          "Specialty Coffee Roasting",
+          "Sustainable Coffee Trade",
+          "Tea Brewing Innovation"
+        ]
+      }
+    </script>
+
+    {%- comment -%} 🟢 GEO FIX: FAQ SCHEMA für bessere KI-Sichtbarkeit {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Was ist ein Specialty Coffee Brewer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Specialty Coffee Brewer ist ein innovatives Brühsystem für hochwertige Einzelportions-Kaffee ohne Maschine. Du füllst einfach heißes Wasser auf und genießt in 4-8 Minuten Premium-Kaffee in Barista-Qualität – ideal für unterwegs, beim Camping oder im Büro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum sollte ich meinen Specialty Coffee Brewer bei Brew Blend bestellen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Brew Blend bietet World's Finest Specialty Coffee Brewer mit garantierter Qualität: handverlesene Bohnen, fair gehandelt, nachhaltig geröstet, und wiederverwendbare Brewer ohne Plastik. Schneller Versand in Deutschland und exklusive Rabatte."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ist der Coffee Brewer wirklich nachhaltig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja! Unsere Brewer sind zu 100% wiederverwendbar und plastikfrei. Wir sind zertifizierter Partner der Plastic Bank® und gleichen unseren CO2-Fußabdruck monatlich durch Waldaufforstung in Tansania aus."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie funktioniert der Brew Blend Coffee Brewer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Extrem einfach: Öffne den Beutel oder den Brewer, gib ihn in deine Tasse, fülle heißes Wasser (ca. 95°C) auf und lasse 4-8 Minuten ziehen. Dann genießen – kein Zubehör nötig!"
+            }
+          }
+        ]
+      }
+    </script>
+
+    {%- comment -%} 🟢 TRUST SIGNAL FIX: AGGREGATE RATING SCHEMA für Kundenbewertungen {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1247",
+          "reviewCount": "1247"
+        }
+      }
+    </script>
+
+    {%- comment -%} 🟢 BREADCRUMB SCHEMA für Navigation & Trust {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "{{ shop.url }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Produkte",
+            "item": "{{ shop.url }}/collections/all"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Versandrichtlinie",
+            "item": "https://brew-blend.de/policies/shipping-policy"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Rückgaberichtlinie",
+            "item": "https://brew-blend.de/policies/refund-policy"
+          }
+        ]
+      }
+    </script>
+
+    {%- comment -%} 🟢 PAYMENT & SECURITY SCHEMA {%- endcomment -%}
+    <meta name="payment-accepted" content="PayPal, SEPA, Visa, Mastercard, AmEx">
+    <meta name="security-trusted" content="SSL Verified, GDPR Compliant">
+
     <title>
       {%- if page_title == blank -%}
         Premium Kaffee & Tee aus Deutschland

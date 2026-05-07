@@ -71,7 +71,7 @@
               title="{{ card_collection.featured_image.alt | default: card_collection.title | escape }}"
               height="{{ card_collection.featured_image.height }}"
               width="{{ card_collection.featured_image.width }}"
-              loading="lazy"
+              loading="{% if card_index <= 3 %}eager{% else %}lazy{% endif %}"
               class="motion-reduce"
             >
           </div>
