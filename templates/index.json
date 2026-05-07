@@ -157,12 +157,14 @@
         },
         "featured_collection_9Lzxgr": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "coffee-brewer"
           }
         },
         "featured_collection_3qhHVb": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "teabrewers"
           }
@@ -171,9 +173,7 @@
       "block_order": [
         "featured_collection_WznNrf",
         "featured_collection_NCNUWU",
-        "featured_collection_c6w4f9",
-        "featured_collection_9Lzxgr",
-        "featured_collection_3qhHVb"
+        "featured_collection_c6w4f9"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
@@ -181,7 +181,7 @@
         "heading_size": "h2",
         "image_ratio": "square",
         "image_radius": 0,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "color_scheme": "",
         "subtitle_center": true,
         "show_arrow": true,
