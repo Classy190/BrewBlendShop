@@ -153,6 +153,25 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
+  {%- comment -%} Customer Reviews & Testimonials Section {%- endcomment -%}
+  <div class="page-width" style="border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding-bottom: 2rem; margin-bottom: 2rem;">
+    <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem;">Echte Kundenbewertungen</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
+        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Ich habe 3 Bags Brazil Coffee Beans bestellt und bekam zusätzlich 3 kostenlose Coffee Brewer! Lieferung blitzschnell, Qualität hervorragend."</p>
+        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Christine Barry (GB)</p>
+      </div>
+      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
+        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Fantastischer Kaffee und das Zubehör ist perfekt zum Mitnehmen. So kommt echter Qualitätskaffee überall hin. Schnellste Lieferung!"</p>
+        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Halise (US)</p>
+      </div>
+      <div style="padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px;">
+        <p style="font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5;">„Exzellenter Kaffee, einfach zu zubereiten und absolutes Preis-Leistungs-Verhältnis. Jeden Morgen ein Highlight! Jede Woche eine neue Sorte."</p>
+        <p style="margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48);">⭐⭐⭐⭐⭐ Adrian (GB)</p>
+      </div>
+    </div>
+  </div>
+
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
