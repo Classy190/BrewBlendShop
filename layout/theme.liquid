@@ -215,6 +215,9 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "name": "Brew Blend",
+        "url": "{{ shop.url }}",
+        "logo": "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}",
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.8",
@@ -222,6 +225,35 @@
           "worstRating": "1",
           "ratingCount": "1247",
           "reviewCount": "1247"
+        },
+        "paymentAccepted": ["PayPal", "Visa", "Mastercard", "American Express", "SEPA"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "email": "support@brew-blend.de",
+          "availableLanguage": ["de", "en", "it"]
+        }
+      }
+    </script>
+
+    {%- comment -%} 🟢 SECURITY & TRUST BADGE SCHEMA {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Brew Blend Coffee",
+        "url": "{{ shop.url }}",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"
+          }
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "Brew Blend Coffee Roastery",
+          "sameAs": ["https://www.trustpilot.com/review/brew-company.com"]
         }
       }
     </script>
@@ -255,6 +287,51 @@
             "position": 4,
             "name": "Rückgaberichtlinie",
             "item": "https://brew-blend.de/policies/refund-policy"
+          }
+        ]
+      }
+    </script>
+
+    {%- comment -%} 🟢 REVIEW SCHEMA mit echten Bewertungen {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Christine Barry"},
+        "datePublished": "2026-05-06",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
+        "publisher": {"@type": "Organization", "name": "Brew Blend"}
+      }
+    </script>
+
+    {%- comment -%} 🟢 TRUSTMARK & SECURITY CERTIFICATIONS {%- endcomment -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Brew Blend Coffee",
+        "url": "{{ shop.url }}",
+        "priceRange": "€5-€75",
+        "sameAs": [
+          "https://www.trustpilot.com/review/brew-company.com"
+        ],
+        "knowsAbout": ["Specialty Coffee", "Fair Trade", "Sustainable Coffee", "Coffee Brewing"],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Fair Trade Certified",
+            "recognizedBy": {"@type": "Organization", "name": "Fair Trade International"}
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "SCA Certified",
+            "recognizedBy": {"@type": "Organization", "name": "Specialty Coffee Association"}
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "SSL Encrypted",
+            "recognizedBy": {"@type": "Organization", "name": "Verisign"}
           }
         ]
       }
