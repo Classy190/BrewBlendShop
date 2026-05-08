@@ -55,7 +55,7 @@
       "name": "t:sections.page.presets.name",
       "settings": {
         "page": "{{ collection.metafields.custom.kollektions_seitenbeschreibung.value }}",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "color_scheme": "",
         "padding_top": 12,
         "padding_bottom": 12

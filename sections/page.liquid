@@ -22,6 +22,9 @@
 
   <div class="page-width page-width--narrow section-{{ section.id }}-padding">
     {% assign heading_tag = section.settings.heading_size %}
+    {% if request.page_type == 'collection' and heading_tag == 'h1' %}
+      {% assign heading_tag = 'h2' %}
+    {% endif %}
     {% if heading_tag == 'h0' %}
       <p class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {% else %}
