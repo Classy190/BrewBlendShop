@@ -32,7 +32,7 @@
       {%- endif -%}
     {%- else -%}
       <meta property="og:title" content="{{ page_title | default: shop.name }}">
-      <meta property="og:description" content="Die World's Finest Specialty Coffee Brewer – nachhaltig, fair gehandelt, perfekt für unterwegs. Bestelle jetzt mit 5% Rabatt!">
+      <meta property="og:description" content="Die Worlds Finest Specialty Coffee Brewer – nachhaltig, fair gehandelt und in Deutschland bestellbar. Jetzt online bestellen.">
       <meta property="og:type" content="website">
     {%- endif -%}
     <meta property="og:url" content="{{ canonical_url }}">
@@ -449,7 +449,7 @@
       {%- endif -%}
     </title>
     
-    <meta name="description" content="{{ page_description | default: product.description | default: collection.description | default: article.excerpt | default: shop.description | default: 'Premium Kaffee & Tee aus Deutschland ✓ Coffeebrewer ✓ Nachhaltige Verpackung ✓ Schnelle Lieferung ✓ Jetzt bei Brew Blend bestellen!' | strip_html | escape }}">
+    <meta name="description" content="{{ page_description | default: product.description | default: collection.description | default: article.excerpt | default: shop.description | default: 'Worlds Finest Specialty Coffee Brewer aus Deutschland ✓ Specialty Coffee ✓ Nachhaltig verpackt ✓ Schnelle Lieferung ✓ Jetzt online bestellen!' | strip_html | escape }}">
     <meta name="author" content="{{ shop.name }}">
     <meta name="publisher" content="{{ shop.name }}">
     <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}, kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- else -%}kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- endif -%}">
