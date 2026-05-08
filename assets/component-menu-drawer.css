@@ -27,6 +27,8 @@ menu-drawer > details[open] > summary::before {
 
 .menu-drawer {
   position: absolute;
+  transform: translateX(-100%);
+  visibility: hidden;
   z-index: 3;
   left: 0;
   top: 100%;
@@ -38,13 +40,6 @@ menu-drawer > details[open] > summary::before {
     var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius)
       rgba(var(--color-shadow), var(--drawer-shadow-opacity))
   );
-}
-
-@media screen {
-  .menu-drawer {
-    transform: translateX(-100%);
-    visibility: hidden;
-  }
 }
 
 .js .menu-drawer {
@@ -62,7 +57,6 @@ menu-drawer > details[open] > summary::before {
 details[open].menu-opening > .menu-drawer__submenu {
   transform: translateX(0);
   visibility: visible;
-  }
 }
 
 .js .menu-drawer__navigation .submenu-open {
@@ -180,13 +174,8 @@ details[open].menu-opening > .menu-drawer__submenu {
   left: 0;
   background-color: rgb(var(--color-background));
   z-index: 1;
-}
-
-@media screen {
-  .js .menu-drawer__submenu {
-    transform: translateX(100%);
-    visibility: hidden;
-  }
+  transform: translateX(100%);
+  visibility: hidden;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {
