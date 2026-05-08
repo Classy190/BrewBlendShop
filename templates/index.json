@@ -647,8 +647,7 @@
                                                                  }
                                                 }
                  },
-    "order":  [
-                  "image_banner_6XnFfp",
+    "order": ["image_banner_6XnFfp", "image_with_text_KzhtFq",
                   "rich_text_LRBHtN",
                   "collection_list_LRX9gw",
                   "multirow_mBVEUk",
@@ -660,4 +659,5 @@
                   "image_with_text_4HCCKn"
               ]
 }
+
 

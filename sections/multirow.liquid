@@ -63,10 +63,12 @@
                   (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
                 {%- endcapture -%}
                 {%- assign alt_text = block.settings.image.alt | default: block.settings.caption | escape -%}
+                {%- assign loading = 'lazy' -%}
+                {%- if forloop.first -%}{%- assign loading = 'eager' -%}{%- endif -%}
                 {{
                   block.settings.image
                   | image_url: width: 1500
-                  | image_tag: alt: alt_text, sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500', loading: (forloop.first ? 'eager' : 'lazy')
+                  | image_tag: alt: alt_text, sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500', loading: loading
                 }}
               {%- else -%}
                 {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
