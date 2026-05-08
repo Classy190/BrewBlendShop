@@ -188,6 +188,7 @@
 								| image_url: width: 3600
 								| image_tag:
 									loading: 'lazy',
+									alt: section.settings.collection_image.alt | default: section.settings.collection.title | escape,
 									widths: '640, 880, 1300, 1780, 1800, 2600, 3600'
 							}}
               {%- else -%}
