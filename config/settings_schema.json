@@ -23,8 +23,7 @@
         "type": "text",
         "id": "google_site_verification",
         "label": "Google Site Verification",
-        "info": "Paste the content string from Google Search Console here. Example: abcdef1234567890",
-        "default": ""
+        "info": "Paste the content string from Google Search Console here. Example: abcdef1234567890"
       },
       {
         "type": "text",
