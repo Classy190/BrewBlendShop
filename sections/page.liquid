@@ -21,13 +21,22 @@
   {% endif %}
 
   <div class="page-width page-width--narrow section-{{ section.id }}-padding">
-    <h2 class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {% assign heading_tag = section.settings.heading_size %}
+    {% if heading_tag == 'h0' %}
+      <p class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {% else %}
+      <{{ heading_tag }} class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {% endif %}
       {%- if page_source.title != blank -%}
         {{ page_source.title | escape }}
       {%- else -%}
         {{ 'sections.page.title' | t }}
       {%- endif -%}
-    </h2>
+    {% if heading_tag == 'h0' %}
+      </p>
+    {% else %}
+      </{{ heading_tag }}>
+    {% endif %}
     <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {%- if page_source.content != blank -%}
         {{ page_source.content }}
