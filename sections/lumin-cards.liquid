@@ -101,8 +101,7 @@
               </div>
             {%- elsif block.settings.icon != blank -%}
               <div class="media-container" style="position: relative; padding-top: {{ block.settings.media_ratio }}; overflow: hidden;">
-                {%- assign icon_alt = block.settings.icon.alt | default: block.settings.head | escape -%}
-                {{ block.settings.icon | image_url: width: 1000 | image_tag: loading: 'lazy', alt: icon_alt, class: 'responsive-image', style: 'position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;' }}
+                {{ block.settings.icon | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'responsive-image', style: 'position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;' }}
               </div>
             {%- else -%}
               <div class="placeholder-svg" style="background: #f3f3f3; padding-top: 100%; position: relative;">
