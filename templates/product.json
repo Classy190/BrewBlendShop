@@ -263,7 +263,7 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "Das könnte Sie auch interessieren.",
+        "heading": "Weitere Geschenkideen entdecken",
         "heading_size": "h2",
         "collection_text_alignment": "center",
         "products_to_show": 4,
