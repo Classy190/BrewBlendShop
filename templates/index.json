@@ -1,12 +1,3 @@
-﻿/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
     "sections":  {
                      "image_banner_6XnFfp":  {
@@ -15,14 +6,14 @@
                                                                 "heading_typEtE":  {
                                                                                        "type":  "heading",
                                                                                        "settings":  {
-                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer – Bestelle jetzt dein Barista-Set",
+                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer � Bestelle jetzt dein Barista-Set",
                                                                                                         "heading_size":  "h1"
                                                                                                     }
                                                                                    },
                                                                 "text_seo_hero":  {
                                                                                       "type":  "text",
                                                                                       "settings":  {
-                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer – bestelle jetzt. Barista-Qualität ohne Maschine. In Deutschland. Versand 1-2 Tage."
+                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer � bestelle jetzt. Barista-Qualit�t ohne Maschine. In Deutschland. Versand 1-2 Tage."
                                                                                                    }
                                                                                   }
                                                             },
@@ -52,7 +43,7 @@
                                                                                     "type":  "heading",
                                                                                     "name":  "H1",
                                                                                     "settings":  {
-                                                                                                     "heading_text":  "Brew Blend â€“ Specialty Coffee \u0026 Innovative Tea Solutions",
+                                                                                                     "heading_text":  "Brew Blend – Specialty Coffee \u0026 Innovative Tea Solutions",
                                                                                                      "desktop_width":  1000,
                                                                                                      "mobile_width":  540,
                                                                                                      "desktop_heading_size":  30,
@@ -64,7 +55,7 @@
                                                                                        "type":  "subheading",
                                                                                        "name":  "untertext",
                                                                                        "settings":  {
-                                                                                                        "subheading_text":  "Entdecke bei Brew Blend aromatischen Premium-Kaffee und handverlesenen Tee. Â  Wir liefern nachhaltig gerÃ¶stete Bohnen, praktisches Equipment \u0026 wiederverwendbare Brewer fÃ¼r unterwegs.Â  Profitiere jetzt von 5% Rabatt mit dem Code \u003cstrong\u003ebrewblend5\u003c/strong\u003e und genieÃŸe schnellen Versand in Deutschland."
+                                                                                                        "subheading_text":  "Entdecke bei Brew Blend aromatischen Premium-Kaffee und handverlesenen Tee.   Wir liefern nachhaltig geröstete Bohnen, praktisches Equipment \u0026 wiederverwendbare Brewer für unterwegs.  Profitiere jetzt von 5% Rabatt mit dem Code \u003cstrong\u003ebrewblend5\u003c/strong\u003e und genieße schnellen Versand in Deutschland."
                                                                                                     }
                                                                                    },
                                                              "button_9CQm6n":  {
@@ -107,7 +98,7 @@
                                                                                     "type":  "heading",
                                                                                     "name":  "H2",
                                                                                     "settings":  {
-                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer – Bestelle jetzt online",
+                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer � Bestelle jetzt online",
                                                                                                      "heading_size":  "h2"
                                                                                                  }
                                                                                 },
@@ -115,7 +106,7 @@
                                                                                  "type":  "text",
                                                                                  "name":  "SEO Intro Text",
                                                                                  "settings":  {
-                                                                                                  "text":  "<p><strong>Verfasst von Katharina Müller</strong></p><p>✓ SCAE zertifizierte Specialty-Coffee-Expertin | ✓ 15 Jahre Branche-Erfahrung | ✓ Gründerin von Brew Blend</p><p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p><p>Specialty Coffee online bestellen war nie so einfach.</p>"
+                                                                                                  "text":  "<p><strong>Verfasst von Katharina M�ller</strong></p><p>? SCAE zertifizierte Specialty-Coffee-Expertin | ? 15 Jahre Branche-Erfahrung | ? Gr�nderin von Brew Blend</p><p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualit�t. Handverlesene Bohnen, schonend ger�stet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualit�t ohne Maschine</li><li>�berall brauen: Zuhause, B�ro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100�</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% �ber Weltmarktpreis. Wir pflanzen B�ume in Tansania. Wir sind CO2-neutral.</p><p>Specialty Coffee online bestellen war nie so einfach.</p>"
                                                                                               }
                                                                              }
                                                          },
@@ -126,7 +117,7 @@
                                               "custom_css":  [
 
                                                              ],
-                                              "name":  "SEO Hero Intro â€“ Coffee Brewer",
+                                              "name":  "SEO Hero Intro – Coffee Brewer",
                                               "settings":  {
                                                                "desktop_content_position":  "center",
                                                                "content_alignment":  "left",
@@ -151,7 +142,7 @@
                                                                                   "type":  "text",
                                                                                   "name":  "SEO Zusatztext",
                                                                                   "settings":  {
-                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genießen – zuhause, im Büro oder unterwegs.</p>"
+                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genie�en � zuhause, im B�ro oder unterwegs.</p>"
                                                                                                }
                                                                                  }
                                                          },
@@ -212,7 +203,7 @@
                                                                     ],
                                                     "name":  "t:sections.collection-list.presets.name",
                                                     "settings":  {
-                                                                     "title":  "FÃ¼r Kaffeeliebhaber \u0026 TeegenieÃŸer",
+                                                                     "title":  "Für Kaffeeliebhaber \u0026 Teegenießer",
                                                                      "heading_size":  "h2",
                                                                      "image_ratio":  "square",
                                                                      "image_radius":  0,
@@ -237,8 +228,8 @@
                                                                                "settings":  {
                                                                                                 "image":  "shopify://shop_images/Happy_easter_coffee_lover.png",
                                                                                                 "caption":  "Happy Easter Coffee Lover",
-                                                                                                "heading":  "Besondere Ostergeschenke â€“ Genuss fÃ¼r das Osternest",
-                                                                                                "text":  "\u003cp\u003eÃœberrasche deine Liebsten dieses Jahr mit einem \u003cstrong\u003eKaffee Geschenkset\u003c/strong\u003e, das wirklich begeistert. Unsere exklusiven \u003cstrong\u003eOstergeschenke\u003c/strong\u003e fÃ¼r Kaffeeliebhaber vereinen handverlesenen \u003cstrong\u003eSpecialty Coffee\u003c/strong\u003e mit innovativen BrÃ¼hsystemen â€“ die perfekte ErgÃ¤nzung fÃ¼r jedes hochwertige Osternest.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eDas ideale Geschenk:\u003c/strong\u003e Ob fÃ¼r das gemÃ¼tliche OsterfrÃ¼hstÃ¼ck zu Hause oder als praktisches Set fÃ¼r den nÃ¤chsten \u003cstrong\u003eCamping-Trip\u003c/strong\u003e im FrÃ¼hling. Unsere Coffeebrewer sind \u003cstrong\u003ewiederverwendbar\u003c/strong\u003e, nachhaltig und bieten Barista-QualitÃ¤t an jedem Ort. Verschenke Genussmomente, die lange in Erinnerung bleiben.\u003c/p\u003e\u003cp\u003eEntdecke jetzt unsere kuratierten \u003cstrong\u003eGeschenkkÃ¶rbe\u003c/strong\u003e und finde das passende Highlight fÃ¼r das diesjÃ¤hrige Osterfest.\u003c/p\u003e",
+                                                                                                "heading":  "Besondere Ostergeschenke – Genuss für das Osternest",
+                                                                                                "text":  "\u003cp\u003eÜberrasche deine Liebsten dieses Jahr mit einem \u003cstrong\u003eKaffee Geschenkset\u003c/strong\u003e, das wirklich begeistert. Unsere exklusiven \u003cstrong\u003eOstergeschenke\u003c/strong\u003e für Kaffeeliebhaber vereinen handverlesenen \u003cstrong\u003eSpecialty Coffee\u003c/strong\u003e mit innovativen Brühsystemen – die perfekte Ergänzung für jedes hochwertige Osternest.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eDas ideale Geschenk:\u003c/strong\u003e Ob für das gemütliche Osterfrühstück zu Hause oder als praktisches Set für den nächsten \u003cstrong\u003eCamping-Trip\u003c/strong\u003e im Frühling. Unsere Coffeebrewer sind \u003cstrong\u003ewiederverwendbar\u003c/strong\u003e, nachhaltig und bieten Barista-Qualität an jedem Ort. Verschenke Genussmomente, die lange in Erinnerung bleiben.\u003c/p\u003e\u003cp\u003eEntdecke jetzt unsere kuratierten \u003cstrong\u003eGeschenkkörbe\u003c/strong\u003e und finde das passende Highlight für das diesjährige Osterfest.\u003c/p\u003e",
                                                                                                 "button_label":  "ZUM OSTER-SET",
                                                                                                 "button_link":  "shopify://products/happy-easter-coffee-gift-box"
                                                                                             }
@@ -250,7 +241,7 @@
                                                                                                 "image":  "shopify://shop_images/3Pcs__WBC-_Compressify.io_3331c2f9-bc07-4699-b384-c95f0f80cdf0.png",
                                                                                                 "caption":  "The Brew Company Coffeebrewer",
                                                                                                 "heading":  "WORLD\u0027S FINEST SPECIALTY COFFEE",
-                                                                                                "text":  "\u003cp\u003eBegeistern Sie den Kaffeeliebhaber in Ihrem Leben mit einer wunderschÃ¶n zusammengestellten 3-teiligen Coffeebrewer-Geschenkbox, die drei einzigartige Kaffee-Herkunftsorte und ein innovatives, geschmacksintensives SpezialitÃ¤tenkaffee-Erlebnis bietet. Kompakt, elegant und vielseitig â€“ dieses durchdachte Set ist das perfekte Geschenk fÃ¼r Geburtstage, Feiertage, Einweihungsfeiern, als DankeschÃ¶n oder einfach, um die kleinen Momente des Alltags zu feiern.\u003c/p\u003e",
+                                                                                                "text":  "\u003cp\u003eBegeistern Sie den Kaffeeliebhaber in Ihrem Leben mit einer wunderschön zusammengestellten 3-teiligen Coffeebrewer-Geschenkbox, die drei einzigartige Kaffee-Herkunftsorte und ein innovatives, geschmacksintensives Spezialitätenkaffee-Erlebnis bietet. Kompakt, elegant und vielseitig – dieses durchdachte Set ist das perfekte Geschenk für Geburtstage, Feiertage, Einweihungsfeiern, als Dankeschön oder einfach, um die kleinen Momente des Alltags zu feiern.\u003c/p\u003e",
                                                                                                 "button_label":  "WORLD\u0027S FINEST COFFEE",
                                                                                                 "button_link":  "https://brew-blend.de/products/worlds-finest-specialty-coffee-3-pcs-gift-box"
                                                                                             }
@@ -261,8 +252,8 @@
                                                                                "settings":  {
                                                                                                 "image":  "shopify://shop_images/25pcs_Outdoor_open_shorter_box_2021_8a73d05a-0f01-4c49-b8c9-a0b21bdf3d5b.jpg",
                                                                                                 "caption":  "OUTDOOR KAFFEE SET",
-                                                                                                "heading":  "Camping Coffee â€“ Dein Barista-Erlebnis fÃ¼r unterwegs",
-                                                                                                "text":  "\u003cp\u003eErlebe mit \u003cstrong\u003eBrew Blend\u003c/strong\u003e die ultimative \u003cstrong\u003eOutdoor Coffee Experience\u003c/strong\u003e. Unsere Coffeebrewer sind die perfekte LÃ¶sung fÃ¼r alle, die beim \u003cstrong\u003eCamping\u003c/strong\u003e, Wandern oder auf Reisen nicht auf frisch gebrÃ¼hten \u003cstrong\u003eSpecialty Coffee\u003c/strong\u003e verzichten wollen.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eDeine Vorteile:\u003c/strong\u003e Kein schweres Equipment nÃ¶tig â€“ einfach heiÃŸes Wasser aufgieÃŸen und direkt im Beutel brÃ¼hen. Unsere Brewer sind extrem leicht, platzsparend und \u003cstrong\u003ewiederverwendbar\u003c/strong\u003e. Das ideale \u003cstrong\u003eCamping Kaffee Set\u003c/strong\u003e fÃ¼r dein nÃ¤chstes Abenteuer in der Natur.\u003c/p\u003e\u003cp\u003eEntdecke jetzt unsere Auswahl und mach deine nÃ¤chste Tour zum echten Genusserlebnis mit hochwertigem \u003cstrong\u003eKaffee\u003c/strong\u003e in Barista-QualitÃ¤t.\u003c/p\u003e",
+                                                                                                "heading":  "Camping Coffee – Dein Barista-Erlebnis für unterwegs",
+                                                                                                "text":  "\u003cp\u003eErlebe mit \u003cstrong\u003eBrew Blend\u003c/strong\u003e die ultimative \u003cstrong\u003eOutdoor Coffee Experience\u003c/strong\u003e. Unsere Coffeebrewer sind die perfekte Lösung für alle, die beim \u003cstrong\u003eCamping\u003c/strong\u003e, Wandern oder auf Reisen nicht auf frisch gebrühten \u003cstrong\u003eSpecialty Coffee\u003c/strong\u003e verzichten wollen.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eDeine Vorteile:\u003c/strong\u003e Kein schweres Equipment nötig – einfach heißes Wasser aufgießen und direkt im Beutel brühen. Unsere Brewer sind extrem leicht, platzsparend und \u003cstrong\u003ewiederverwendbar\u003c/strong\u003e. Das ideale \u003cstrong\u003eCamping Kaffee Set\u003c/strong\u003e für dein nächstes Abenteuer in der Natur.\u003c/p\u003e\u003cp\u003eEntdecke jetzt unsere Auswahl und mach deine nächste Tour zum echten Genusserlebnis mit hochwertigem \u003cstrong\u003eKaffee\u003c/strong\u003e in Barista-Qualität.\u003c/p\u003e",
                                                                                                 "button_label":  "outdoor Kaffeekorb entdecken",
                                                                                                 "button_link":  "shopify://products/outdoor-specialty-coffee-gift-box-camping-geschenkset"
                                                                                             }
@@ -274,8 +265,8 @@
                                                                                "settings":  {
                                                                                                 "image":  "shopify://shop_images/Valentine_s_Day_Specialty_Coffee_Gift_Box.png",
                                                                                                 "caption":  "DAS PERFEKTE KAFFEE GESCHENKSET ZUM VALENTINSTAG",
-                                                                                                "heading":  "Kaffee-Geschenkset zum Valentinstag: Die Valentineâ€™s Coffeebrewer Box",
-                                                                                                "text":  "\u003cp\u003eÃœberrasche deine Liebsten mit exklusivem Specialty Coffee. Unser Set kombiniert erstklassigen Geschmack mit einfachem Brewing â€“ das perfekte Geschenk fÃ¼r Kaffeeliebhaber.\u003c/p\u003e",
+                                                                                                "heading":  "Kaffee-Geschenkset zum Valentinstag: Die Valentine’s Coffeebrewer Box",
+                                                                                                "text":  "\u003cp\u003eÜberrasche deine Liebsten mit exklusivem Specialty Coffee. Unser Set kombiniert erstklassigen Geschmack mit einfachem Brewing – das perfekte Geschenk für Kaffeeliebhaber.\u003c/p\u003e",
                                                                                                 "button_label":  "Jetzt Freude schenken",
                                                                                                 "button_link":  "shopify://products/valentines-day-specialty-coffee-gift-box-25-stueck-valentinstag"
                                                                                             }
@@ -315,7 +306,7 @@
                                                                    "text_CtePej":  {
                                                                                        "type":  "text",
                                                                                        "settings":  {
-                                                                                                        "text":  "\u003cp\u003eUnser \u003cstrong\u003eEspresso House Blend\u003c/strong\u003e vereint den raffinierten Charme Brasiliens mit der kÃ¼hnen IntensitÃ¤t Ugandas zu einer harmonischen Komposition. Diese exklusiven \u003cstrong\u003eSpecialty Coffee Beans\u003c/strong\u003e bieten ein Geschmackserlebnis aus cremiger Vollmilchschokolade, feiner Praline und einer dezenten Fruchtnote von Rosinen.\u003c/p\u003e\u003ch3\u003eHandwerkskunst \u0026 Herkunft\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eVollmundiges Profil:\u003c/strong\u003e Die VarietÃ¤ten Bourbon und Mundo Novo verleihen diesem Espresso einen krÃ¤ftigen KÃ¶rper, wÃ¤hrend die natÃ¼rliche Aufbereitung seine sanfte SÃ¼ÃŸe unterstreicht.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSchonende TrommelrÃ¶stung:\u003c/strong\u003e Durch RÃ¶stung in kleinen Chargen werden SÃ¤urespitzen gezielt reduziert â€“ fÃ¼r einen besonders magenfreundlichen Genuss in Barista-QualitÃ¤t.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFrischegarantie:\u003c/strong\u003e Verpackt im speziellen Ventilbeutel zum Schutz vor Oxidation, damit Aroma und Frische von \u003cstrong\u003eBrew Blend\u003c/strong\u003e optimal bei dir ankommen.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eOb fÃ¼r den \u003cstrong\u003eSiebtrÃ¤ger\u003c/strong\u003e, den \u003cstrong\u003eKaffee-Vollautomaten\u003c/strong\u003e oder manuelle Filter â€“ dieser Blend ist eine Hommage an die Kunstfertigkeit zweier einzigartiger Kaffeelandschaften. Dank direktem Bezug der Rohkaffees garantieren wir hÃ¶chste Transparenz und QualitÃ¤t in jeder Tasse.\u003c/p\u003e\u003ch3\u003eProduktdetails:\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eInhalt:\u003c/strong\u003e 333g ganze Bohnen (ca. 22â€“33 Portionen)\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eHerkunft:\u003c/strong\u003e Brasilien \u0026 Uganda (AnbauhÃ¶he: 900-1500 m.a.s.l.)\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eVarietÃ¤ten:\u003c/strong\u003e Bourbon, Mundo Novo, Acaia, IAC\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eGeschmacksprofil:\u003c/strong\u003e Vollmilchschokolade, Praline, Rosine, Kirsche\u003c/li\u003e\u003c/ul\u003e",
+                                                                                                        "text":  "\u003cp\u003eUnser \u003cstrong\u003eEspresso House Blend\u003c/strong\u003e vereint den raffinierten Charme Brasiliens mit der kühnen Intensität Ugandas zu einer harmonischen Komposition. Diese exklusiven \u003cstrong\u003eSpecialty Coffee Beans\u003c/strong\u003e bieten ein Geschmackserlebnis aus cremiger Vollmilchschokolade, feiner Praline und einer dezenten Fruchtnote von Rosinen.\u003c/p\u003e\u003ch3\u003eHandwerkskunst \u0026 Herkunft\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eVollmundiges Profil:\u003c/strong\u003e Die Varietäten Bourbon und Mundo Novo verleihen diesem Espresso einen kräftigen Körper, während die natürliche Aufbereitung seine sanfte Süße unterstreicht.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSchonende Trommelröstung:\u003c/strong\u003e Durch Röstung in kleinen Chargen werden Säurespitzen gezielt reduziert – für einen besonders magenfreundlichen Genuss in Barista-Qualität.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFrischegarantie:\u003c/strong\u003e Verpackt im speziellen Ventilbeutel zum Schutz vor Oxidation, damit Aroma und Frische von \u003cstrong\u003eBrew Blend\u003c/strong\u003e optimal bei dir ankommen.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eOb für den \u003cstrong\u003eSiebträger\u003c/strong\u003e, den \u003cstrong\u003eKaffee-Vollautomaten\u003c/strong\u003e oder manuelle Filter – dieser Blend ist eine Hommage an die Kunstfertigkeit zweier einzigartiger Kaffeelandschaften. Dank direktem Bezug der Rohkaffees garantieren wir höchste Transparenz und Qualität in jeder Tasse.\u003c/p\u003e\u003ch3\u003eProduktdetails:\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eInhalt:\u003c/strong\u003e 333g ganze Bohnen (ca. 22–33 Portionen)\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eHerkunft:\u003c/strong\u003e Brasilien \u0026 Uganda (Anbauhöhe: 900-1500 m.a.s.l.)\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eVarietäten:\u003c/strong\u003e Bourbon, Mundo Novo, Acaia, IAC\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eGeschmacksprofil:\u003c/strong\u003e Vollmilchschokolade, Praline, Rosine, Kirsche\u003c/li\u003e\u003c/ul\u003e",
                                                                                                         "text_style":  "body"
                                                                                                     }
                                                                                    }
@@ -346,16 +337,16 @@
                                               "blocks":  {
                                                              "heading_ztBKWr":  {
                                                                                     "type":  "heading",
-                                                                                    "name":  "Kaffeebohnen aus aller Welt â€“ Herkunft, die man schmeckt",
+                                                                                    "name":  "Kaffeebohnen aus aller Welt – Herkunft, die man schmeckt",
                                                                                     "settings":  {
-                                                                                                     "heading":  "Kaffeebohnen aus aller Welt â€“ Specialty Coffee RÃ¶stungen",
+                                                                                                     "heading":  "Kaffeebohnen aus aller Welt – Specialty Coffee Röstungen",
                                                                                                      "heading_size":  "h2"
                                                                                                  }
                                                                                 },
                                                              "text_AKQHBw":  {
                                                                                  "type":  "text",
                                                                                  "settings":  {
-                                                                                                  "text":  "\u003cp\u003eUnsere \u003cstrong\u003eKaffeebohnen\u003c/strong\u003e werden aus den renommiertesten Anbauregionen weltweit bezogen und in handwerklichen kleinen Chargen schonend gerÃ¶stet. Durch dieses spezielle Verfahren garantieren wir die Entfaltung der natÃ¼rlichen Charakteristika jeder Bohne, von fruchtigen Nuancen bis hin zu tiefen, schokoladigen Akzenten. Wir setzen konsequent auf nachhaltig angebaute Rohkaffees und faire Handelsstrukturen direkt mit den Farmen vor Ort.\u003c/p\u003e\u003ch3\u003eDie Brew Blend RÃ¶st-Expertise\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eIndividuelle RÃ¶stprofile:\u003c/strong\u003e Jede Sorte erhÃ¤lt bei \u003cstrong\u003eBrew Blend\u003c/strong\u003e ein eigenes Profil in der Trommel, um ein ausgewogenes Geschmacksbild ohne unangenehme Bitterstoffe zu erzielen.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eVielseitige Extraktion:\u003c/strong\u003e Optimale Ergebnisse fÃ¼r jede Methode â€“ ob als \u003cstrong\u003eEspresso aus dem Vollautomaten\u003c/strong\u003e, im klassischen Filter oder in der French Press.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eAromaschutz:\u003c/strong\u003e Frisch verpackt in speziellen Ventilbeuteln bleibt der Schutz der Ã¤therischen KaffeeÃ¶le und das volle Aroma Ã¼ber lange Zeit gewahrt.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eBei \u003cstrong\u003eBrew Blend\u003c/strong\u003e erwerben Sie nicht nur Kaffee, sondern eine transparente \u003cstrong\u003ePremium Coffee Experience\u003c/strong\u003e. Wir verzichten auf Kompromisse und setzen auf die reine QualitÃ¤t des Rohstoffs, die bei jeder Zubereitung unmittelbar zur Geltung kommt.\u003c/p\u003e"
+                                                                                                  "text":  "\u003cp\u003eUnsere \u003cstrong\u003eKaffeebohnen\u003c/strong\u003e werden aus den renommiertesten Anbauregionen weltweit bezogen und in handwerklichen kleinen Chargen schonend geröstet. Durch dieses spezielle Verfahren garantieren wir die Entfaltung der natürlichen Charakteristika jeder Bohne, von fruchtigen Nuancen bis hin zu tiefen, schokoladigen Akzenten. Wir setzen konsequent auf nachhaltig angebaute Rohkaffees und faire Handelsstrukturen direkt mit den Farmen vor Ort.\u003c/p\u003e\u003ch3\u003eDie Brew Blend Röst-Expertise\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eIndividuelle Röstprofile:\u003c/strong\u003e Jede Sorte erhält bei \u003cstrong\u003eBrew Blend\u003c/strong\u003e ein eigenes Profil in der Trommel, um ein ausgewogenes Geschmacksbild ohne unangenehme Bitterstoffe zu erzielen.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eVielseitige Extraktion:\u003c/strong\u003e Optimale Ergebnisse für jede Methode – ob als \u003cstrong\u003eEspresso aus dem Vollautomaten\u003c/strong\u003e, im klassischen Filter oder in der French Press.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eAromaschutz:\u003c/strong\u003e Frisch verpackt in speziellen Ventilbeuteln bleibt der Schutz der ätherischen Kaffeeöle und das volle Aroma über lange Zeit gewahrt.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eBei \u003cstrong\u003eBrew Blend\u003c/strong\u003e erwerben Sie nicht nur Kaffee, sondern eine transparente \u003cstrong\u003ePremium Coffee Experience\u003c/strong\u003e. Wir verzichten auf Kompromisse und setzen auf die reine Qualität des Rohstoffs, die bei jeder Zubereitung unmittelbar zur Geltung kommt.\u003c/p\u003e"
                                                                                               }
                                                                              }
                                                          },
@@ -364,7 +355,7 @@
                                                                   "text_AKQHBw"
                                                               ],
                                               "custom_css":  [
-                                                                 "/* Erzwingt die volle Breite fÃ¼r den Inhaltsbereich dieses Abschnitts */.rich-text__wrapper,.rich-text__blocks,.collection-hero__description {max-width: 90% !important; width: 90% !important; margin: 0 !important;}"
+                                                                 ".rich-text__wrapper,.rich-text__blocks,.collection-hero__description {max-width: 90% !important; width: 90% !important; margin: 0 !important;}"
                                                              ],
                                               "name":  "Kaffeebohnen aus aller Welt",
                                               "settings":  {
@@ -382,14 +373,14 @@
                                                                    "heading_HVUppc":  {
                                                                                           "type":  "heading",
                                                                                           "settings":  {
-                                                                                                           "heading":  "\u003cstrong\u003eTea brewer â€“ praktischer Teegenuss fÃ¼r unterwegs\u003c/strong\u003e",
+                                                                                                           "heading":  "\u003cstrong\u003eTea brewer – praktischer Teegenuss für unterwegs\u003c/strong\u003e",
                                                                                                            "heading_size":  "h2"
                                                                                                        }
                                                                                       },
                                                                    "text_R4nQwF":  {
                                                                                        "type":  "text",
                                                                                        "settings":  {
-                                                                                                        "text":  "\u003cp\u003eOb unterwegs im BÃ¼ro oder auf Reisen â€“ mit unseren clever portionierten Tee-Zipper-Beuteln hast du deinen Lieblingstee immer dabei. Schnell zubereitet, einfach im Handling und voller Geschmack.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eSo einfach gehtâ€™s:\u003c/strong\u003e\u003cbr/\u003e\u003cbr/\u003eâœ“ Zipper Ã¶ffnen\u003cbr/\u003e\u003cbr/\u003eâœ“ Deckel abziehen\u003cbr/\u003e\u003cbr/\u003eâœ“ Mit heiÃŸem Wasser befÃ¼llen\u003cbr/\u003e\u003cbr/\u003eâœ“ 4â€“8 Minuten ziehen lassen, je nach gewÃ¼nschter IntensitÃ¤t\u003cbr/\u003e\u003cbr/\u003eâœ“ Direkt genieÃŸen\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eTipp fÃ¼r noch mehr Genuss:\u003c/strong\u003e\u003cbr/\u003e\u003cbr/\u003eNachdem du den Tee einmal aufgebrÃ¼ht und ausgeschenkt hast, kannst du \u003cstrong\u003eeinfach wieder heiÃŸes Wasser nachgieÃŸen\u003c/strong\u003e, um \u003cstrong\u003eweitere GlÃ¤ser Tee\u003c/strong\u003e zuzubereiten. Je nach StÃ¤rke des Tees sind \u003cstrong\u003emindestens 2 bis 5 GlÃ¤ser mÃ¶glich\u003c/strong\u003e â€“ probiere es aus und finde die IntensitÃ¤t, die dir am besten schmeckt.\u003c/p\u003e",
+                                                                                                        "text":  "\u003cp\u003eOb unterwegs im Büro oder auf Reisen – mit unseren clever portionierten Tee-Zipper-Beuteln hast du deinen Lieblingstee immer dabei. Schnell zubereitet, einfach im Handling und voller Geschmack.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eSo einfach geht’s:\u003c/strong\u003e\u003cbr/\u003e\u003cbr/\u003e✓ Zipper öffnen\u003cbr/\u003e\u003cbr/\u003e✓ Deckel abziehen\u003cbr/\u003e\u003cbr/\u003e✓ Mit heißem Wasser befüllen\u003cbr/\u003e\u003cbr/\u003e✓ 4–8 Minuten ziehen lassen, je nach gewünschter Intensität\u003cbr/\u003e\u003cbr/\u003e✓ Direkt genießen\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eTipp für noch mehr Genuss:\u003c/strong\u003e\u003cbr/\u003e\u003cbr/\u003eNachdem du den Tee einmal aufgebrüht und ausgeschenkt hast, kannst du \u003cstrong\u003eeinfach wieder heißes Wasser nachgießen\u003c/strong\u003e, um \u003cstrong\u003eweitere Gläser Tee\u003c/strong\u003e zuzubereiten. Je nach Stärke des Tees sind \u003cstrong\u003emindestens 2 bis 5 Gläser möglich\u003c/strong\u003e – probiere es aus und finde die Intensität, die dir am besten schmeckt.\u003c/p\u003e",
                                                                                                         "text_style":  "body"
                                                                                                     }
                                                                                    },
@@ -430,14 +421,14 @@
                                                                    "heading_X6kC8j":  {
                                                                                           "type":  "heading",
                                                                                           "settings":  {
-                                                                                                           "heading":  "Fruit Tea Set \u003cstrong\u003eâ€“ \u003c/strong\u003eTeabrewer",
+                                                                                                           "heading":  "Fruit Tea Set \u003cstrong\u003e– \u003c/strong\u003eTeabrewer",
                                                                                                            "heading_size":  "h2"
                                                                                                        }
                                                                                       },
                                                                    "text_eF6kae":  {
                                                                                        "type":  "text",
                                                                                        "settings":  {
-                                                                                                        "text":  "\u003cp\u003eVergiss herkÃ¶mmliche Teebeutel. Unsere \u003cstrong\u003eTea-Brewer\u003c/strong\u003e bieten dir die QualitÃ¤t von losem Tee, perfekt portioniert. Probiere Bestseller wie \u003cstrong\u003eBlueberry Mint\u003c/strong\u003e oder \u003cstrong\u003eCranberry Grenadine\u003c/strong\u003e â€“ vegan, koffeinfrei und voller Geschmack.\u003c/p\u003e",
+                                                                                                        "text":  "\u003cp\u003eVergiss herkömmliche Teebeutel. Unsere \u003cstrong\u003eTea-Brewer\u003c/strong\u003e bieten dir die Qualität von losem Tee, perfekt portioniert. Probiere Bestseller wie \u003cstrong\u003eBlueberry Mint\u003c/strong\u003e oder \u003cstrong\u003eCranberry Grenadine\u003c/strong\u003e – vegan, koffeinfrei und voller Geschmack.\u003c/p\u003e",
                                                                                                         "text_style":  "subtitle"
                                                                                                     }
                                                                                    },
@@ -480,8 +471,8 @@
                                                                                      "type":  "column",
                                                                                      "settings":  {
                                                                                                       "image":  "shopify://shop_images/H_chste_Qualit_t.png",
-                                                                                                      "title":  "HÃ¶chste QualitÃ¤t",
-                                                                                                      "text":  "\u003cp\u003eErlebe handverlesenen Premium-Tee aus den besten Anbauregionen der Welt. Unsere TeeblÃ¤tter werden schonend verarbeitet, um ein Aroma zu garantieren, das bis zu 16-mal intensiver ist als bei herkÃ¶mmlichen Teebeuteln.\u003c/p\u003e",
+                                                                                                      "title":  "Höchste Qualität",
+                                                                                                      "text":  "\u003cp\u003eErlebe handverlesenen Premium-Tee aus den besten Anbauregionen der Welt. Unsere Teeblätter werden schonend verarbeitet, um ein Aroma zu garantieren, das bis zu 16-mal intensiver ist als bei herkömmlichen Teebeuteln.\u003c/p\u003e",
                                                                                                       "link_label":  "",
                                                                                                       "link":  ""
                                                                                                   }
@@ -491,7 +482,7 @@
                                                                                      "settings":  {
                                                                                                       "image":  "shopify://shop_images/Plastikneutral.png",
                                                                                                       "title":  "Plastikneutral",
-                                                                                                      "text":  "\u003cp\u003eAls zertifizierter Partner der Plastic BankÂ® kompensieren wir unseren Kunststoff-FuÃŸabdruck vollstÃ¤ndig. FÃ¼r jedes verkaufte Produkt wird die entsprechende Menge an Plastik aus der Umwelt entfernt und recycelt.\u003c/p\u003e",
+                                                                                                      "text":  "\u003cp\u003eAls zertifizierter Partner der Plastic Bank® kompensieren wir unseren Kunststoff-Fußabdruck vollständig. Für jedes verkaufte Produkt wird die entsprechende Menge an Plastik aus der Umwelt entfernt und recycelt.\u003c/p\u003e",
                                                                                                       "link_label":  "",
                                                                                                       "link":  ""
                                                                                                   }
@@ -501,7 +492,7 @@
                                                                                      "settings":  {
                                                                                                       "image":  "shopify://shop_images/CO2_Neutral.png",
                                                                                                       "title":  "CO2 Neutral",
-                                                                                                      "text":  "\u003cp\u003eSeit Juni 2019 gleichen wir monatlich 10 Tonnen Kohlenstoff aus und pflanzen BÃ¤ume in Tansania. Unsere Produktion nutzt zudem zu 100 % Windenergie, um einen klimaneutralen Genuss fÃ¼r unsere Kunden sicherzustellen.\u003c/p\u003e",
+                                                                                                      "text":  "\u003cp\u003eSeit Juni 2019 gleichen wir monatlich 10 Tonnen Kohlenstoff aus und pflanzen Bäume in Tansania. Unsere Produktion nutzt zudem zu 100 % Windenergie, um einen klimaneutralen Genuss für unsere Kunden sicherzustellen.\u003c/p\u003e",
                                                                                                       "link_label":  "",
                                                                                                       "link":  ""
                                                                                                   }
@@ -511,7 +502,7 @@
                                                                                      "settings":  {
                                                                                                       "image":  "shopify://shop_images/Wiederverwendbar.png",
                                                                                                       "title":  "Wiederverwendbar",
-                                                                                                      "text":  "\u003cp\u003eUnsere innovativen Teebrewer sind fÃ¼r die Mehrfachnutzung konzipiert: Leere den Filter einfach aus, spÃ¼le ihn kurz aus und fÃ¼lle ihn mit deinem Lieblingstee neu auf â€“ eine nachhaltige LÃ¶sung fÃ¼r umweltbewussten Teegenuss.\u003c/p\u003e",
+                                                                                                      "text":  "\u003cp\u003eUnsere innovativen Teebrewer sind für die Mehrfachnutzung konzipiert: Leere den Filter einfach aus, spüle ihn kurz aus und fülle ihn mit deinem Lieblingstee neu auf – eine nachhaltige Lösung für umweltbewussten Teegenuss.\u003c/p\u003e",
                                                                                                       "link_label":  "",
                                                                                                       "link":  ""
                                                                                                   }
@@ -528,7 +519,7 @@
                                                                ],
                                                 "name":  "Nachhaltiger Genuss: Unser Premium Kaffee \u0026 Tee Sortiment",
                                                 "settings":  {
-                                                                 "title":  "Premium-QualitÃ¤t \u0026 Umweltschutz",
+                                                                 "title":  "Premium-Qualität \u0026 Umweltschutz",
                                                                  "heading_size":  "h2",
                                                                  "heading_center":  "center",
                                                                  "image_width":  "sixth",
@@ -629,7 +620,7 @@
                                                                    "text_UVwaQd":  {
                                                                                        "type":  "text",
                                                                                        "settings":  {
-                                                                                                        "text":  "\u003cp\u003eIn Kombination mit den anderen Zutaten kÃ¶nnen Sie zu Hause, in Ihrer eigenen KÃ¼che, fantastische und kÃ¶stliche Mocktails zaubern. Das dauert nicht lÃ¤nger als 5â€“10 Minuten und erfordert weder besondere Barkeeper-Kenntnisse noch komplizierte Rezepte.\u003c/p\u003e",
+                                                                                                        "text":  "\u003cp\u003eIn Kombination mit den anderen Zutaten können Sie zu Hause, in Ihrer eigenen Küche, fantastische und köstliche Mocktails zaubern. Das dauert nicht länger als 5–10 Minuten und erfordert weder besondere Barkeeper-Kenntnisse noch komplizierte Rezepte.\u003c/p\u003e",
                                                                                                         "text_style":  "body"
                                                                                                     }
                                                                                    }
@@ -669,3 +660,4 @@
                   "image_with_text_4HCCKn"
               ]
 }
+
