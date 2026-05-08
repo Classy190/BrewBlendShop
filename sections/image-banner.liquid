@@ -70,6 +70,7 @@
           assign sizes = full_width
         endif
       -%}
+      {%- assign image_alt = section.settings.image.alt | default: 'Best Mom Best Dad Coffee Brewer Banner' | escape -%}
       {{
   section.settings.image
   | image_url: width: 2000
@@ -77,7 +78,7 @@
     loading: 'eager',
     fetchpriority: 'high',
     decoding: 'async',
-    alt: section.settings.image.alt | default: 'Best Mom Best Dad Coffee Brewer Banner' | escape,
+    alt: image_alt,
     width: section.settings.image.width,
     height: image_height,
     class: image_class,

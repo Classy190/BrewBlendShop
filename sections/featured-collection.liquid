@@ -183,14 +183,8 @@
            <div class="card-wrapper product-card-wrapper">
           <div class="col-image" style="--focal-alignment: center;">
             {% if section.settings.collection_image != blank %}
-                {{
-								section.settings.collection_image
-								| image_url: width: 3600
-								| image_tag:
-									loading: 'lazy',
-									alt: section.settings.collection_image.alt | default: section.settings.collection.title | escape,
-									widths: '640, 880, 1300, 1780, 1800, 2600, 3600'
-							}}
+                {% assign collection_image_alt = section.settings.collection_image.alt | default: section.settings.collection.title | escape %}
+                {{ section.settings.collection_image | image_url: width: 3600 | image_tag: loading: 'lazy', alt: collection_image_alt, widths: '640, 880, 1300, 1780, 1800, 2600, 3600' }}
               {%- else -%}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
               {%- endif -%}</div>
