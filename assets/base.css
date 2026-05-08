@@ -109,22 +109,25 @@
 
 /* base */
 
+/* FIX: .no-js elements are FALLBACK for no-JS browsers - should be VISIBLE for crawlers! */
 .no-js:not(html) {
-  display: none !important;
+  display: block !important;
 }
 
 html.no-js .no-js:not(html) {
   display: block !important;
 }
 
+/* FIX: .no-js-inline should show as inline when needed */
 .no-js-inline {
-  display: none !important;
+  display: inline-block !important;
 }
 
 html.no-js .no-js-inline {
   display: inline-block !important;
 }
 
+/* FIX: Only hide .no-js-hidden if HTML actually has .no-js class (old browser) */
 html.no-js .no-js-hidden {
   display: none !important;
 }
