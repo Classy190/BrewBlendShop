@@ -6,14 +6,14 @@
                                                                 "heading_typEtE":  {
                                                                                        "type":  "heading",
                                                                                        "settings":  {
-                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer � Bestelle jetzt dein Barista-Set",
+                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer \u25ca Bestelle jetzt dein Barista-Set",
                                                                                                         "heading_size":  "h1"
                                                                                                     }
                                                                                    },
                                                                 "text_seo_hero":  {
                                                                                       "type":  "text",
                                                                                       "settings":  {
-                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer � bestelle jetzt. Barista-Qualit�t ohne Maschine. In Deutschland. Versand 1-2 Tage."
+                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer \u25ca bestelle jetzt. Barista-Qualit\u00e4t ohne Maschine. In Deutschland. Versand 1-2 Tage."
                                                                                                    }
                                                                                   }
                                                             },
@@ -98,7 +98,7 @@
                                                                                     "type":  "heading",
                                                                                     "name":  "H2",
                                                                                     "settings":  {
-                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer � Bestelle jetzt online",
+                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer \u25ca Bestelle jetzt online",
                                                                                                      "heading_size":  "h2"
                                                                                                  }
                                                                                 },
@@ -142,7 +142,7 @@
                                                                                   "type":  "text",
                                                                                   "name":  "SEO Zusatztext",
                                                                                   "settings":  {
-                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genie�en � zuhause, im B�ro oder unterwegs.</p>"
+                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genie\u00dfen \u25ca zuhause, im B\u00fcro oder unterwegs.</p>"
                                                                                                }
                                                                                  }
                                                          },
