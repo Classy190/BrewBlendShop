@@ -392,8 +392,10 @@
                       align-items: center;
                       margin: {{block.settings.padding_top}}px 0 {{block.settings.padding_bottom}}px 0;
                   }
-                  .qa-feature-{{ block.id }} h4 {
+                  .qa-feature-{{ block.id }} .qa-feature-heading {
                         font-size: {{block.settings.heading_size}}px;
+                        margin: 0;
+                        margin-bottom: 5px;
                     }
                   .qa-feature-{{ block.id }} {
                         font-size: {{block.settings.text_size}}px;
@@ -424,7 +426,7 @@
                     {%- endif -%}
                     <div style="width: calc(100% - {{block.settings.icon_size}}px + 20px);">
                       {% if block.settings.heading != blank %}
-                        <h4 style="margin:0; margin-bottom:5px;">{{ block.settings.heading }}</h4>
+                        <p class="qa-feature-heading">{{ block.settings.heading }}</p>
                       {%- endif -%}
                       {{ block.settings.text }}
                     </div>
@@ -572,8 +574,10 @@
                       align-items: center;
                       margin: {{block.settings.padding_top}}px 0 {{block.settings.padding_bottom}}px 0;
                   }
-                  .qa-feature-{{ block.id }} h4 {
+                  .qa-feature-{{ block.id }} .qa-feature-heading {
                         font-size: {{block.settings.heading_size}}px;
+                        margin: 0;
+                        margin-bottom: 5px;
                     }
                   .qa-feature-{{ block.id }} {
                         font-size: {{block.settings.text_size}}px;
