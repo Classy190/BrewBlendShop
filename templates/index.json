@@ -355,7 +355,7 @@
                                                                   "text_AKQHBw"
                                                               ],
                                               "custom_css":  [
-                                                                 ".rich-text__wrapper,.rich-text__blocks,.collection-hero__description {max-width: 90% !important; width: 90% !important; margin: 0 !important;}"
+                                                                 ".rich-text__wrapper,.rich-text__blocks,.collection-hero__description {max-width: 100% !important; width: 100% !important; margin: 0 !important;}"
                                                              ],
                                               "name":  "Kaffeebohnen aus aller Welt",
                                               "settings":  {
