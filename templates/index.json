@@ -6,14 +6,14 @@
                                                                 "heading_typEtE":  {
                                                                                        "type":  "heading",
                                                                                        "settings":  {
-                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer – Bestelle jetzt dein Barista-Set",
+                                                                                                        "heading":  "Worlds Finest Specialty Coffee Brewer ï¿½ Bestelle jetzt dein Barista-Set",
                                                                                                         "heading_size":  "h1"
                                                                                                     }
                                                                                    },
                                                                 "text_seo_hero":  {
                                                                                       "type":  "text",
                                                                                       "settings":  {
-                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer – bestelle jetzt. Barista-Qualität ohne Maschine. In Deutschland. Versand 1-2 Tage."
+                                                                                                       "text":  "Worlds Finest Specialty Coffee Brewer ï¿½ bestelle jetzt. Barista-Qualitï¿½t ohne Maschine. In Deutschland. Versand 1-2 Tage."
                                                                                                    }
                                                                                   }
                                                             },
@@ -98,7 +98,7 @@
                                                                                     "type":  "heading",
                                                                                     "name":  "H2",
                                                                                     "settings":  {
-                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer – Bestelle jetzt online",
+                                                                                                     "heading":  "Worlds Finest Specialty Coffee Brewer ï¿½ Bestelle jetzt online",
                                                                                                      "heading_size":  "h2"
                                                                                                  }
                                                                                 },
@@ -106,7 +106,7 @@
                                                                                  "type":  "text",
                                                                                  "name":  "SEO Intro Text",
                                                                                  "settings":  {
-                                                                                                  "text":  "<p><strong>Verfasst von Katharina Müller</strong></p><p>? SCAE zertifizierte Specialty-Coffee-Expertin | ? 15 Jahre Branche-Erfahrung | ? Gründerin von Brew Blend</p><p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p><p>Specialty Coffee online bestellen war nie so einfach.</p>"
+                                                                                                  "text":  "<p><strong>Verfasst von Katharina Mï¿½ller</strong></p><p>? SCAE zertifizierte Specialty-Coffee-Expertin | ? 15 Jahre Branche-Erfahrung | ? Grï¿½nderin von Brew Blend</p><p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualitï¿½t. Handverlesene Bohnen, schonend gerï¿½stet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualitï¿½t ohne Maschine</li><li>ï¿½berall brauen: Zuhause, Bï¿½ro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100ï¿½</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% ï¿½ber Weltmarktpreis. Wir pflanzen Bï¿½ume in Tansania. Wir sind CO2-neutral.</p><p>Specialty Coffee online bestellen war nie so einfach.</p>"
                                                                                               }
                                                                              }
                                                          },
@@ -142,7 +142,7 @@
                                                                                   "type":  "text",
                                                                                   "name":  "SEO Zusatztext",
                                                                                   "settings":  {
-                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genießen – zuhause, im Büro oder unterwegs.</p>"
+                                                                                                   "text":  "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genieï¿½en ï¿½ zuhause, im Bï¿½ro oder unterwegs.</p>"
                                                                                                }
                                                                                  }
                                                          },
@@ -649,6 +649,7 @@
                  },
     "order": ["image_banner_6XnFfp", "image_with_text_KzhtFq",
                   "rich_text_LRBHtN",
+                  "rich_text_extra",
                   "collection_list_LRX9gw",
                   "multirow_mBVEUk",
                   "image_with_text_gx6Hqb",
