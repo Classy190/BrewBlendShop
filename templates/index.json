@@ -150,40 +150,6 @@
         "mobile_height": 500
       }
     },
-    "rich_text_LRBHtN": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_jifKjg": {
-          "type": "heading",
-          "name": "H2",
-          "settings": {
-            "heading": "Worlds Finest Specialty Coffee Brewer  Bestelle jetzt online",
-            "heading_size": "h2"
-          }
-        },
-        "text_bpqTiw": {
-          "type": "text",
-          "name": "SEO Intro Text",
-          "settings": {
-            "text": "<p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p><p>Specialty Coffee online bestellen war nie so einfach.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_jifKjg",
-        "text_bpqTiw"
-      ],
-      "custom_css": [],
-      "name": "SEO Hero Intro – Coffee Brewer",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "left",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
     "rich_text_extra": {
       "type": "rich-text",
       "blocks": {
@@ -207,6 +173,7 @@
         "heading_extra",
         "text_extra"
       ],
+      "disabled": true,
       "name": "SEO Booster Text",
       "settings": {
         "desktop_content_position": "center",
@@ -262,7 +229,7 @@
       "settings": {
         "title": "Für Kaffeeliebhaber & Teegenießer",
         "heading_size": "h2",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_radius": 0,
         "columns_desktop": 5,
         "color_scheme": "",
@@ -273,6 +240,40 @@
         "swipe_on_mobile": true,
         "padding_top": 24,
         "padding_bottom": 24
+      }
+    },
+    "rich_text_LRBHtN": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jifKjg": {
+          "type": "heading",
+          "name": "H2",
+          "settings": {
+            "heading": "Worlds Finest Specialty Coffee Brewer  Bestelle jetzt online",
+            "heading_size": "h2"
+          }
+        },
+        "text_bpqTiw": {
+          "type": "text",
+          "name": "SEO Intro Text",
+          "settings": {
+            "text": "<p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jifKjg",
+        "text_bpqTiw"
+      ],
+      "custom_css": [],
+      "name": "SEO Hero Intro – Coffee Brewer",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "multirow_mBVEUk": {
@@ -631,9 +632,9 @@
     "image_banner_6XnFfp",
     "image_with_text_KzhtFq",
     "video_new_AJCwDA",
-    "rich_text_LRBHtN",
     "rich_text_extra",
     "collection_list_LRX9gw",
+    "rich_text_LRBHtN",
     "multirow_mBVEUk",
     "image_with_text_gx6Hqb",
     "rich_text_RB6JJw",
