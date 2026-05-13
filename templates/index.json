@@ -33,7 +33,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Best_Mom_Best_Dad_Coffee_Brewer_Banner.png",
+        "image": "shopify://shop_images/Brew_Blend_Coffee.png",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "bottom-center",
