@@ -1,12 +1,12 @@
+{%- comment -%} 🟢 SEO FIX: Smart Meta-Description Generation {%- endcomment -%}
+{%- comment -%} 🔴 CRITICAL: Product Availability - Use selected variant, not product level {%- endcomment -%}
 {%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: product.description | default: collection.description | default: article.excerpt | default: shop.description | default: shop.name
 
-  {%- comment -%} 🟢 SEO FIX: Smart Meta-Description Generation {%- endcomment -%}
   assign meta_description = page_description
-  {%- comment -%} 🔴 CRITICAL: Product Availability - Use selected variant, not product level {%- endcomment -%}
   assign product_is_available = true
   if request.page_type == 'product' and product
     if product.selected_or_first_available_variant
