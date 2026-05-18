@@ -7,13 +7,25 @@
     <meta name="theme-color" content="{{ settings.theme_color }}">
     
     {%- comment -%} 🔴 SEO FIX #1: ROBOTS META TAG - KRITISCH! {%- endcomment -%}
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    {%- assign should_noindex = false -%}
+    {%- if request.query_string contains "sort_by" or request.query_string contains "country" or request.query_string contains "currency" or request.query_string contains "utm_" -%}
+      {%- assign should_noindex = true -%}
+    {%- endif -%}
+    {%- if should_noindex -%}
+      <meta name="robots" content="noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta name="googlebot" content="noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    {%- else -%}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    {%- endif -%}
     {%- if settings.google_site_verification != blank -%}
       <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
     {%- endif -%}
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <link rel="canonical" href="{{ canonical_url }}">
+    
+    {%- comment -%} 🔴 CRITICAL FIX: Remove query parameters from canonical URL to fix 223 duplicate content issues {%- endcomment -%}
+    {%- assign clean_canonical = canonical_url | split: "?" | first -%}
+    <link rel="canonical" href="{{ clean_canonical }}">
     {%- assign og_locale = request.locale.iso_code | upcase -%}
     {%- if og_locale == 'DE' -%}
       {%- assign og_locale = 'de_DE' -%}
@@ -52,37 +64,14 @@
     {%- endif -%}
 
     {%- comment -%} 
-      1. FRÜHE INITIALISIERUNG (Fix für ReferenceError: Shopify is not defined)
-      Muss ganz oben stehen, bevor andere Skripte geladen werden.
+      Keep language-prefixed URLs like /da and /en intact.
+      Shopify localization depends on these prefixes for multi-language page routing.
     {%- endcomment -%}
     <script>
       window.Shopify = window.Shopify || {};
       /* Set 'js' class to indicate JavaScript is available */
       document.documentElement.classList.add('js');
       if (window.Shopify.designMode) { document.documentElement.classList.add('shopify-design-mode'); }
-
-      (function() {
-        var path = window.location.pathname || '/';
-        var search = window.location.search || '';
-        var hash = window.location.hash || '';
-        var target = null;
-
-        if (path === '/da' || path === '/da/') {
-          target = '/' + search + hash;
-        } else if (path.startsWith('/da/')) {
-          target = path.replace(/^\/da/, '') || '/';
-          target += search + hash;
-        } else if (path === '/en' || path === '/en/') {
-          target = '/' + search + hash;
-        } else if (path.startsWith('/en/')) {
-          target = path.replace(/^\/en/, '') || '/';
-          target += search + hash;
-        }
-
-        if (target) {
-          window.location.replace(target);
-        }
-      })();
     </script>
 
     {%- comment -%} Performance & SEO Optimierung (DACH / E-E-A-T 2026) {%- endcomment -%}
@@ -430,6 +419,15 @@
       }
     </script>
 
+    {%- comment -%} 🟢 PRODUCT SCHEMA MARKUP - Critical for product page indexation {%- endcomment -%}
+    {% include 'seo-product-schema' %}
+
+    {%- comment -%} 🟢 COLLECTION SCHEMA MARKUP - Critical for category page indexation {%- endcomment -%}
+    {% include 'seo-collection-schema' %}
+
+    {%- comment -%} 🟢 ARTICLE SCHEMA MARKUP - Critical for blog article indexation {%- endcomment -%}
+    {% include 'seo-article-schema' %}
+
     {%- comment -%} 🟢 PAYMENT & SECURITY SCHEMA {%- endcomment -%}
     <meta name="payment-accepted" content="PayPal, SEPA, Visa, Mastercard, AmEx">
     <meta name="security-trusted" content="SSL Verified, GDPR Compliant">
@@ -454,6 +452,20 @@
     <meta name="author" content="{{ shop.name }}">
     <meta name="publisher" content="{{ shop.name }}">
     <meta name="keywords" content="{%- if request.page_type == 'product' -%}{{ product.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- elsif request.page_type == 'collection' -%}{{ collection.title }}, {{ collection.handle }}, kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- elsif request.page_type == 'article' -%}{{ article.tags | join: ', ' | default: 'kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke' }}{%- else -%}kaffeebohnen, coffee beans, kaffee geschenke, tee geschenke{%- endif -%}">
+    
+    {%- comment -%} 🟢 SEO FIX: Trust & Verification Signals {%- endcomment -%}
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    {%- comment -%} 🟢 SEO FIX: Performance Hints for Google Core Web Vitals {%- endcomment -%}
+    <link rel="preload" as="font" href="https://fonts.shopifycdn.com/..." crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="dns-prefetch" href="https://shop.app">
+    <link rel="preconnect" href="https://checkout.shopifycs.com">
 
     {% render 'meta-tags' %}
 

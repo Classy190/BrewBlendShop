@@ -4,6 +4,47 @@
   assign og_type = 'website'
   assign og_description = page_description | default: product.description | default: collection.description | default: article.excerpt | default: shop.description | default: shop.name
 
+  {%- comment -%} 🟢 SEO FIX: Smart Meta-Description Generation {%- endcomment -%}
+  assign meta_description = page_description
+  {%- comment -%} 🔴 CRITICAL: Product Availability - Use selected variant, not product level {%- endcomment -%}
+  assign product_is_available = true
+  if request.page_type == 'product' and product
+    if product.selected_or_first_available_variant
+      assign product_is_available = product.selected_or_first_available_variant.available
+    endif
+  endif
+  
+  if request.page_type == 'product'
+    assign og_type = 'product'
+    if product.description != blank
+      assign meta_description = product.description | strip_html | truncatewords: 30
+    else
+      assign meta_description = product.title | append: " - Specialty Coffee & Bio Tee Brewer zum Bestellen. Fair gehandelt, nachhaltig, in Deutschland versandt."
+    endif
+  elsif request.page_type == 'collection'
+    if collection.description != blank
+      assign meta_description = collection.description | strip_html | truncatewords: 30
+    else
+      assign meta_description = collection.title | append: " - Premium Specialty Coffee & Bio Tee Brewer online kaufen. Fair gehandelt, handgeröstet, plastikfrei bei Brew Blend."
+    endif
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+    if article.excerpt != blank
+      assign meta_description = article.excerpt | strip_html | truncatewords: 30
+    elsif article.content != blank
+      assign meta_description = article.content | strip_html | truncatewords: 30
+    endif
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
+    assign meta_description = "Brew Blend Shop - Premium Specialty Coffee Brewer & Bio Tee. Fair trade, nachhaltig, Deutschland versand."
+  else
+    if page_description != blank
+      assign meta_description = page_description | strip_html | truncatewords: 30
+    else
+      assign meta_description = "Brew Blend - Worlds Finest Specialty Coffee Brewer. Fair gehandelt, nachhaltig, jetzt online bestellen mit 5% Rabatt."
+    endif
+  endif
+
   if request.page_type == 'product'
     assign og_type = 'product'
   elsif request.page_type == 'article'
@@ -13,11 +54,14 @@
   endif
 %}
 
+{%- comment -%} 🔴 CRITICAL: Meta Description for Google indexation {%- endcomment -%}
+<meta name="description" content="{{ meta_description | escape }}">
+
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
-<meta property="og:description" content="{{ og_description | escape }}">
+<meta property="og:description" content="{{ meta_description | escape }}">
 
 {%- comment -%} 🔴 SEO FIX: HTTPS statt HTTP für og:image {%- endcomment -%}
 {%- if page_image -%}
@@ -38,7 +82,7 @@
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
   <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
   <meta property="product:brand" content="{{ product.vendor | escape }}">
-  <meta property="product:availability" content="{% if product.available %}in stock{% else %}out of stock{% endif %}">
+  <meta property="product:availability" content="{% if product_is_available %}in stock{% else %}out of stock{% endif %}">
   <meta property="product:condition" content="new">
 {%- endif -%}
 

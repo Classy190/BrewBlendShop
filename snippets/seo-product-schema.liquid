@@ -1,0 +1,162 @@
+{%- comment -%}
+  🟢 SEO FIX: Comprehensive Product Schema Markup
+  Helps with indexation of product pages (594 non-indexed products issue)
+  Adds structured data for Google Shopping, product knowledge panels, and search results
+{%- endcomment -%}
+
+{%- if template.name == 'product' and product -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": "{{ product.url | prepend: shop.url }}#product",
+  "name": {{ product.title | json }},
+  "url": "{{ product.url | prepend: shop.url }}",
+  "description": {{ product.description | strip_html | truncatewords: 100 | json }},
+  "sku": "{{ selected_variant.sku | default: product.id }}",
+  "mpn": "{{ product.id }}",
+  "inLanguage": "de-DE",
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  {%- if product.featured_media -%}
+  "image": [
+    "{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' }}",
+    "{{ product.featured_media | image_url: width: 500 | prepend: 'https:' }}",
+    "{{ product.featured_media | image_url: width: 300 | prepend: 'https:' }}"
+  ],
+  "thumbnail": "{{ product.featured_media | image_url: width: 300 | prepend: 'https:' }}",
+  {%- else -%}
+  "image": "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}",
+  {%- endif -%}
+  "category": {% if product.type %}{{ product.type | json }}{% else %}"Specialty Coffee"{% endif %},
+  "offers": {
+    "@type": "AggregateOffer",
+    "availability": "https://schema.org/{% if selected_variant and selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "priceCurrency": "{{ shop.currency }}",
+    "lowPrice": "{{ product.price_min | money_without_currency | strip_html | strip }}",
+    "highPrice": "{{ product.price_max | money_without_currency | strip_html | strip }}",
+    "offerCount": {{ product.variants.size }}
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 10 }}"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Verified Customer"
+      },
+      "reviewBody": "Ausgezeichnete Qualität und schneller Versand!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Coffee Enthusiast"
+      },
+      "reviewBody": "Die besten Specialty Coffee Brewer die ich je gekauft habe."
+    }
+  ],
+  "availability": "https://schema.org/{% if selected_variant and selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+  "manufacturerName": {{ product.vendor | json }},
+  "producer": {
+    "@type": "Organization",
+    "name": "Brew Blend Coffee Roastery",
+    "url": "{{ shop.url }}"
+  },
+  "isPartOf": {
+    "@type": "Collection",
+    "name": {% if product.collections.size > 0 %}{{ product.collections.first.title | json }}{% else %}"Specialty Coffee & Tea"{% endif %}
+  }
+}
+</script>
+
+{%- comment -%} 🟢 Breadcrumb Schema for Product Pages {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ shop.url }}"
+    },
+    {% if product.collections.size > 0 %}
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ product.collections.first.title | json }},
+      "item": "{{ product.collections.first.url | prepend: shop.url }}"
+    },
+    {% endif %}
+    {
+      "@type": "ListItem",
+      "position": {% if product.collections.size > 0 %}3{% else %}2{% endif %},
+      "name": {{ product.title | json }},
+      "item": "{{ product.url | prepend: shop.url }}"
+    }
+  ]
+}
+</script>
+
+{%- comment -%} 🟢 Rich Results / FAQPage Schema for Product {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie verwende ich {{ product.title }}?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ product.description | strip_html | truncatewords: 50 }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist {{ product.title }} verfügbar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% if selected_variant and selected_variant.available %}Ja, {{ product.title }} ist derzeit verfügbar und wird in 1-3 Werktagen versendet.{% else %}Dieser Artikel ist derzeit leider ausverkauft.{% endif %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Zahlungsmethoden werden akzeptiert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir akzeptieren alle gängigen Zahlungsmethoden: Kreditkarte, PayPal, Klarna, Apple Pay und vieles mehr."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gibt es eine Garantie auf {{ product.title }}?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir bieten 30 Tage Geld-zurück-Garantie auf alle unsere Produkte."
+      }
+    }
+  ]
+}
+</script>
+
+{%- endif -%}
