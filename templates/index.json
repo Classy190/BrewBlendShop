@@ -341,11 +341,20 @@
             "text": "<p>Unser <strong>Espresso House Blend</strong> vereint den raffinierten Charme Brasiliens mit der kühnen Intensität Ugandas zu einer harmonischen Komposition. Diese exklusiven <strong>Specialty Coffee Beans</strong> bieten ein Geschmackserlebnis aus cremiger Vollmilchschokolade, feiner Praline und einer dezenten Fruchtnote von Rosinen.</p><h3>Handwerkskunst & Herkunft</h3><ul><li><strong>Vollmundiges Profil:</strong> Die Varietäten Bourbon und Mundo Novo verleihen diesem Espresso einen kräftigen Körper, während die natürliche Aufbereitung seine sanfte Süße unterstreicht.</li><li><strong>Schonende Trommelröstung:</strong> Durch Röstung in kleinen Chargen werden Säurespitzen gezielt reduziert – für einen besonders magenfreundlichen Genuss in Barista-Qualität.</li><li><strong>Frischegarantie:</strong> Verpackt im speziellen Ventilbeutel zum Schutz vor Oxidation, damit Aroma und Frische von <strong>Brew Blend</strong> optimal bei dir ankommen.</li></ul><p>Ob für den <strong>Siebträger</strong>, den <strong>Kaffee-Vollautomaten</strong> oder manuelle Filter – dieser Blend ist eine Hommage an die Kunstfertigkeit zweier einzigartiger Kaffeelandschaften. Dank direktem Bezug der Rohkaffees garantieren wir höchste Transparenz und Qualität in jeder Tasse.</p><h3>Produktdetails:</h3><ul><li><strong>Inhalt:</strong> 333g ganze Bohnen (ca. 22–33 Portionen)</li><li><strong>Herkunft:</strong> Brasilien & Uganda (Anbauhöhe: 900-1500 m.a.s.l.)</li><li><strong>Varietäten:</strong> Bourbon, Mundo Novo, Acaia, IAC</li><li><strong>Geschmacksprofil:</strong> Vollmilchschokolade, Praline, Rosine, Kirsche</li></ul>",
             "text_style": "body"
           }
+        },
+        "button_JGzzzj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Coffee Beans",
+            "button_link": "shopify://collections/specialty-coffee-beans",
+            "button_style_secondary": false
+          }
         }
       },
       "block_order": [
         "heading_xmFd33",
-        "text_CtePej"
+        "text_CtePej",
+        "button_JGzzzj"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
