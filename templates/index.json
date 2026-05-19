@@ -15,7 +15,7 @@
         "heading_typEtE": {
           "type": "heading",
           "settings": {
-            "heading": "Worlds Finest Specialty Coffee Brewer  Bestelle jetzt dein Barista-Set",
+            "heading": "Worlds Finest Specialty Coffee Brewer  Bestelle jetzt dein Barista Set",
             "heading_size": "h2"
           }
         },
@@ -372,7 +372,7 @@
           "name": "Kaffeebohnen aus aller Welt – Herkunft, die man schmeckt",
           "settings": {
             "heading": "Kaffeebohnen aus aller Welt – Specialty Coffee Röstungen",
-            "heading_size": "h2"
+            "heading_size": "h1"
           }
         },
         "text_AKQHBw": {
@@ -501,7 +501,7 @@
       "name": "Nachhaltiger Genuss: Unser Premium Kaffee & Tee Sortiment",
       "settings": {
         "title": "Premium-Qualität & Umweltschutz",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "heading_center": "center",
         "image_width": "sixth",
         "image_ratio": "adapt",
