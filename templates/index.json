@@ -635,6 +635,29 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "177945817406a0f5b1": {
+      "type": "apps",
+      "blocks": {
+        "found_gpt_product_schema_pTzTz7": {
+          "type": "shopify://apps/found-gpt/blocks/product-schema/019d9554-d823-731c-9682-e5ff5834141c",
+          "settings": {
+            "use_enriched_description": true,
+            "price_valid_until_days": 30,
+            "rating_namespace": "",
+            "rating_key": "",
+            "rating_count_namespace": "",
+            "rating_count_key": "",
+            "organization_same_as": ""
+          }
+        }
+      },
+      "block_order": [
+        "found_gpt_product_schema_pTzTz7"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -650,6 +673,7 @@
     "image_with_text_dKihYy",
     "multicolumn_e4LRVb",
     "lumin_cards_Wzw8EN",
-    "image_with_text_4HCCKn"
+    "image_with_text_4HCCKn",
+    "177945817406a0f5b1"
   ]
 }
