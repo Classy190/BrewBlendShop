@@ -3577,25 +3577,23 @@
       "name": {{ product.vendor | json }}
     },
     "manufacturer": {
-      "@type": "Organization",
-      "name": "Brew Blend Coffee Roastery",
-      "url": "{{ request.origin }}"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Brew Blend",
-      "url": "{{ request.origin }}"
-    },
-    "manufacturer": {
-      "@type": "Organization",
-      "name": "Brew Blend Coffee Roastery",
-      "url": "{{ request.origin }}"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Brew Blend",
-      "url": "{{ request.origin }}"
-    },
+    "@type": "Organization",
+    "name": "Brew Blend Coffee Roastery",
+    "url": "{{ request.origin }}"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Brew Blend",
+    "url": "{{ request.origin }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": {{ product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '.' | json }},
+    "priceCurrency": {{ shop.currency | json }},
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+    "url": {{ request.origin | append: product.url | json }}
+  },
     {%- if product.metafields.reviews.rating.value != blank -%}
       "aggregateRating": {
         "@type": "AggregateRating",
