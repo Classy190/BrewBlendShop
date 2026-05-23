@@ -209,6 +209,18 @@
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "found_gpt_product_schema_GkPapT": {
+          "type": "shopify://apps/found-gpt/blocks/product-schema/019d9554-d823-731c-9682-e5ff5834141c",
+          "settings": {
+            "use_enriched_description": true,
+            "price_valid_until_days": 30,
+            "rating_namespace": "",
+            "rating_key": "",
+            "rating_count_namespace": "",
+            "rating_count_key": "",
+            "organization_same_as": ""
+          }
         }
       },
       "block_order": [
@@ -222,7 +234,8 @@
         "quantity_selector_kpKfx8",
         "inventory_T9aYqY",
         "buy_buttons",
-        "description"
+        "description",
+        "found_gpt_product_schema_GkPapT"
       ],
       "settings": {
         "enable_sticky_info": true,
