@@ -417,7 +417,12 @@
                 <div class="qa-feature">
                   <div class="qa-feature-{{ block.id }}" {{ block.shopify_attributes }}>
                     {%- if block.settings.icon != blank -%}
-                      <img src="{{ block.settings.icon | img_url: '100x' }}">   
+                       <img src="{{ block.settings.icon | image_url: width: 100 }}"
+           alt="{{ block.settings.heading | default: 'Icon' | escape }}"
+           width="{{ block.settings.icon_size | default: 100 }}"
+           height="{{ block.settings.icon_size | default: 100 }}"
+           loading="lazy"
+           style="object-fit: contain;">
                     {%- else -%}
                       <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="m12 22.75c-5.93 0-10.75-4.82-10.75-10.75s4.82-10.75 10.75-10.75 10.75 4.82 10.75 10.75-4.82 10.75-10.75 10.75zm0-20c-5.1 0-9.25 4.15-9.25 9.25s4.15 9.25 9.25 9.25 9.25-4.15 9.25-9.25-4.15-9.25-9.25-9.25z"/>   
