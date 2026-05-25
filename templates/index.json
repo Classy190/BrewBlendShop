@@ -636,10 +636,10 @@
         "padding_bottom": 36
       }
     },
-    "177945817406a0f5b1": {
+    "1779704689b0d05130": {
       "type": "apps",
       "blocks": {
-        "found_gpt_product_schema_pTzTz7": {
+        "found_gpt_product_schema_wg6X3g": {
           "type": "shopify://apps/found-gpt/blocks/product-schema/019d9554-d823-731c-9682-e5ff5834141c",
           "settings": {
             "use_enriched_description": true,
@@ -653,7 +653,7 @@
         }
       },
       "block_order": [
-        "found_gpt_product_schema_pTzTz7"
+        "found_gpt_product_schema_wg6X3g"
       ],
       "settings": {
         "include_margins": true
@@ -674,6 +674,6 @@
     "multicolumn_e4LRVb",
     "lumin_cards_Wzw8EN",
     "image_with_text_4HCCKn",
-    "177945817406a0f5b1"
+    "1779704689b0d05130"
   ]
 }
