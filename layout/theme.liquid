@@ -515,19 +515,27 @@
       {{ settings.type_header_italic_font | font_face: font_display: 'swap' }}
       {{ settings.type_collapsible_font  | font_face: font_display: 'swap' }}
 
-      /* 🔴 BURGER-MENU OVERLAY LAYER FIX: Erzwingt Sichtbarkeit über dem Hero-Bereich */
+      /* 🔴 BURGER-MENU OVERLAY LAYER FIX: Erzwingt Sichtbarkeit & volle Höhe bis nach ganz unten */
       .header-wrapper details[open] .menu-drawer,
       details[open] > .menu-drawer,
       .menu-drawer-container[open] .menu-drawer,
       #menu-drawer {
         transform: translateX(0) !important;
         visibility: visible !important;
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important;
         z-index: 99999 !important;
         opacity: 1 !important;
+        height: 100vh !important;
+        height: 100dvh !important; /* Perfekt für mobile Browser (iOS/Android) */
+        min-height: 100vh !important;
+        background-color: #ffffff !important; /* Garantiert, dass der Hintergrund weiß bleibt */
       }
       .menu-drawer {
         z-index: 99999 !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        min-height: 100vh !important;
       }
       sticky-header, .header-wrapper, .header-group {
         z-index: 9999 !important;
