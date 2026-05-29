@@ -384,7 +384,6 @@
     },
     "page_3Etwaf": {
       "type": "page",
-      "disabled": true,
       "name": "t:sections.page.presets.name",
       "settings": {
         "page": "{{ product.metafields.custom.produkt_seitenbeschreibung.value }}",
