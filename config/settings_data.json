@@ -383,11 +383,6 @@
         "disabled": false,
         "settings": {}
       },
-      "2608904525610875962": {
-        "type": "shopify://apps/index-ai-get-found-by-ai/blocks/schema-markup/019bffd6-1798-7312-ab45-e0a5b7169b7c",
-        "disabled": false,
-        "settings": {}
-      },
       "8765772171712610185": {
         "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_switcher/b5b83690-efd4-434d-8c6a-a5cef4019faf",
         "disabled": false,
