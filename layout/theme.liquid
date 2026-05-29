@@ -515,6 +515,24 @@
       {{ settings.type_header_italic_font | font_face: font_display: 'swap' }}
       {{ settings.type_collapsible_font  | font_face: font_display: 'swap' }}
 
+      /* 🔴 BURGER-MENU OVERLAY LAYER FIX: Erzwingt Sichtbarkeit über dem Hero-Bereich */
+      .header-wrapper details[open] .menu-drawer,
+      details[open] > .menu-drawer,
+      .menu-drawer-container[open] .menu-drawer,
+      #menu-drawer {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        display: block !important;
+        z-index: 99999 !important;
+        opacity: 1 !important;
+      }
+      .menu-drawer {
+        z-index: 99999 !important;
+      }
+      sticky-header, .header-wrapper, .header-group {
+        z-index: 9999 !important;
+      }
+
       {% assign scheme_classes = '' %}
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -1021,8 +1039,7 @@
     })();
     </script>
 
-    <!-- GTM wird am Seitenende und nur bei Consent geladen, um Head-Blockierung zu vermeiden -->
-  </head>
+    </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
 
@@ -1113,15 +1130,6 @@
               if (window.fbq) { fbq('track', 'AddToCart'); }
             }
           }, true);
-
-          // Abandon intent popup removed by request (no modal shown)
-          // document.addEventListener('mouseleave', function(event) {
-          //   if (event.clientY < 10 && !sessionStorage.getItem('sales-engine-exit-shown')) {
-          //     sessionStorage.setItem('sales-engine-exit-shown', '1');
-          //     var popup = document.getElementById('sales-engine-abandon-popup');
-          //     if (popup) popup.style.display = 'flex';
-          //   }
-          // });
 
           var closeButton = document.getElementById('close-abandon-popup');
           if (closeButton) closeButton.addEventListener('click', closeAbandonPopup);
