@@ -68,11 +68,31 @@
       Shopify localization depends on these prefixes for multi-language page routing.
     {%- endcomment -%}
     <script>
-      window.Shopify = window.Shopify || {};
-      /* Set 'js' class to indicate JavaScript is available */
-      document.documentElement.classList.add('js');
-      if (window.Shopify.designMode) { document.documentElement.classList.add('shopify-design-mode'); }
-    </script>
+  window.Shopify = window.Shopify || {};
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  if (window.Shopify.designMode) { document.documentElement.className += ' shopify-design-mode'; }
+
+  (function() {
+    var path = window.location.pathname || '/';
+    var search = window.location.search || '';
+    var hash = window.location.hash || '';
+    var target = null;
+
+    if (path === '/de' || path === '/de/') {
+      target = '/' + search + hash;
+    } else if (path.startsWith('/de/')) {
+      target = path.replace('/de/', '/') + search + hash;
+    } else if (path === '/en' || path === '/en/') {
+      target = '/' + search + hash;
+    } else if (path.startsWith('/en/')) {
+      target = path.replace('/en/', '/') + search + hash;
+    }
+
+    if (target) {
+      window.location.replace(target);
+    }
+  })();
+</script>
 
     {%- comment -%} Performance & SEO Optimierung (DACH / E-E-A-T 2026) {%- endcomment -%}
     {%- comment -%} 
