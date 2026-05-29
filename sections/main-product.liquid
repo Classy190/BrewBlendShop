@@ -3600,9 +3600,7 @@
     "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
     "url": {{ request.origin | append: product.url | json }}
   },
-    {%- assign has_rating = false -%}
-  {%- if product.metafields.reviews.rating.value != blank -%}
-    {%- assign has_rating = true -%}
+   {%- if product.metafields.reviews.rating.value != blank -%}
     ,
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -3611,6 +3609,12 @@
       "bestRating": "{{ product.metafields.reviews.rating.value.scale_max | default: 5 }}",
       "worstRating": "1"
     }
+  {%- endif -%}
+
+  {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%}
+    ,
+    "review": 
+    
   {%- endif -%}
 
   {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%}
