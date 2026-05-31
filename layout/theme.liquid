@@ -910,43 +910,43 @@
         "addressCountry": "DE"
       },
       "logo": {
-        "@type": "ImageObject",
-        "url": "{% if settings.logo != blank %}{{ settings.logo | image_url: width: 600 }}{% else %}{{ 'Brew-Blend-Kaffee-und-tee-logo.png' | file_img_url: '600x' }}{% endif %}",
-        "width": 600,
-        "height": 600
-      },
-      "sameAs": [
-        {%- assign firstSocial = true -%}
-        {%- if settings.social_facebook_link != blank -%}
-          "{{ settings.social_facebook_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-        {%- if settings.social_instagram_link != blank -%}
-          {%- if firstSocial == false -%},{%- endif -%}
-          "{{ settings.social_instagram_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-        {%- if settings.social_twitter_link != blank -%}
-          {%- if firstSocial == false -%},{%- endif -%}
-          "{{ settings.social_twitter_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-        {%- if settings.social_pinterest_link != blank -%}
-          {%- if firstSocial == false -%},{%- endif -%}
-          "{{ settings.social_pinterest_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-        {%- if settings.social_youtube_link != blank -%}
-          {%- if firstSocial == false -%},{%- endif -%}
-          "{{ settings.social_youtube_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-        {%- if settings.social_tiktok_link != blank -%}
-          {%- if firstSocial == false -%},{%- endif -%}
-          "{{ settings.social_tiktok_link }}"
-          {%- assign firstSocial = false -%}
-        {%- endif -%}
-      ],
+      "@type": "ImageObject",
+      "url": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
+      "width": 600,
+      "height": 600
+    },
+    "sameAs": [
+      {%- assign first_social = true -%}
+      {%- if settings.social_facebook_link != blank -%}
+        "{{ settings.social_facebook_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+      {%- if settings.social_instagram_link != blank -%}
+        {%- if first_social == false -%},{%- endif -%}
+        "{{ settings.social_instagram_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+      {%- if settings.social_twitter_link != blank -%}
+        {%- if first_social == false -%},{%- endif -%}
+        "{{ settings.social_twitter_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+      {%- if settings.social_pinterest_link != blank -%}
+        {%- if first_social == false -%},{%- endif -%}
+        "{{ settings.social_pinterest_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+      {%- if settings.social_youtube_link != blank -%}
+        {%- if first_social == false -%},{%- endif -%}
+        "{{ settings.social_youtube_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%}
+        {%- if first_social == false -%},{%- endif -%}
+        "{{ settings.social_tiktok_link }}"
+        {%- assign first_social = false -%}
+      {%- endif -%}
+    ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
