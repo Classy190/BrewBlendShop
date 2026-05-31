@@ -220,87 +220,42 @@
       }
     </script>
 
-    {%- comment -%} 🟢 TRUST SIGNAL FIX: AGGREGATE RATING SCHEMA für Kundenbewertungen {%- endcomment -%}
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Brew Blend",
-    "url": "{{ shop.url }}",
-    "logo": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "1247",
-      "reviewCount": "1247"
+    {%- comment -%} 🟢 TRUST SIGNAL FIX: Sauberes, isoliertes Organization & Review Schema {%- endcomment -%}
+<script type="application/ld-json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Brew Blend",
+  "url": "{{ shop.url }}",
+  "logo": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1247",
+    "reviewCount": "1247"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Christine Barry"
     },
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Christine Barry"
-      },
-      "datePublished": "2026-05-06",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Brew Blend"
-      }
+    "datePublished": "2026-05-06",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
     },
-    "paymentAccepted": ["American Express", "Apple Pay", "Bancontact", "eps", "Google Pay", "iDEAL", "Klarna", "Maestro", "Mastercard", "PayPal", "Paysafe", "Shop Pay"],
-    "foundingDate": "2019-03-15",
-      "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Brew Blend"
-      }
-    },
-    "paymentAccepted": ["American Express", "Apple Pay", "Bancontact", "eps", "Google Pay", "iDEAL", "Klarna", "Maestro", "Mastercard", "PayPal", "Paysafe", "Shop Pay"],
-    "foundingDate": "2019-03-15",
-        "founder": {
-          "@type": "Person",
-          "name": "Katharina Müller",
-          "jobTitle": "Specialty Coffee Expert & Founder",
-          "email": "katharina@brew-blend.de"
-        },
-        "employee": [
-          {
-            "@type": "Person",
-            "name": "Katharina Müller",
-            "jobTitle": "Specialty Coffee Expert",
-            "knowsAbout": ["Specialty Coffee Roasting", "SCA Certification", "Fair Trade"],
-            "url": "https://brew-blend.de"
-          },
-          {
-            "@type": "Person",
-            "name": "Marcus Weber",
-            "jobTitle": "Quality Assurance Manager",
-            "knowsAbout": ["Coffee Quality", "Sustainability", "Supply Chain"],
-            "url": "https://brew-blend.de"
-          },
-          {
-            "@type": "Person",
-            "name": "Sarah Klein",
-            "jobTitle": "Sustainability Officer",
-            "knowsAbout": ["Fair Trade", "Eco-packaging", "Carbon Neutral"],
-            "url": "https://brew-blend.de"
-          }
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Support",
-          "email": "support@brew-blend.de",
-          "availableLanguage": ["de", "en", "it"]
-        }
-      }
-    </script>
+    "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brew Blend"
+    }
+  }
+}
+</script>
 
     {%- comment -%} 🟢 SECURITY & TRUST BADGE SCHEMA {%- endcomment -%}
     <script type="application/ld+json">
