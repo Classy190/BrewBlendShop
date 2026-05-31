@@ -109,25 +109,26 @@
     <link rel="manifest" href="{{ 'manifest.json' | asset_url }}">
 
     {%- comment -%} 🟢 SEO FIX #3: OPTIMIERTE TITLE TAGS mit Template-Logik {%- endcomment -%}
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "{{ shop.url }}/#website",
-        "url": "{{ shop.url }}",
-        "name": "{{ shop.name }}",
-        "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
-        "inLanguage": "de-DE",
-        "publisher": {
-          "@id": "{{ shop.url }}/#organization"
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "{{ shop.url }}/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
+    <script type="application/ld-json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "{{ shop.url }}",
+  "name": "{{ shop.name }}",
+  "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
+  "inLanguage": "de-DE",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    "logo": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ shop.url }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
     {%- comment -%} 🟢 E-E-A-T FIX: ORGANIZATION SCHEMA mit Expertise-Signalen {%- endcomment -%}
     <script type="application/ld+json">
@@ -394,27 +395,39 @@
     </script>
 
     {%- comment -%} 🟢 AUTHOR & PUBLISHER INFO für E-E-A-T {%- endcomment -%}
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "@id": "{{ shop.url }}/#article",
-        "headline": "World's Finest Specialty Coffee Brewer bestellen",
-        "description": "Premium Specialty Coffee Brewer für echten Kaffeegenuss ohne Maschine",
-        "image": "https:{{ 'Best_Mom_Best_Dad_Coffee_Brewer_Banner.png' | file_img_url: '1200x630' }}",
-        "datePublished": "2026-05-07",
-        "dateModified": "2026-05-07",
-        "author": {
-          "@type": "Organization",
-          "name": "Brew Blend Coffee Roastery",
-          "url": "{{ shop.url }}"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "{{ shop.name }}",
-          "logo": {
-  "@type": "ImageObject",
-  "url": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442"
+    <script type="application/ld-json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Brew Blend",
+  "url": "{{ shop.url }}",
+  "logo": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1247",
+    "reviewCount": "1247"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Christine Barry"
+    },
+    "datePublished": "2026-05-06",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brew Blend"
+    }
+  }
 }
 </script>
 
