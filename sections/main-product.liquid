@@ -3579,7 +3579,7 @@
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {%- endif -%}
     "brand": {
-      "@type": "Brand",
+      "@type": "Coffee Brand",
       "name": {{ product.vendor | json }}
     },
     "manufacturer": {
@@ -3668,7 +3668,7 @@
           {%- if size_option_index != nil and variant.options[size_option_index] != blank -%}
             "size": {{ variant.options[size_option_index] | json }},
           {%- endif -%}
-          "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
           "price": {{ variant.price | divided_by: 100.0 }},
           "priceCurrency" : "EUR",
           "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
