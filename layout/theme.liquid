@@ -21,7 +21,7 @@
     {%- if settings.google_site_verification != blank -%}
       <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
     {%- endif -%}
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ shop.url }}/sitemap.xml">
     
     {%- comment -%} 🔴 CRITICAL FIX: Remove query parameters from canonical URL to fix 223 duplicate content issues {%- endcomment -%}
     {%- assign clean_canonical = canonical_url | split: "?" | first -%}
@@ -435,18 +435,16 @@
   "@type": "ImageObject",
   "url": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442"
 }
-        }
-      }
-    </script>
+</script>
 
-    {%- comment -%} 🟢 PRODUCT SCHEMA MARKUP - Critical for product page indexation {%- endcomment -%}
-    {% include 'seo-product-schema' %}
+{%- comment -%} 🟢 PRODUCT SCHEMA MARKUP - Critical for product page indexation {%- endcomment -%}
+{% render 'seo-product-schema' %}
 
-    {%- comment -%} 🟢 COLLECTION SCHEMA MARKUP - Critical for category page indexation {%- endcomment -%}
-    {% include 'seo-collection-schema' %}
+{%- comment -%} 🟢 COLLECTION SCHEMA MARKUP - Critical for category page indexation {%- endcomment -%}
+{% render 'seo-collection-schema' %}
 
-    {%- comment -%} 🟢 ARTICLE SCHEMA MARKUP - Critical for blog article indexation {%- endcomment -%}
-    {% include 'seo-article-schema' %}
+{%- comment -%} 🟢 ARTICLE SCHEMA MARKUP - Critical for blog article indexation {%- endcomment -%}
+{% render 'seo-article-schema' %}
 
     {%- comment -%} 🟢 PAYMENT & SECURITY SCHEMA {%- endcomment -%}
     <meta name="payment-accepted" content="PayPal, SEPA, Visa, Mastercard, AmEx">
