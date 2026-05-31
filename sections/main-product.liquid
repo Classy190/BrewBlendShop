@@ -3551,7 +3551,7 @@
   {%- assign size_option_index = 0 -%}
 {%- endif -%}
 
-<script type="application/ld+json">
+<script type="application/ld-json">
   {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -3575,33 +3575,24 @@
     {%- if size_option_index != nil -%}
       "size": {{ product.selected_or_first_available_variant.options[size_option_index] | json }},
     {%- endif -%}
-    {% if product.selected_or_first_available_variant.sku != blank -%}
+    {%- if product.selected_or_first_available_variant.sku != blank -%}
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
-    {%- endif %}
+    {%- endif -%}
     "brand": {
       "@type": "Brand",
       "name": {{ product.vendor | json }}
     },
     "manufacturer": {
-    "@type": "Organization",
-    "name": "Brew Blend Coffee Roastery",
-    "url": "{{ request.origin }}"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "Brew Blend",
-    "url": "{{ request.origin }}"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": {{ product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '.' | json }},
-    "priceCurrency": {{ shop.currency | json }},
-    "priceValidUntil": "2027-12-31",
-    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
-    "url": {{ request.origin | append: product.url | json }}
-  },
-   {%- if product.metafields.reviews.rating.value != blank -%}
-    ,
+      "@type": "Organization",
+      "name": "Brew Blend Coffee Roastery",
+      "url": "{{ request.origin }}"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Brew Blend",
+      "url": "{{ request.origin }}"
+    }
+    {%- if product.metafields.reviews.rating.value != blank -%},
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "{{ product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value | strip }}",
@@ -3609,16 +3600,8 @@
       "bestRating": "{{ product.metafields.reviews.rating.value.scale_max | default: 5 }}",
       "worstRating": "1"
     }
-  {%- endif -%}
-
-  {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%}
-    ,
-    "review": 
-    
-  {%- endif -%}
-
-  {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%}
-    ,
+    {%- endif -%}
+    {%- if product.metafields.reviews.rating_count != blank and product.metafields.reviews.rating_count > 0 -%},
     "review": [
         {
           "@type": "Review",
@@ -3669,9 +3652,8 @@
           "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
           "reviewBody": "Altid korrekt levering og hurtig service i alle de år jeg har benyttet Brew Company."
         }
-      ],
-    {%- endif -%}
-    
+      ]
+    {%- endif -%},
     "offers": [
       {%- for variant in product.variants -%}
         {
@@ -3691,7 +3673,7 @@
           "priceCurrency" : "EUR",
           "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
           {%- if shop.enabled_payment_types.size > 0 -%}
-          "paymentAccepted": ["American Express", "Apple Pay", "Bancontact", "eps", "Google Pay", "iDEAL", "Klarna", "Maestro", "Mastercard", "PayPal", "Paysafe", "Shop Pay", "Union Pay", "Visa"],
+            "paymentAccepted": ["American Express", "Apple Pay", "Bancontact", "eps", "Google Pay", "iDEAL", "Klarna", "Maestro", "Mastercard", "PayPal", "Paysafe", "Shop Pay", "Union Pay", "Visa"],
           {%- endif -%}
           "hasWarranty": {
             "@type": "WarrantyPromise",
