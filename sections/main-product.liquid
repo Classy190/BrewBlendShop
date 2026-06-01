@@ -3610,10 +3610,18 @@
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
         "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
         "itemReviewed": {
-          "@type": "Product",
-          "name": "{{ product.title | escape }}",
-          "url": "{{ request.origin }}{{ product.url }}",
-          "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- if product -%}
+            "@type": "Product",
+            "name": "{{ product.title | escape }}",
+            "url": "{{ request.origin }}{{ product.url }}",
+            "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- else -%}
+            "@type": "LocalBusiness",
+            "name": "Brew Blend",
+            "url": "{{ request.origin }}",
+            "image": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768999442",
+            "priceRange": "€5-€75"
+          {%- endif -%}
         }
       },
       {
@@ -3623,10 +3631,18 @@
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
         "reviewBody": "Amazing tasting coffee, excellent service and product offers. Speedy and efficient delivery.",
         "itemReviewed": {
-          "@type": "Product",
-          "name": "{{ product.title | escape }}",
-          "url": "{{ request.origin }}{{ product.url }}",
-          "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- if product -%}
+            "@type": "Product",
+            "name": "{{ product.title | escape }}",
+            "url": "{{ request.origin }}{{ product.url }}",
+            "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- else -%}
+            "@type": "LocalBusiness",
+            "name": "Brew Blend",
+            "url": "{{ request.origin }}",
+            "image": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768999442",
+            "priceRange": "€5-€75"
+          {%- endif -%}
         }
       },
       {
@@ -3636,10 +3652,18 @@
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
         "reviewBody": "The brewers are such an innovative idea. I camp and travel and truly dislike bad coffee. These allow me to carry my own coffee without having...",
         "itemReviewed": {
-          "@type": "Product",
-          "name": "{{ product.title | escape }}",
-          "url": "{{ request.origin }}{{ product.url }}",
-          "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- if product -%}
+            "@type": "Product",
+            "name": "{{ product.title | escape }}",
+            "url": "{{ request.origin }}{{ product.url }}",
+            "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- else -%}
+            "@type": "LocalBusiness",
+            "name": "Brew Blend",
+            "url": "{{ request.origin }}",
+            "image": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768999442",
+            "priceRange": "€5-€75"
+          {%- endif -%}
         }
       },
       {
@@ -3649,10 +3673,18 @@
         "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
         "reviewBody": "This is really good coffee and the pouches are so useful. They are very convenient when travelling. I use in my camper van and when I'm stayi...",
         "itemReviewed": {
-          "@type": "Product",
-          "name": "{{ product.title | escape }}",
-          "url": "{{ request.origin }}{{ product.url }}",
-          "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- if product -%}
+            "@type": "Product",
+            "name": "{{ product.title | escape }}",
+            "url": "{{ request.origin }}{{ product.url }}",
+            "image": "{{ product.featured_image | image_url: width: 480 }}"
+          {%- else -%}
+            "@type": "LocalBusiness",
+            "name": "Brew Blend",
+            "url": "{{ request.origin }}",
+            "image": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768999442",
+            "priceRange": "€5-€75"
+          {%- endif -%}
         }
       }
     {%- endif -%},
