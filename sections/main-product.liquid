@@ -3703,27 +3703,26 @@
               }
             },
             "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 5.99,
-              "currency": "EUR"
-            }
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "DE",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 14,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-          },
-          "seller": {
-            "@type": "Organization",
-            "name": {{ shop.name | json }}
-          }
-        }{% unless forloop.last %},{% endunless %}
-      {%- endfor -%}
-    ]
-  }
+          "@type": "MonetaryAmount",
+          "value": 5.99,
+          "currency": "EUR"
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "DE",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnPolicyFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+      },
+      "seller": {
+        "@type": "Organization",
+        "name": "Brew Blend"
+      }
+}{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+]
 </script>
 
 {%- comment -%} Open Graph Meta Tags für Social Sharing {%- endcomment -%}
