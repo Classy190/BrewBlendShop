@@ -378,7 +378,6 @@
     },
     "17702039670881e5fa": {
       "type": "apps",
-      "disabled": true,
       "settings": {
         "include_margins": true
       }
