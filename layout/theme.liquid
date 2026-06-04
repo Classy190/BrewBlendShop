@@ -162,7 +162,8 @@
         ]
       }
     </script>
-
+    
+{% if template.name == 'index' %}
     {%- comment -%} 🟢 GEO FIX: FAQ SCHEMA für bessere KI-Sichtbarkeit {%- endcomment -%}
     <script type="application/ld+json">
       {
@@ -220,6 +221,7 @@
         ]
       }
     </script>
+{% endif %}
 
     {%- comment -%} 🟢 TRUST SIGNAL FIX: Sauberes, isoliertes Organization & Review Schema {%- endcomment -%}
 <script type="application/ld-json">
