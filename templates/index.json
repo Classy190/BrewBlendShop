@@ -414,21 +414,21 @@
         "heading_HVUppc": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Tea brewer – praktischer Teegenuss für unterwegs</strong>",
+            "heading": "Mobiler Tea Brewer: Dein perfekter Tee für unterwegs und auf Reisen",
             "heading_size": "h2"
           }
         },
         "text_R4nQwF": {
           "type": "text",
           "settings": {
-            "text": "<p>Ob unterwegs im Büro oder auf Reisen – mit unseren clever portionierten Tee-Zipper-Beuteln hast du deinen Lieblingstee immer dabei. Schnell zubereitet, einfach im Handling und voller Geschmack.</p><p><strong>So einfach geht’s:</strong><br/><br/>✓ Zipper öffnen<br/><br/>✓ Deckel abziehen<br/><br/>✓ Mit heißem Wasser befüllen<br/><br/>✓ 4–8 Minuten ziehen lassen, je nach gewünschter Intensität<br/><br/>✓ Direkt genießen</p><p><strong>Tipp für noch mehr Genuss:</strong><br/><br/>Nachdem du den Tee einmal aufgebrüht und ausgeschenkt hast, kannst du <strong>einfach wieder heißes Wasser nachgießen</strong>, um <strong>weitere Gläser Tee</strong> zuzubereiten. Je nach Stärke des Tees sind <strong>mindestens 2 bis 5 Gläser möglich</strong> – probiere es aus und finde die Intensität, die dir am besten schmeckt.</p>",
+            "text": "<p>Ob im hektischen Büroalltag, beim Outdoor-Abenteuer oder auf <strong>Reisen</strong> – mit unseren clever portionierten Tee-Zipper-Beuteln hast du deinen Lieblingstee immer griffbereit. Der innovative <strong>Tea Brewer</strong> kombiniert höchste Blattqualität mit maximaler Flexibilität. Schnell zubereitet, extrem einfach im Handling und vollgepackt mit authentischem Geschmack, revolutioniert dieser mobile <strong>Brewer</strong> deine tägliche <strong>Tea</strong>-Routine.</p><h2>So einfach geht’s: Die Zubereitung im Zipper-Beutel</h2><p>Erlebe unkomplizierten Teegenuss ohne zusätzliches Zubehör. Die Zubereitung erfolgt direkt im Beutel, was ihn zum perfekten Begleiter für jede Reise macht:</p><ul><li><strong>Schritt 1:</strong> Zipper des Brewers öffnen.</li><li><strong>Schritt 2:</strong> Deckel bzw. Verschlusskappe abziehen.</li><li><strong>Schritt 3:</strong> Den Brewer direkt mit heißem Wasser befüllen.</li><li><strong>Schritt 4:</strong> Je nach gewünschter Intensität 4 bis 8 Minuten ziehen lassen.</li><li><strong>Schritt 5:</strong> Den frischen Tee direkt einschenken und genießen!</li></ul><h3>Unser Tipp für langanhaltenden Genuss: Der Mehrfachaufguss</h3><p>Nachdem du den <strong>Tee</strong> das erste Mal aufgebrüht und ausgeschenkt hast, entfaltet er oft noch weiteres geschmackliches Potenzial. Du kannst einfach wieder heißes Wasser in den <strong>Brewer</strong> nachgießen, um weitere Gläser <strong>Tee</strong> zuzubereiten. Je nach Sorte und Stärke der Teeblätter sind problemlos 2 bis 5 vollwertige Aufgüsse möglich. Probiere es aus und finde genau die Intensität, die dir am besten schmeckt – ideal, um auf langen <strong>Reisen</strong> durchgehend versorgt zu sein.</p>",
             "text_style": "body"
           }
         },
         "button_wXD9tH": {
           "type": "button",
           "settings": {
-            "button_label": "Tea to GO",
+            "button_label": "Tea Brewer to GO",
             "button_link": "shopify://collections/tee-geschenkset",
             "button_style_secondary": false
           }
