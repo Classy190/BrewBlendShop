@@ -22,7 +22,7 @@
         "text_seo_hero": {
           "type": "text",
           "settings": {
-            "text": "Worlds Finest Specialty Coffee Brewer ◊ bestelle jetzt. Barista-Qualität ohne Maschine.",
+            "text": "Worlds Finest Specialty Coffeebrewer ◊ bestelle jetzt. Barista-Qualität ohne Maschine.",
             "text_style": "body"
           }
         }
@@ -257,7 +257,7 @@
           "type": "text",
           "name": "SEO Intro Text",
           "settings": {
-            "text": "<p><strong>Worlds Finest Specialty Coffee Brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p>"
+            "text": "<p><strong>Worlds Finest Specialty Coffeebrewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p>"
           }
         }
       },
