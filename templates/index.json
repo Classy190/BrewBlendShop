@@ -22,7 +22,7 @@
         "text_seo_hero": {
           "type": "text",
           "settings": {
-            "text": "Worlds Finest Specialty Coffeebrewer ◊ bestelle jetzt. Barista-Qualität ohne Maschine.",
+            "text": "Worlds Finest Specialty Coffee brewer ◊ bestelle jetzt. Barista-Qualität ohne Maschine.",
             "text_style": "body"
           }
         }
@@ -257,7 +257,7 @@
           "type": "text",
           "name": "SEO Intro Text",
           "settings": {
-            "text": "<p><strong>Worlds Finest Specialty Coffeebrewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p>"
+            "text": "<p><strong>Worlds Finest Specialty Coffee brewer:</strong> Bei uns bestellen Sie echte Qualität. Handverlesene Bohnen, schonend geröstet, fair gehandelt.</p><p><strong>Bestelle jetzt dein Brewer-Set:</strong></p><ul><li>Barista-Qualität ohne Maschine</li><li>Überall brauen: Zuhause, Büro, Camping</li><li>Nachhaltig & wiederverwendbar</li><li>Deutschland-Versand: 1-2 Tage, kostenlos ab 100€</li><li>Code brewblend5 = 5% Rabatt</li></ul><p><strong>Warum Brew Blend?</strong> Wir lieben Kaffee. Wir zahlen 30% über Weltmarktpreis. Wir pflanzen Bäume in Tansania. Wir sind CO2-neutral.</p>"
           }
         }
       },
@@ -284,9 +284,9 @@
           "name": "World's Finest Coffee",
           "settings": {
             "image": "shopify://shop_images/3Pcs__WBC-_Compressify.io_3331c2f9-bc07-4699-b384-c95f0f80cdf0.png",
-            "caption": "The Brew Company Coffeebrewer",
+            "caption": "The Brew Company Coffee brewer",
             "heading": "WORLD'S FINEST SPECIALTY COFFEE",
-            "text": "<p>Begeistern Sie den Kaffeeliebhaber in Ihrem Leben mit einer wunderschön zusammengestellten 3-teiligen Coffeebrewer-Geschenkbox, die drei einzigartige Kaffee-Herkunftsorte und ein innovatives, geschmacksintensives Spezialitätenkaffee-Erlebnis bietet. Kompakt, elegant und vielseitig – dieses durchdachte Set ist das perfekte Geschenk für Geburtstage, Feiertage, Einweihungsfeiern, als Dankeschön oder einfach, um die kleinen Momente des Alltags zu feiern.</p>",
+            "text": "<p>Begeistern Sie den Kaffeeliebhaber in Ihrem Leben mit einer wunderschön zusammengestellten 3-teiligen Coffee brewer-Geschenkbox, die drei einzigartige Kaffee-Herkunftsorte und ein innovatives, geschmacksintensives Spezialitätenkaffee-Erlebnis bietet. Kompakt, elegant und vielseitig – dieses durchdachte Set ist das perfekte Geschenk für Geburtstage, Feiertage, Einweihungsfeiern, als Dankeschön oder einfach, um die kleinen Momente des Alltags zu feiern.</p>",
             "button_label": "WORLD'S FINEST COFFEE",
             "button_link": "https://brew-blend.de/products/worlds-finest-specialty-coffee-3-pcs-gift-box"
           }
@@ -298,7 +298,7 @@
             "image": "shopify://shop_images/25pcs_Outdoor_open_shorter_box_2021_8a73d05a-0f01-4c49-b8c9-a0b21bdf3d5b.jpg",
             "caption": "OUTDOOR KAFFEE SET",
             "heading": "Camping Coffee Blends – Dein Kaffee Barista-Erlebnis für unterwegs",
-            "text": "<p>Erlebe mit <strong>Brew Blend</strong> die ultimative <strong>Outdoor Coffee Experience</strong>. Unsere Coffeebrewer sind die perfekte Lösung für alle, die beim <strong>Camping</strong>, Wandern oder auf Reisen nicht auf frisch gebrühten <strong>Specialty Coffee</strong> verzichten wollen.</p><p><strong>Deine Vorteile:</strong> Kein schweres Equipment nötig – einfach heißes Wasser aufgießen und direkt im Beutel brühen. Unsere Brewer sind extrem leicht, platzsparend und <strong>wiederverwendbar</strong>. Das ideale <strong>Camping Kaffee Set</strong> für dein nächstes Abenteuer in der Natur.</p><p>Entdecke jetzt unsere Auswahl und mach deine nächste Tour zum echten Genusserlebnis mit hochwertigem <strong>Kaffee</strong> in Barista-Qualität.</p>",
+            "text": "<p>Erlebe mit <strong>Brew Blend</strong> die ultimative <strong>Outdoor Coffee Experience</strong>. Unsere Coffee brewer sind die perfekte Lösung für alle, die beim <strong>Camping</strong>, Wandern oder auf Reisen nicht auf frisch gebrühten <strong>Specialty Coffee</strong> verzichten wollen.</p><p><strong>Deine Vorteile:</strong> Kein schweres Equipment nötig – einfach heißes Wasser aufgießen und direkt im Beutel brühen. Unsere Brewer sind extrem leicht, platzsparend und <strong>wiederverwendbar</strong>. Das ideale <strong>Camping Kaffee Set</strong> für dein nächstes Abenteuer in der Natur.</p><p>Entdecke jetzt unsere Auswahl und mach deine nächste Tour zum echten Genusserlebnis mit hochwertigem <strong>Kaffee</strong> in Barista-Qualität.</p>",
             "button_label": "outdoor Kaffeekorb entdecken",
             "button_link": "shopify://products/outdoor-specialty-coffee-gift-box-camping-geschenkset"
           }
