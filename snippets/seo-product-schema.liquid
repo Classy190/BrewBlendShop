@@ -5,6 +5,49 @@
 
 {%- if template.name == 'product' and product -%}
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
+
+{%- comment -%} 1. Bild-Logik nach oben auslagern {%- endcomment -%}
+{%- if product.featured_media -%}
+  {%- capture image_json -%}
+    "https:{{ product.featured_media | image_url: width: 1200 }}",
+    "https:{{ product.featured_media | image_url: width: 500 }}"
+  {%- endcapture -%}
+  {%- capture thumbnail_json -%}
+    "thumbnail": "https:{{ product.featured_media | image_url: width: 300 }}",
+  {%- endcapture -%}
+{%- else -%}
+  {%- capture image_json -%}
+    "https:{{ shop.logo | image_url: width: 1200 }}"
+  {%- endcapture -%}
+  {%- assign thumbnail_json = "" -%}
+{%- endif -%}
+
+{%- comment -%} 2. Bewertungs-Logik nach oben auslagern {%- endcomment -%}
+{%- if product.metafields.reviews.rating.value != blank -%}
+  {%- capture rating_json -%}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
+  }
+  {%- endcapture -%}
+{%- else -%}
+  {%- capture rating_json -%}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "10"
+  }
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- comment -%} 3. Verfügbarkeits-Logik nach oben auslagern {%- endcomment -%}
+{%- if selected_variant.available -%}
+  {%- assign availability_status = "InStock" -%}
+{%- else -%}
+  {%- assign availability_status = "OutOfStock" -%}
+{%- endif -%}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -20,21 +63,14 @@
     "@type": "Brand",
     "name": "{{ product.vendor | escape }}"
   },
-  {%- if product.featured_media -%}
   "image": [
-    "https:{{ product.featured_media | image_url: width: 1200 }}",
-    "https:{{ product.featured_media | image_url: width: 500 }}"
+    {{ image_json }}
   ],
-  "thumbnail": "https:{{ product.featured_media | image_url: width: 300 }}",
-  {%- else -%}
-  "image": [
-    "https:{{ shop.logo | image_url: width: 1200 }}"
-  ],
-  {%- endif -%}
+  {{ thumbnail_json }}
   "category": "Specialty Coffee",
   "offers": {
     "@type": "AggregateOffer",
-    "availability": "https://schema.org/{% if selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "availability": "https://schema.org/{{ availability_status }}",
     "priceCurrency": "{{ cart.currency.iso_code }}",
     "lowPrice": "{{ product.price_min | money_without_currency | strip_html | strip }}",
     "highPrice": "{{ product.price_max | money_without_currency | strip_html | strip }}",
@@ -46,20 +82,8 @@
     "@type": "Organization",
     "name": "Brew Blend",
     "url": "{{ shop.url }}"
-  }
-  {%- if product.metafields.reviews.rating.value != blank -%},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
-    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
-  }
-  {%- else -%},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "10"
-  }
-  {%- endif -%}
+  },
+  {{ rating_json }}
 }
 </script>
 
