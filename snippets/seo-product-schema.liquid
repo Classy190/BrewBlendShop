@@ -13,7 +13,7 @@
   "@id": "{{ product.url | prepend: shop.url }}#product",
   "name": {{ product.title | json }},
   "url": "{{ product.url | prepend: shop.url }}",
-  "description": {{ product.description | strip_html | truncatewords: 100 | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncatewords: 100 | json }},
   "sku": "{{ selected_variant.sku | default: product.id }}",
   "mpn": "{{ product.id }}",
   "inLanguage": "de-DE",
@@ -29,22 +29,34 @@
   ],
   "thumbnail": "{{ product.featured_media | image_url: width: 300 | prepend: 'https:' }}",
   {%- else -%}
-  "image": "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}",
+  "image": [
+    "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"
+  ],
   {%- endif -%}
   "category": {% if product.type %}{{ product.type | json }}{% else %}"Specialty Coffee"{% endif %},
   "offers": {
     "@type": "AggregateOffer",
     "availability": "https://schema.org/{% if selected_variant and selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
-    "priceCurrency": "{{ shop.currency }}",
-    "lowPrice": "{{ product.price_min | money_without_currency | strip_html | strip }}",
-    "highPrice": "{{ product.price_max | money_without_currency | strip_html | strip }}",
-    "offerCount": {{ product.variants.size }}
-  },
+    "priceCurrency": "{{ shop.currency | default: cart.currency.iso_code }}",
+    "lowPrice": "{{ product.price_min | money_without_currency | replace: ',', '.' | strip_html | strip }}",
+    "highPrice": "{{ product.price_max | money_without_currency | replace: ',', '.' | strip_html | strip }}",
+    "offerCount": {{ product.variants.size | default: 1 }},
+    "url": "{{ product.url | prepend: shop.url }}"
+  }
+  {%- if product.metafields.reviews.rating.value != blank -%},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
+  }
+  {%- else -%},
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
-    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 10 }}"
-  },
+    "ratingCount": "10"
+  }
+  {%- endif -%}
+  {%- comment -%} Statische Bewertungen als Fallback, falls keine echten App-Bewertungen vorliegen {%- endcomment -%},
   "review": [
     {
       "@type": "Review",
@@ -73,7 +85,6 @@
       "reviewBody": "Die besten Specialty Coffee Brewer die ich je gekauft habe."
     }
   ],
-  "availability": "https://schema.org/{% if selected_variant and selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
   "manufacturerName": {{ product.vendor | json }},
   "producer": {
     "@type": "Organization",
@@ -117,26 +128,44 @@
 }
 </script>
 
-{%- comment -%} 🟢 Rich Results / FAQPage Schema for Product {%- endcomment -%}
+{%- comment -%} 🟢 Rich Results / FAQPage Schema für Metafields ODER Global Fallback {%- endcomment -%}
 <script type="application/ld+json">
+{%- if product.metafields.custom.schemorg.value != blank or product.metafields.custom.schemorg != blank -%}
+  {%- assign raw_faq = product.metafields.custom.schemorg.value | default: product.metafields.custom.schemorg -%}
+  {%- assign raw_faq = raw_faq | strip_newlines | strip -%}
+  {%- if raw_faq contains '=> ' or raw_faq contains '=>' -%}
+    {{ raw_faq 
+      | replace: '=>', ':' 
+      | replace: ':mainEntity', '"mainEntity"' 
+      | replace: ':Question', '"Question"' 
+      | replace: ':Answer', '"Answer"' 
+      | replace: ':name', '"name"' 
+      | replace: ':acceptedAnswer', '"acceptedAnswer"' 
+      | replace: ':text', '"text"' 
+      | replace: ':FAQPage', '"FAQPage"' 
+    }}
+  {%- else -%}
+    {{ raw_faq }}
+  {%- endif -%}
+{%- else -%}
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Wie verwende ich {{ product.title }}?",
+      "name": "Wie verwende ich {{ product.title | escape }}?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "{{ product.description | strip_html | truncatewords: 50 }}"
+        "text": {{ product.description | strip_html | strip_newlines | truncatewords: 50 | json }}
       }
     },
     {
       "@type": "Question",
-      "name": "Ist {{ product.title }} verfügbar?",
+      "name": "Ist {{ product.title | escape }} verfügbar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "{% if selected_variant and selected_variant.available %}Ja, {{ product.title }} ist derzeit verfügbar und wird in 1-3 Werktagen versendet.{% else %}Dieser Artikel ist derzeit leider ausverkauft.{% endif %}"
+        "text": "{% if selected_variant and selected_variant.available %}Ja, {{ product.title | escape }} ist derzeit verfügbar und wird in 1-3 Werktagen versendet.{% else %}Dieser Artikel ist derzeit leider ausverkauft.{% endif %}"
       }
     },
     {
@@ -149,7 +178,7 @@
     },
     {
       "@type": "Question",
-      "name": "Gibt es eine Garantie auf {{ product.title }}?",
+      "name": "Gibt es eine Garantie auf {{ product.title | escape }}?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Ja, wir bieten 30 Tage Geld-zurück-Garantie auf alle unsere Produkte."
@@ -157,6 +186,6 @@
     }
   ]
 }
+{%- endif -%}
 </script>
-
 {%- endif -%}
