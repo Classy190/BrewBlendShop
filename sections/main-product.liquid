@@ -3762,48 +3762,93 @@
 <meta property="og:image" content="{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' }}">
 {%- endif -%}
 
-{%- comment -%} Valides Product Schema für echte Produkt-Snippets & Händlereinträge {%- endcomment -%}
+{%- comment -%} NewsArticle Schema für Authority/Credibility {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{{ product.title | escape }}",
-  "description": "{{ product.description | strip_html | strip_newlines | truncatewords: 50 | escape }}",
-  "image": [
-    {%- if product.featured_media -%}
-      "{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' }}"
-    {%- else -%}"{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"{%- endif -%}
-  ],
-  "sku": "{{ product.selected_or_first_available_variant.sku | default: product.id }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "Brew Blend"
+  "@type": "NewsArticle",
+  "headline": "{{ product.title }}",
+  "description": "{{ product.description | strip_html | truncatewords: 30 }}",
+  "image": {%- if product.featured_media -%}"{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' }}"{%- else -%}"{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"{%- endif -%},
+  "datePublished": "{{ product.published_at | date: '%Y-%m-%d' }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Brew Blend",
+    "url": "{{ request.origin }}"
   },
-  "offers": {
-    "@type": "Offer",
-    "url": "{{ shop.url }}{{ product.url }}",
-    "priceCurrency": "{{ cart.currency.iso_code }}",
-    "price": "{{ product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '.' | strip }}",
-    "priceValidUntil": "2027-12-31",
-    "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
-    "seller": {
-      "@type": "Organization",
-      "name": "Brew Blend Coffee Roastery"
+  "publisher": {
+    "@type": "Organization",
+    "name": "Brew Blend Coffee Roastery",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"
     }
   }
-  {%- if product.metafields.reviews.rating.value != blank -%},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
-    "reviewCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
-  }
-  {%- endif -%}
 }
 </script>
 
   </div>
 </section>
+{%- if product.metafields.custom.schemorg.value != blank or product.metafields.custom.schemorg != blank -%}
+  {%- assign raw_faq = product.metafields.custom.schemorg.value | default: product.metafields.custom.schemorg -%}
+  {%- assign raw_faq = raw_faq | strip_newlines | strip -%}
+  <script type="application/ld+json">
+    {%- capture transformed_schema -%}
+      {%- if raw_faq contains '=> ' or raw_faq contains '=>' -%}
+        {{ raw_faq 
+          | replace: '=>', ':' 
+          | replace: ':mainEntity', '"mainEntity"' 
+          | replace: ':Question', '"Question"' 
+          | replace: ':Answer', '"Answer"' 
+          | replace: ':name', '"name"' 
+          | replace: ':acceptedAnswer', '"acceptedAnswer"' 
+          | replace: ':text', '"text"' 
+          | replace: ':FAQPage', '"FAQPage"' 
+        }}
+      {%- else -%}
+        {{ raw_faq }}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- unless transformed_schema contains '=>' -%}
+      {{ transformed_schema }}
+    {%- else -%}
+      {%- comment -%} Invalid schema was omitted to avoid JSON-LD parsing errors {%- endcomment -%}
+    {%- endunless -%}
+  </script>
+{%- else -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert der Versand?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In der Regel liefern wir innerhalb von 2–4 Werktagen in Deutschland; Expressversand ist gegen Aufpreis möglich."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie kann ich den Kaffee zurückgeben?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sie haben ein 14-tägiges Rückgaberecht für ungeöffnete Ware, Rücksendung erfolgt kostenfrei innerhalb Deutschlands."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es eine Geld-zurück-Garantie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, wenn Sie mit dem Produkt nicht zufrieden sind, bieten wir 30 Tage Geld-zurück-Garantie."
+        }
+      }
+    ]
+  }
+  </script>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.main-product.name",
