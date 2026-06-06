@@ -60,7 +60,7 @@
     "priceCurrency": "{{ cart.currency.iso_code }}",
     "lowPrice": "{{ product.price_min | money_without_currency | strip_html | strip }}",
     "highPrice": "{{ product.price_max | money_without_currency | strip_html | strip }}",
-    "offerCount": {{ product.variants.size | default: 1 }},
+    "offerCount": "{{ product.variants.size | default: 1 }}",
     "url": "{{ shop.url }}{{ product.url }}"
   },
   "manufacturerName": "{{ product.vendor | escape }}",
