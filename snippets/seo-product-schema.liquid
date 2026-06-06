@@ -42,6 +42,16 @@
     "highPrice": "{{ product.price_max | money_without_currency | replace: ',', '.' | strip_html | strip }}",
     "offerCount": {{ product.variants.size | default: 1 }},
     "url": "{{ product.url | prepend: shop.url }}"
+  },
+  "manufacturerName": {{ product.vendor | json }},
+  "producer": {
+    "@type": "Organization",
+    "name": "Brew Blend",
+    "url": "{{ shop.url }}"
+  },
+  "isPartOf": {
+    "@type": "Collection",
+    "name": {% if product.collections.size > 0 %}{{ product.collections.first.title | json }}{% else %}"Specialty Coffee & Tea"{% endif %}
   }
   {%- if product.metafields.reviews.rating.value != blank -%},
   "aggregateRating": {
@@ -84,17 +94,7 @@
       },
       "reviewBody": "Die besten Specialty Coffee Brewer die ich je gekauft habe."
     }
-  ],
-  "manufacturerName": {{ product.vendor | json }},
-  "producer": {
-    "@type": "Organization",
-    "name": "Brew Blend Coffee Roastery",
-    "url": "{{ shop.url }}"
-  },
-  "isPartOf": {
-    "@type": "Collection",
-    "name": {% if product.collections.size > 0 %}{{ product.collections.first.title | json }}{% else %}"Specialty Coffee & Tea"{% endif %}
-  }
+  ]
 }
 </script>
 
