@@ -3767,24 +3767,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "{{ product.title | escape }}",
-  "description": "{{ product.description | strip_html | strip_newlines | truncatewords: 50 | escape }}",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncatewords: 50 | json }},
   "image": [
-    {%- if product.featured_media -%}
-      "{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' }}"
-    {%- else -%}
-      "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"
-    {%- endif -%}
+    "https:{{ product.featured_media | image_url: width: 1200 }}"
   ],
-  "sku": "{{ product.selected_or_first_available_variant.sku | default: product.id }}",
+  "sku": {{ product.selected_or_first_available_variant.sku | default: product.id | json }},
   "brand": {
     "@type": "Brand",
     "name": "Brew Blend"
   },
   "offers": {
     "@type": "Offer",
-    "url": "{{ shop.url }}{{ product.url }}",
-    "priceCurrency": "{{ cart.currency.iso_code }}",
+    "url": {{ shop.url | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
     "price": "{{ product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '.' | strip }}",
     "priceValidUntil": "2027-12-31",
     "itemCondition": "https://schema.org/NewCondition",
@@ -3833,8 +3829,6 @@
       {%- comment -%} Invalid schema was omitted to avoid JSON-LD parsing errors {%- endcomment -%}
     {%- endunless -%}
   </script>
-{%- else -%}
-  {%- comment -%} Fallback-FAQs entfernt, da andere Apps/Templates bereits FAQPage-Blöcke generieren und Doppelungen Fehler erzeugen {%- endcomment -%}
 {%- endif -%}
 {% schema %}
 {
