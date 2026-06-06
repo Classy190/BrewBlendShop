@@ -280,36 +280,35 @@
 </script>
 
     {%- comment -%} 🟢 TRUSTMARK & SECURITY CERTIFICATIONS {%- endcomment -%}
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Brew Blend Coffee",
-        "url": "{{ shop.url }}",
-        "priceRange": "€5-€75",
-        "sameAs": [
-          "https://www.trustpilot.com/review/brew-company.com"
-        ],
-        "knowsAbout": ["Specialty Coffee", "Fair Trade", "Sustainable Coffee", "Coffee Brewing"],
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "Fair Trade Certified",
-            "recognizedBy": {"@type": "Organization", "name": "Fair Trade International"}
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "SCA Certified",
-            "recognizedBy": {"@type": "Organization", "name": "Specialty Coffee Association"}
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "SSL Encrypted",
-            "recognizedBy": {"@type": "Organization", "name": "Verisign"}
-          }
-        ]
-      }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Brew Blend Coffee",
+  "url": "{{ shop.url }}",
+  "sameAs": [
+    "https://www.trustpilot.com/review/brew-company.com"
+  ],
+  "knowsAbout": ["Specialty Coffee", "Fair Trade", "Sustainable Coffee", "Coffee Brewing"],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Fair Trade Certified",
+      "recognizedBy": {"@type": "Organization", "name": "Fair Trade International"}
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "SCA Certified",
+      "recognizedBy": {"@type": "Organization", "name": "Specialty Coffee Association"}
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "SSL Encrypted",
+      "recognizedBy": {"@type": "Organization", "name": "Verisign"}
+    }
+  ]
+}
+</script>
 
     {%- comment -%} 🟢 PRODUCT SCHEMA für Coffee Brewer (Rich Snippets) {%- endcomment -%}
     <script type="application/ld+json">
