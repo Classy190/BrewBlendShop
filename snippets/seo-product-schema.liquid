@@ -1,13 +1,13 @@
 {%- comment -%}
   🟢 FINAL SEO FIX: Krisensicheres Product & Breadcrumb Schema (Ohne JSON-Filter)
   Verhindert Parsing-Fehler und erfüllt alle Google Shopping & Review Richtlinien.
-  + AEO/GEO UPDATE: Inkl. Retouren, Video, Audience-Tags & dynamischem FAQ-Schema.
+  + AEO/GEO UPDATE: Inkl. Retouren, Video & Audience-Tags.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
 
-{%- comment -%} 1. Bild-Logik nach oben auslagern {%- endcomment -%}
+{%- comment -%} 1. Bild-Logik {%- endcomment -%}
 {%- if product.featured_media -%}
   {%- capture image_1 -%}https:{{ product.featured_media | image_url: width: 1200 }}{%- endcapture -%}
   {%- capture image_2 -%}https:{{ product.featured_media | image_url: width: 500 }}{%- endcapture -%}
@@ -18,7 +18,7 @@
   {%- capture thumb_img -%}https:{{ shop.logo | image_url: width: 300 }}{%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 2. Bewertungs-Logik nach oben auslagern {%- endcomment -%}
+{%- comment -%} 2. Bewertungs-Logik {%- endcomment -%}
 {%- if product.metafields.reviews.rating.value != blank -%}
   {%- assign current_rating = product.metafields.reviews.rating.value -%}
   {%- assign current_count = product.metafields.reviews.rating_count | default: 1 -%}
@@ -27,14 +27,14 @@
   {%- assign current_count = "10" -%}
 {%- endif -%}
 
-{%- comment -%} 3. Verfügbarkeits-Logik nach oben auslagern {%- endcomment -%}
+{%- comment -%} 3. Verfügbarkeits-Logik {%- endcomment -%}
 {%- if selected_variant.available -%}
   {%- assign availability_status = "InStock" -%}
 {%- else -%}
   {%- assign availability_status = "OutOfStock" -%}
 {%- endif -%}
 
-{%- comment -%} 4. Retouren-Logik (Echte Datenanbindung aus Shopify) {%- endcomment -%}
+{%- comment -%} 4. Retouren-Logik {%- endcomment -%}
 {%- if shop.refund_policy -%}
   {%- capture return_policy_json -%}
   ,
@@ -50,7 +50,7 @@
   {%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 5. Video-Logik (Echte Datenanbindung) {%- endcomment -%}
+{%- comment -%} 5. Video-Logik {%- endcomment -%}
 {%- assign product_video = product.media | where: 'media_type', 'video' | first -%}
 {%- if product_video -%}
   {%- capture video_json -%}
@@ -66,7 +66,7 @@
   {%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 6. NEU: Zielgruppen-Logik (Audience) über Shopify Tags {%- endcomment -%}
+{%- comment -%} 6. Zielgruppen-Logik {%- endcomment -%}
 {%- assign audience_type = "Kaffeeliebhaber & Specialty Coffee Fans" -%}
 {%- for tag in product.tags -%}
   {%- if tag contains 'Einsteiger' -%}{%- assign audience_type = "Kaffee-Einsteiger" -%}{%- endif -%}
@@ -168,34 +168,4 @@
   ]
 }
 </script>
-
-{%- comment -%} 7. NEU: FAQ-Schema (Echte Datenanbindung über Shopify Metafelder) {%- endcomment -%}
-{%- if product.metafields.custom.faq_frage_1 != blank and product.metafields.custom.faq_antwort_1 != blank -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "{{ product.metafields.custom.faq_frage_1 | escape }}",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "{{ product.metafields.custom.faq_antwort_1 | strip_html | escape }}"
-      }
-    }
-    {%- if product.metafields.custom.faq_frage_2 != blank -%}
-    ,{
-      "@type": "Question",
-      "name": "{{ product.metafields.custom.faq_frage_2 | escape }}",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "{{ product.metafields.custom.faq_antwort_2 | strip_html | escape }}"
-      }
-    }
-    {%- endif -%}
-  ]
-}
-</script>
-{%- endif -%}
 {%- endif -%}
