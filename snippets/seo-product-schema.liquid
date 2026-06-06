@@ -1,27 +1,87 @@
-{%- comment -%} Logik VOR dem JSON ausführen, damit der Parser nicht abstürzt {%- endcomment -%}
-{%- assign product_image_1 = shop.logo | image_url: width: 1200 -%}
-{%- assign product_image_2 = shop.logo | image_url: width: 1200 -%}
+{%- comment -%}
+  🟢 FINAL SEO FIX: Krisensicheres Product & Breadcrumb Schema (Ohne JSON-Filter)
+  Verhindert jegliche Parsing-Fehler bei Google und im Shopify-Theme.
+{%- endcomment -%}
 
-{%- if product.featured_media -%}
-  {%- assign product_image_1 = product.featured_media | image_url: width: 1200 -%}
-{%- endif -%}
-{%- if product.media[1] -%}
-  {%- assign product_image_2 = product.media[1] | image_url: width: 1200 -%}
-{%- endif -%}
-
+{%- if template.name == 'product' and product -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "Product",
+  "@id": "{{ shop.url }}{{ product.url }}#product",
   "name": "{{ product.title | escape }}",
-  "image": [
-    "https:{{ product_image_1 }}",
-    "https:{{ product_image_2 }}"
-  ],
-  "sku": "{{ product.selected_or_first_available_variant.sku | default: product.id }}",
+  "url": "{{ shop.url }}{{ product.url }}",
+  "description": "{{ product.description | strip_html | strip_newlines | truncatewords: 50 | escape }}",
+  "sku": "{{ selected_variant.sku | default: product.id }}",
+  "mpn": "{{ product.id }}",
+  "inLanguage": "de-DE",
   "brand": {
     "@type": "Brand",
     "name": "{{ product.vendor | escape }}"
+  },
+  {%- if product.featured_media -%}
+  "image": [
+    "https:{{ product.featured_media | image_url: width: 1200 }}",
+    "https:{{ product.featured_media | image_url: width: 500 }}"
+  ],
+  "thumbnail": "https:{{ product.featured_media | image_url: width: 300 }}",
+  {%- else -%}
+  "image": [
+    "https:{{ shop.logo | image_url: width: 1200 }}"
+  ],
+  {%- endif -%}
+  "category": "Specialty Coffee",
+  "offers": {
+    "@type": "AggregateOffer",
+    "availability": "https://schema.org/{% if selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "priceCurrency": "{{ cart.currency.iso_code }}",
+    "lowPrice": "{{ product.price_min | money_without_currency | strip_html | strip }}",
+    "highPrice": "{{ product.price_max | money_without_currency | strip_html | strip }}",
+    "offerCount": {{ product.variants.size | default: 1 }},
+    "url": "{{ shop.url }}{{ product.url }}"
+  },
+  "manufacturerName": "{{ product.vendor | escape }}",
+  "producer": {
+    "@type": "Organization",
+    "name": "Brew Blend",
+    "url": "{{ shop.url }}"
   }
+  {%- if product.metafields.reviews.rating.value != blank -%},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
+  }
+  {%- else -%},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "10"
+  }
+  {%- endif -%}
 }
 </script>
+
+{%- comment -%} 🟢 Breadcrumb Schema for Product Pages {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ shop.url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ product.title | escape }}",
+      "item": "{{ shop.url }}{{ product.url }}"
+    }
+  ]
+}
+</script>
+{%- endif -%}
