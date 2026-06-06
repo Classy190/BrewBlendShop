@@ -8,37 +8,22 @@
 
 {%- comment -%} 1. Bild-Logik nach oben auslagern {%- endcomment -%}
 {%- if product.featured_media -%}
-  {%- capture image_json -%}
-    "https:{{ product.featured_media | image_url: width: 1200 }}",
-    "https:{{ product.featured_media | image_url: width: 500 }}"
-  {%- endcapture -%}
-  {%- capture thumbnail_json -%}
-    "thumbnail": "https:{{ product.featured_media | image_url: width: 300 }}",
-  {%- endcapture -%}
+  {%- capture image_1 -%}https:{{ product.featured_media | image_url: width: 1200 }}{%- endcapture -%}
+  {%- capture image_2 -%}https:{{ product.featured_media | image_url: width: 500 }}{%- endcapture -%}
+  {%- capture thumb_img -%}https:{{ product.featured_media | image_url: width: 300 }}{%- endcapture -%}
 {%- else -%}
-  {%- capture image_json -%}
-    "https:{{ shop.logo | image_url: width: 1200 }}"
-  {%- endcapture -%}
-  {%- assign thumbnail_json = "" -%}
+  {%- capture image_1 -%}https:{{ shop.logo | image_url: width: 1200 }}{%- endcapture -%}
+  {%- capture image_2 -%}https:{{ shop.logo | image_url: width: 1200 }}{%- endcapture -%}
+  {%- capture thumb_img -%}https:{{ shop.logo | image_url: width: 300 }}{%- endcapture -%}
 {%- endif -%}
 
 {%- comment -%} 2. Bewertungs-Logik nach oben auslagern {%- endcomment -%}
 {%- if product.metafields.reviews.rating.value != blank -%}
-  {%- capture rating_json -%}
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
-    "ratingCount": "{{ product.metafields.reviews.rating_count | default: 1 }}"
-  }
-  {%- endcapture -%}
+  {%- assign current_rating = product.metafields.reviews.rating.value -%}
+  {%- assign current_count = product.metafields.reviews.rating_count | default: 1 -%}
 {%- else -%}
-  {%- capture rating_json -%}
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "10"
-  }
-  {%- endcapture -%}
+  {%- assign current_rating = "4.8" -%}
+  {%- assign current_count = "10" -%}
 {%- endif -%}
 
 {%- comment -%} 3. Verfügbarkeits-Logik nach oben auslagern {%- endcomment -%}
@@ -64,9 +49,10 @@
     "name": "{{ product.vendor | escape }}"
   },
   "image": [
-    {{ image_json }}
+    "{{ image_1 }}",
+    "{{ image_2 }}"
   ],
-  {{ thumbnail_json }}
+  "thumbnail": "{{ thumb_img }}",
   "category": "Specialty Coffee",
   "offers": {
     "@type": "AggregateOffer",
@@ -83,7 +69,11 @@
     "name": "Brew Blend",
     "url": "{{ shop.url }}"
   },
-  {{ rating_json }}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ current_rating }}",
+    "ratingCount": "{{ current_count }}"
+  }
 }
 </script>
 
