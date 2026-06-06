@@ -1,6 +1,7 @@
 {%- comment -%}
   🟢 FINAL SEO FIX: Krisensicheres Product & Breadcrumb Schema (Ohne JSON-Filter)
   Verhindert Parsing-Fehler und erfüllt alle Google Shopping & Review Richtlinien.
+  + AEO/GEO UPDATE: Inklusive echten Video- & Retouren-Daten für maximale GSC Sichtbarkeit.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
@@ -31,6 +32,38 @@
   {%- assign availability_status = "InStock" -%}
 {%- else -%}
   {%- assign availability_status = "OutOfStock" -%}
+{%- endif -%}
+
+{%- comment -%} 4. NEU: Retouren-Logik (Echte Datenanbindung aus Shopify) {%- endcomment -%}
+{%- if shop.refund_policy -%}
+  {%- capture return_policy_json -%}
+  ,
+  "hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": "DE",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": "14",
+    "returnMethod": "https://schema.org/ReturnByMail",
+    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+    "returnPolicyUrl": "{{ shop.url }}{{ shop.refund_policy.url }}"
+  }
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- comment -%} 5. NEU: Video-Logik (Echte Datenanbindung) {%- endcomment -%}
+{%- assign product_video = product.media | where: 'media_type', 'video' | first -%}
+{%- if product_video -%}
+  {%- capture video_json -%}
+  ,
+  "video": {
+    "@type": "VideoObject",
+    "name": "{{ product.title | escape }} - Video",
+    "description": "Video zu {{ product.title | escape }}",
+    "thumbnailUrl": "https:{{ product_video.preview_image | image_url: width: 800 }}",
+    "uploadDate": "{{ product.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+    "contentUrl": "{{ product_video.sources.last.url }}"
+  }
+  {%- endcapture -%}
 {%- endif -%}
 
 <script type="application/ld+json">
@@ -64,7 +97,7 @@
     "seller": {
       "@type": "Organization",
       "name": "Brew Blend"
-    }
+    }{{ return_policy_json }}
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -98,7 +131,7 @@
       },
       "reviewBody": "Die besten Specialty Coffee Brewer die ich je gekauft habe."
     }
-  ]
+  ]{{ video_json }}
 }
 </script>
 
