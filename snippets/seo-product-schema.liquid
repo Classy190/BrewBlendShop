@@ -1,7 +1,7 @@
 {%- comment -%}
   🟢 FINAL SEO FIX: Krisensicheres Product & Breadcrumb Schema (Ohne JSON-Filter)
   Verhindert Parsing-Fehler und erfüllt alle Google Shopping & Review Richtlinien.
-  + AEO/GEO UPDATE: Inklusive echten Video- & Retouren-Daten für maximale GSC Sichtbarkeit.
+  + AEO/GEO UPDATE: Inkl. Retouren, Video, Audience-Tags & dynamischem FAQ-Schema.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
@@ -34,7 +34,7 @@
   {%- assign availability_status = "OutOfStock" -%}
 {%- endif -%}
 
-{%- comment -%} 4. NEU: Retouren-Logik (Echte Datenanbindung aus Shopify) {%- endcomment -%}
+{%- comment -%} 4. Retouren-Logik (Echte Datenanbindung aus Shopify) {%- endcomment -%}
 {%- if shop.refund_policy -%}
   {%- capture return_policy_json -%}
   ,
@@ -50,7 +50,7 @@
   {%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 5. NEU: Video-Logik (Echte Datenanbindung) {%- endcomment -%}
+{%- comment -%} 5. Video-Logik (Echte Datenanbindung) {%- endcomment -%}
 {%- assign product_video = product.media | where: 'media_type', 'video' | first -%}
 {%- if product_video -%}
   {%- capture video_json -%}
@@ -65,6 +65,14 @@
   }
   {%- endcapture -%}
 {%- endif -%}
+
+{%- comment -%} 6. NEU: Zielgruppen-Logik (Audience) über Shopify Tags {%- endcomment -%}
+{%- assign audience_type = "Kaffeeliebhaber & Specialty Coffee Fans" -%}
+{%- for tag in product.tags -%}
+  {%- if tag contains 'Einsteiger' -%}{%- assign audience_type = "Kaffee-Einsteiger" -%}{%- endif -%}
+  {%- if tag contains 'Barista' -%}{%- assign audience_type = "Home-Baristas & Kaffee-Profis" -%}{%- endif -%}
+  {%- if tag contains 'Büro' -%}{%- assign audience_type = "Büros & Unternehmen" -%}{%- endif -%}
+{%- endfor -%}
 
 <script type="application/ld+json">
 {
@@ -87,6 +95,10 @@
   ],
   "thumbnail": "{{ thumb_img }}",
   "category": "Specialty Coffee",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "{{ audience_type }}"
+  },
   "offers": {
     "@type": "Offer",
     "availability": "https://schema.org/{{ availability_status }}",
@@ -135,7 +147,7 @@
 }
 </script>
 
-{%- comment -%} 🟢 Breadcrumb Schema for Product Pages {%- endcomment -%}
+{%- comment -%} 🟢 Breadcrumb Schema {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -156,4 +168,34 @@
   ]
 }
 </script>
+
+{%- comment -%} 7. NEU: FAQ-Schema (Echte Datenanbindung über Shopify Metafelder) {%- endcomment -%}
+{%- if product.metafields.custom.faq_frage_1 != blank and product.metafields.custom.faq_antwort_1 != blank -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ product.metafields.custom.faq_frage_1 | escape }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ product.metafields.custom.faq_antwort_1 | strip_html | escape }}"
+      }
+    }
+    {%- if product.metafields.custom.faq_frage_2 != blank -%}
+    ,{
+      "@type": "Question",
+      "name": "{{ product.metafields.custom.faq_frage_2 | escape }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ product.metafields.custom.faq_antwort_2 | strip_html | escape }}"
+      }
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endif -%}
 {%- endif -%}
