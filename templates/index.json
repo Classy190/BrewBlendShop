@@ -219,7 +219,6 @@
         },
         "featured_collection_nXHD6p": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "bundle"
           }
@@ -233,7 +232,7 @@
         "featured_collection_3qhHVb",
         "featured_collection_nXHD6p"
       ],
-      "name": "t:sections.collection-list.presets.name",
+      "name": "bundle",
       "settings": {
         "title": "Für Kaffeeliebhaber & Teegenießer",
         "heading_size": "h2",
