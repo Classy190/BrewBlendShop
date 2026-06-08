@@ -216,6 +216,13 @@
           "settings": {
             "collection": "teabrewers"
           }
+        },
+        "featured_collection_nXHD6p": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "bundle"
+          }
         }
       },
       "block_order": [
@@ -223,7 +230,8 @@
         "featured_collection_NCNUWU",
         "featured_collection_c6w4f9",
         "featured_collection_9Lzxgr",
-        "featured_collection_3qhHVb"
+        "featured_collection_3qhHVb",
+        "featured_collection_nXHD6p"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
@@ -231,7 +239,7 @@
         "heading_size": "h2",
         "image_ratio": "square",
         "image_radius": 0,
-        "columns_desktop": 5,
+        "columns_desktop": 6,
         "color_scheme": "",
         "subtitle_center": true,
         "show_arrow": false,
