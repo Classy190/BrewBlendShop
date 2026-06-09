@@ -58,9 +58,18 @@
     }
   }
 
+  /* --- BREW BLEND DESKTOP FIXES --- */
   @media screen and (min-width: 750px) {
     #Banner-{{ section.id }} .mobile-only-media {
       display: none !important;
+    }
+    
+    /* ERGÄNZUNG: Kontrolliert den Abstand links und die Breite auf dem Desktop */
+    #Banner-{{ section.id }} .banner__content--middle-left .banner__box,
+    #Banner-{{ section.id }} .banner__content--top-left .banner__box,
+    #Banner-{{ section.id }} .banner__content--bottom-left .banner__box {
+      padding-left: 6rem !important; /* Schiebt den Text vom linken Rand weg */
+      max-width: 650px !important; /* Begrenzt die Breite wie in deiner roten Markierung */
     }
   }
 {%- endstyle -%}
@@ -92,6 +101,7 @@
   class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
   {%- if section.settings.image != blank -%}
+    <!-- ROUTE 1: DESKTOP -->
     <div class="banner__media media{% if section.settings.image_mobile != blank %} desktop-only-media{% endif %}{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
@@ -122,6 +132,7 @@
       }}
     </div>
     
+    <!-- ROUTE 2: MOBILE -->
     {%- if section.settings.image_mobile != blank -%}
       <div class="banner__media media mobile-only-media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
         {%- assign mobile_image_height = section.settings.image_mobile.width | divided_by: section.settings.image_mobile.aspect_ratio -%}
