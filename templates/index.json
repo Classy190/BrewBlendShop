@@ -33,7 +33,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Brew_Blend_Coffee.png",
+        "image": "shopify://shop_images/brew_blend_coffee_hero.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "bottom-center",
