@@ -447,6 +447,7 @@
         "text_R4nQwF",
         "button_wXD9tH"
       ],
+      "disabled": true,
       "name": "Benefits",
       "settings": {
         "image": "shopify://shop_images/Brew_Blend_Bio_Tea.png",
@@ -532,7 +533,59 @@
         "swipe_on_mobile": false,
         "navigation_on_mobile": false,
         "padding_top": 12,
-        "padding_bottom": 12
+        "padding_bottom": 24
+      }
+    },
+    "image_banner_YXpHz4": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_zPYAYe": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_FKfA6L": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_XprfY7": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zPYAYe",
+        "text_FKfA6L",
+        "buttons_XprfY7"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/cocktail-mocktail-brew-blen.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     },
     "lumin_cards_Wzw8EN": {
@@ -680,6 +733,7 @@
     "rich_text_RB6JJw",
     "image_with_text_dKihYy",
     "multicolumn_e4LRVb",
+    "image_banner_YXpHz4",
     "lumin_cards_Wzw8EN",
     "image_with_text_4HCCKn",
     "1779704689b0d05130"
