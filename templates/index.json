@@ -573,6 +573,7 @@
         "text_FKfA6L",
         "buttons_XprfY7"
       ],
+      "disabled": true,
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/cocktail-mocktail-brew-blen.jpg",
