@@ -557,10 +557,9 @@
         },
         "buttons_XprfY7": {
           "type": "buttons",
-          "disabled": true,
           "settings": {
-            "button_label_1": "",
-            "button_link_1": "",
+            "button_label_1": "Lover Kit",
+            "button_link_1": "shopify://collections/bundle",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -581,7 +580,7 @@
         "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,

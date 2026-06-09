@@ -420,8 +420,8 @@
           "background": "#ffffff",
           "background_gradient": "",
           "text": "#1f1d24",
-          "button": "#2f4637",
-          "button_label": "#ffffff",
+          "button": "#355b42",
+          "button_label": "#bcffb7",
           "secondary_button_label": "#1f1d24",
           "shadow": "#1f1d24"
         }
