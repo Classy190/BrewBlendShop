@@ -55,6 +55,9 @@
     #Banner-{{ section.id }} .banner__content {
       padding-left: 1.5rem !important;
       padding-right: 1.5rem !important;
+      /* NEU: Zwingt den Text vertikal nach oben und gibt Abstand zum Rand */
+      justify-content: flex-start !important; 
+      padding-top: 4rem !important; 
     }
   }
 
@@ -64,12 +67,12 @@
       display: none !important;
     }
     
-    /* ERGÄNZUNG: Kontrolliert den Abstand links und die Breite auf dem Desktop */
+    /* Kontrolliert den Abstand links und die Breite auf dem Desktop */
     #Banner-{{ section.id }} .banner__content--middle-left .banner__box,
     #Banner-{{ section.id }} .banner__content--top-left .banner__box,
     #Banner-{{ section.id }} .banner__content--bottom-left .banner__box {
-      padding-left: 6rem !important; /* Schiebt den Text vom linken Rand weg */
-      max-width: 650px !important; /* Begrenzt die Breite wie in deiner roten Markierung */
+      padding-left: 6rem !important; 
+      max-width: 650px !important; 
     }
   }
 {%- endstyle -%}
