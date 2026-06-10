@@ -154,7 +154,7 @@
       "settings": {
         "title": "Für Kaffeeliebhaber & Teegenießer",
         "heading_size": "h2",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_radius": 0,
         "columns_desktop": 6,
         "color_scheme": "",
