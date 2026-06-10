@@ -47,55 +47,6 @@
         "show_text_below": false
       }
     },
-    "image_with_text_KzhtFq": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_X6kC8j": {
-          "type": "heading",
-          "settings": {
-            "heading": "Fruit Tea Set <strong>– </strong>Teabrewer",
-            "heading_size": "h2"
-          }
-        },
-        "text_eF6kae": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Vergiss herkömmliche Teebeutel. Unsere <strong>Tea-Brewer</strong> bieten dir die Qualität von losem Tee, perfekt portioniert. Probiere Bestseller wie <strong>Blueberry Mint</strong> oder <strong>Cranberry Grenadine</strong> – vegan, koffeinfrei und voller Geschmack.</p>",
-            "text_style": "subtitle"
-          }
-        },
-        "button_rHnqWd": {
-          "type": "button",
-          "settings": {
-            "button_label": "Kollektion entdecken",
-            "button_link": "shopify://collections/tee-geschenkset",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_X6kC8j",
-        "text_eF6kae",
-        "button_rHnqWd"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/Organic_Tea_Collection.png",
-        "height": "adapt",
-        "desktop_image_width": "small",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
     "video_new_AJCwDA": {
       "type": "video-new",
       "blocks": {
@@ -149,40 +100,6 @@
         "content_position": "middle-center",
         "desktop_height": 740,
         "mobile_height": 500
-      }
-    },
-    "rich_text_extra": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_extra": {
-          "type": "heading",
-          "name": "H2",
-          "settings": {
-            "heading": "Brew Blend in Deutschland bestellen: schnell, nachhaltig, sicher",
-            "heading_size": "h2"
-          }
-        },
-        "text_extra": {
-          "type": "text",
-          "name": "SEO Zusatztext",
-          "settings": {
-            "text": "<p>Der Worlds Finest Specialty Coffee Brewer ist ein deutsches Kaffeeerlebnis mit echtem Mehrwert. Bestelle bei Brew Blend und profitiere von einem schnellen Versand in Deutschland sowie einem nachhaltigen Verpackungskonzept.</p><p>Mit unserem Brewer-Set kannst du Specialty Coffee jederzeit genießen ◊ zuhause, im Büro oder unterwegs.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_extra",
-        "text_extra"
-      ],
-      "disabled": true,
-      "name": "SEO Booster Text",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "left",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 24,
-        "padding_bottom": 24
       }
     },
     "collection_list_LRX9gw": {
@@ -724,9 +641,7 @@
   },
   "order": [
     "image_banner_6XnFfp",
-    "image_with_text_KzhtFq",
     "video_new_AJCwDA",
-    "rich_text_extra",
     "collection_list_LRX9gw",
     "rich_text_LRBHtN",
     "multirow_mBVEUk",
