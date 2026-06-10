@@ -190,6 +190,7 @@
         "heading_jifKjg",
         "text_bpqTiw"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "SEO Hero Intro – Coffee Brewer",
       "settings": {
@@ -207,6 +208,7 @@
         "row_UWeRfi": {
           "type": "row",
           "name": "World's Finest Coffee",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/3Pcs__WBC-_Compressify.io_3331c2f9-bc07-4699-b384-c95f0f80cdf0.png",
             "caption": "The Brew Company Coffeebrewer",
