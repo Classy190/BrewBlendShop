@@ -52,7 +52,7 @@
     "show_progress_bar_icons": false,
     "use_items_subtotal": false,
     "enable_goal_1": true,
-    "cart_progress_goal_threshold_1": "75",
+    "cart_progress_goal_threshold_1": "100",
     "goal_1_pre_goal_message": "Sie sind nur noch [x] von <strong>KOSTENLOSEM VERSAND</strong> entfernt.",
     "goal_1_post_goal_message": "🎉 Herzlichen Glückwunsch! Sie haben sich <strong>KOSTENLOSEN VERSAND</strong> freigeschaltet.",
     "goal_1_description": "Kostenloser Versand",
