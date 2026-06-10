@@ -287,9 +287,9 @@
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": true,
-        "enable_quick_desc": false,
-        "quick_desc_legth": 90,
-        "quick_desc_size": 14,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 80,
+        "quick_desc_size": 12,
         "columns_mobile": "2",
         "padding_top": 24,
         "padding_bottom": 24
