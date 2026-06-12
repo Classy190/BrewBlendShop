@@ -70,45 +70,6 @@
             "size_page": ""
           }
         },
-        "feature_gFtpkB": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_4.png",
-            "icon_size": 40,
-            "heading": "Recyclingfähige Verpackung",
-            "heading_size": 15,
-            "text": "<p>Die Verpackung dieses Produkts ist ordnungsgemäß über ein Dualen System lizenziert.</p>",
-            "text_size": 11,
-            "padding_top": 8,
-            "padding_bottom": 8
-          }
-        },
-        "feature_rqyTX8": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_6.png",
-            "icon_size": 40,
-            "heading": "Klimaneutraler Versand",
-            "heading_size": 15,
-            "text": "<p><strong>Nachhaltig einkaufen:</strong> Ihre Bestellung wird <strong>emissionskompensiert</strong> versendet.</p>",
-            "text_size": 11,
-            "padding_top": 8,
-            "padding_bottom": 8
-          }
-        },
-        "feature_nmWAw8": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_8.png",
-            "icon_size": 40,
-            "heading": "Kostenloser Versand",
-            "heading_size": 15,
-            "text": "<p>Bestellen Sie bequem und sparen Sie 6,99 € Versandkosten! Der Versand ist für Sie <strong>kostenlos</strong> ab einem Bestellwert von 100<strong> €</strong> innerhalb Deutschlands.</p>",
-            "text_size": 11,
-            "padding_top": 8,
-            "padding_bottom": 8
-          }
-        },
         "quantity_selector_kpKfx8": {
           "type": "quantity_selector",
           "settings": {
@@ -167,6 +128,45 @@
             "option_4_fixed_amount_off": "0"
           }
         },
+        "feature_gFtpkB": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_4.png",
+            "icon_size": 40,
+            "heading": "Recyclingfähige Verpackung",
+            "heading_size": 15,
+            "text": "<p>Die Verpackung dieses Produkts ist ordnungsgemäß über ein Dualen System lizenziert.</p>",
+            "text_size": 11,
+            "padding_top": 8,
+            "padding_bottom": 8
+          }
+        },
+        "feature_rqyTX8": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_6.png",
+            "icon_size": 40,
+            "heading": "Klimaneutraler Versand",
+            "heading_size": 15,
+            "text": "<p><strong>Nachhaltig einkaufen:</strong> Ihre Bestellung wird <strong>emissionskompensiert</strong> versendet.</p>",
+            "text_size": 11,
+            "padding_top": 8,
+            "padding_bottom": 8
+          }
+        },
+        "feature_nmWAw8": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_8.png",
+            "icon_size": 40,
+            "heading": "Kostenloser Versand",
+            "heading_size": 15,
+            "text": "<p>Bestellen Sie bequem und sparen Sie 6,99 € Versandkosten! Der Versand ist für Sie <strong>kostenlos</strong> ab einem Bestellwert von 100<strong> €</strong> innerhalb Deutschlands.</p>",
+            "text_size": 11,
+            "padding_top": 8,
+            "padding_bottom": 8
+          }
+        },
         "inventory_T9aYqY": {
           "type": "inventory",
           "settings": {
@@ -198,7 +198,7 @@
             "ship_days": 7,
             "cut_off_time": 11,
             "icon_size": 20,
-            "image_ani": "none",
+            "image_ani": "heartBeat",
             "text_size": 10,
             "text_style": "uppercase",
             "text": "Bestellen Sie innerhalb von (timer) für eine voraussichtliche Lieferung bis zum (date).",
@@ -249,10 +249,10 @@
         "title",
         "price",
         "variant_picker",
+        "quantity_selector_kpKfx8",
         "feature_gFtpkB",
         "feature_rqyTX8",
         "feature_nmWAw8",
-        "quantity_selector_kpKfx8",
         "inventory_T9aYqY",
         "shipping_irP8eV",
         "buy_buttons",
