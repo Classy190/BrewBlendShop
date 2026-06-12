@@ -228,7 +228,7 @@
             "lm_main_button": "#375943",
             "lm_main_button_gr": "",
             "lm_main_text": "#ffffff",
-            "lm_button_animation": "soft",
+            "lm_button_animation": "glowing",
             "show_gift_card_recipient": true,
             "skip_cart": false,
             "cart_text": ""
