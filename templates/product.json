@@ -27,7 +27,7 @@
           "type": "title",
           "settings": {
             "title_size": 19,
-            "title_height": 120,
+            "title_height": 130,
             "text_transform": "uppercase"
           }
         },
@@ -35,7 +35,7 @@
           "type": "text",
           "settings": {
             "text": "{{ product.metafields.custom.productspezi.value }}",
-            "text_style": "body"
+            "text_style": "uppercase"
           }
         },
         "price": {
@@ -50,7 +50,7 @@
             "price_size_2": 1,
             "badge_price": "#8b8d8f",
             "price_bold_2": false,
-            "sale_price_color": "#ff7e8d",
+            "sale_price_color": "#ff596d",
             "regular_price_color": "#212121",
             "price_bold": true,
             "badge_hide": false,
@@ -70,8 +70,8 @@
             "swatch_type": "color",
             "optionName": "Variante",
             "swatch_style": "round",
-            "swatch_size": 20,
-            "swatch_height": 20,
+            "swatch_size": 24,
+            "swatch_height": 24,
             "size_trigger": "",
             "chart_id": "Variante",
             "size_page": ""
