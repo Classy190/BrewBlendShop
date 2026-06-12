@@ -291,7 +291,7 @@
         "thumbnail_radius": 4,
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "show",
         "show_full_image": false,
         "first_image_size": 100,
         "second_image_size": 0,
