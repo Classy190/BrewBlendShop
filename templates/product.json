@@ -225,7 +225,7 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_full_button": true,
-            "lm_main_button": "#375943",
+            "lm_main_button": "#447f59",
             "lm_main_button_gr": "",
             "lm_main_text": "#ffffff",
             "lm_button_animation": "glowing",
