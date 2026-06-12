@@ -159,7 +159,7 @@
         "columns_desktop": 6,
         "color_scheme": "",
         "subtitle_center": true,
-        "show_arrow": false,
+        "show_arrow": true,
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
@@ -621,7 +621,7 @@
       "type": "apps",
       "blocks": {
         "found_gpt_product_schema_wg6X3g": {
-          "type": "shopify://apps/found-gpt/blocks/product-schema/019d9554-d823-731c-9682-e5ff5834141c",
+          "type": "shopify://apps/foundgpt/blocks/product-schema/019d9554-d823-731c-9682-e5ff5834141c",
           "settings": {
             "use_enriched_description": true,
             "price_valid_until_days": 30,
