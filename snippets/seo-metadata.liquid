@@ -1,0 +1,36 @@
+{%- doc -%}
+  Optional SEO metadata and link tags
+
+  Bereinigt für brew-blend.de:
+  - Kein doppelter Sitemap-Link
+  - Kein doppelter Google Verification Tag
+  - Kein fehlerhafter Hreflang-Generator
+  - Kein apple-app-site-association Meta-Tag
+  - Hreflang, Canonical, Robots und Verification werden zentral in layout/theme.liquid gesteuert
+{%- enddoc -%}
+
+{%- comment -%}
+  Diese Datei gibt bewusst keinen zusätzlichen SEO-Code aus.
+
+  Warum?
+
+  1. Sitemap:
+     Die echte Shopify-Sitemap liegt unter:
+     https://brew-blend.de/sitemap.xml
+
+     Ein Link über asset_url wäre falsch, weil asset_url auf Theme-Dateien zeigt.
+
+  2. Google Verification:
+     Wird bereits zentral in layout/theme.liquid ausgegeben.
+
+  3. Hreflang:
+     Sollte nicht automatisch über unsichere URL-Manipulationen gebaut werden.
+     Hreflang wird zentral in layout/theme.liquid bzw. über Shopify Markets/Translation-App gesteuert.
+
+  4. apple-app-site-association:
+     Gehört normalerweise als Datei unter:
+     /.well-known/apple-app-site-association
+     und nicht als Meta-Tag in den HTML-Head.
+
+  Wenn Bing/Microsoft-Verifizierung benötigt wird, diese besser gezielt in layout/theme.liquid ergänzen.
+{%- endcomment -%}
