@@ -1,185 +1,232 @@
 {%- comment -%}
-  🟢 FINAL SEO: Product & Breadcrumb Schema
+  🟢 FINAL SEO: Product Schema
   Konform mit Google Shopping, Merchant Center & AI Search Richtlinien.
-  Inkl. Shipping, Returns, Video & Audience.
+  Inkl. Shipping, Returns, Video, Audience und echten Reviews.
+
+  Hinweis:
+  Breadcrumb Schema wird NICHT hier ausgegeben, weil es zentral in layout/theme.liquid vorhanden ist.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
-{%- assign selected_variant = product.selected_or_first_available_variant -%}
+  {%- liquid
+    assign selected_variant = product.selected_or_first_available_variant
 
-{%- comment -%} 1. Bild-Logik {%- endcomment -%}
-{%- if product.featured_media -%}
-  {%- capture image_1 -%}https:{{ product.featured_media | image_url: width: 1200 }}{%- endcapture -%}
-  {%- capture image_2 -%}https:{{ product.featured_media | image_url: width: 500 }}{%- endcapture -%}
-  {%- capture thumb_img -%}https:{{ product.featured_media | image_url: width: 300 }}{%- endcapture -%}
-{%- else -%}
-  {%- capture image_1 -%}https:{{ shop.logo | image_url: width: 1200 }}{%- endcapture -%}
-  {%- capture image_2 -%}https:{{ shop.logo | image_url: width: 1200 }}{%- endcapture -%}
-  {%- capture thumb_img -%}https:{{ shop.logo | image_url: width: 300 }}{%- endcapture -%}
-{%- endif -%}
+    if selected_variant == blank
+      assign selected_variant = product.variants.first
+    endif
 
-{%- comment -%} 2. Bewertungs-Logik (NUR echte Reviews) {%- endcomment -%}
-{%- assign rating_json = "" -%}
-{%- if product.metafields.reviews.rating.value != blank and product.metafields.reviews.rating_count != blank -%}
-  {%- capture rating_json -%}
-  ,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
-    "reviewCount": "{{ product.metafields.reviews.rating_count }}",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-  {%- endcapture -%}
-{%- endif -%}
+    assign product_url = shop.url | append: product.url
+    assign product_description = product.description | strip_html | strip_newlines | strip | truncate: 500
 
-{%- comment -%} 3. Verfügbarkeits-Logik {%- endcomment -%}
-{%- if selected_variant.available -%}
-  {%- assign availability_status = "InStock" -%}
-{%- else -%}
-  {%- assign availability_status = "OutOfStock" -%}
-{%- endif -%}
+    if product_description == blank
+      assign product_description = product.title | append: ' online kaufen bei Brew Blend. Specialty Coffee, Kaffeebohnen, Coffee Brewer und Premium Tee.'
+    endif
 
-{%- comment -%} 4. Retouren-Logik (IMMER ausgeben) {%- endcomment -%}
-{%- capture return_policy_json -%}
-,
-"hasMerchantReturnPolicy": {
-  "@type": "MerchantReturnPolicy",
-  "applicableCountry": "DE",
-  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-  "merchantReturnDays": "14",
-  "returnMethod": "https://schema.org/ReturnByMail",
-  "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"{% if shop.refund_policy %},
-  "returnPolicyUrl": "{{ shop.url }}{{ shop.refund_policy.url }}"{% endif %}
-}
-{%- endcapture -%}
+    assign image_1 = blank
+    assign image_2 = blank
+    assign thumb_img = blank
 
-{%- comment -%} 5. Versand-Logik (IMMER ausgeben) {%- endcomment -%}
-{%- capture shipping_json -%}
-,
-"shippingDetails": {
-  "@type": "OfferShippingDetails",
-  "shippingRate": {
-    "@type": "MonetaryAmount",
-    "value": "6.99",
-    "currency": "EUR"
-  },
-  "shippingDestination": {
-    "@type": "DefinedRegion",
-    "addressCountry": "DE"
-  },
-  "deliveryTime": {
-    "@type": "ShippingDeliveryTime",
-    "handlingTime": {
-      "@type": "QuantitativeValue",
-      "minValue": 0,
-      "maxValue": 1,
-      "unitCode": "DAY"
+    if product.featured_media
+      assign image_1 = product.featured_media | image_url: width: 1200 | prepend: 'https:'
+      assign image_2 = product.featured_media | image_url: width: 800 | prepend: 'https:'
+      assign thumb_img = product.featured_media | image_url: width: 300 | prepend: 'https:'
+    elsif settings.share_image
+      assign image_1 = settings.share_image | image_url: width: 1200 | prepend: 'https:'
+      assign image_2 = settings.share_image | image_url: width: 800 | prepend: 'https:'
+      assign thumb_img = settings.share_image | image_url: width: 300 | prepend: 'https:'
+    elsif settings.logo
+      assign image_1 = settings.logo | image_url: width: 1200 | prepend: 'https:'
+      assign image_2 = settings.logo | image_url: width: 800 | prepend: 'https:'
+      assign thumb_img = settings.logo | image_url: width: 300 | prepend: 'https:'
+    endif
+
+    assign product_is_available = false
+
+    if selected_variant and selected_variant.available
+      assign product_is_available = true
+    endif
+
+    if product_is_available
+      assign availability_url = 'https://schema.org/InStock'
+    else
+      assign availability_url = 'https://schema.org/OutOfStock'
+    endif
+
+    assign audience_type = 'Kaffeeliebhaber & Specialty Coffee Fans'
+
+    for tag in product.tags
+      if tag contains 'Einsteiger'
+        assign audience_type = 'Kaffee-Einsteiger'
+      endif
+
+      if tag contains 'Barista'
+        assign audience_type = 'Home-Baristas & Kaffee-Profis'
+      endif
+
+      if tag contains 'Büro'
+        assign audience_type = 'Büros & Unternehmen'
+      endif
+    endfor
+
+    assign product_price = product.price
+
+    if selected_variant
+      assign product_price = selected_variant.price
+    endif
+
+    assign price_currency = cart.currency.iso_code | default: shop.currency | default: 'EUR'
+    assign price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d'
+
+    assign sku_value = product.id
+
+    if selected_variant and selected_variant.sku != blank
+      assign sku_value = selected_variant.sku
+    endif
+
+    assign gtin_value = blank
+    assign gtin_key = 'gtin'
+
+    if selected_variant and selected_variant.barcode != blank
+      assign gtin_value = selected_variant.barcode | strip
+      assign gtin_length = gtin_value | size
+
+      if gtin_length == 8
+        assign gtin_key = 'gtin8'
+      elsif gtin_length == 12
+        assign gtin_key = 'gtin12'
+      elsif gtin_length == 13
+        assign gtin_key = 'gtin13'
+      elsif gtin_length == 14
+        assign gtin_key = 'gtin14'
+      endif
+    endif
+
+    assign rating_value = blank
+    assign rating_count = blank
+
+    if product.metafields.reviews.rating.value.rating != blank
+      assign rating_value = product.metafields.reviews.rating.value.rating
+    elsif product.metafields.reviews.rating.value != blank
+      assign rating_value = product.metafields.reviews.rating.value
+    endif
+
+    if product.metafields.reviews.rating_count.value != blank
+      assign rating_count = product.metafields.reviews.rating_count.value
+    elsif product.metafields.reviews.rating_count != blank
+      assign rating_count = product.metafields.reviews.rating_count
+    endif
+
+    assign product_video = product.media | where: 'media_type', 'video' | first
+    assign product_category = product.type | default: 'Specialty Coffee'
+  -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": {{ product_url | append: "#product" | json }},
+    "name": {{ product.title | strip | json }},
+    "url": {{ product_url | json }},
+    "description": {{ product_description | json }},
+    "sku": {{ sku_value | json }},
+    "mpn": {{ product.id | json }},
+    {%- if gtin_value != blank %}
+    "{{ gtin_key }}": {{ gtin_value | json }},
+    {%- endif %}
+    "inLanguage": "de-DE",
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | default: shop.name | json }}
     },
-    "transitTime": {
-      "@type": "QuantitativeValue",
-      "minValue": 1,
-      "maxValue": 3,
-      "unitCode": "DAY"
-    }
-  }
-}
-{%- endcapture -%}
-
-{%- comment -%} 6. Video-Logik {%- endcomment -%}
-{%- assign video_json = "" -%}
-{%- assign product_video = product.media | where: 'media_type', 'video' | first -%}
-{%- if product_video -%}
-  {%- capture video_json -%}
-  ,
-  "video": {
-    "@type": "VideoObject",
-    "name": "{{ product.title | escape }} - Video",
-    "description": "Video zu {{ product.title | escape }}",
-    "thumbnailUrl": "https:{{ product_video.preview_image | image_url: width: 800 }}",
-    "uploadDate": "{{ product.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
-    "contentUrl": "{{ product_video.sources.last.url }}"
-  }
-  {%- endcapture -%}
-{%- endif -%}
-
-{%- comment -%} 7. Zielgruppen-Logik {%- endcomment -%}
-{%- assign audience_type = "Kaffeeliebhaber & Specialty Coffee Fans" -%}
-{%- for tag in product.tags -%}
-  {%- if tag contains 'Einsteiger' -%}{%- assign audience_type = "Kaffee-Einsteiger" -%}{%- endif -%}
-  {%- if tag contains 'Barista' -%}{%- assign audience_type = "Home-Baristas & Kaffee-Profis" -%}{%- endif -%}
-  {%- if tag contains 'Büro' -%}{%- assign audience_type = "Büros & Unternehmen" -%}{%- endif -%}
-{%- endfor -%}
-
-{%- comment -%} 8. GTIN/Barcode {%- endcomment -%}
-{%- assign gtin_value = selected_variant.barcode -%}
-
-{%- comment -%} 9. Preis gültig bis (1 Jahr in Zukunft) {%- endcomment -%}
-{%- assign price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' -%}
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "@id": "{{ shop.url }}{{ product.url }}#product",
-  "name": "{{ product.title | escape }}",
-  "url": "{{ shop.url }}{{ product.url }}",
-  "description": "{{ product.description | strip_html | strip_newlines | truncatewords: 50 | escape }}",
-  "sku": "{{ selected_variant.sku | default: product.id }}",
-  "mpn": "{{ product.id }}",
-  {%- if gtin_value != blank %}
-  "gtin13": "{{ gtin_value }}",
-  {%- endif %}
-  "inLanguage": "de-DE",
-  "brand": {
-    "@type": "Brand",
-    "name": "{{ product.vendor | escape }}"
-  },
-  "image": [
-    "{{ image_1 }}",
-    "{{ image_2 }}"
-  ],
-  "thumbnail": "{{ thumb_img }}",
-  "category": "Specialty Coffee",
-  "audience": {
-    "@type": "Audience",
-    "audienceType": "{{ audience_type }}"
-  },
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/{{ availability_status }}",
-    "priceCurrency": "{{ cart.currency.iso_code }}",
-    "price": "{{ selected_variant.price | money_without_currency | replace: ',', '.' | strip }}",
-    "priceValidUntil": "{{ price_valid_until }}",
-    "itemCondition": "https://schema.org/NewCondition",
-    "url": "{{ shop.url }}{{ product.url }}",
-    "seller": {
-      "@type": "Organization",
-      "name": "Brew Blend"
-    }{{ return_policy_json }}{{ shipping_json }}
-  }{{ rating_json }}{{ video_json }}
-}
-</script>
-
-{%- comment -%} 🟢 Breadcrumb Schema {%- endcomment -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ shop.url }}"
+    {%- if image_1 != blank %}
+    "image": [
+      {{ image_1 | json }},
+      {{ image_2 | json }}
+    ],
+    "thumbnailUrl": {{ thumb_img | json }},
+    {%- endif %}
+    "category": {{ product_category | json }},
+    "audience": {
+      "@type": "Audience",
+      "audienceType": {{ audience_type | json }}
     },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "{{ product.title | escape }}",
-      "item": "{{ shop.url }}{{ product.url }}"
+    "offers": {
+      "@type": "Offer",
+      "url": {{ product_url | json }},
+      "availability": {{ availability_url | json }},
+      "priceCurrency": {{ price_currency | json }},
+      "price": "{{ product_price | divided_by: 100.0 }}",
+      "priceValidUntil": {{ price_valid_until | json }},
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": {
+        "@type": "Organization",
+        "@id": "https://brew-blend.de/#organization",
+        "name": {{ shop.name | json }}
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "DE",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        {%- if shop.refund_policy %},
+        "returnPolicyUrl": {{ shop.url | append: shop.refund_policy.url | json }}
+        {%- endif %}
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "6.99",
+          "currency": "EUR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "DE"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          }
+        }
+      }
     }
-  ]
-}
-</script>
+    {%- if rating_value != blank and rating_count != blank %},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ rating_value | json }},
+      "reviewCount": {{ rating_count | json }},
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+    {%- endif %}
+    {%- if product_video %},
+    "video": {
+      "@type": "VideoObject",
+      "name": {{ product.title | append: " - Video" | json }},
+      "description": {{ "Video zu " | append: product.title | json }},
+      {%- if product_video.preview_image %}
+      "thumbnailUrl": {{ product_video.preview_image | image_url: width: 800 | prepend: 'https:' | json }},
+      {%- elsif image_1 != blank %}
+      "thumbnailUrl": {{ image_1 | json }},
+      {%- endif %}
+      "uploadDate": "{{ product.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}"
+      {%- if product_video.sources.last.url != blank %},
+      "contentUrl": {{ product_video.sources.last.url | json }}
+      {%- endif %}
+    }
+    {%- endif %}
+  }
+  </script>
 {%- endif -%}
