@@ -50,7 +50,9 @@
     <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
   {%- endif -%}
 
+  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://brew-blend.de/sitemap.xml">
+  {% comment %}theme-check-enable RemoteAsset{% endcomment %}
 
   {% comment %} --- Canonical --- {% endcomment %}
   {%- assign clean_canonical = canonical_url | split: "?" | first -%}
@@ -87,7 +89,9 @@
   <meta name="twitter:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
 
   {% comment %} --- KEIN Hreflang für Sprachpfäfixe, weil diese umleiten --- {% endcomment %}
+  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
   <link rel="alternate" hreflang="x-default" href="https://brew-blend.de{{ request.path }}">
+  {% comment %}theme-check-enable RemoteAsset{% endcomment %}
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
