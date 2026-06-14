@@ -1,0 +1,36 @@
+{%- doc -%}
+  SEO Performance Optimizations
+
+  Bereinigt für brew-blend.de:
+  - Kein doppelter preconnect zu cdn.shopify.com
+  - Kein globaler checkout.shopify.com preconnect
+  - Kein Analytics/GTM DNS-Prefetch ohne Consent-Notwendigkeit
+  - Kein fehlerhafter Hreflang-Block
+  - Fonts werden zentral in layout/theme.liquid optimiert
+{%- enddoc -%}
+
+{%- comment -%}
+  Diese Datei gibt bewusst keinen zusätzlichen Code aus.
+
+  Warum?
+
+  1. Preconnect:
+     layout/theme.liquid enthält bereits:
+     - preconnect zu cdn.shopify.com
+     - dns-prefetch/preconnect für Shopify Fonts
+
+  2. Checkout:
+     checkout.shopify.com muss nicht auf jeder Seite vorverbunden werden.
+     Das kann unnötige Verbindungen erzeugen.
+
+  3. Tracking:
+     GTM/Analytics werden consent-gated geladen.
+     Zusätzliche DNS-Prefetches sind hier nicht notwendig.
+
+  4. Hreflang:
+     Hreflang wird zentral über layout/theme.liquid, Shopify Markets oder Translation-App gesteuert.
+     Dieser vereinfachte Block kann falsche Alternates erzeugen.
+
+  5. Fonts:
+     Shopify Fonts werden bereits über font_url / font_face mit font_display: swap geladen.
+{%- endcomment -%}
