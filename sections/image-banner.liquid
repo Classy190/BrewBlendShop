@@ -138,15 +138,16 @@
       -%}
 
       {%- capture desktop_srcset -%}
-        {{ primary_image | image_url: width: 750 }} 750w,
-        {{ primary_image | image_url: width: 990 }} 990w,
-        {{ primary_image | image_url: width: 1100 }} 1100w,
-        {{ primary_image | image_url: width: 1500 }} 1500w,
-        {{ primary_image | image_url: width: 1780 }} 1780w,
-        {{ primary_image | image_url: width: 2000 }} 2000w,
-        {{ primary_image | image_url: width: 2500 }} 2500w,
-        {{ primary_image | image_url: width: 3000 }} 3000w
-      {%- endcapture -%}
+  {{ primary_image | image_url: width: 750 }} 750w,
+  {{ primary_image | image_url: width: 990 }} 990w,
+  {{ primary_image | image_url: width: 1100 }} 1100w,
+  {{ primary_image | image_url: width: 1500 }} 1500w,
+  {{ primary_image | image_url: width: 1780 }} 1780w,
+  {{ primary_image | image_url: width: 2000 }} 2000w,
+  {{ primary_image | image_url: width: 2500 }} 2500w,
+  {{ primary_image | image_url: width: 3000 }} 3000w,
+  {{ primary_image | image_url: width: 3840 }} 3840w
+{%- endcapture -%}
 
       {%- if section.settings.image_mobile != blank -%}
         {%- capture mobile_srcset -%}
