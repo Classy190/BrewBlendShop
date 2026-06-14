@@ -1,129 +1,181 @@
+{%- liquid
+  assign block_uid = block.id | replace: '_', '-' | replace: ':', '-'
+  assign ship_text = block.settings.text | default: ''
+  assign icon_size = block.settings.icon_size | default: 20
+  assign text_size = block.settings.text_size | default: 14
+  assign text_transform = block.settings.text_style | default: 'none'
+
+  if text_transform == 'subtitle'
+    assign text_transform = 'none'
+  endif
+
+  assign lt = '<'
+  assign gt = '>'
+  assign slash = '/'
+  assign fancy1_open = lt | append: 'span class="lumin-text__fancy1"' | append: gt
+  assign fancy2_open = lt | append: 'span class="lumin-text__fancy2"' | append: gt
+  assign fancy_close = lt | append: slash | append: 'span' | append: gt
+-%}
+
+{%- capture countdown_markup -%}
+<span id="countdown-{{ block_uid }}" aria-live="polite"></span>
+{%- endcapture -%}
+
+{%- capture result_markup -%}
+<span id="result-{{ block_uid }}" aria-live="polite"></span>
+{%- endcapture -%}
+
+{%- liquid
+  assign rendered_ship_text = ship_text
+  assign rendered_ship_text = rendered_ship_text | replace: '(timer)', countdown_markup
+  assign rendered_ship_text = rendered_ship_text | replace: '(date)', result_markup
+  assign rendered_ship_text = rendered_ship_text | replace: '[', fancy1_open
+  assign rendered_ship_text = rendered_ship_text | replace: ']', fancy_close
+  assign rendered_ship_text = rendered_ship_text | replace: '(', fancy2_open
+  assign rendered_ship_text = rendered_ship_text | replace: ')', fancy_close
+-%}
+
 <style>
-  .qa-feature-{{ block.id }} {
-        margin: 0px;
-        font-size: {{ block.settings.text_size }}px;
-        text-transform: {{ block.settings.text_style }};
-    }
-  .qa-feature-{{ block.id }} img {
-        width: {{block.settings.icon_size}}px !important;
-        height: auto;
-        vertical-align: middle;
-        margin-right: 0px;
-    }
-            .qa-feature-{{ block.id }} svg {
-        width: {{block.settings.icon_size}}px !important;
-        height: auto;
-        vertical-align: sub;
-        margin-right: 5px;
-    }
-    .ship-wrapper {
-        display: flex;
-        column-gap: 2px;
-        background: {{block.settings.ship_bg}};
-        border-radius: {{ block.settings.border_radius }}px;
-          {% if block.settings.show_border %}
-        box-shadow: 0 0 0 1px {{block.settings.ship_border}};{% endif %}
-        padding: {{block.settings.padding_top}}px {{block.settings.padding_bottom}}px;
-        margin: {{block.settings.margin_top}}px 0 {{block.settings.margin_bottom}}px 0;
-        align-items: center;
-        }
+  .qa-feature-{{ block_uid }} {
+    margin: 0;
+    font-size: {{ text_size }}px;
+    text-transform: {{ text_transform }};
+  }
+
+  .qa-feature-{{ block_uid }} img {
+    width: {{ icon_size }}px !important;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 0;
+  }
+
+  .qa-feature-{{ block_uid }} svg {
+    width: {{ icon_size }}px !important;
+    height: auto;
+    vertical-align: sub;
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+
+  .ship-wrapper.qa-feature-{{ block_uid }} {
+    display: flex;
+    column-gap: 2px;
+    background: {{ block.settings.ship_bg }};
+    border-radius: {{ block.settings.border_radius }}px;
+    {%- if block.settings.show_border %}
+      box-shadow: 0 0 0 1px {{ block.settings.ship_border }};
+    {%- endif %}
+    padding: {{ block.settings.padding_top }}px {{ block.settings.padding_bottom }}px;
+    margin: {{ block.settings.margin_top }}px 0 {{ block.settings.margin_bottom }}px 0;
+    align-items: center;
+  }
+
+  .ship-wrapper.qa-feature-{{ block_uid }} p {
+    margin: 0;
+    font-size: {{ text_size }}px;
+  }
 </style>
-{% assign ship_text = block.settings.text %}
-{% assign countdown = countdown | prepend: '<span id="countdown">' | append: '</span>' %}
-{% assign result = result | prepend: '<span id="result">' | append: '</span>' %}
-<div class="ship-wrapper qa-feature-{{ block.id }}" {{ block.shopify_attributes }}>
+
+<div class="ship-wrapper qa-feature-{{ block_uid }}" {{ block.shopify_attributes }}>
   {%- if block.settings.icon != blank -%}
     <img
-      src="{{ block.settings.icon | img_url: '100x' }}"
+      src="{{ block.settings.icon | image_url: width: 100 }}"
       class="lumin-ani-{{ block.settings.image_ani }} is--infinite"
+      alt=""
+      width="{{ icon_size }}"
+      height="{{ icon_size }}"
+      loading="lazy"
     >
   {%- else -%}
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-      <g clip-path="url(#a)" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.2">
-      <path d="m15.367 14.242h2.9633v-4.8485l-2.3706-1.2121-1.778-4.8484h-5.334v10.909h1.778"/>
-      <path d="m13 16.666c1.3093 0 2.3706-1.0854 2.3706-2.4242 0-1.3389-1.0613-2.4242-2.3706-2.4242s-2.3707 1.0853-2.3707 2.4242c0 1.3388 1.0614 2.4242 2.3707 2.4242z" stroke-linecap="square"/>
-      <path d="m11.223 5.7568v2.4242h2.3706" stroke-linecap="square"/>
-      <path d="m6.4814 3.3332h-5.9267" stroke-linecap="square"/>
-      <path d="m6.4807 6.3628h-4.1487" stroke-linecap="square"/>
-      <path d="m6.48 9.394h-2.3706" stroke-linecap="square"/>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <g clip-path="url(#qa-clip-{{ block_uid }})" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.2">
+        <path d="m15.367 14.242h2.9633v-4.8485l-2.3706-1.2121-1.778-4.8484h-5.334v10.909h1.778"/>
+        <path d="m13 16.666c1.3093 0 2.3706-1.0854 2.3706-2.4242 0-1.3389-1.0613-2.4242-2.3706-2.4242s-2.3707 1.0853-2.3707 2.4242c0 1.3388 1.0614 2.4242 2.3707 2.4242z" stroke-linecap="square"/>
+        <path d="m11.223 5.7568v2.4242h2.3706" stroke-linecap="square"/>
+        <path d="m6.4814 3.3332h-5.9267" stroke-linecap="square"/>
+        <path d="m6.4807 6.3628h-4.1487" stroke-linecap="square"/>
+        <path d="m6.48 9.394h-2.3706" stroke-linecap="square"/>
       </g>
       <defs>
-      <clipPath id="a">
-      <rect width="100%" height="100%" fill="none"/>
-      </clipPath>
+        <clipPath id="qa-clip-{{ block_uid }}">
+          <rect width="100%" height="100%" fill="none"/>
+        </clipPath>
       </defs>
     </svg>
   {%- endif -%}
-  <p
-    style="margin:0; font-size: {{ block.settings.text_size }}px;"
-    class="{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
-  >
-    {{
-      ship_text
-      | replace: '(timer)', countdown
-      | replace: '(date)', result
-      | replace: '[', '<span class="lumin-text__fancy1">'
-      | replace: ']', '</span>'
-      | replace: '(', '<span class="lumin-text__fancy2">'
-      | replace: ')', '</span>'
-    }}
+
+  <p class="{% if block.settings.text_style == 'uppercase' %}caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %}subtitle{% endif %}">
+    {{ rendered_ship_text }}
   </p>
 
   <script>
-                      function countDate() {
-                        const today = new Date();
-                        let daysCounted = 0;
-                        let weekdaysCounted = 0;
-                
-                        while (weekdaysCounted < {{ block.settings.ship_days }}) {
-                          // Increment date by one day
-                          today.setDate(today.getDate() + 1);
-                
-                          // Check if it's a weekend
-                          if (today.getDay() !== 0 && today.getDay() !== 6) {
-                            weekdaysCounted++;
-                          }
-                          
-                
-                          daysCounted++;
-                        } 
-                        // Format date as "MMM DD, ddd"
-                        const options = { month: "short", day: "numeric", weekday: "short" };
-                        const formattedDate = today.toLocaleDateString("{{block.settings.date_locale}}", options);
-                
-                        // Display result
-                        document.getElementById("result").innerHTML = `${formattedDate}`;
-                      }
-                
-                      countDate();
-  </script>
+    (function() {
+      var resultEl = document.getElementById('result-{{ block_uid }}');
+      var countdownEl = document.getElementById('countdown-{{ block_uid }}');
 
-  <script>
-                  // Set the end time to 4pm
-                  const endTime = new Date();
-                  endTime.setHours({{ block.settings.cut_off_time }}, 0, 0);
-                  
-                  // Update the countdown every second
-                  setInterval(updateCountdown, 1000);
-                  
-                  function updateCountdown() {
-                    const now = new Date().getTime();
-                    const distance = endTime.getTime() - now;
-                  
-                    // If the countdown has ended, reset it to the next day at 4pm
-                    if (distance < 0) {
-                      endTime.setDate(endTime.getDate() + 1);
-                      endTime.setHours({{ block.settings.cut_off_time }}, 0, 0);
-                    }
-                  
-                    // Calculate remaining time
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                  
-                    // Update the countdown element
-                    const countdownElement = document.getElementById("countdown");
-                    countdownElement.innerHTML = `${hours}h ${minutes}m`;
-                  }
+      var shipDays = parseInt({{ block.settings.ship_days | default: 0 | json }}, 10) || 0;
+      var cutOffHour = parseInt({{ block.settings.cut_off_time | default: 16 | json }}, 10) || 16;
+      var locale = {{ block.settings.date_locale | default: request.locale.iso_code | json }};
+
+      function addBusinessDays(startDate, businessDays) {
+        var date = new Date(startDate.getTime());
+        var countedDays = 0;
+
+        while (countedDays < businessDays) {
+          date.setDate(date.getDate() + 1);
+
+          if (date.getDay() !== 0 && date.getDay() !== 6) {
+            countedDays++;
+          }
+        }
+
+        return date;
+      }
+
+      function renderDeliveryDate() {
+        if (!resultEl) return;
+
+        var deliveryDate = addBusinessDays(new Date(), shipDays);
+        var options = {
+          month: 'short',
+          day: 'numeric',
+          weekday: 'short'
+        };
+
+        resultEl.textContent = deliveryDate.toLocaleDateString(locale, options);
+      }
+
+      function getNextCutoff(now) {
+        var endTime = new Date(now.getTime());
+        endTime.setHours(cutOffHour, 0, 0, 0);
+
+        if (endTime.getTime() <= now.getTime()) {
+          endTime.setDate(endTime.getDate() + 1);
+        }
+
+        return endTime;
+      }
+
+      function updateCountdown() {
+        if (!countdownEl) return;
+
+        var now = new Date();
+        var endTime = getNextCutoff(now);
+        var distance = Math.max(0, endTime.getTime() - now.getTime());
+
+        var hours = Math.floor(distance / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        countdownEl.textContent = hours + 'h ' + minutes + 'm';
+      }
+
+      renderDeliveryDate();
+      updateCountdown();
+
+      setInterval(function() {
+        renderDeliveryDate();
+        updateCountdown();
+      }, 60000);
+    })();
   </script>
 </div>
