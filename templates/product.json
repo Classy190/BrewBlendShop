@@ -406,12 +406,6 @@
         "padding_bottom": 52
       }
     },
-    "17702039670881e5fa": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
-    },
     "page_3Etwaf": {
       "type": "page",
       "name": "t:sections.page.presets.name",
@@ -429,7 +423,6 @@
     "related-products",
     "multicolumn_caEqdk",
     "rich_text_9wpTPH",
-    "17702039670881e5fa",
     "page_3Etwaf"
   ]
 }
