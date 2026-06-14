@@ -1,68 +1,70 @@
 {%- comment -%}
-  🟢 SEO FIX: Article Schema Markup for Blog Posts
-  Improves blog article indexation and SERP visibility
+  🟢 SEO FIX: BlogPosting Schema Markup for Blog Posts
+  Optimiert Blogartikel für SEO, AEO und AI Overviews.
+  Hinweis: Breadcrumb Schema wird NICHT hier ausgegeben, weil es zentral in layout/theme.liquid vorhanden ist.
 {%- endcomment -%}
 
 {%- if template.name == 'article' and article -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "@id": "{{ article.url | prepend: shop.url }}#article",
-  "headline": {{ article.title | json }},
-  "description": {{ article.excerpt | default: article.content | strip_html | truncatewords: 50 | json }},
-  "image": [
-    "{{ article.image | image_url: width: 1200 | prepend: 'https:' }}"
-  ],
-  "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}T00:00:00Z",
-  "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}T00:00:00Z",
-  "author": {
-    "@type": "Organization",
-    "name": {{ article.author | default: shop.name | json }},
-    "url": "{{ shop.url }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ shop.logo | image_url: width: 1200 | prepend: 'https:' }}"
-    }
-  },
-  "inLanguage": "de-DE",
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "Brew Blend Coffee Blog",
-    "url": "{{ shop.url }}/blogs/{{ blog.handle }}"
-  }
-}
-</script>
+  {%- liquid
+    assign article_description = article.excerpt | default: article.content | strip_html | strip | truncate: 300
+    assign article_url = shop.url | append: article.url
+    assign blog_url = shop.url | append: blog.url
+    assign article_author = article.author | default: shop.name
+    assign article_image_url = blank
 
-{%- comment -%} 🟢 Article Breadcrumb Schema {%- endcomment -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ shop.url }}"
+    if article.image
+      assign article_image_url = article.image | image_url: width: 1200 | prepend: 'https:'
+    elsif settings.share_image
+      assign article_image_url = settings.share_image | image_url: width: 1200 | prepend: 'https:'
+    endif
+
+    assign publisher_logo_url = 'https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442'
+  -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": {{ article_url | append: "#blogposting" | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ article_url | json }}
     },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "{{ shop.url }}/blogs/{{ blog.handle }}"
+    "url": {{ article_url | json }},
+    "headline": {{ article.title | strip | truncate: 110 | json }},
+    "description": {{ article_description | json }},
+    {%- if article_image_url != blank %}
+    "image": [
+      {{ article_image_url | json }}
+    ],
+    {%- endif %}
+    "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+    "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+    "author": {
+      "@type": "Person",
+      "name": {{ article_author | json }}
     },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": {{ article.title | json }},
-      "item": "{{ article.url | prepend: shop.url }}"
-    }
-  ]
-}
-</script>
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://brew-blend.de/#organization",
+      "name": {{ shop.name | json }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ publisher_logo_url | json }},
+        "width": 600,
+        "height": 600
+      }
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "name": {{ blog.title | default: "Brew Blend Coffee Blog" | json }},
+      "url": {{ blog_url | json }}
+    },
+    "articleSection": {{ blog.title | default: "Kaffee Blog" | json }},
+    {%- if article.tags.size > 0 %}
+    "keywords": {{ article.tags | join: ", " | json }},
+    {%- endif %}
+    "inLanguage": "de-DE"
+  }
+  </script>
 {%- endif -%}
