@@ -1,0 +1,30 @@
+{%- doc -%}
+  All-In-One (AIO) SEO Settings Management
+
+  Zentrale Konfiguration für SEO, Analytics und Geo-Targeting.
+  Bereinigt für brew-blend.de:
+  - Deutschland statt USA
+  - de_DE statt en_US
+  - keine doppelten englischen OG-Locale-Signale
+  - kein direktes Pixel-/Analytics-Tracking ohne Consent
+{%- enddoc -%}
+
+{%- comment -%}
+  WICHTIG:
+  Google Analytics, Meta Pixel und TikTok Pixel sollten nicht direkt hier geladen werden,
+  wenn bereits ein Consent-gated GTM Loader in layout/theme.liquid aktiv ist.
+
+  Falls du Tracking nutzen willst:
+  - GA4, Meta Pixel und TikTok Pixel besser zentral über Google Tag Manager steuern
+  - Consent Mode / Cookie-Banner beachten
+  - keine direkten Tracking-Scripte vor Einwilligung laden
+{%- endcomment -%}
+
+{%- comment -%} Geo-Targeting für Deutschland / Walldorf {%- endcomment -%}
+<meta name="geo.placename" content="Walldorf, Baden-Württemberg, Deutschland">
+<meta name="geo.region" content="DE-BW">
+<meta name="geo.position" content="49.3064;8.6424">
+<meta name="ICBM" content="49.3064, 8.6424">
+
+{%- comment -%} Open Graph Locale für deutsche Hauptseite {%- endcomment -%}
+<meta property="og:locale" content="de_DE">
