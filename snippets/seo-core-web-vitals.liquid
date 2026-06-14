@@ -1,0 +1,77 @@
+{%- doc -%}
+  Core Web Vitals & Performance Optimization
+  Optimierung für LCP, FID, CLS - Google's ranking signals
+{%- enddoc -%}
+
+{%- comment %} Preload critical resources for LCP (Largest Contentful Paint) {%- endcomment -%}
+{%- if settings.logo != blank -%}
+  {{ settings.logo | image_url: width: 600 | image_tag:
+    preload: true,
+    widths: '300, 600',
+    width: 300,
+    height: 300,
+    alt: shop.name,
+    class: 'visually-hidden',
+    loading: 'eager'
+  }}
+{%- endif -%}
+
+{%- comment %} Optimize font loading {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+{%- comment %} Lazy loading images to improve performance {%- endcomment -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.tagName === 'IMG' && img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              observer.unobserve(img);
+            }
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+  });
+</script>
+
+{%- comment %} Optimize CLS (Cumulative Layout Shift) by reserving space for images {%- endcomment -%}
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Optimize font rendering to reduce CLS */
+  @font-face {
+    font-display: swap;
+  }
+
+  /* Prevent layout shift by using contain CSS property */
+  .product-card,
+  .product-media,
+  .collection-item {
+    contain: layout style paint;
+  }
+
+  /* Hidden preload image */
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+</style>

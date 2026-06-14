@@ -1,7 +1,7 @@
 {%- comment -%}
-  🟢 FINAL SEO FIX: Krisensicheres Product & Breadcrumb Schema (Ohne JSON-Filter)
-  Verhindert Parsing-Fehler und erfüllt alle Google Shopping & Review Richtlinien.
-  + AEO/GEO UPDATE: Inkl. Retouren, Video & Audience-Tags.
+  🟢 FINAL SEO: Product & Breadcrumb Schema
+  Konform mit Google Shopping, Merchant Center & AI Search Richtlinien.
+  Inkl. Shipping, Returns, Video & Audience.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
@@ -18,13 +18,19 @@
   {%- capture thumb_img -%}https:{{ shop.logo | image_url: width: 300 }}{%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 2. Bewertungs-Logik {%- endcomment -%}
-{%- if product.metafields.reviews.rating.value != blank -%}
-  {%- assign current_rating = product.metafields.reviews.rating.value -%}
-  {%- assign current_count = product.metafields.reviews.rating_count | default: 1 -%}
-{%- else -%}
-  {%- assign current_rating = "4.8" -%}
-  {%- assign current_count = "10" -%}
+{%- comment -%} 2. Bewertungs-Logik (NUR echte Reviews) {%- endcomment -%}
+{%- assign rating_json = "" -%}
+{%- if product.metafields.reviews.rating.value != blank and product.metafields.reviews.rating_count != blank -%}
+  {%- capture rating_json -%}
+  ,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+    "reviewCount": "{{ product.metafields.reviews.rating_count }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+  {%- endcapture -%}
 {%- endif -%}
 
 {%- comment -%} 3. Verfügbarkeits-Logik {%- endcomment -%}
@@ -34,23 +40,54 @@
   {%- assign availability_status = "OutOfStock" -%}
 {%- endif -%}
 
-{%- comment -%} 4. Retouren-Logik {%- endcomment -%}
-{%- if shop.refund_policy -%}
-  {%- capture return_policy_json -%}
-  ,
-  "hasMerchantReturnPolicy": {
-    "@type": "MerchantReturnPolicy",
-    "applicableCountry": "DE",
-    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-    "merchantReturnDays": "14",
-    "returnMethod": "https://schema.org/ReturnByMail",
-    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-    "returnPolicyUrl": "{{ shop.url }}{{ shop.refund_policy.url }}"
-  }
-  {%- endcapture -%}
-{%- endif -%}
+{%- comment -%} 4. Retouren-Logik (IMMER ausgeben) {%- endcomment -%}
+{%- capture return_policy_json -%}
+,
+"hasMerchantReturnPolicy": {
+  "@type": "MerchantReturnPolicy",
+  "applicableCountry": "DE",
+  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+  "merchantReturnDays": "14",
+  "returnMethod": "https://schema.org/ReturnByMail",
+  "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"{% if shop.refund_policy %},
+  "returnPolicyUrl": "{{ shop.url }}{{ shop.refund_policy.url }}"{% endif %}
+}
+{%- endcapture -%}
 
-{%- comment -%} 5. Video-Logik {%- endcomment -%}
+{%- comment -%} 5. Versand-Logik (IMMER ausgeben) {%- endcomment -%}
+{%- capture shipping_json -%}
+,
+"shippingDetails": {
+  "@type": "OfferShippingDetails",
+  "shippingRate": {
+    "@type": "MonetaryAmount",
+    "value": "6.99",
+    "currency": "EUR"
+  },
+  "shippingDestination": {
+    "@type": "DefinedRegion",
+    "addressCountry": "DE"
+  },
+  "deliveryTime": {
+    "@type": "ShippingDeliveryTime",
+    "handlingTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 0,
+      "maxValue": 1,
+      "unitCode": "DAY"
+    },
+    "transitTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 3,
+      "unitCode": "DAY"
+    }
+  }
+}
+{%- endcapture -%}
+
+{%- comment -%} 6. Video-Logik {%- endcomment -%}
+{%- assign video_json = "" -%}
 {%- assign product_video = product.media | where: 'media_type', 'video' | first -%}
 {%- if product_video -%}
   {%- capture video_json -%}
@@ -66,13 +103,19 @@
   {%- endcapture -%}
 {%- endif -%}
 
-{%- comment -%} 6. Zielgruppen-Logik {%- endcomment -%}
+{%- comment -%} 7. Zielgruppen-Logik {%- endcomment -%}
 {%- assign audience_type = "Kaffeeliebhaber & Specialty Coffee Fans" -%}
 {%- for tag in product.tags -%}
   {%- if tag contains 'Einsteiger' -%}{%- assign audience_type = "Kaffee-Einsteiger" -%}{%- endif -%}
   {%- if tag contains 'Barista' -%}{%- assign audience_type = "Home-Baristas & Kaffee-Profis" -%}{%- endif -%}
   {%- if tag contains 'Büro' -%}{%- assign audience_type = "Büros & Unternehmen" -%}{%- endif -%}
 {%- endfor -%}
+
+{%- comment -%} 8. GTIN/Barcode {%- endcomment -%}
+{%- assign gtin_value = selected_variant.barcode -%}
+
+{%- comment -%} 9. Preis gültig bis (1 Jahr in Zukunft) {%- endcomment -%}
+{%- assign price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' -%}
 
 <script type="application/ld+json">
 {
@@ -84,6 +127,9 @@
   "description": "{{ product.description | strip_html | strip_newlines | truncatewords: 50 | escape }}",
   "sku": "{{ selected_variant.sku | default: product.id }}",
   "mpn": "{{ product.id }}",
+  {%- if gtin_value != blank %}
+  "gtin13": "{{ gtin_value }}",
+  {%- endif %}
   "inLanguage": "de-DE",
   "brand": {
     "@type": "Brand",
@@ -104,46 +150,14 @@
     "availability": "https://schema.org/{{ availability_status }}",
     "priceCurrency": "{{ cart.currency.iso_code }}",
     "price": "{{ selected_variant.price | money_without_currency | replace: ',', '.' | strip }}",
+    "priceValidUntil": "{{ price_valid_until }}",
     "itemCondition": "https://schema.org/NewCondition",
     "url": "{{ shop.url }}{{ product.url }}",
     "seller": {
       "@type": "Organization",
       "name": "Brew Blend"
-    }{{ return_policy_json }}
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ current_rating }}",
-    "ratingCount": "{{ current_count }}"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Verified Customer"
-      },
-      "reviewBody": "Ausgezeichnete Qualität und schneller Versand!"
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Coffee Enthusiast"
-      },
-      "reviewBody": "Die besten Specialty Coffee Brewer die ich je gekauft habe."
-    }
-  ]{{ video_json }}
+    }{{ return_policy_json }}{{ shipping_json }}
+  }{{ rating_json }}{{ video_json }}
 }
 </script>
 
