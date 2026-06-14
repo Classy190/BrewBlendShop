@@ -138,10 +138,7 @@
         "header": {
           "content": "Image swatches",
           "info": "Requires variant picker type to be \"Pills\""
-        },
-        "show_image_swatch": {
-          "label": "Enable variant image swatches",
-          "info": "Using variant images requires that the product has an associated image to each variant."
+       
         },
         "trigger_image_swatch": {
           "label": "Image Swatch trigger"
