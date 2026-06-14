@@ -1,90 +1,36 @@
 {%- doc -%}
   Renders JSON-LD structured data for SEO
-  Supports schema.org markup for articles, organization, and breadcrumbs
+
+  Bereinigt für brew-blend.de:
+  - Kein doppeltes BlogPosting Schema
+  - Kein doppeltes CollectionPage Schema
+  - Kein doppeltes BreadcrumbList Schema
+  - Kein doppeltes Organization Schema
+
+  Strukturierte Daten werden zentral über die spezialisierten Schema-Dateien gesteuert:
+  - BlogPosting über Article Schema Datei
+  - CollectionPage über Collection Schema Datei
+  - Product über Product Schema Datei
+  - Organization/WebSite/Breadcrumb über layout/theme.liquid
 {%- enddoc -%}
 
-{%- if request.page_type == 'article' -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": {{ article.title | json }},
-    "description": {{ article.excerpt_or_content | strip_html | json }},
-    "image": {% if article.image %}{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}{% else %}"{{ shop.url }}/cdn/shop/t/1/logo.png"{% endif %},
-    "datePublished": {{ article.published_at | date: "%Y-%m-%dT%H:%M:%SZ" | json }},
-    "dateModified": {{ article.updated_at | date: "%Y-%m-%dT%H:%M:%SZ" | json }},
-    "author": {
-      "@type": "Person",
-      "name": {{ article.author | json }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ shop.name | json }},
-      "logo": {
-        "@type": "ImageObject",
-        "url": {% if settings.logo %}{{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}{% else %}"{{ shop.url }}/cdn/shop/t/1/logo.png"{% endif %}
-      }
-    },
-    "url": {{ canonical_url | json }}
-  }
-  </script>
-{%- elsif request.page_type == 'collection' -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": {{ collection.title | json }},
-    "description": {{ collection.description | strip_html | json }},
-    "url": {{ canonical_url | json }},
-    "image": {% if collection.image %}{{ collection.image | image_url: width: 1200 | prepend: 'https:' | json }}{% else %}"{{ shop.url }}/cdn/shop/t/1/logo.png"{% endif %}
-  }
-  </script>
+{%- comment -%}
+  Diese Datei gibt bewusst kein JSON-LD mehr aus.
 
-  {%- comment %} Breadcrumb schema for collection pages {%- endcomment -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": {{ request.origin | json }}
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": {{ collection.title | json }},
-        "item": {{ canonical_url | json }}
-      }
-    ]
-  }
-  </script>
-{%- endif -%}
+  Warum?
 
-{%- if request.page_type != 'password' -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    "url": {{ request.origin | json }},
-    "logo": {% if settings.logo %}{{ settings.logo | image_url: width: 300 | prepend: 'https:' | json }}{% else %}"{{ shop.url }}/cdn/shop/t/1/logo.png"{% endif %},
-    {% if shop.phone %}"telephone": {{ shop.phone | json }},{% endif %}
-    {% if shop.address %}"address": {
-      "@type": "PostalAddress",
-      "streetAddress": {{ shop.address.address1 | json }},
-      "addressLocality": {{ shop.address.city | json }},
-      "addressRegion": {{ shop.address.province | json }},
-      "postalCode": {{ shop.address.zip | json }},
-      "addressCountry": {{ shop.address.country | json }}
-    },{% endif %}
-    "sameAs": [
-      {% if settings.social_facebook_link %}"{{ settings.social_facebook_link }}"{% endif %}
-      {% if settings.social_instagram_link %}{% if settings.social_facebook_link %},{% endif %}"{{ settings.social_instagram_link }}"{% endif %}
-      {% if settings.social_twitter_link %}{% if settings.social_facebook_link or settings.social_instagram_link %},{% endif %}"{{ settings.social_twitter_link }}"{% endif %}
-    ]
-  }
-  </script>
-{%- endif -%}
+  1. Article Schema:
+     Wird bereits über die separate Article-/BlogPosting-Schema-Datei ausgegeben.
+
+  2. Collection Schema:
+     Wird bereits über die separate Collection-/Category-Schema-Datei ausgegeben.
+
+  3. Breadcrumb Schema:
+     Wird zentral in layout/theme.liquid ausgegeben.
+
+  4. Organization Schema:
+     Wird zentral in layout/theme.liquid ausgegeben.
+
+  Wenn diese Datei zusätzlich aktiv bleibt, entstehen doppelte strukturierte Daten.
+  Das kann Google, Rich Results Tests und AI-Systeme verwirren.
+{%- endcomment -%}
