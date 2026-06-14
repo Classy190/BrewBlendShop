@@ -82,7 +82,7 @@
       "new_window": "Wird in einem neuen Fenster geöffnet.",
       "external": "Öffnet externe Webseite."
     },
-    "loading": "Wird geladen ...",
+    "loading": "Wird geladen ...",
     "skip_to_product_info": "Zu Produktinformationen springen",
     "total_reviews": "Bewertungen insgesamt",
     "star_reviews_info": "{{ rating_value }} von {{ rating_max }} Sternen",
@@ -107,6 +107,17 @@
       "share": "Diesen Artikel teilen",
       "success": "Dein Kommentar wurde erfolgreich gepostet! Vielen Dank!",
       "success_moderated": "Dein Kommentar wurde erfolgreich gepostet. Da unser Blog moderiert wird, werden wir ihn erst kurze Zeit später veröffentlichen."
+    },
+    "comment_form": {
+      "heading": "Kommentar hinterlassen",
+      "error": "Ihr Kommentar konnte nicht veröffentlicht werden. Bitte prüfen Sie die Felder unten.",
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "post": "Kommentar absenden",
+      "success": "Ihr Kommentar wurde erfolgreich veröffentlicht.",
+      "success_moderated": "Ihr Kommentar wurde erfolgreich veröffentlicht. Er wird nach Freigabe sichtbar.",
+      "moderated": "Kommentare werden vor der Veröffentlichung geprüft."
     }
   },
   "onboarding": {
