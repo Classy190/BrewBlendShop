@@ -84,12 +84,6 @@
         "padding_top": 24,
         "padding_bottom": 24
       }
-    },
-    "1768426738b39f0aa0": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -97,7 +91,6 @@
     "banner",
     "product-grid",
     "page_rNGCED",
-    "rich_text_amf4cb",
-    "1768426738b39f0aa0"
+    "rich_text_amf4cb"
   ]
 }
