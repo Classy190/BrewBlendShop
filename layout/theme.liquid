@@ -50,7 +50,7 @@
     <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
   {%- endif -%}
 
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ shop.url }}/sitemap.xml">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://brew-blend.de/sitemap.xml">
 
   {% comment %} --- Canonical --- {% endcomment %}
   {%- assign clean_canonical = canonical_url | split: "?" | first -%}
@@ -87,7 +87,7 @@
   <meta name="twitter:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
 
   {% comment %} --- KEIN Hreflang für Sprachpfäfixe, weil diese umleiten --- {% endcomment %}
-  <link rel="alternate" hreflang="x-default" href="{{ canonical_url | split: '?' | first }}">
+  <link rel="alternate" hreflang="x-default" href="https://brew-blend.de{{ request.path }}">
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
@@ -116,36 +116,35 @@
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  {% comment %} --- WebSite Schema --- {% endcomment %}
+  {% comment %} --- WebSite Schema (explizit brew-blend.de) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "{{ shop.url }}/#website",
-    "url": "{{ shop.url }}",
+    "@id": "https://brew-blend.de/#website",
+    "url": "https://brew-blend.de",
     "name": "{{ shop.name | escape }}",
     "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
     "inLanguage": "{{ request.locale.iso_code }}",
-    "publisher": { "@id": "{{ shop.url }}/#organization" },
+    "publisher": { "@id": "https://brew-blend.de/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": { "@type": "EntryPoint", "urlTemplate": "{{ shop.url }}/search?q={search_term_string}" },
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://brew-blend.de/search?q={search_term_string}" },
       "query-input": "required name=search_term_string"
     }
   }
   </script>
 
-  {% comment %} --- Organization Schema + E-E-A-T + Vertrieb-Bewertungen --- {% endcomment %}
-  {% comment %} Nicht auf Produktseiten, um Kollision mit Shopify-Product-Schema zu vermeiden {% endcomment %}
+  {% comment %} --- Organization Schema + E-E-A-T + Vertrieb-Bewertungen (explizit brew-blend.de) --- {% endcomment %}
   {%- unless template == 'product' -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "{{ shop.url }}/#organization",
+    "@id": "https://brew-blend.de/#organization",
     "name": "{{ shop.name | escape }}",
     "legalName": "{{ shop.name | escape }}",
-    "url": "{{ shop.url }}",
+    "url": "https://brew-blend.de",
     "logo": {
       "@type": "ImageObject",
       "url": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
@@ -194,7 +193,7 @@
   </script>
   {%- endunless -%}
 
-  {% comment %} --- BreadcrumbList (dynamisch) --- {% endcomment %}
+  {% comment %} --- BreadcrumbList (explizit brew-blend.de) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -204,61 +203,61 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Startseite",
-        "item": "{{ shop.url }}"
+        "item": "https://brew-blend.de"
       }
       {%- if template == 'product' and collection -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ collection.title | json }},
-        "item": "{{ shop.url }}{{ collection.url }}"
+        "item": "https://brew-blend.de{{ collection.url }}"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": {{ product.title | json }},
-        "item": "{{ shop.url }}{{ product.url }}"
+        "item": "https://brew-blend.de{{ product.url }}"
       }
       {%- elsif template == 'product' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ product.title | json }},
-        "item": "{{ shop.url }}{{ product.url }}"
+        "item": "https://brew-blend.de{{ product.url }}"
       }
       {%- elsif template == 'collection' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ collection.title | json }},
-        "item": "{{ shop.url }}{{ collection.url }}"
+        "item": "https://brew-blend.de{{ collection.url }}"
       }
       {%- elsif template == 'article' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "{{ shop.url }}{{ blog.url }}"
+        "item": "https://brew-blend.de{{ blog.url }}"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": {{ article.title | json }},
-        "item": "{{ shop.url }}{{ article.url }}"
+        "item": "https://brew-blend.de{{ article.url }}"
       }
       {%- elsif template == 'page' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ page.title | json }},
-        "item": "{{ shop.url }}{{ page.url }}"
+        "item": "https://brew-blend.de{{ page.url }}"
       }
       {%- endif -%}
     ]
   }
   </script>
 
-  {% comment %} --- AI-Traffic Tracking --- {% endcomment %}
+  {% comment %} --- AI-Traffic Tracking (explizit brew-blend.de) --- {% endcomment %}
   <script>
     (function() {
       const ref = document.referrer.toLowerCase();
@@ -312,7 +311,6 @@
 
   {{ content_for_header }}
 
-  {% comment %} --- Performance: Preconnect & Fonts --- {% endcomment %}
   {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
@@ -664,7 +662,7 @@
   </ul>
 
   <script>
-    window.shopUrl = '{{ request.origin }}';
+    window.shopUrl = 'https://brew-blend.de';
     window.routes = {
       cart_add_url: '{{ routes.cart_add_url }}',
       cart_change_url: '{{ routes.cart_change_url }}',
