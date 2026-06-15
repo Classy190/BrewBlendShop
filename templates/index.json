@@ -460,7 +460,7 @@
       "type": "image-banner",
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/co2_plastic_neutral_6f2d70a5-9907-4ee4-8a16-b26fc3704bd5.png",
+        "image": "shopify://shop_images/plastic_bank_brew_company_x_brew_blend.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
