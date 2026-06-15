@@ -458,7 +458,7 @@
     },
     "image_banner_KqNkUQ": {
       "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
+      "name": "Plastic bank",
       "settings": {
         "image": "shopify://shop_images/plastic_bank_brew_company_x_brew_blend.jpg",
         "image_overlay_opacity": 0,
@@ -475,42 +475,7 @@
     },
     "image_banner_YXpHz4": {
       "type": "image-banner",
-      "blocks": {
-        "heading_zPYAYe": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_FKfA6L": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
-        "buttons_XprfY7": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Mocktail",
-            "button_link_1": "shopify://products/mocktail-lover-kit",
-            "button_style_secondary_1": false,
-            "button_label_2": "Cocktail",
-            "button_link_2": "shopify://products/cocktail-lover-non-alcoholic-kit",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_zPYAYe",
-        "text_FKfA6L",
-        "buttons_XprfY7"
-      ],
-      "name": "t:sections.image-banner.presets.name",
+      "name": "cocktail mocktail",
       "settings": {
         "image": "shopify://shop_images/cocktail-mocktail-brew-blen.jpg",
         "image_overlay_opacity": 0,
@@ -523,117 +488,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "lumin_cards_Wzw8EN": {
-      "type": "lumin-cards",
-      "blocks": {
-        "card_xUGb6R": {
-          "type": "card",
-          "name": "Promotion Card COCKTAIL LOVER KIT",
-          "settings": {
-            "grid_width_desktop": "50",
-            "grid_width_mobile": "100",
-            "small_hide": false,
-            "icon": "shopify://shop_images/cocktail_kit_c8b51450-f6d4-4eea-815d-bfd05dadd867.png",
-            "use_video": false,
-            "media_ratio": "100%",
-            "head": "COCKTAIL LOVER KIT",
-            "head_size_d": 24,
-            "head_size_m": 20,
-            "subtitle": "<p>Alcohol-free Mocktail kit</p>",
-            "text_size_d": 16,
-            "button-text": "Mehr erfahren",
-            "button_link": "shopify://products/cocktail-lover-non-alcoholic-kit",
-            "bg_color": "#ffffff",
-            "head_color": "#121212",
-            "text_color": "#121212",
-            "show_border": false,
-            "border_color": "#e5e5e5",
-            "padding_size": 20
-          }
-        },
-        "card_DPHrBG": {
-          "type": "card",
-          "name": "Promotion Card MOCKTAIL LOVER KIT",
-          "settings": {
-            "grid_width_desktop": "50",
-            "grid_width_mobile": "100",
-            "small_hide": false,
-            "icon": "shopify://shop_images/mocktail_kit_40c4ac9b-23ca-468f-bb57-8d344034ec4e.png",
-            "use_video": false,
-            "media_ratio": "100%",
-            "head": "MOCKTAIL LOVER KIT",
-            "head_size_d": 24,
-            "head_size_m": 20,
-            "subtitle": "<p>Alcohol-free Mocktail kit</p>",
-            "text_size_d": 16,
-            "button-text": "Mehr erfahren",
-            "button_link": "shopify://products/mocktail-lover-kit",
-            "bg_color": "#ffffff",
-            "head_color": "#121212",
-            "text_color": "#121212",
-            "show_border": false,
-            "border_color": "#e5e5e5",
-            "padding_size": 20
-          }
-        }
-      },
-      "block_order": [
-        "card_xUGb6R",
-        "card_DPHrBG"
-      ],
-      "disabled": true,
-      "name": "Lumin Cards COCKTAIL",
-      "settings": {
-        "video_border": 14,
-        "zoom_hover": true,
-        "grid_gap": 18,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
-    "image_with_text_4HCCKn": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_q4QRj3": {
-          "type": "heading",
-          "settings": {
-            "heading": "ALKOHOLFREIES COCKTAIL LOVER SET",
-            "heading_size": "h2"
-          }
-        },
-        "text_UVwaQd": {
-          "type": "text",
-          "settings": {
-            "text": "<p>In Kombination mit den anderen Zutaten können Sie zu Hause, in Ihrer eigenen Küche, fantastische und köstliche Mocktails zaubern. Das dauert nicht länger als 5–10 Minuten und erfordert weder besondere Barkeeper-Kenntnisse noch komplizierte Rezepte.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_q4QRj3",
-        "text_UVwaQd"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/cocktail_kit_Content_02.png",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     }
   },
@@ -648,8 +502,6 @@
     "image_with_text_dKihYy",
     "multicolumn_e4LRVb",
     "image_banner_KqNkUQ",
-    "image_banner_YXpHz4",
-    "lumin_cards_Wzw8EN",
-    "image_with_text_4HCCKn"
+    "image_banner_YXpHz4"
   ]
 }
