@@ -273,7 +273,7 @@
         "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "vertical_right",
+        "gallery_layout": "thumbnail",
         "thumbnail_size": 70,
         "thumbnail_radius": 4,
         "media_position": "left",
