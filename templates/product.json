@@ -276,7 +276,7 @@
         "gallery_layout": "thumbnail",
         "thumbnail_size": 70,
         "thumbnail_radius": 4,
-        "media_position": "left",
+        "media_position": "right",
         "image_zoom": "none",
         "mobile_thumbnails": "show",
         "show_full_image": false,
