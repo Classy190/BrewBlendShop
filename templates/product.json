@@ -26,7 +26,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "title_size": 19,
+            "title_size": 18,
             "title_height": 130,
             "text_transform": "uppercase"
           }
