@@ -14,7 +14,7 @@
     "popup_pro_KtXe6n": {
       "type": "popup-pro",
       "settings": {
-        "mode": "testing",
+        "mode": "enabled",
         "only_homepage": false,
         "only_visitor": true,
         "delay": 60,
