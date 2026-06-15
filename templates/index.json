@@ -456,6 +456,23 @@
         "padding_bottom": 24
       }
     },
+    "image_banner_KqNkUQ": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/co2_plastic_neutral_6f2d70a5-9907-4ee4-8a16-b26fc3704bd5.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image_banner_YXpHz4": {
       "type": "image-banner",
       "blocks": {
@@ -578,23 +595,6 @@
         "margin_bottom": 0
       }
     },
-    "image_banner_KqNkUQ": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/co2_plastic_neutral_6f2d70a5-9907-4ee4-8a16-b26fc3704bd5.png",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "image_with_text_4HCCKn": {
       "type": "image-with-text",
       "blocks": {
@@ -646,9 +646,9 @@
     "rich_text_RB6JJw",
     "image_with_text_dKihYy",
     "multicolumn_e4LRVb",
+    "image_banner_KqNkUQ",
     "image_banner_YXpHz4",
     "lumin_cards_Wzw8EN",
-    "image_banner_KqNkUQ",
     "image_with_text_4HCCKn"
   ]
 }
