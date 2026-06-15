@@ -494,6 +494,7 @@
         },
         "buttons_XprfY7": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "Mocktail",
             "button_link_1": "shopify://products/mocktail-lover-kit",
