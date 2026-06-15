@@ -164,7 +164,24 @@
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 24,
-        "padding_bottom": 24
+        "padding_bottom": 0
+      }
+    },
+    "image_banner_RBHFWy": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/outdoor_brew.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "multirow_mBVEUk": {
@@ -186,6 +203,7 @@
         "row_FPCC6z": {
           "type": "row",
           "name": "OUTDOOR KAFFEE SET",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/25pcs_Outdoor_open_shorter_box_2021_8a73d05a-0f01-4c49-b8c9-a0b21bdf3d5b.jpg",
             "caption": "OUTDOOR KAFFEE SET",
@@ -460,6 +478,7 @@
     "image_banner_6XnFfp",
     "video_new_AJCwDA",
     "collection_list_LRX9gw",
+    "image_banner_RBHFWy",
     "multirow_mBVEUk",
     "image_with_text_gx6Hqb",
     "rich_text_RB6JJw",
