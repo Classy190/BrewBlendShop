@@ -43,7 +43,7 @@
         "color_scheme": "scheme-15ab6c1a-5144-4b7d-a402-482fa31b8c04",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
+        "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
@@ -154,7 +154,7 @@
       "settings": {
         "title": "Für Kaffeeliebhaber & Teegenießer",
         "heading_size": "h2",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_radius": 0,
         "columns_desktop": 6,
         "color_scheme": "",
@@ -266,7 +266,6 @@
         "text_CtePej",
         "button_JGzzzj"
       ],
-      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/333_Espresso_blend_f44963a7-4273-49d9-b898-ce2357f07527.png",
@@ -284,9 +283,28 @@
         "padding_bottom": 12
       }
     },
+    "image_banner_fgga4m": {
+      "type": "image-banner",
+      "disabled": true,
+      "name": "dein tee dein moment",
+      "settings": {
+        "image": "shopify://shop_images/tea_brewer_brew_blend_2.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
     "image_banner_bGMpLM": {
       "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
+      "disabled": true,
+      "name": "coffee beans",
       "settings": {
         "image": "shopify://shop_images/beyour_own_barista.png",
         "image_overlay_opacity": 0,
@@ -499,8 +517,9 @@
     "image_banner_RBHFWy",
     "multirow_mBVEUk",
     "image_with_text_gx6Hqb",
-    "rich_text_RB6JJw",
+    "image_banner_fgga4m",
     "image_banner_bGMpLM",
+    "rich_text_RB6JJw",
     "image_with_text_dKihYy",
     "multicolumn_e4LRVb",
     "image_banner_KqNkUQ",
