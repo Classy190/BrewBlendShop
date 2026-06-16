@@ -734,5 +734,23 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const summaryBtn = document.querySelector('.header__icon--menu');
+    const menuDrawer = document.getElementById('menu-drawer');
+    
+    if (summaryBtn && menuDrawer) {
+      summaryBtn.addEventListener('click', function() {
+        if (menuDrawer.style.transform === 'translate(0px)') {
+          menuDrawer.style.transform = 'translate(-100%)';
+          menuDrawer.style.visibility = 'hidden';
+        } else {
+          menuDrawer.style.transform = 'translate(0)';
+          menuDrawer.style.visibility = 'visible';
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
