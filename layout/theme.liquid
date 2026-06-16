@@ -734,28 +734,23 @@
       });
     })();
   </script>
-  /* Notfall-Fix für das Burger-Menü */
-.header-wrapper details[open] > .menu-drawer {
-    transform: translate(0) !important;
-    visibility: visible !important;
-    z-index: 999999 !important;
-}
-
-.header-wrapper details[open] .menu-drawer__inner-container {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Stellt sicher, dass das X sichtbar ist */
-.header-wrapper details[open] > summary {
-    position: relative;
-    z-index: 9999999 !important;
-}
-
-/* Macht das Burger-Menü auf dem Handy 100% hoch bis ganz unten */
-.menu-drawer__inner-container,
-#menu-drawer {
-    height: 100vh !important;
-}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const summaryBtn = document.querySelector('.header__icon--menu');
+    const menuDrawer = document.getElementById('menu-drawer');
+    
+    if (summaryBtn && menuDrawer) {
+      summaryBtn.addEventListener('click', function() {
+        if (menuDrawer.style.transform === 'translate(0px)') {
+          menuDrawer.style.transform = 'translate(-100%)';
+          menuDrawer.style.visibility = 'hidden';
+        } else {
+          menuDrawer.style.transform = 'translate(0)';
+          menuDrawer.style.visibility = 'visible';
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
