@@ -1,15 +1,3 @@
-<style>
-  /* Dieser Code zwingt das Menü auf den Bildschirm, sobald das Icon geklickt wird */
-  details[open] > .menu-drawer,
-  details[open] > .menu-drawer__submenu {
-    transform: translate(0) !important;
-    visibility: visible !important;
-  }
-  
-  .menu-drawer {
-    transition: transform 0.3s ease, visibility 0.3s ease !important;
-  }
-</style>
 {% comment %}
   Renders a header drawer menu for mobile and desktop.
 
