@@ -5,21 +5,6 @@
   {% render 'header-drawer' %}
 {% endcomment %}
 
-<style>
-  .menu-drawer__menu-item {
-  padding: 1.1rem 3rem;
-  text-decoration: none;
-  text-decoration: none;
-  color: rgba(var(--color-foreground),.95);
-  font-family:var(--font-menu-family);
-  font-style: var(--font-menu-style);
-  font-weight: var(--font-menu-weight);
-  font-size: {{ settings.header_menu_size }}px;
-  letter-spacing: {{ settings.header_spacing }}px;
-  text-transform: {{ settings.header_menu_transform }};
-}
-</style>
-
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
