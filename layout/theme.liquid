@@ -111,14 +111,14 @@
     {%- endif -%}
   </title>
 
-  <meta name="description" content="{{ page_description | default: shop.description | strip_html | truncate: 160 | escape }}">
-  <meta name="author" content="{{ shop.name | escape }}">
-  <meta name="publisher" content="{{ shop.name | escape }}">
-  <meta name="applicable-device" content="pc,mobile">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="format-detection" content="telephone=no,email=no,address=no">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  {%- comment -%} Entfernt: Duplikat – Description kommt aus snippets/meta-tags.liquid {%- endcomment -%}
+<meta name="author" content="{{ shop.name | escape }}">
+<meta name="publisher" content="{{ shop.name | escape }}">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
   {% comment %} --- WebSite Schema (explizit brew-blend.de) --- {% endcomment %}
   <script type="application/ld+json">
