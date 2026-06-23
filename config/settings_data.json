@@ -364,11 +364,6 @@
         "disabled": false,
         "settings": {}
       },
-      "15289809162917654101": {
-        "type": "shopify://apps/301-redirect-auto/blocks/redirect/01f53dbb-7c00-467f-81d8-e2223daaa8d6",
-        "disabled": false,
-        "settings": {}
-      },
       "6159598353363395418": {
         "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
         "disabled": false,
@@ -385,14 +380,21 @@
         "disabled": false,
         "settings": {}
       },
+      "13047258039897440615": {
+        "type": "shopify://apps/judge-me-reviews/blocks/cart_drawer_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "widget_type": "review-widget"
+        }
+      },
       "8765772171712610185": {
         "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_switcher/b5b83690-efd4-434d-8c6a-a5cef4019faf",
         "disabled": false,
         "settings": {
           "enable_language_switcher": true,
-          "enable_country_region_switcher": false,
+          "enable_country_region_switcher": true,
           "use_currency_for_region": false,
-          "switcher_position": "custom",
+          "switcher_position": "header",
           "show_flags": true,
           "switcher_appearance": "language-name",
           "invert_switcher_icon_colors": false,
