@@ -110,7 +110,8 @@
     },
     "comment_form": {
       "heading": "Indsend en kommentar",
-      "error": "Juster venligst fejlene nedenfor"
+      "error": "Juster venligst fejlene nedenfor",
+      "name": "Navn"
     }
   },
   "onboarding": {
@@ -171,7 +172,7 @@
       "choose_options": "Vælg muligheder",
       "choose_product_options": "Vælg muligheder for {{ product_name }}",
       "value_unavailable": "{{ option_value }} - Ikke tilgængelig",
-      "variant_sold_out_or_unavailable": "Varianten er udsolgt oder utilgængelig",
+      "variant_sold_out_or_unavailable": "Varianten er udsolgt eller utilgængelig",
       "inventory_in_stock": "På lager",
       "inventory_in_stock_show_count": "{{ quantity }} på lager",
       "inventory_low_stock": "Lav lagerbeholdning",
@@ -519,7 +520,7 @@
       "send_on": "ÅÅÅÅ-MM-DD",
       "send_on_label": "Send (valgfrit)",
       "expanded": "Formularen til modtager af gavekort er vist",
-      "collapsed": "Formularen til modtager af gavekort er skjult"
+      "collapsed": "Formularen til modtager af gavekorter skjult"
     }
   }
 }
