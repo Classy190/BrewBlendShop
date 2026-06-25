@@ -1,5 +1,9 @@
-{%- comment -%} 🟢 SEO FIX: Smart Meta-Description Generation {%- endcomment -%}
+{%- comment -%} 🟢 SEO FIX: Smart Meta-Description & Keywords Generation {%- endcomment -%}
 {%- comment -%} 🔴 CRITICAL: Product Availability - Use selected variant, not product level {%- endcomment -%}
+
+{%- if request.page_type == 'product' and product.tags.size > 0 -%}
+  <meta name="keywords" content="{{ product.tags | join: ', ' | escape }}">
+{%- endif -%}
 
 {%- liquid
   assign og_title = page_title | default: shop.name
