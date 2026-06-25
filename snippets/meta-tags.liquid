@@ -48,7 +48,7 @@
     elsif article.content != blank
       assign meta_description = article.content | strip_html | truncate: 160
     else
-      assign meta_description = article.title | append: " - Kaffee-Wissen, Tipps zu Specialty Coffee, Kaffeebohnen, Coffee Brewer und Tee von Brew Blend."
+      assign meta_description = article.title | append: " - Kaffee-Wissen, Tipps to Specialty Coffee, Kaffeebohnen, Coffee Brewer und Tee von Brew Blend."
     endif
 
   elsif request.page_type == 'password'
@@ -66,6 +66,10 @@
 
 {%- comment -%} 🔴 CRITICAL: Meta Description for Google indexation {%- endcomment -%}
 <meta name="description" content="{{ meta_description | escape }}">
+
+{%- if request.page_type == 'product' and product.tags.size > 0 -%}
+  <meta name="keywords" content="{{ product.tags | join: ', ' | escape }}">
+{%- endif -%}
 
 <meta property="og:site_name" content="{{ shop.name | escape }}">
 <meta property="og:url" content="{{ og_url }}">
