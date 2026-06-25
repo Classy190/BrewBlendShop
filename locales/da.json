@@ -111,7 +111,13 @@
     "comment_form": {
       "heading": "Indsend en kommentar",
       "error": "Juster venligst fejlene nedenfor",
-      "name": "Navn"
+      "name": "Navn",
+      "email": "Mailadresse",
+      "message": "Kommentar",
+      "post": "Skriv kommentar",
+      "success": "Din kommentar er blevet offentliggjort! Tak!",
+      "success_moderated": "Din kommentar er blevet offentliggjort. Den bliver offentliggjort om lidt, da vores blog er under opsyn.",
+      "moderated": "Bemærk, at kommentarer skal godkendes, før de bliver offentliggjort."
     }
   },
   "onboarding": {
@@ -520,7 +526,7 @@
       "send_on": "ÅÅÅÅ-MM-DD",
       "send_on_label": "Send (valgfrit)",
       "expanded": "Formularen til modtager af gavekort er vist",
-      "collapsed": "Formularen til modtager af gavekorter skjult"
+      "collapsed": "Formularen til modtager af gavekort er skjult"
     }
   }
 }
