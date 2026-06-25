@@ -103,7 +103,7 @@
 
   <title>
     {%- if page_title == blank -%}Premium Kaffee & Tee aus Deutschland | {{ shop.name | escape }}
-    {%- elsif template == 'product' -%}{{ product.title | escape }}
+    {%- elsif template == 'product' -%}{{ page_title | escape }}
     {%- elsif template == 'collection' -%}{{ collection.title | escape }} | {{ shop.name | escape }}
     {%- elsif template == 'article' -%}{{ article.title | escape }} | Blog | {{ shop.name | escape }}
     {%- elsif template == 'page' -%}{{ page.title | escape }} | {{ shop.name | escape }}
