@@ -107,6 +107,10 @@
       "share": "Del denne artikel",
       "success": "Din kommentar er blevet offentliggjort! Tak!",
       "success_moderated": "Din kommentar er blevet offentliggjort. Den bliver offentliggjort om lidt, da vores blog er under opsyn."
+    },
+    "comment_form": {
+      "heading": "Indsend en kommentar",
+      "error": "Juster venligst fejlene nedenfor"
     }
   },
   "onboarding": {
@@ -167,7 +171,7 @@
       "choose_options": "Vælg muligheder",
       "choose_product_options": "Vælg muligheder for {{ product_name }}",
       "value_unavailable": "{{ option_value }} - Ikke tilgængelig",
-      "variant_sold_out_or_unavailable": "Varianten er udsolgt eller utilgængelig",
+      "variant_sold_out_or_unavailable": "Varianten er udsolgt oder utilgængelig",
       "inventory_in_stock": "På lager",
       "inventory_in_stock_show_count": "{{ quantity }} på lager",
       "inventory_low_stock": "Lav lagerbeholdning",
