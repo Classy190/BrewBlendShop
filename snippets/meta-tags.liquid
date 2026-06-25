@@ -21,14 +21,18 @@
       assign product_is_available = current_variant.available
     endif
 
-    if product.description != blank
+    if page_description != blank
+      assign meta_description = page_description | strip_html | truncate: 160
+    elsif product.description != blank
       assign meta_description = product.description | strip_html | truncate: 160
     else
       assign meta_description = product.title | append: " - Specialty Coffee, Kaffeebohnen, Coffee Brewer oder Premium Tee online bestellen. Fair gehandelt, nachhaltig ausgewählt, Versand aus Dänemark."
     endif
 
   elsif request.page_type == 'collection' and collection
-    if collection.description != blank
+    if page_description != blank
+      assign meta_description = page_description | strip_html | truncate: 160
+    elsif collection.description != blank
       assign meta_description = collection.description | strip_html | truncate: 160
     else
       assign meta_description = collection.title | append: " online kaufen bei Brew Blend: Specialty Coffee, Kaffeebohnen, Coffee Brewer und Premium Tee. Nachhaltig ausgewählt, Versand aus Dänemark."
@@ -37,7 +41,9 @@
   elsif request.page_type == 'article' and article
     assign og_type = 'article'
 
-    if article.excerpt != blank
+    if page_description != blank
+      assign meta_description = page_description | strip_html | truncate: 160
+    elsif article.excerpt != blank
       assign meta_description = article.excerpt | strip_html | truncate: 160
     elsif article.content != blank
       assign meta_description = article.content | strip_html | truncate: 160
