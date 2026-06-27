@@ -3551,7 +3551,7 @@
   {%- assign size_option_index = 0 -%}
 {%- endif -%}
 
-<script type="application/ld-json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -3579,7 +3579,7 @@
       "sku": {{ product.selected_or_first_available_variant.sku | json }},
     {%- endif -%}
     "brand": {
-      "@type": "Coffee Brand",
+      "@type": "Brand",
       "name": {{ product.vendor | json }}
     },
     "manufacturer": {
@@ -3731,26 +3731,27 @@
               }
             },
             "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": 5.99,
-          "currency": "EUR"
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "DE",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnPolicyFiniteReturnWindow",
-        "merchantReturnDays": 14,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-      },
-      "seller": {
-        "@type": "Organization",
-        "name": "Brew Blend"
-      }
-}{%- unless forloop.last -%},{%- endunless -%}
-{%- endfor -%}
-]
+              "@type": "MonetaryAmount",
+              "value": 5.99,
+              "currency": "EUR"
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "DE",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnPolicyFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+          },
+          "seller": {
+            "@type": "Organization",
+            "name": "Brew Blend"
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
 </script>
 
 {%- comment -%} Open Graph Meta Tags für Social Sharing {%- endcomment -%}
