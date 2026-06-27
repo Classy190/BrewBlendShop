@@ -1,10 +1,6 @@
 {% liquid
   assign block_settings = block.settings
   assign image = settings.logo
-
-  if block_settings.inverse and settings.logo_inverse
-    assign image = settings.logo_inverse
-  endif
 %}
 
 {%- if image -%}
@@ -104,13 +100,6 @@
   "tag": null,
   "settings": [
     {
-      "type": "checkbox",
-      "label": "Use inverse logo",
-      "id": "inverse",
-      "default": false,
-      "visible_if": "{{ settings.logo_inverse }}"
-    },
-    {
       "type": "select",
       "id": "font",
       "label": "Font",
@@ -133,7 +122,7 @@
         }
       ],
       "default": "heading",
-      "visible_if": "{{ settings.logo == blank and settings.logo_inverse == blank or block.settings.inverse == false }}"
+      "visible_if": "{{ settings.logo == blank }}"
     },
     {
       "type": "paragraph",
