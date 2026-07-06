@@ -7,29 +7,26 @@
   <meta name="theme-color" content="{{ settings.theme_color }}">
 
   {% comment %} --- KRITISCH: Sprach-Redirect für echte Nutzer (NICHT Bots) --- {% endcomment %}
-<script>
-  (function() {
-    var isBot = /bot|crawler|spider|googlebot|bingbot|yandex|baidu|facebookexternalhit|twitterbot/i.test(navigator.userAgent);
-    if (isBot) return;
+  <script>
+    (function() {
+      var isBot = /bot|crawler|spider|googlebot|bingbot|yandex|baidu|facebookexternalhit|twitterbot/i.test(navigator.userAgent);
+      if (isBot) return;
 
-    var path = window.location.pathname || '/';
-    var search = window.location.search || '';
-    var hash = window.location.hash || '';
-    var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl'];
+      var path = window.location.pathname || '/';
+      var search = window.location.search || '';
+      var hash = window.location.hash || '';
+      var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl'];
 
-    for (var i = 0; i < prefixes.length; i++) {
-      var p = prefixes[i];
-      // Prüfen, ob der Pfad mit einem der Präfixe beginnt
-      if (path.indexOf(p + '/') === 0 || path === p) {
-        // Leite um auf die .com Domain unter Beibehaltung des Pfades
-        // Wir ersetzen das Sprach-Präfix und setzen die neue Domain davor
-        var target = 'https://brew-blend.com' + path.replace(p, '') + search + hash;
-        window.location.replace(target);
-        return; 
+      for (var i = 0; i < prefixes.length; i++) {
+        var p = prefixes[i];
+        if (path.indexOf(p + '/') === 0 || path === p) {
+          var target = 'https://brew-blend.com' + path.replace(p, '') + search + hash;
+          window.location.replace(target);
+          return; 
+        }
       }
-    }
-  })();
-</script>
+    })();
+  </script>
 
   {% comment %} --- ROBOTS: Selektives Noindex --- {% endcomment %}
   {%- assign should_noindex = false -%}
@@ -47,11 +44,11 @@
   {%- endif -%}
 
   {% comment %}theme-check-disable RemoteAsset{% endcomment %}
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://brew-blend.de/sitemap.xml">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://brew-blend.com/sitemap.xml">
   {% comment %}theme-check-enable RemoteAsset{% endcomment %}
 
   {% comment %} --- Canonical --- {% endcomment %}
-  {%- assign clean_canonical = canonical_url | split: "?" | first -%}
+  {%- assign clean_canonical = canonical_url | replace: 'brew-blend.de', 'brew-blend.com' | split: "?" | first -%}
   <link rel="canonical" href="{{ clean_canonical }}">
 
   {% comment %} --- OG Locale --- {% endcomment %}
@@ -76,7 +73,7 @@
     <meta property="og:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
     <meta property="og:type" content="website">
   {%- endif -%}
-  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:url" content="{{ canonical_url | replace: 'brew-blend.de', 'brew-blend.com' }}">
   <meta property="og:site_name" content="{{ shop.name | escape }}">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -84,9 +81,9 @@
   <meta name="twitter:title" content="{{ page_title | default: shop.name | escape }}">
   <meta name="twitter:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
 
-  {% comment %} --- KEIN Hreflang für Sprachpfäfixe, weil diese umleiten --- {% endcomment %}
+  {% comment %} --- Hreflang Konsistenz auf .com --- {% endcomment %}
   {% comment %}theme-check-disable RemoteAsset{% endcomment %}
-  <link rel="alternate" hreflang="x-default" href="https://brew-blend.de{{ request.path }}">
+  <link rel="alternate" hreflang="x-default" href="https://brew-blend.com{{ request.path }}">
   {% comment %}theme-check-enable RemoteAsset{% endcomment %}
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -107,44 +104,43 @@
     {%- endif -%}
   </title>
 
-  {%- comment -%} Entfernt: Duplikat – Description kommt aus snippets/meta-tags.liquid {%- endcomment -%}
-<meta name="author" content="{{ shop.name | escape }}">
-<meta name="publisher" content="{{ shop.name | escape }}">
-<meta name="applicable-device" content="pc,mobile">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="format-detection" content="telephone=no,email=no,address=no">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="author" content="{{ shop.name | escape }}">
+  <meta name="publisher" content="{{ shop.name | escape }}">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  {% comment %} --- WebSite Schema (explizit brew-blend.de) --- {% endcomment %}
+  {% comment %} --- WebSite Schema (auf .com) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://brew-blend.de/#website",
-    "url": "https://brew-blend.de",
+    "@id": "https://brew-blend.com/#website",
+    "url": "https://brew-blend.com",
     "name": "{{ shop.name | escape }}",
     "description": {{ shop.description | default: shop.name | strip_html | strip | json }},
     "inLanguage": "{{ request.locale.iso_code }}",
-    "publisher": { "@id": "https://brew-blend.de/#organization" },
+    "publisher": { "@id": "https://brew-blend.com/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": { "@type": "EntryPoint", "urlTemplate": "https://brew-blend.de/search?q={search_term_string}" },
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://brew-blend.com/search?q={search_term_string}" },
       "query-input": "required name=search_term_string"
     }
   }
   </script>
 
-  {% comment %} --- Organization Schema + E-E-A-T + Vertrieb-Bewertungen (explizit brew-blend.de) --- {% endcomment %}
+  {% comment %} --- Organization Schema (auf .com) --- {% endcomment %}
   {%- unless template == 'product' -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://brew-blend.de/#organization",
+    "@id": "https://brew-blend.com/#organization",
     "name": "{{ shop.name | escape }}",
     "legalName": "{{ shop.name | escape }}",
-    "url": "https://brew-blend.de",
+    "url": "https://brew-blend.com",
     "logo": {
       "@type": "ImageObject",
       "url": "https://cdn.shopify.com/s/files/1/0941/0176/6526/files/Brew-Blend-Kaffee-und-tee-logo.png?v=1768899442",
@@ -180,20 +176,12 @@
       "worstRating": "1",
       "ratingCount": "1247",
       "reviewCount": "1247"
-    },
-    "review": {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Christine Barry" },
-      "datePublished": "2026-05-06",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "I recently ordered 3 bags of Brazil coffee beans and received a 10% discount plus 3 free Coffee Brewers! The shipment was delivered very promptly. The coffee beans were up to the usual high quality.",
-      "publisher": { "@type": "Organization", "name": "{{ shop.name | escape }}" }
     }
   }
   </script>
   {%- endunless -%}
 
-  {% comment %} --- BreadcrumbList (explizit brew-blend.de) --- {% endcomment %}
+  {% comment %} --- BreadcrumbList (auf .com) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -203,61 +191,61 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Startseite",
-        "item": "https://brew-blend.de"
+        "item": "https://brew-blend.com"
       }
       {%- if template == 'product' and collection -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ collection.title | json }},
-        "item": "https://brew-blend.de{{ collection.url }}"
+        "item": "https://brew-blend.com{{ collection.url }}"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": {{ product.title | json }},
-        "item": "https://brew-blend.de{{ product.url }}"
+        "item": "https://brew-blend.com{{ product.url }}"
       }
       {%- elsif template == 'product' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ product.title | json }},
-        "item": "https://brew-blend.de{{ product.url }}"
+        "item": "https://brew-blend.com{{ product.url }}"
       }
       {%- elsif template == 'collection' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ collection.title | json }},
-        "item": "https://brew-blend.de{{ collection.url }}"
+        "item": "https://brew-blend.com{{ collection.url }}"
       }
       {%- elsif template == 'article' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://brew-blend.de{{ blog.url }}"
+        "item": "https://brew-blend.com{{ blog.url }}"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": {{ article.title | json }},
-        "item": "https://brew-blend.de{{ article.url }}"
+        "item": "https://brew-blend.com{{ article.url }}"
       }
       {%- elsif template == 'page' -%},
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ page.title | json }},
-        "item": "https://brew-blend.de{{ page.url }}"
+        "item": "https://brew-blend.com{{ page.url }}"
       }
       {%- endif -%}
     ]
   }
   </script>
 
-  {% comment %} --- AI-Traffic Tracking (explizit brew-blend.de) --- {% endcomment %}
+  {% comment %} --- AI-Traffic Tracking --- {% endcomment %}
   <script>
     (function() {
       const ref = document.referrer.toLowerCase();
@@ -310,7 +298,7 @@
   </script>
 
   {{ content_for_header }}
-
+  
   {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
