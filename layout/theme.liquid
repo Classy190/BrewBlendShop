@@ -7,33 +7,29 @@
   <meta name="theme-color" content="{{ settings.theme_color }}">
 
   {% comment %} --- KRITISCH: Sprach-Redirect für echte Nutzer (NICHT Bots) --- {% endcomment %}
-  <script>
-    (function() {
-      var isBot = /bot|crawler|spider|googlebot|bingbot|yandex|baidu|facebookexternalhit|twitterbot/i.test(navigator.userAgent);
-      if (isBot) return;
+<script>
+  (function() {
+    var isBot = /bot|crawler|spider|googlebot|bingbot|yandex|baidu|facebookexternalhit|twitterbot/i.test(navigator.userAgent);
+    if (isBot) return;
 
-      var path = window.location.pathname || '/';
-      var search = window.location.search || '';
-      var hash = window.location.hash || '';
-      var target = null;
-      var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl'];
+    var path = window.location.pathname || '/';
+    var search = window.location.search || '';
+    var hash = window.location.hash || '';
+    var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl'];
 
-      for (var i = 0; i < prefixes.length; i++) {
-        var p = prefixes[i];
-        if (path === p || path === p + '/') {
-          target = '/' + search + hash;
-          break;
-        } else if (path.indexOf(p + '/') === 0) {
-          target = path.replace(p + '/', '/') + search + hash;
-          break;
-        }
-      }
-
-      if (target && target !== path + search + hash) {
+    for (var i = 0; i < prefixes.length; i++) {
+      var p = prefixes[i];
+      // Prüfen, ob der Pfad mit einem der Präfixe beginnt
+      if (path.indexOf(p + '/') === 0 || path === p) {
+        // Leite um auf die .com Domain unter Beibehaltung des Pfades
+        // Wir ersetzen das Sprach-Präfix und setzen die neue Domain davor
+        var target = 'https://brew-blend.com' + path.replace(p, '') + search + hash;
         window.location.replace(target);
+        return; 
       }
-    })();
-  </script>
+    }
+  })();
+</script>
 
   {% comment %} --- ROBOTS: Selektives Noindex --- {% endcomment %}
   {%- assign should_noindex = false -%}
