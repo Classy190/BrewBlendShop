@@ -124,10 +124,10 @@
           "type": "button",
           "settings": {
             "button_label": "Kaffeebohnen Kaufen",
-            "button_link": "shopify://collections/specialty-coffee-beans",
+            "button_link": "shopify://collections/kaffeebohnen",
             "button_style_secondary": false,
             "button_label_2": "",
-            "button_link_2": "shopify://collections/specialty-coffee-beans",
+            "button_link_2": "shopify://collections/kaffeebohnen",
             "button_style_secondary_2": false
           }
         }

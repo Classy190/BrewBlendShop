@@ -73,7 +73,7 @@
           "type": "button",
           "settings": {
             "button_text": "Jetzt entdecken & sparen",
-            "button_link": "shopify://collections/specialty-coffee-beans",
+            "button_link": "shopify://collections/kaffeebohnen",
             "button_text_color": "#ffffff",
             "button_bg_color": "#10b030",
             "button_bg_hover": "#10b030",
@@ -120,7 +120,7 @@
         "featured_collection_c6w4f9": {
           "type": "featured_collection",
           "settings": {
-            "collection": "specialty-coffee-beans"
+            "collection": "kaffeebohnen"
           }
         },
         "featured_collection_9Lzxgr": {
@@ -256,7 +256,7 @@
           "type": "button",
           "settings": {
             "button_label": "Coffee Beans",
-            "button_link": "shopify://collections/specialty-coffee-beans",
+            "button_link": "shopify://collections/kaffeebohnen",
             "button_style_secondary": false
           }
         }
