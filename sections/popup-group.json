@@ -13,6 +13,7 @@
   "sections": {
     "popup_pro_KtXe6n": {
       "type": "popup-pro",
+      "disabled": true,
       "settings": {
         "mode": "enabled",
         "only_homepage": false,
