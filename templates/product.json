@@ -140,10 +140,10 @@
           "settings": {
             "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_4.png",
             "icon_size": 40,
-            "heading": "Recyclingfähige Verpackung",
-            "heading_size": 15,
+            "heading": "<strong>Recyclingfähige Verpackung</strong>",
+            "heading_size": 11,
             "text": "<p>Die Verpackung dieses Produkts ist ordnungsgemäß über ein Dualen System lizenziert.</p>",
-            "text_size": 11,
+            "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
           }
@@ -153,10 +153,10 @@
           "settings": {
             "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_6.png",
             "icon_size": 40,
-            "heading": "Klimaneutraler Versand",
-            "heading_size": 15,
+            "heading": "<strong>Klimaneutraler Versand</strong>",
+            "heading_size": 11,
             "text": "<p><strong>Nachhaltig einkaufen:</strong> Ihre Bestellung wird <strong>emissionskompensiert</strong> versendet.</p>",
-            "text_size": 11,
+            "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
           }
@@ -166,10 +166,10 @@
           "settings": {
             "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_8.png",
             "icon_size": 40,
-            "heading": "Kostenloser Versand",
-            "heading_size": 15,
+            "heading": "<strong>Kostenloser Versand</strong>",
+            "heading_size": 11,
             "text": "<p>Bestellen Sie bequem und sparen Sie 6,99 € Versandkosten! Der Versand ist für Sie <strong>kostenlos</strong> ab einem Bestellwert von 100<strong> €</strong> innerhalb Deutschlands.</p>",
-            "text_size": 11,
+            "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
           }
@@ -180,7 +180,7 @@
             "ship_days": 7,
             "cut_off_time": 11,
             "icon_size": 20,
-            "image_ani": "heartBeat",
+            "image_ani": "flash",
             "text_size": 10,
             "text_style": "uppercase",
             "text": "Bestellen Sie innerhalb von (timer) für eine voraussichtliche Lieferung bis zum (date).",
