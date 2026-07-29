@@ -1,23 +1,25 @@
 # we use Shopify as our ecommerce platform
 
 #  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-#  ┃  Robots & Agent policy                                               ┃
+#  ┃  Robots & Agent policy                                                ┃
 #  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-#  ┃  Checkouts are for humans.                                           ┃
-#  ┃  * Automated scraping, “buy-for-me” agents, or any end-to-end flow   ┃
-#  ┃    that completes payment without a final human review step is not   ┃
-#  ┃    permitted.                                                        ┃
-#  ┃  * Legitimate integrators must use the official Checkout Kit:        ┃
-#  ┃      https://www.shopify.com/checkout-kit                            ┃
-#  ┃                                                                      ┃
-#  ┃  Terms of Service: https://www.shopify.com/legal/terms               ┃
-#  ┃  Contact: bots@shopify.com                                           ┃
+#  ┃  Checkouts are for humans.                                            ┃
+#  ┃  * Automated scraping, “buy-for-me” agents, or any end-to-end flow    ┃
+#  ┃    that completes payment without a final human review step is not    ┃
+#  ┃    permitted.                                                         ┃
+#  ┃  * Legitimate integrators must use the official Checkout Kit:         ┃
+#  ┃      https://www.shopify.com/checkout-kit                             ┃
+#  ┃                                                                       ┃
+#  ┃  Terms of Service: https://www.shopify.com/legal/terms                ┃
+#  ┃  Contact: bots@shopify.com                                            ┃
 #  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 # ==============================================================================
 # STANDARD GLOBAL POLICY & SHOPIFY PROTECTION
 # ==============================================================================
+
 User-agent: *
+
 Disallow: /a/downloads/-/*
 Disallow: /admin
 Disallow: /cart
@@ -62,6 +64,20 @@ Disallow: /*/products/*-[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]
 Disallow: /collections/*/products/*-[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]-remote
 Disallow: /*/collections/*/products/*-[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]-remote
 
+# --- BREW-BLEND FIX: GSC Gecrawlt - nicht indexiert (22x pr_ + web-pixels + atom) ---
+Disallow: /*?*pr_prod_strat*
+Disallow: /*?*pr_rec_id*
+Disallow: /*?*pr_ref_pid*
+Disallow: /*?*pr_seq*
+Disallow: /*?*srsltid=*
+Disallow: /*?*_pos=*
+Disallow: /*?*_ss=*
+Disallow: /*?*_v=*
+Disallow: /web-pixels@
+Disallow: /*/sandbox/
+Disallow: /*.atom$
+# --- ENDE FIX ---
+
 # Explicitly open paths to ensure maximum crawling indexation for standard users
 Allow: /products/
 Allow: /collections/
@@ -71,10 +87,12 @@ Allow: /recommendations/products
 Allow: /llms.txt
 
 Sitemap: https://brew-blend.de/sitemap.xml
+Sitemap: https://brew-blend.com/sitemap.xml
 
 # ==============================================================================
 # SPECIFIC SEARCH ENGINE AD-BOTS
 # ==============================================================================
+
 User-agent: adsbot-google
 Disallow: /checkouts/
 Disallow: /checkout
@@ -92,10 +110,14 @@ Disallow: /collections/*/products/*-[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f
 Disallow: /*/collections/*/products/*-[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]-remote
 Disallow: /sf_private_access_tokens
 Disallow: /services/login_with_shop
+Disallow: /*?*pr_prod_strat*
+Disallow: /*?*pr_rec_id*
+Disallow: /web-pixels@
 
 # ==============================================================================
 # SE0 AUDIT BOTS (Aggressive scrapers limited/blocked to save server performance)
 # ==============================================================================
+
 User-agent: Nutch
 Disallow: /
 
@@ -119,6 +141,7 @@ Crawl-delay: 1
 # ==============================================================================
 # CORE SEARCH ENGINES (Optimized for deep indexing)
 # ==============================================================================
+
 User-agent: Googlebot
 User-agent: Bingbot
 Allow: /products/
@@ -127,6 +150,12 @@ Allow: /pages/
 Allow: /blogs/
 Allow: /recommendations/products
 Allow: /llms.txt
+Disallow: /*?*pr_prod_strat*
+Disallow: /*?*pr_rec_id*
+Disallow: /*?*pr_ref_pid*
+Disallow: /*?*pr_seq*
+Disallow: /web-pixels@
+Disallow: /*.atom$
 
 # ==============================================================================
 # KI-SEARCH & GENERATIVE ENGINE OPTIMIZATION (GEO/AEO) BOTS
