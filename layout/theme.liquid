@@ -6,31 +6,46 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.theme_color }}">
 
-  {% comment %} --- KRITISCH: Sprach-Redirect für echte Nutzer (NICHT Bots) --- {% endcomment %}
   <script>
     (function() {
-      var isBot = /bot|crawler|spider|googlebot|bingbot|yandex|baidu|facebookexternalhit|twitterbot/i.test(navigator.userAgent);
-      if (isBot) return;
-
       var path = window.location.pathname || '/';
       var search = window.location.search || '';
       var hash = window.location.hash || '';
-      var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl'];
-
+      var prefixes = ['/da', '/en', '/es', '/it', '/fr', '/nl', '/tr'];
       for (var i = 0; i < prefixes.length; i++) {
         var p = prefixes[i];
         if (path.indexOf(p + '/') === 0 || path === p) {
-          var target = 'https://brew-blend.com' + path.replace(p, '') + search + hash;
-          window.location.replace(target);
+          if (window.location.hostname.indexOf('brew-blend.com') === -1) {
+            var newPath = path.replace(p, '') || '/';
+            if (newPath === '') newPath = '/';
+            var target = 'https://brew-blend.com' + newPath + search + hash;
+            target = target.replace('https://brew-blend.com//', 'https://brew-blend.com/');
+            window.location.replace(target);
+          }
           return; 
+        }
+      }
+      if (path === '/tr' || path === '/tr/') {
+        if (window.location.hostname.indexOf('brew-blend.com') === -1) {
+          window.location.replace('https://brew-blend.com/');
         }
       }
     })();
   </script>
 
-  {% comment %} --- ROBOTS: Selektives Noindex --- {% endcomment %}
   {%- assign should_noindex = false -%}
-  {%- if request.query_string contains "sort_by" or request.query_string contains "country" or request.query_string contains "currency" -%}
+  {%- if request.query_string contains "sort_by"
+    or request.query_string contains "country"
+    or request.query_string contains "currency"
+    or request.query_string contains "pr_prod_strat"
+    or request.query_string contains "pr_rec_id"
+    or request.query_string contains "pr_ref_pid"
+    or request.query_string contains "pr_seq"
+    or request.query_string contains "_pos="
+    or request.query_string contains "_ss="
+    or request.query_string contains "_v="
+    or request.query_string contains "srsltid"
+  -%}
     {%- assign should_noindex = true -%}
   {%- endif -%}
   {%- if should_noindex -%}
@@ -43,15 +58,12 @@
     <meta name="google-site-verification" content="{{ settings.google_site_verification }}">
   {%- endif -%}
 
-  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://brew-blend.com/sitemap.xml">
-  {% comment %}theme-check-enable RemoteAsset{% endcomment %}
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ shop.url }}/sitemap.xml">
 
-  {% comment %} --- Canonical --- {% endcomment %}
-  {%- assign clean_canonical = canonical_url | replace: 'brew-blend.de', 'brew-blend.com' | split: "?" | first -%}
+  {%- assign clean_canonical = canonical_url | split: "?" | first -%}
+  {%- assign clean_canonical = clean_canonical | replace: 'brew-blend.de', 'brew-blend.com' -%}
   <link rel="canonical" href="{{ clean_canonical }}">
 
-  {% comment %} --- OG Locale --- {% endcomment %}
   {%- assign og_locale = request.locale.iso_code | downcase -%}
   {%- if og_locale == 'de' -%}{%- assign og_locale = 'de_DE' -%}
   {%- elsif og_locale == 'en' -%}{%- assign og_locale = 'en_US' -%}
@@ -81,10 +93,16 @@
   <meta name="twitter:title" content="{{ page_title | default: shop.name | escape }}">
   <meta name="twitter:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
 
-  {% comment %} --- Hreflang Konsistenz auf .com --- {% endcomment %}
-  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
   <link rel="alternate" hreflang="x-default" href="https://brew-blend.com{{ request.path }}">
-  {% comment %}theme-check-enable RemoteAsset{% endcomment %}
+  <link rel="alternate" hreflang="de" href="https://brew-blend.com{{ request.path }}">
+  <link rel="alternate" hreflang="de-DE" href="https://brew-blend.de{{ request.path }}">
+  <link rel="alternate" hreflang="en" href="https://brew-blend.com/en{{ request.path }}">
+  <link rel="alternate" hreflang="da" href="https://brew-blend.com/da{{ request.path }}">
+  <link rel="alternate" hreflang="tr" href="https://brew-blend.com/tr{{ request.path }}">
+  <link rel="alternate" hreflang="es" href="https://brew-blend.com/es{{ request.path }}">
+  <link rel="alternate" hreflang="it" href="https://brew-blend.com/it{{ request.path }}">
+  <link rel="alternate" hreflang="fr" href="https://brew-blend.com/fr{{ request.path }}">
+  <link rel="alternate" hreflang="nl" href="https://brew-blend.com/nl{{ request.path }}">
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
@@ -112,7 +130,6 @@
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  {% comment %} --- WebSite Schema (auf .com) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -131,7 +148,6 @@
   }
   </script>
 
-  {% comment %} --- Organization Schema (auf .com) --- {% endcomment %}
   {%- unless template == 'product' -%}
   <script type="application/ld+json">
   {
@@ -181,7 +197,6 @@
   </script>
   {%- endunless -%}
 
-  {% comment %} --- BreadcrumbList (auf .com) --- {% endcomment %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -245,7 +260,6 @@
   }
   </script>
 
-  {% comment %} --- AI-Traffic Tracking --- {% endcomment %}
   <script>
     (function() {
       const ref = document.referrer.toLowerCase();
@@ -510,7 +524,7 @@
       background-color: rgb(var(--color-background));
     }
 
-    *, *::before, *::after { box-sizing: inherit; }
+    *,* ::before, *::after { box-sizing: inherit; }
     html { box-sizing: border-box; font-size: calc(var(--font-body-scale) * 62.5%); height: 100%; scroll-behavior: smooth; }
     body {
       display: grid; grid-template-rows: auto auto 1fr auto; grid-template-columns: 100%; min-height: 100%; margin: 0;
@@ -579,7 +593,6 @@
     <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
-  {% comment %} --- GTM Loader (Consent-gated) --- {% endcomment %}
   <script>
     (function() {
       const gtmId = 'GTM-TH9VLGB5';
