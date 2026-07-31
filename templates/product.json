@@ -80,7 +80,7 @@
         "quantity_selector_kpKfx8": {
           "type": "quantity_selector",
           "settings": {
-            "enable_quantity_discounts": true,
+            "enable_quantity_discounts": false,
             "hide_top_bar": false,
             "headline": "Im Paket kaufen und sparen",
             "txt_size_head_qb": 12,
@@ -131,7 +131,7 @@
             "option_4_benefit": "",
             "option_4_caption": "Nur [item_price] pro Artikel",
             "option_4_discount_type": "percentage",
-            "option_4_percentage_off": 10,
+            "option_4_percentage_off": 5,
             "option_4_fixed_amount_off": "0"
           }
         },
