@@ -116,7 +116,7 @@
             "option_2_label": "",
             "option_2_benefit": "",
             "option_2_caption": "Nur [item_price] pro Artikel",
-            "option_2_discount_type": "none",
+            "option_2_discount_type": "fixed_amount",
             "option_2_percentage_off": 5,
             "option_2_fixed_amount_off": "0",
             "option_3_quantity": 15,
