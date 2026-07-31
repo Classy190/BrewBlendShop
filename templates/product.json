@@ -257,7 +257,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "",
-        "show_container": false,
+        "show_container": true,
         "container_radius": 0,
         "container_padding": 30,
         "container_color": "#f9f9f9",
