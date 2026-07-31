@@ -26,7 +26,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "title_size": 18,
+            "title_size": 16,
             "title_height": 140,
             "text_transform": "uppercase"
           }
@@ -56,8 +56,8 @@
             "badge_hide": false,
             "taxes_hide": true,
             "shipping_hide": true,
-            "padding_top": 12,
-            "padding_bottom": 12
+            "padding_top": 4,
+            "padding_bottom": 4
           }
         },
         "variant_picker": {
