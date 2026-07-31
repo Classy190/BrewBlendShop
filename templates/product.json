@@ -140,9 +140,9 @@
           "settings": {
             "icon": "shopify://shop_images/Schwarz_Kreis_mit_Utensilien_Restaurant_Logo_4.png",
             "icon_size": 40,
-            "heading": "<strong>Recyclingfähige Verpackung</strong>",
+            "heading": "<strong>100% Recyclingfähig</strong>",
             "heading_size": 11,
-            "text": "<p>Die Verpackung dieses Produkts ist ordnungsgemäß über ein Dualen System lizenziert.</p>",
+            "text": "<p>Nachhaltige Verpackung nachgelagert über das Duale System lizenziert – für puren Genuss ohne schlechtes Gewissen.</p>",
             "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
@@ -155,7 +155,7 @@
             "icon_size": 40,
             "heading": "<strong>Klimaneutraler Versand</strong>",
             "heading_size": 11,
-            "text": "<p><strong>Nachhaltig einkaufen:</strong> Ihre Bestellung wird <strong>emissionskompensiert</strong> versendet.</p>",
+            "text": "<p>Jede Bestellung mit <strong>brew blend</strong> wird CO2-kompensiert direkt zu dir nach Hause geschickt.</p>",
             "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
@@ -168,7 +168,7 @@
             "icon_size": 40,
             "heading": "<strong>Kostenloser Versand</strong>",
             "heading_size": 11,
-            "text": "<p>Bestellen Sie bequem und sparen Sie 6,99 € Versandkosten! Der Versand ist für Sie <strong>kostenlos</strong> ab einem Bestellwert von 100<strong> €</strong> innerhalb Deutschlands.</p>",
+            "text": "<p>Schon ab 100 € Bestellwert innerhalb Deutschlands völlig gratis (sonst blitzschnell & sicher).</p>",
             "text_size": 9,
             "padding_top": 8,
             "padding_bottom": 8
