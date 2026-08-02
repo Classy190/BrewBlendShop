@@ -38,7 +38,7 @@ Disallow: /collections/*%2b*
 Disallow: /*/collections/*+*
 Disallow: /*/collections/*%2B*
 Disallow: /*/collections/*%2b*
-Disallow: /*/collections/*filter*&*filter*
+Disallow: */collections/*filter*&*filter*
 Disallow: /blogs/*+*
 Disallow: /blogs/*%2B*
 Disallow: /blogs/*%2b*
@@ -73,9 +73,9 @@ Disallow: /*?*srsltid=*
 Disallow: /*?*_pos=*
 Disallow: /*?*_ss=*
 Disallow: /*?*_v=*
-Disallow: /web-pixels*
+Disallow: /web-pixels@
 Disallow: /*/sandbox/
-Disallow: /*.atom
+Disallow: /*.atom$
 # --- ENDE FIX ---
 
 # Explicitly open paths to ensure maximum crawling indexation for standard users
@@ -112,7 +112,7 @@ Disallow: /sf_private_access_tokens
 Disallow: /services/login_with_shop
 Disallow: /*?*pr_prod_strat*
 Disallow: /*?*pr_rec_id*
-Disallow: /web-pixels*
+Disallow: /web-pixels@
 
 # ==============================================================================
 # SE0 AUDIT BOTS (Aggressive scrapers limited/blocked to save server performance)
@@ -143,19 +143,6 @@ Crawl-delay: 1
 # ==============================================================================
 
 User-agent: Googlebot
-Allow: /products/
-Allow: /collections/
-Allow: /pages/
-Allow: /blogs/
-Allow: /recommendations/products
-Allow: /llms.txt
-Disallow: /*?*pr_prod_strat*
-Disallow: /*?*pr_rec_id*
-Disallow: /*?*pr_ref_pid*
-Disallow: /*?*pr_seq*
-Disallow: /web-pixels*
-Disallow: /*.atom
-
 User-agent: Bingbot
 Allow: /products/
 Allow: /collections/
@@ -167,8 +154,8 @@ Disallow: /*?*pr_prod_strat*
 Disallow: /*?*pr_rec_id*
 Disallow: /*?*pr_ref_pid*
 Disallow: /*?*pr_seq*
-Disallow: /web-pixels*
-Disallow: /*.atom
+Disallow: /web-pixels@
+Disallow: /*.atom$
 
 # ==============================================================================
 # KI-SEARCH & GENERATIVE ENGINE OPTIMIZATION (GEO/AEO) BOTS
