@@ -85,24 +85,36 @@
     <meta property="og:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
     <meta property="og:type" content="website">
   {%- endif -%}
-  <meta property="og:url" content="{{ canonical_url | replace: 'brew-blend.de', 'brew-blend.com' }}">
+  <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:site_name" content="{{ shop.name | escape }}">
 
-  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@BrewTheBlend">
-  <meta name="twitter:title" content="{{ page_title | default: shop.name | escape }}">
-  <meta name="twitter:description" content="{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}">
+  <meta name="twitter:title" content="{% if template == 'product' %}{{ product.title | escape }}{% else %}{{ page_title | default: shop.name | escape }}{% endif %}">
+  <meta name="twitter:description" content="{% if template == 'product' %}{{ product.description | strip_html | truncatewords: 30 | escape }}{% else %}{{ page_description | default: shop.description | strip_html | truncatewords: 30 | escape }}{% endif %}">
 
-  <link rel="alternate" hreflang="x-default" href="https://brew-blend.com{{ request.path }}">
-  <link rel="alternate" hreflang="de" href="https://brew-blend.com{{ request.path }}">
-  <link rel="alternate" hreflang="de-DE" href="https://brew-blend.de{{ request.path }}">
-  <link rel="alternate" hreflang="en" href="https://brew-blend.com/en{{ request.path }}">
-  <link rel="alternate" hreflang="da" href="https://brew-blend.com/da{{ request.path }}">
-  <link rel="alternate" hreflang="tr" href="https://brew-blend.com/tr{{ request.path }}">
-  <link rel="alternate" hreflang="es" href="https://brew-blend.com/es{{ request.path }}">
-  <link rel="alternate" hreflang="it" href="https://brew-blend.com/it{{ request.path }}">
-  <link rel="alternate" hreflang="fr" href="https://brew-blend.com/fr{{ request.path }}">
-  <link rel="alternate" hreflang="nl" href="https://brew-blend.com/nl{{ request.path }}">
+  {%- comment -%} Sprach-Präfix aus request.path entfernen, um Pfad-Verdopplungen zu vermeiden {%- endcomment -%}
+  {%- assign clean_path = request.path -%}
+  {%- for locale in shop.published_locales -%}
+    {%- assign root_prefix = locale.root_url | append: '/' -%}
+    {%- assign current_path_with_slash = request.path | append: '/' -%}
+    {%- if current_path_with_slash contains root_prefix and locale.root_url != '/' -%}
+      {%- assign clean_path = request.path | remove_first: locale.root_url -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- # theme-check-disable RemoteAsset -%}
+  <link rel="alternate" hreflang="x-default" href="https://brew-blend.com{{ clean_path }}">
+  <link rel="alternate" hreflang="de" href="https://brew-blend.com{{ clean_path }}">
+  <link rel="alternate" hreflang="de-DE" href="https://brew-blend.de{{ clean_path }}">
+  <link rel="alternate" hreflang="en" href="https://brew-blend.com/en{{ clean_path }}">
+  <link rel="alternate" hreflang="da" href="https://brew-blend.com/da{{ clean_path }}">
+  <link rel="alternate" hreflang="tr" href="https://brew-blend.com/tr{{ clean_path }}">
+  <link rel="alternate" hreflang="es" href="https://brew-blend.com/es{{ clean_path }}">
+  <link rel="alternate" hreflang="it" href="https://brew-blend.com/it{{ clean_path }}">
+  <link rel="alternate" hreflang="fr" href="https://brew-blend.com/fr{{ clean_path }}">
+  <link rel="alternate" hreflang="nl" href="https://brew-blend.com/nl{{ clean_path }}">
+  {%- # theme-check-enable RemoteAsset -%}
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
