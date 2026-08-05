@@ -121,33 +121,128 @@ window.addEventListener('DOMContentLoaded', () => {
   </script>
 {% endif %}
 <style>
-   .footer-block__heading {
-      {% if section.settings.show_body_font == "body" %}
+  .footer-block__heading {
+    {% if section.settings.show_body_font == "body" %}
       font-family: var(--font-body-family);
       font-weight: var(--font-body-weight);
-      {% endif %}
+    {% endif %}
   }
-    {% if section.settings.show_border %}
+  {% if section.settings.show_border %}
     .footer {
-    border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+      border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    }
+  {% endif %}
+
+  /* Modernisiertes Styling für Badges & Reviews */
+  .footer-trust-badges {
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+    padding: 2.5rem 0;
+    margin-bottom: 2rem;
   }
-    {% endif %}}
+  
+  .footer-trust-badges__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .footer-trust-badges__item {
+    background: rgba(var(--color-foreground), 0.03);
+    padding: 1.25rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--color-foreground), 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .footer-trust-badges__item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .footer-trust-badges__item strong {
+    display: block;
+    color: rgb(16, 176, 48);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-trust-badges__item p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .footer-trust-badges__item a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .footer-reviews {
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+    padding: 2.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .footer-reviews__title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-reviews__carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+  }
+
+  .footer-reviews__item {
+    flex: 0 0 85%;
+    padding: 1.5rem;
+    background: rgba(16, 176, 48, 0.04);
+    border-left: 4px solid rgb(16, 176, 48);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .footer-reviews__text {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  .footer-reviews__author {
+    margin: 0;
+    font-weight: 600;
+    color: rgb(16, 176, 48);
+    font-size: 0.85rem;
+  }
+
+  @media (min-width: 750px) {
+    .footer-reviews__carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+      padding-bottom: 0;
+    }
+    .footer-reviews__item {
+      flex: auto;
+    }
+  }
 </style>
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  <style>
-    .footer-trust-badges { border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding: 2rem 0; margin-bottom: 2rem; }
-    .footer-trust-badges__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
-    .footer-trust-badges__item strong { color: rgb(16, 176, 48); }
-    .footer-trust-badges__item p { font-size: 0.85rem; margin: 0.5rem 0 0 0; }
-    .footer-reviews { border-bottom: 1px solid rgba(var(--color-foreground), 0.1); padding: 2rem 0; margin-bottom: 2rem; }
-    .footer-reviews__title { text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600; }
-    .footer-reviews__carousel { display: flex; overflow-x: auto; gap: 1rem; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-    .footer-reviews__item { flex: 0 0 calc(100% - 1rem); padding: 1rem; background: rgba(16, 176, 48, 0.05); border-left: 4px solid rgb(16, 176, 48); border-radius: 4px; min-width: 300px; }
-    .footer-reviews__text { font-size: 0.9rem; font-style: italic; margin: 0 0 0.5rem 0; line-height: 1.5; }
-    .footer-reviews__author { margin: 0.5rem 0 0 0; font-weight: bold; color: rgb(16, 176, 48); font-size: 0.9rem; }
-    @media (min-width: 750px) { .footer-reviews__carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); overflow-x: visible; } .footer-reviews__item { flex: auto; min-width: auto; } }
-  </style>
 
   {%- comment -%} Trust Badges & Security Signals Section {%- endcomment -%}
   <div class="page-width footer-trust-badges">
