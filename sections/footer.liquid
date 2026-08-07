@@ -154,13 +154,13 @@ window.addEventListener('DOMContentLoaded', () => {
     .footer-reviews__text { font-size: 1.3rem; font-style: italic; margin: 0 0 1.25rem 0; line-height: 1.7; font-weight: 500; }
     .footer-reviews__author { margin: 0; font-weight: bold; color: rgb(16, 176, 48); font-size: 1.2rem; }
     
-    .footer-reviews__nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; width: 100%; }
-    .footer-reviews__btn { background: rgb(16, 176, 48); color: #fff; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
-    .footer-reviews__btn:hover { opacity: 0.85; }
+    .footer-reviews__btn-next { position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); background: rgba(16, 176, 48, 0.2); color: rgb(16, 176, 48); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; z-index: 2; opacity: 0.6; }
+    .footer-reviews__btn-next:hover { opacity: 1; background: rgba(16, 176, 48, 0.9); color: #fff; }
 
     @media (min-width: 750px) { 
       .footer-reviews__title { width: auto; }
       .footer-reviews__item { flex: 0 0 calc((100% - 3rem) / 3); } 
+      .footer-reviews__btn-next { right: -12px; }
     }
   </style>
 
@@ -251,11 +251,7 @@ window.addEventListener('DOMContentLoaded', () => {
           <p class="footer-reviews__author">⭐⭐⭐⭐⭐ Urs R. (CH)</p>
         </div>
       </div>
-    </div>
-
-    <div class="footer-reviews__nav">
-      <button class="footer-reviews__btn" onclick="scrollReviews(-1)" aria-label="Vorherige Bewertungen">❮</button>
-      <button class="footer-reviews__btn" onclick="scrollReviews(1)" aria-label="Nächste Bewertungen">❯</button>
+      <button class="footer-reviews__btn-next" onclick="scrollReviews(1)" aria-label="Nächste Bewertung">›</button>
     </div>
   </div>
 
@@ -269,8 +265,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if (direction === 1 && carousel.scrollLeft >= maxScrollLeft - 10) {
         carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else if (direction === -1 && carousel.scrollLeft <= 10) {
-        carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
       } else {
         carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
       }
