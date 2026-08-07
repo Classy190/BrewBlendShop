@@ -182,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  {%- comment -%} Customer Reviews & Testimonials Section - 15 Item Auto Slider {%- endcomment -%}
+  {%- comment -%} Customer Reviews & Testimonials Section - 15 Item Slow Auto Slider {%- endcomment -%}
   <div class="page-width footer-reviews">
     <div class="footer-reviews__header">
       <h3 class="footer-reviews__title">Echte Kundenbewertungen</h3>
@@ -272,7 +272,7 @@ window.addEventListener('DOMContentLoaded', () => {
       } else if (direction === -1 && carousel.scrollLeft <= 10) {
         carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
       } else {
-        carousel.scrollBy({ left: direction * itemWidth * (window.innerWidth >= 750 ? 3 : 1), behavior: 'smooth' });
+        carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
       }
     }
 
@@ -280,7 +280,7 @@ window.addEventListener('DOMContentLoaded', () => {
       stopAutoScroll();
       autoScrollTimer = setInterval(() => {
         scrollReviews(1);
-      }, 4000);
+      }, 7000);
     }
 
     function stopAutoScroll() {
