@@ -61,8 +61,7 @@
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ shop.url }}/sitemap.xml">
 
   {%- assign clean_canonical = canonical_url | split: "?" | first -%}
-  {%- assign clean_canonical = clean_canonical | replace: 'brew-blend.de', 'brew-blend.com' -%}
-  <link rel="canonical" href="{{ clean_canonical }}">
+    <link rel="canonical" href="{{ clean_canonical }}">
 
   {%- assign og_locale = request.locale.iso_code | downcase -%}
   {%- if og_locale == 'de' -%}{%- assign og_locale = 'de_DE' -%}
