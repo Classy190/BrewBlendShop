@@ -26,6 +26,20 @@
         "info": "Paste the content string from Google Search Console here. Example: abcdef1234567890"
       },
       {
+        "type": "checkbox",
+        "id": "ai_image_watermark_enabled",
+        "label": "KI-Wasserzeichen anzeigen",
+        "default": false,
+        "info": "Zeigt ein KI-Kennzeichen auf Bildinhalten an, wenn die Option aktiviert ist."
+      },
+      {
+        "type": "text",
+        "id": "ai_image_watermark_text",
+        "label": "KI-Wasserzeichen Text",
+        "default": "KI-Bild",
+        "info": "Text, der im Wasserzeichen oben rechts angezeigt wird."
+      },
+      {
         "type": "text",
         "id": "hide_collections",
         "label": "Hide collection",
